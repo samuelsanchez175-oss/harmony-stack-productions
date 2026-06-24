@@ -73,6 +73,36 @@ a{color:inherit}
 .phone img{display:block;width:100%;height:auto;border-radius:32px;background:#fff}
 .shot p{font-size:14.5px;color:var(--ink-soft);line-height:1.55;max-width:300px;margin:0 auto}
 
+/* ===== DEVICE GALLERY (iPhone / iPad toggle) ===== */
+.dg-sec{background:var(--paper-2)}
+.dg-toggle-wrap{display:flex;justify-content:center;margin:0 auto clamp(34px,5vw,48px)}
+.dg-toggle{display:inline-flex;gap:4px;padding:5px;background:var(--card);border:1px solid var(--border);border-radius:999px;box-shadow:0 3px 12px rgba(20,40,25,.07)}
+.dg-seg{appearance:none;-webkit-appearance:none;border:0;background:transparent;cursor:pointer;font:inherit;font-size:14px;font-weight:600;color:var(--ink-soft);padding:9px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:8px;transition:color .18s ease,background .18s ease,box-shadow .18s ease}
+.dg-seg svg{width:17px;height:17px;display:block}
+.dg-seg:hover{color:var(--accent-deep)}
+.dg-seg[aria-pressed="true"]{background:var(--accent);color:#fff;box-shadow:0 4px 12px rgba(31,138,76,.30)}
+.dg-seg[aria-pressed="true"]:hover{color:#fff}
+.dg-group{display:none}
+.dg-group.is-active{display:block;animation:dgfade .42s ease}
+@keyframes dgfade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.dg-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(26px,4vw,46px)}
+.dg-item{text-align:center;display:flex;flex-direction:column;align-items:center}
+.dg-cap{margin-top:16px;max-width:244px}
+.dg-cap-t{display:block;font-weight:700;font-size:15px;color:var(--ink);letter-spacing:-.01em;margin-bottom:5px}
+.dg-cap-d{font-size:13px;color:var(--ink-soft);line-height:1.5}
+.dg-new{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);border:1px solid #cfe6d6;padding:2px 7px;border-radius:999px;margin-left:6px;vertical-align:middle;line-height:1.4}
+.dg-group--iphone .dg-item{flex:0 1 244px}
+.dg-group--ipad .dg-item{flex:0 1 430px}
+.dg-group--ipad .dg-cap{max-width:430px}
+/* iPhone frame */
+.dg-phone{position:relative;width:clamp(200px,60vw,244px);background:#11140f;border-radius:40px;padding:9px;box-shadow:0 24px 50px rgba(0,0,0,.24),0 0 0 1px rgba(255,255,255,.05) inset}
+.dg-phone::before{content:"";position:absolute;top:17px;left:50%;transform:translateX(-50%);width:86px;height:21px;background:#11140f;border-radius:999px;z-index:2}
+.dg-phone img{display:block;width:100%;height:auto;aspect-ratio:1284/2778;object-fit:cover;border-radius:31px;background:#fff}
+/* iPad frame */
+.dg-pad{position:relative;width:clamp(280px,82vw,430px);background:#15140f;border-radius:26px;padding:14px;box-shadow:0 26px 56px rgba(0,0,0,.26),0 0 0 1px rgba(255,255,255,.05) inset}
+.dg-pad::before{content:"";position:absolute;top:6.5px;left:50%;transform:translateX(-50%);width:6px;height:6px;background:#2c2a22;border-radius:50%;z-index:2}
+.dg-pad img{display:block;width:100%;height:auto;aspect-ratio:2048/2732;object-fit:cover;border-radius:13px;background:#fff}
+
 .cta-band{background:radial-gradient(900px 440px at 50% -30%,#34a862 0%,#1f8a4c 36%,#14622f 78%);color:#fff;text-align:center;border-radius:32px;padding:clamp(48px,8vw,76px) clamp(22px,5vw,48px);box-shadow:0 28px 60px rgba(20,98,47,.28)}
 .cta-band h2{font-size:clamp(26px,5vw,40px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:14px}
 .cta-band p{max-width:540px;margin:0 auto 32px;font-size:clamp(15px,2.2vw,18px);color:rgba(255,255,255,.9)}
@@ -203,6 +233,106 @@ a{color:inherit}
   </div>
 </section>
 
+<!-- DEVICE GALLERY — every screen, iPhone ⇄ iPad -->
+<section class="section dg-sec" id="screens-gallery" aria-labelledby="dg-h">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-kicker">See every screen</span>
+      <h2 id="dg-h">The whole app, screen by screen.</h2>
+      <p>From the readiness dashboard to the pre-trip Parts Map, recitation drills, 3D badges, and a Game&nbsp;Center leaderboard — here's everything. Switch between iPhone and iPad.</p>
+    </div>
+
+    <div class="dg-toggle-wrap">
+      <div class="dg-toggle" role="group" aria-label="Choose a device to preview">
+        <button type="button" class="dg-seg" data-device="iphone" aria-pressed="true" aria-controls="dg-view-iphone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.6"/><path d="M11 18.2h2"/></svg>iPhone
+        </button>
+        <button type="button" class="dg-seg" data-device="ipad" aria-pressed="false" aria-controls="dg-view-ipad">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2.4"/><path d="M11 18.2h2"/></svg>iPad
+        </button>
+      </div>
+    </div>
+
+    <div data-device-gallery>
+      <!-- iPhone -->
+      <div class="dg-group dg-group--iphone is-active" id="dg-view-iphone" data-view="iphone">
+        <div class="dg-grid">
+          <figure class="dg-item">
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/01-home.png" alt="CDL One Stop NJ Study home on iPhone — daily streaks, XP level, and Pre-Trip Inspection shortcuts"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Study home</span><span class="dg-cap-d">Daily streaks, XP levels, and one-tap access to the Parts Map and Pre-Trip Inspection.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/02-readiness.png" alt="CDL One Stop NJ readiness dashboard on iPhone showing tests-ready count and per-bank progress"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Am I Ready?</span><span class="dg-cap-d">A readiness score blends your accuracy with how much of each bank you've covered — across all 13 tests.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/03-pretrip.png" alt="CDL One Stop NJ interactive Parts Map on iPhone for the pre-trip walk-around"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Parts Map</span><span class="dg-cap-d">Tap any truck component to learn it and rehearse the spoken walk-around, out loud.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/04-badges.png" alt="CDL One Stop NJ 3D achievement badge on iPhone"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Achievement badges</span><span class="dg-cap-d">Earn detailed 3D badges as you progress — tilt your phone to catch the light.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/05-license.png" alt="CDL One Stop NJ driver-license card and badge vault on iPhone"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">License &amp; badge vault</span><span class="dg-cap-d">A driver-license card that fills in as you collect every achievement.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/06-streak.png" alt="CDL One Stop NJ streak calendar on iPhone"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Streak calendar</span><span class="dg-cap-d">Keep the daily habit going and watch your study streak grow.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- iPad -->
+      <div class="dg-group dg-group--ipad" id="dg-view-ipad" data-view="ipad" hidden>
+        <div class="dg-grid">
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/01-home.png" alt="CDL One Stop NJ Study home on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Study home</span><span class="dg-cap-d">The full study hub, with room to breathe on iPad.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/02-readiness.png" alt="CDL One Stop NJ readiness roadmap on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Readiness roadmap</span><span class="dg-cap-d">Every test area's readiness at a glance on the bigger screen.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/06-pretrip.png" alt="CDL One Stop NJ Parts Map on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Parts Map</span><span class="dg-cap-d">The interactive pre-trip walk-around, full-size for easy tapping.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/07-sayit.png" alt="CDL One Stop NJ How to Say It recitation drills on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">How to Say It <span class="dg-new">New</span></span><span class="dg-cap-d">Recite-it-out-loud flashcards that rehearse the spoken inspection word for word.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/05-leaderboard.png" alt="CDL One Stop NJ Game Center leaderboard on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Leaderboard <span class="dg-new">New</span></span><span class="dg-cap-d">A Game Center leaderboard to stack your progress against other NJ CDL students.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/08-articles.png" alt="CDL One Stop NJ study articles and component deep-dives on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Study articles <span class="dg-new">New</span></span><span class="dg-cap-d">In-depth guides and component deep-dives for everything on the exam.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/04-badge.png" alt="CDL One Stop NJ 3D achievement badge on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">3D badges</span><span class="dg-cap-d">Achievements rendered in rich, tilt-to-shine detail.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/03-license.png" alt="CDL One Stop NJ driver-license card on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">License card</span><span class="dg-cap-d">Your progress, framed like a real CDL.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/09-streak.png" alt="CDL One Stop NJ streak calendar on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Streak calendar</span><span class="dg-cap-d">Track your daily study habit at a glance.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/10-profile.png" alt="CDL One Stop NJ profile screen on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Your profile</span><span class="dg-cap-d">Class, transmission, and progress all in one place.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="download">
   <div class="wrap">
     <div class="cta-band">
@@ -314,6 +444,28 @@ a{color:inherit}
   }
   var wraps = document.querySelectorAll('[data-gooey]');
   for(var i = 0; i < wraps.length; i++){ initGooey(wraps[i]); }
+})();
+</script>
+
+<script>
+(function(){
+  var sec = document.querySelector('[data-device-gallery]');
+  if(!sec) return;
+  var segs = [].slice.call(document.querySelectorAll('.dg-seg'));
+  var groups = [].slice.call(sec.querySelectorAll('.dg-group'));
+  function show(view){
+    groups.forEach(function(g){
+      var on = g.getAttribute('data-view') === view;
+      g.classList.toggle('is-active', on);
+      if(on){ g.removeAttribute('hidden'); } else { g.setAttribute('hidden', ''); }
+    });
+    segs.forEach(function(s){
+      s.setAttribute('aria-pressed', String(s.getAttribute('data-device') === view));
+    });
+  }
+  segs.forEach(function(s){
+    s.addEventListener('click', function(){ show(s.getAttribute('data-device')); });
+  });
 })();
 </script>
 </body>
