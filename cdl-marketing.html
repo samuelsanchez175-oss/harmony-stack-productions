@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#14622f">
-<title>CDL One Stop NJ — Pass your NJ CDL the smart way</title>
-<meta name="description" content="CDL One Stop NJ turns the New Jersey commercial driver's license exam into a guided, gamified study plan. Drill every question bank, master the pre-trip inspection, and walk into the test center 100% ready.">
+<title>CDL One Stop — Pass your CDL the smart way</title>
+<meta name="description" content="CDL One Stop turns the commercial driver's license exam into a guided, gamified study plan — for all 50 states + DC, Class A, B, and C. Drill every question bank, master the pre-trip inspection, and walk into the test center 100% ready.">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--accent:#1f8a4c;--accent-deep:#14622f;--accent-soft:#e7f3ea;--gold:#e3b24a;--ink:#15281c;--ink-soft:#4a5b50;--paper:#f6f4ec;--paper-2:#eef1e8;--card:#ffffff;--border:#dde2d3}
@@ -141,14 +141,31 @@ a{color:inherit}
 .gooey-filtered{position:relative;display:block;width:100%;min-height:1.08em;line-height:1.04;filter:url(#gooeyThreshold)}
 .gooey-filtered .gt{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);margin:0 auto;white-space:nowrap;color:inherit;font:inherit;letter-spacing:inherit}
 @media(prefers-reduced-motion:reduce){.gooey-filtered{filter:none}.gooey-filtered .gt-2{display:none}.gooey-filtered .gt-1{position:static;transform:none;opacity:1!important;filter:none!important}}
+
+/* ===== UPDATE TIMELINE ===== */
+.tl-sec{background:var(--paper)}
+.tl{max-width:760px;margin:0 auto;position:relative;padding-left:38px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--accent),var(--border))}
+.tl-item{position:relative;padding:0 0 34px}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{position:absolute;left:-38px;top:2px;width:20px;height:20px;border-radius:50%;background:var(--accent);border:3px solid var(--paper);box-shadow:0 0 0 2px var(--accent)}
+.tl-item.is-now .tl-dot{background:var(--gold);box-shadow:0 0 0 2px var(--gold),0 0 14px rgba(227,178,74,.7)}
+.tl-when{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:7px}
+.tl-badge{font-size:10px;font-weight:700;letter-spacing:.05em;background:var(--gold);color:#3a2c06;padding:2px 9px;border-radius:999px}
+.tl-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:19px 22px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.tl-card:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(20,98,47,.12);border-color:#c7d6c0}
+.tl-card h3{font-size:18px;font-weight:700;letter-spacing:-.01em;margin-bottom:11px}
+.tl-list{list-style:none;display:flex;flex-direction:column;gap:7px}
+.tl-list li{position:relative;padding-left:21px;font-size:14.5px;color:var(--ink-soft);line-height:1.55}
+.tl-list li::before{content:"";position:absolute;left:2px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--accent);opacity:.55}
 </style>
 </head>
 <body>
 <svg aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden"><defs><filter id="gooeyThreshold"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 255 -140"/></filter></defs></svg>
 
-<nav class="app-nav" aria-label="CDL One Stop NJ pages">
-  <a class="app-nav-brand" href="cdl-marketing.html"><img src="portfolio-screenshots/cdl-icon.png" alt=""><span>CDL One Stop NJ</span></a>
-  <div class="app-nav-links"><a href="cdl-marketing.html" class="is-active">Home</a><a href="cdl-support.html">Support</a><a href="https://harmony-stack-productions.vercel.app" target="_blank" rel="noopener">Harmony Stack ↗</a><span class="nav-store nav-store--soon" title="Coming soon to the App Store">App Store · Soon</span></div>
+<nav class="app-nav" aria-label="CDL One Stop pages">
+  <a class="app-nav-brand" href="cdl-marketing.html"><img src="portfolio-screenshots/cdl-icon.png" alt=""><span>CDL One Stop</span></a>
+  <div class="app-nav-links"><a href="cdl-marketing.html" class="is-active">Home</a><a href="cdl-support.html">Support</a><a href="https://harmony-stack-productions.vercel.app" target="_blank" rel="noopener">Harmony Stack ↗</a><a class="nav-store" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">App Store ↗</a></div>
 </nav>
 
 <!-- SCROLL SHOWCASE (sweeping 3D reveal) — lead section -->
@@ -157,18 +174,18 @@ a{color:inherit}
     <div class="scrollshow-inner">
       <div class="scrollshow-title">
         <span class="scrollshow-kicker">A look inside</span>
-        <h2 class="gooey-wrap" data-gooey data-texts='["Study with momentum","See your readiness","Built for NJ drivers"]' aria-label="Study with momentum"><span class="gooey-filtered" aria-hidden="true"><span class="gt gt-1"></span><span class="gt gt-2"></span></span></h2>
-        <p>Scroll to bring it into focus — clear, focused screens that keep your eyes on the goal: passing the NJ CDL exam.</p>
+        <h2 class="gooey-wrap" data-gooey data-texts='["Study with momentum","See your readiness","Built for every state"]' aria-label="Study with momentum"><span class="gooey-filtered" aria-hidden="true"><span class="gt gt-1"></span><span class="gt gt-2"></span></span></h2>
+        <p>Scroll to bring it into focus — clear, focused screens that keep your eyes on the goal: passing your CDL exam.</p>
       </div>
       <div class="scrollshow-card">
         <div class="scrollshow-screen">
           <div class="scrollshow-scene">
             <figure class="scrollshow-phone">
-              <span class="pf"><img src="portfolio-screenshots/cdl-onestop-home.png" alt="CDL One Stop NJ Study home screen showing daily streaks, XP levels, and the Pre-Trip Inspection"></span>
+              <span class="pf"><img src="portfolio-screenshots/cdl-onestop-home.png" alt="CDL One Stop Study home screen showing daily streaks, XP levels, and the Pre-Trip Inspection"></span>
               <figcaption class="scrollshow-cap"><span class="scrollshow-cap-t">Your Study home</span>Daily streaks, XP levels, and quick access to the Parts Map &amp; Pre-Trip Inspection keep you drilling every day.</figcaption>
             </figure>
             <figure class="scrollshow-phone">
-              <span class="pf"><img src="portfolio-screenshots/cdl-onestop-info.png" alt="CDL One Stop NJ Readiness Roadmap showing a live score across all 13 test areas"></span>
+              <span class="pf"><img src="portfolio-screenshots/cdl-onestop-info.png" alt="CDL One Stop Readiness Roadmap showing a live score across all 13 test areas"></span>
               <figcaption class="scrollshow-cap"><span class="scrollshow-cap-t">The Readiness Roadmap</span>A live readiness score across all 13 test areas shows exactly which banks to review before test day.</figcaption>
             </figure>
           </div>
@@ -181,12 +198,12 @@ a{color:inherit}
 <header class="hero">
   <div class="wrap hero-inner">
     <span class="hero-eyebrow">Education · CDL Test Prep</span>
-    <img class="hero-icon" src="portfolio-screenshots/cdl-icon.png" alt="CDL One Stop NJ app icon">
-    <h1 class="gooey-wrap" data-gooey data-texts='["CDL One Stop NJ","Ace your NJ CDL","Pass first try"]' aria-label="CDL One Stop NJ"><span class="gooey-filtered" aria-hidden="true"><span class="gt gt-1"></span><span class="gt gt-2"></span></span></h1>
-    <p class="hero-tagline">Pass your NJ CDL — the smart way.</p>
-    <p class="hero-desc">CDL One Stop NJ turns the New Jersey commercial driver's license exam into a guided, gamified study plan. Drill every question bank, master the pre-trip inspection, and watch your readiness climb until you walk into the test center 100% ready.</p>
+    <img class="hero-icon" src="portfolio-screenshots/cdl-icon.png" alt="CDL One Stop app icon">
+    <h1 class="gooey-wrap" data-gooey data-texts='["CDL One Stop","Ace your CDL","Pass first try"]' aria-label="CDL One Stop"><span class="gooey-filtered" aria-hidden="true"><span class="gt gt-1"></span><span class="gt gt-2"></span></span></h1>
+    <p class="hero-tagline">Pass your CDL — the smart way.</p>
+    <p class="hero-desc">CDL One Stop turns the commercial driver's license exam into a guided, gamified study plan — for all 50 states + DC, Class A, B, and C. Drill every question bank, master the pre-trip inspection, and watch your readiness climb until you walk into the test center 100% ready.</p>
     <div class="hero-cta">
-      <div class="appstore-badge appstore-badge--soon" role="img" aria-label="CDL One Stop NJ coming soon to the App Store"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"><span class="soon-pill">Coming soon</span></div>
+      <a class="appstore-badge" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener" aria-label="Download CDL One Stop on the App Store"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"></a>
     </div>
   </div>
 </header>
@@ -196,7 +213,7 @@ a{color:inherit}
     <div class="section-head">
       <span class="section-kicker">Why drivers choose it</span>
       <h2>Everything you need to test-ready.</h2>
-      <p>A focused, NJ-specific study system that knows exactly when you're ready to walk in.</p>
+      <p>A focused, state-aware study system that knows exactly when you're ready to walk in.</p>
     </div>
     <div class="features">
       <article class="feature">
@@ -207,7 +224,7 @@ a{color:inherit}
       <article class="feature">
         <div class="feature-glyph" aria-hidden="true">🗂️</div>
         <h3>All 13 Test Areas</h3>
-        <p>Core Knowledge, Endorsements, Combination, and Pre-Trip tests, mapped to the real NJ CDL knowledge exam.</p>
+        <p>Core Knowledge, Endorsements, Combination, and Pre-Trip tests, mapped to the real CDL knowledge exam.</p>
       </article>
       <article class="feature">
         <div class="feature-glyph" aria-hidden="true">🚛</div>
@@ -225,9 +242,9 @@ a{color:inherit}
         <p>Every missed question is saved so you can review your weak spots and turn them into strengths.</p>
       </article>
       <article class="feature">
-        <div class="feature-glyph" aria-hidden="true">🗽</div>
-        <h3>Built for New Jersey</h3>
-        <p>Focused on NJ Class A / CDL requirements, not a generic national app.</p>
+        <div class="feature-glyph" aria-hidden="true">🗺️</div>
+        <h3>All 50 states + DC</h3>
+        <p>State-specific licensing rules, fees, and official DMV links for every U.S. state and Washington DC — with questions filtered to your Class A, B, or C.</p>
       </article>
     </div>
   </div>
@@ -258,27 +275,27 @@ a{color:inherit}
       <div class="dg-group dg-group--iphone is-active" id="dg-view-iphone" data-view="iphone">
         <div class="dg-grid">
           <figure class="dg-item">
-            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/01-home.png" alt="CDL One Stop NJ Study home on iPhone — daily streaks, XP level, and Pre-Trip Inspection shortcuts"></div>
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/01-home.png" alt="CDL One Stop Study home on iPhone — daily streaks, XP level, and Pre-Trip Inspection shortcuts"></div>
             <figcaption class="dg-cap"><span class="dg-cap-t">Study home</span><span class="dg-cap-d">Daily streaks, XP levels, and one-tap access to the Parts Map and Pre-Trip Inspection.</span></figcaption>
           </figure>
           <figure class="dg-item">
-            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/02-readiness.png" alt="CDL One Stop NJ readiness dashboard on iPhone showing tests-ready count and per-bank progress"></div>
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/02-readiness.png" alt="CDL One Stop readiness dashboard on iPhone showing tests-ready count and per-bank progress"></div>
             <figcaption class="dg-cap"><span class="dg-cap-t">Am I Ready?</span><span class="dg-cap-d">A readiness score blends your accuracy with how much of each bank you've covered — across all 13 tests.</span></figcaption>
           </figure>
           <figure class="dg-item">
-            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/03-pretrip.png" alt="CDL One Stop NJ interactive Parts Map on iPhone for the pre-trip walk-around"></div>
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/03-pretrip.png" alt="CDL One Stop interactive Parts Map on iPhone for the pre-trip walk-around"></div>
             <figcaption class="dg-cap"><span class="dg-cap-t">Parts Map</span><span class="dg-cap-d">Tap any truck component to learn it and rehearse the spoken walk-around, out loud.</span></figcaption>
           </figure>
           <figure class="dg-item">
-            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/04-badges.png" alt="CDL One Stop NJ 3D achievement badge on iPhone"></div>
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/04-badges.png" alt="CDL One Stop 3D achievement badge on iPhone"></div>
             <figcaption class="dg-cap"><span class="dg-cap-t">Achievement badges</span><span class="dg-cap-d">Earn detailed 3D badges as you progress — tilt your phone to catch the light.</span></figcaption>
           </figure>
           <figure class="dg-item">
-            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/05-license.png" alt="CDL One Stop NJ driver-license card and badge vault on iPhone"></div>
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/05-license.png" alt="CDL One Stop driver-license card and badge vault on iPhone"></div>
             <figcaption class="dg-cap"><span class="dg-cap-t">License &amp; badge vault</span><span class="dg-cap-d">A driver-license card that fills in as you collect every achievement.</span></figcaption>
           </figure>
           <figure class="dg-item">
-            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/06-streak.png" alt="CDL One Stop NJ streak calendar on iPhone"></div>
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/06-streak.png" alt="CDL One Stop streak calendar on iPhone"></div>
             <figcaption class="dg-cap"><span class="dg-cap-t">Streak calendar</span><span class="dg-cap-d">Keep the daily habit going and watch your study streak grow.</span></figcaption>
           </figure>
         </div>
@@ -288,45 +305,110 @@ a{color:inherit}
       <div class="dg-group dg-group--ipad" id="dg-view-ipad" data-view="ipad" hidden>
         <div class="dg-grid">
           <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/01-home.png" alt="CDL One Stop NJ Study home on iPad"></div>
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/01-home.png" alt="CDL One Stop Study home on iPad"></div>
             <figcaption class="dg-cap"><span class="dg-cap-t">Study home</span><span class="dg-cap-d">The full study hub, with room to breathe on iPad.</span></figcaption>
           </figure>
           <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/02-readiness.png" alt="CDL One Stop NJ readiness roadmap on iPad"></div>
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/02-readiness.png" alt="CDL One Stop readiness roadmap on iPad"></div>
             <figcaption class="dg-cap"><span class="dg-cap-t">Readiness roadmap</span><span class="dg-cap-d">Every test area's readiness at a glance on the bigger screen.</span></figcaption>
           </figure>
           <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/06-pretrip.png" alt="CDL One Stop NJ Parts Map on iPad"></div>
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/06-pretrip.png" alt="CDL One Stop Parts Map on iPad"></div>
             <figcaption class="dg-cap"><span class="dg-cap-t">Parts Map</span><span class="dg-cap-d">The interactive pre-trip walk-around, full-size for easy tapping.</span></figcaption>
           </figure>
           <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/07-sayit.png" alt="CDL One Stop NJ How to Say It recitation drills on iPad"></div>
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/07-sayit.png" alt="CDL One Stop How to Say It recitation drills on iPad"></div>
             <figcaption class="dg-cap"><span class="dg-cap-t">How to Say It <span class="dg-new">New</span></span><span class="dg-cap-d">Recite-it-out-loud flashcards that rehearse the spoken inspection word for word.</span></figcaption>
           </figure>
           <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/05-leaderboard.png" alt="CDL One Stop NJ Game Center leaderboard on iPad"></div>
-            <figcaption class="dg-cap"><span class="dg-cap-t">Leaderboard <span class="dg-new">New</span></span><span class="dg-cap-d">A Game Center leaderboard to stack your progress against other NJ CDL students.</span></figcaption>
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/05-leaderboard.png" alt="CDL One Stop Game Center leaderboard on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Leaderboard <span class="dg-new">New</span></span><span class="dg-cap-d">A Game Center leaderboard to stack your progress against other CDL students.</span></figcaption>
           </figure>
           <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/08-articles.png" alt="CDL One Stop NJ study articles and component deep-dives on iPad"></div>
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/08-articles.png" alt="CDL One Stop study articles and component deep-dives on iPad"></div>
             <figcaption class="dg-cap"><span class="dg-cap-t">Study articles <span class="dg-new">New</span></span><span class="dg-cap-d">In-depth guides and component deep-dives for everything on the exam.</span></figcaption>
           </figure>
           <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/04-badge.png" alt="CDL One Stop NJ 3D achievement badge on iPad"></div>
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/04-badge.png" alt="CDL One Stop 3D achievement badge on iPad"></div>
             <figcaption class="dg-cap"><span class="dg-cap-t">3D badges</span><span class="dg-cap-d">Achievements rendered in rich, tilt-to-shine detail.</span></figcaption>
           </figure>
           <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/03-license.png" alt="CDL One Stop NJ driver-license card on iPad"></div>
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/03-license.png" alt="CDL One Stop driver-license card on iPad"></div>
             <figcaption class="dg-cap"><span class="dg-cap-t">License card</span><span class="dg-cap-d">Your progress, framed like a real CDL.</span></figcaption>
           </figure>
           <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/09-streak.png" alt="CDL One Stop NJ streak calendar on iPad"></div>
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/09-streak.png" alt="CDL One Stop streak calendar on iPad"></div>
             <figcaption class="dg-cap"><span class="dg-cap-t">Streak calendar</span><span class="dg-cap-d">Track your daily study habit at a glance.</span></figcaption>
           </figure>
           <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/10-profile.png" alt="CDL One Stop NJ profile screen on iPad"></div>
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/10-profile.png" alt="CDL One Stop profile screen on iPad"></div>
             <figcaption class="dg-cap"><span class="dg-cap-t">Your profile</span><span class="dg-cap-d">Class, transmission, and progress all in one place.</span></figcaption>
           </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UPDATE TIMELINE -->
+<section class="section tl-sec" id="updates" aria-labelledby="tl-h">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-kicker">The road so far</span>
+      <h2 id="tl-h">Updates &amp; what's new.</h2>
+      <p>CDL One Stop keeps growing — here's the progress we've been making, release by release.</p>
+    </div>
+    <div class="tl">
+      <div class="tl-item">
+        <span class="tl-dot"></span>
+        <div class="tl-when">Launch</div>
+        <div class="tl-card">
+          <h3>On the App Store</h3>
+          <ul class="tl-list">
+            <li>Readiness Roadmap — a live 0–100% score across all 13 test areas.</li>
+            <li>Streaks, XP &amp; levels to keep the daily habit going.</li>
+            <li>Interactive Pre-Trip Parts Map with a spoken walk-around.</li>
+            <li>Correct-answer celebration — confetti, chime, and a streak fire burst.</li>
+            <li>Collectible 3D achievement badges.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-dot"></span>
+        <div class="tl-when">Study depth</div>
+        <div class="tl-card">
+          <h3>Recite it, then compete</h3>
+          <ul class="tl-list">
+            <li>“How to Say It” recitation drills for the spoken inspection.</li>
+            <li>Study articles &amp; component deep-dives for every exam topic.</li>
+            <li>Game Center leaderboard to rank against other CDL students.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-dot"></span>
+        <div class="tl-when">Accounts &amp; devices</div>
+        <div class="tl-card">
+          <h3>Everywhere you study</h3>
+          <ul class="tl-list">
+            <li>Sign in with Apple, with your progress synced across devices.</li>
+            <li>Native iPad and Mac (Catalyst) support.</li>
+            <li>English / Español language picker.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item is-now">
+        <span class="tl-dot"></span>
+        <div class="tl-when">Now <span class="tl-badge">v1.7</span></div>
+        <div class="tl-card">
+          <h3>Nationwide — every state, every class</h3>
+          <ul class="tl-list">
+            <li>All 50 states + Washington DC licensing banks.</li>
+            <li>Class A, B &amp; C — questions filtered to your license class.</li>
+            <li>Full Spanish: 666 per-state licensing strings translated.</li>
+            <li>Per-state fee charts with official DMV site links.</li>
+            <li>New Basic Control Skills practice bank.</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -339,7 +421,7 @@ a{color:inherit}
       <h2>Walk into the test center 100% ready.</h2>
       <p>Start drilling the banks, master the pre-trip, and let your Readiness Roadmap tell you when it's go time.</p>
       <div class="cta-inner">
-        <div class="appstore-badge appstore-badge--soon" role="img" aria-label="CDL One Stop NJ coming soon to the App Store"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"><span class="soon-pill">Coming soon</span></div>
+        <a class="appstore-badge" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener" aria-label="Download CDL One Stop on the App Store"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"></a>
       </div>
       <p class="cta-fineprint">Your study progress stays on your device. We don't sell your data.</p>
     </div>
@@ -347,9 +429,9 @@ a{color:inherit}
 </section>
 
 <footer class="app-footer">
-  <div class="app-footer-brand"><img src="portfolio-screenshots/cdl-icon.png" alt="">CDL One Stop NJ</div>
-  <div class="app-footer-links"><a href="cdl-marketing.html">Home</a><a href="cdl-support.html">Support</a><span style="opacity:.6">App Store (coming soon)</span><a href="mailto:harmonyStack@gmail.com">Contact</a><a href="harmony-stack-services.html">Harmony Stack</a></div>
-  <div class="app-footer-fine">CDL One Stop NJ is an iOS app built by Harmony Stack.<br>Support: <a href="mailto:harmonyStack@gmail.com">harmonyStack@gmail.com</a> • © 2026 Harmony Stack. All rights reserved.</div>
+  <div class="app-footer-brand"><img src="portfolio-screenshots/cdl-icon.png" alt="">CDL One Stop</div>
+  <div class="app-footer-links"><a href="cdl-marketing.html">Home</a><a href="cdl-support.html">Support</a><a href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">App Store</a><a href="mailto:harmonyStack@gmail.com">Contact</a><a href="harmony-stack-services.html">Harmony Stack</a></div>
+  <div class="app-footer-fine">CDL One Stop is an iOS app built by Harmony Stack.<br>Support: <a href="mailto:harmonyStack@gmail.com">harmonyStack@gmail.com</a> • © 2026 Harmony Stack. All rights reserved.</div>
 </footer>
 
 <script>
