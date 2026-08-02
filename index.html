@@ -137,21 +137,128 @@
     align-items: center;
   }
 
-  .header-cta-actions a {
+  /* Liquid-glass pills. The stacked inset shadows are what read as glass:
+     the tight -3px spreads draw a bright rim on the top-left and bottom-right,
+     and the wide 6px spread pools light in the centre. */
+  .header-cta-actions a,
+  .contact-cta-actions a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
     font-size: 11px;
     font-weight: 600;
-    color: #fff8f2;
+    color: var(--body);
     text-decoration: none;
-    padding: 6px 12px;
+    padding: 7px 14px;
     border-radius: 999px;
-    background: rgba(26, 21, 32, 0.22);
-    border: 1px solid rgba(255, 248, 242, 0.35);
-    transition: background 0.15s ease, border-color 0.15s ease;
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px) saturate(1.4);
+    -webkit-backdrop-filter: blur(10px) saturate(1.4);
+    box-shadow:
+      0 2px 6px rgba(26, 21, 32, 0.12),
+      inset 3px 3px 0.5px -3px rgba(255, 255, 255, 1),
+      inset -3px -3px 0.5px -3px rgba(255, 255, 255, 0.9),
+      inset 1px 1px 1px -0.5px rgba(255, 255, 255, 0.7),
+      inset -1px -1px 1px -0.5px rgba(255, 255, 255, 0.7),
+      inset 0 0 6px 6px rgba(255, 255, 255, 0.28),
+      inset 0 0 2px 2px rgba(255, 255, 255, 0.14);
+    transition: background 0.15s ease, box-shadow 0.15s ease, color 0.15s ease, transform 0.12s ease;
   }
 
-  .header-cta-actions a:hover {
-    background: rgba(26, 21, 32, 0.35);
-    border-color: rgba(255, 248, 242, 0.55);
+  /* Swaps the plain blur for the SVG displacement map. Engines that reject
+     url() in backdrop-filter drop this declaration and keep the blur above. */
+  @supports (backdrop-filter: url(#container-glass)) {
+    .header-cta-actions a,
+    .contact-cta-actions a {
+      backdrop-filter: blur(3px) url(#container-glass);
+    }
+  }
+
+  .header-cta-actions a svg,
+  .contact-cta-actions a svg {
+    width: 13px;
+    height: 13px;
+    flex: none;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.92;
+  }
+
+  .header-cta-actions a:hover,
+  .contact-cta-actions a:hover {
+    color: var(--purple2);
+    background: rgba(255, 255, 255, 0.78);
+    border-color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  .header-cta-actions a:active,
+  .contact-cta-actions a:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  .header-cta-actions a:focus-visible,
+  .contact-cta-actions a:focus-visible {
+    outline: none;
+    color: var(--purple2);
+    border-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.75);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .header-cta-actions a,
+    .contact-cta-actions a { transition: none; }
+    .header-cta-actions a:hover,
+    .contact-cta-actions a:hover,
+    .header-cta-actions a:active,
+    .contact-cta-actions a:active { transform: none; }
+  }
+
+  /* ---- CONTACT CLOSE (after pricing) ---- */
+  .contact-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 40px 0 8px;
+    padding: 22px 24px;
+    border-radius: 16px;
+    background: linear-gradient(165deg, #f07828 0%, #e04e12 46%, #c43a08 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 8px 28px rgba(196, 58, 8, 0.22);
+  }
+  .contact-cta-title {
+    font-family: 'Cash Market', 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff8f2;
+    margin-bottom: 4px;
+  }
+  .contact-cta-sub {
+    font-size: 11px;
+    line-height: 1.7;
+    color: rgba(255, 248, 242, 0.9);
+    max-width: 46ch;
+  }
+  .contact-cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    align-items: center;
+  }
+
+  /* ---- WORKING TOGETHER (post-sale wrapper) ---- */
+  .working-together {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1.5px solid var(--border);
+  }
+  .working-together > .harmony-collapse-panel {
+    padding-top: 4px;
   }
 
   /* Same language as .header-cta — sits on the orange band without a separate “card” panel */
@@ -215,6 +322,7 @@
     background: transparent;
   }
 
+  /* Liquid-glass chips — same treatment as the header CTA pills. */
   a.portfolio-site,
   span.portfolio-site {
     cursor: default;
@@ -223,10 +331,26 @@
     display: inline-block;
     padding: 8px 14px;
     border-radius: 999px;
-    background: var(--white);
-    border: 1.5px solid rgba(216, 208, 200, 0.95);
-    box-shadow: 0 2px 10px rgba(26, 21, 32, 0.045);
-    transition: border-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease, transform 0.12s ease;
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px) saturate(1.4);
+    -webkit-backdrop-filter: blur(10px) saturate(1.4);
+    box-shadow:
+      0 2px 6px rgba(26, 21, 32, 0.12),
+      inset 3px 3px 0.5px -3px rgba(255, 255, 255, 1),
+      inset -3px -3px 0.5px -3px rgba(255, 255, 255, 0.9),
+      inset 1px 1px 1px -0.5px rgba(255, 255, 255, 0.7),
+      inset -1px -1px 1px -0.5px rgba(255, 255, 255, 0.7),
+      inset 0 0 6px 6px rgba(255, 255, 255, 0.28),
+      inset 0 0 2px 2px rgba(255, 255, 255, 0.14);
+    transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease, transform 0.12s ease;
+  }
+
+  @supports (backdrop-filter: url(#container-glass)) {
+    a.portfolio-site,
+    span.portfolio-site {
+      backdrop-filter: blur(3px) url(#container-glass);
+    }
   }
 
   a.portfolio-site,
@@ -237,8 +361,8 @@
   a.portfolio-site:hover,
   .portfolio-app-chip:hover {
     color: var(--purple2);
-    border-color: rgba(155, 142, 196, 0.65);
-    box-shadow: 0 4px 16px rgba(155, 142, 196, 0.18);
+    background: rgba(255, 255, 255, 0.78);
+    border-color: #ffffff;
     transform: translateY(-1px);
   }
 
@@ -246,13 +370,22 @@
   .portfolio-app-chip:focus-visible {
     outline: none;
     color: var(--purple2);
-    border-color: var(--purple);
-    box-shadow: 0 0 0 3px rgba(155, 142, 196, 0.35);
+    border-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.75);
   }
 
   a.portfolio-site:active,
   .portfolio-app-chip:active {
-    transform: translateY(0);
+    transform: translateY(0) scale(0.98);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    a.portfolio-site,
+    span.portfolio-site { transition: none; }
+    a.portfolio-site:hover,
+    .portfolio-app-chip:hover,
+    a.portfolio-site:active,
+    .portfolio-app-chip:active { transform: none; }
   }
 
   /* App chip gets a small "tap for links" affordance */
@@ -275,6 +408,26 @@
   }
   .portfolio-app-chip:hover::after {
     border-color: var(--purple2);
+  }
+
+  /* App-specific hover accents — CDL turns green, Penwork glows red. */
+  .portfolio-app-chip[data-app-name="CDL One Stop NJ"]:hover {
+    color: #0a7d2c;
+    background: rgba(224, 255, 233, 0.92);
+    border-color: #34c759;
+    box-shadow: 0 0 16px rgba(52, 199, 89, 0.6), 0 2px 6px rgba(26, 21, 32, 0.12);
+  }
+  .portfolio-app-chip[data-app-name="CDL One Stop NJ"]:hover::after {
+    border-color: #0a7d2c;
+  }
+  .portfolio-app-chip[data-app-name="Penwork Studio"]:hover {
+    color: #b3001b;
+    background: rgba(255, 227, 229, 0.92);
+    border-color: #ff3b30;
+    box-shadow: 0 0 18px rgba(255, 59, 48, 0.65), 0 2px 6px rgba(26, 21, 32, 0.12);
+  }
+  .portfolio-app-chip[data-app-name="Penwork Studio"]:hover::after {
+    border-color: #b3001b;
   }
 
   /* ---- APP LINKS POPUP OVERLAY ---- */
@@ -497,7 +650,10 @@
     transform: rotate(0deg);
     transition: transform 0.2s ease;
   }
-  .harmony-collapse.is-collapsed .harmony-collapse-chevron {
+  /* Child combinator on the heading: a plain descendant selector would let a
+     collapsed wrapper (#working-together) flip the chevrons of the sections
+     nested inside its panel. Every collapse heading carries this class. */
+  .harmony-collapse.is-collapsed > .harmony-collapse-heading .harmony-collapse-chevron {
     transform: rotate(-90deg);
   }
   @media (prefers-reduced-motion: reduce) {
@@ -3313,6 +3469,22 @@
 </head>
 <body>
 
+<!-- Displacement map for the liquid-glass header pills. Referenced by
+     backdrop-filter: url(#container-glass), which only Firefox honours today.
+     scale is 20 rather than the 70 a full-size button can carry — at pill
+     scale, 70 warps the label past legibility. -->
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <filter id="container-glass" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05 0.05" numOctaves="1" seed="1" result="turbulence"/>
+      <feGaussianBlur in="turbulence" stdDeviation="2" result="blurredNoise"/>
+      <feDisplacementMap in="SourceGraphic" in2="blurredNoise" scale="20" xChannelSelector="R" yChannelSelector="B" result="displaced"/>
+      <feGaussianBlur in="displaced" stdDeviation="1.5" result="finalBlur"/>
+      <feComposite in="finalBlur" in2="finalBlur" operator="over"/>
+    </filter>
+  </defs>
+</svg>
+
 <div class="page">
 
   <header class="site-header">
@@ -3323,9 +3495,18 @@
     <div class="header-cta">
       <span class="header-cta-label">Next step</span>
       <div class="header-cta-actions">
-        <a href="mailto:harmonyStack@gmail.com">Email Harmony Stack</a>
-        <a href="tel:+12017457995">Call</a>
-        <a href="#website-packages">View packages</a>
+        <a href="mailto:harmonyStack@gmail.com">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.8 7.2 8.2 5.6 8.2-5.6"/></svg>
+          Email Harmony Stack
+        </a>
+        <a href="tel:+12017457995">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3.5h2.6L11 7.4 9 8.9a11.5 11.5 0 0 0 5.1 5.1l1.5-2 3.9 1.4V16a2.4 2.4 0 0 1-2.6 2.4A15.4 15.4 0 0 1 4.6 6.1 2.4 2.4 0 0 1 7 3.5Z"/></svg>
+          Call
+        </a>
+        <a href="#website-packages">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.2 19.8 7v10L12 20.8 4.2 17V7Z"/><path d="M4.2 7 12 10.9 19.8 7"/><path d="M12 10.9v9.9"/></svg>
+          View packages
+        </a>
       </div>
     </div>
     <div class="portfolio-bar">
@@ -3346,7 +3527,7 @@
           data-app-icon="portfolio-screenshots/cdl-icon.png"
           data-app-marketing="cdl-marketing.html"
           data-app-support="cdl-support.html"
-          data-app-store=""
+          data-app-store="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591"
           aria-label="CDL One Stop NJ — view app links">CDL One Stop NJ</span>
         <span class="portfolio-site portfolio-app-chip" role="button" tabindex="0" aria-haspopup="dialog"
           data-app-name="Penwork Studio"
@@ -3554,7 +3735,9 @@
             </div>
             <div class="phone-home-btn"></div>
           </div>
-          <img class="phone-app-icon" src="portfolio-screenshots/cdl-icon.png" alt="" aria-hidden="true" />
+          <a class="phone-app-icon-link" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener noreferrer" aria-label="Download CDL One Stop NJ on the App Store">
+            <img class="phone-app-icon" src="portfolio-screenshots/cdl-icon.png" alt="" aria-hidden="true" />
+          </a>
         </div>
         <div class="page-type-badge">
           <span class="page-badge active">Home</span>
@@ -3573,7 +3756,9 @@
             </div>
             <div class="phone-home-btn"></div>
           </div>
-          <img class="phone-app-icon" src="portfolio-screenshots/cdl-icon.png" alt="" aria-hidden="true" />
+          <a class="phone-app-icon-link" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener noreferrer" aria-label="Download CDL One Stop NJ on the App Store">
+            <img class="phone-app-icon" src="portfolio-screenshots/cdl-icon.png" alt="" aria-hidden="true" />
+          </a>
         </div>
         <div class="page-type-badge">
           <span class="page-badge active">Info</span>
@@ -3641,7 +3826,7 @@
 
   <!-- PACKAGES — After editing compare tables: save UTF-8, run python3 verify-html-structure.py.
        If layout breaks (payment section inside the table), run python3 apply_packages_canonical.py -->
-  <div class="harmony-collapse" id="website-packages" data-harmony-collapse-storage="harmony-packages-collapsed">
+  <div class="harmony-collapse" id="website-packages" data-harmony-collapse-storage="harmony-packages-collapsed-v2">
     <div class="section-label harmony-collapse-heading packages-collapse-heading">
       <button type="button" class="harmony-collapse-toggle" id="packages-collapse-toggle" aria-expanded="true" aria-controls="packages-collapse-panel">
         <span class="harmony-collapse-chevron" aria-hidden="true">▼</span>
@@ -3920,7 +4105,7 @@
     </div>
   </div>
   <!-- APP DEVELOPMENT PACKAGES -->
-  <div class="harmony-collapse" id="app-packages" data-harmony-collapse-storage="harmony-app-packages-collapsed">
+  <div class="harmony-collapse" id="app-packages" data-harmony-collapse-storage="harmony-app-packages-collapsed-v2">
     <div class="section-label harmony-collapse-heading packages-collapse-heading">
       <button type="button" class="harmony-collapse-toggle" id="app-packages-collapse-toggle" aria-expanded="true" aria-controls="app-packages-collapse-panel">
         <span class="harmony-collapse-chevron" aria-hidden="true">▼</span>
@@ -3992,7 +4177,7 @@
   </div>
 
   <!-- RETAINERS (after one-time packages) -->
-  <div class="retainer-section harmony-collapse" data-harmony-collapse-storage="harmony-retainers-collapsed">
+  <div class="retainer-section harmony-collapse" data-harmony-collapse-storage="harmony-retainers-collapsed-v2">
     <div class="section-label harmony-collapse-heading">
       <button type="button" class="harmony-collapse-toggle" id="retainers-collapse-toggle" aria-expanded="true" aria-controls="retainers-collapse-panel">
         <span class="harmony-collapse-chevron" aria-hidden="true">▼</span>
@@ -4010,7 +4195,7 @@
   </div>
 
   <!-- ADDONS: icons are external SVG files in /icons/ (referenced via img). -->
-  <div class="addons-section harmony-collapse" data-harmony-collapse-storage="harmony-addons-collapsed">
+  <div class="addons-section harmony-collapse" data-harmony-collapse-storage="harmony-addons-collapsed-v2">
     <div class="section-label harmony-collapse-heading">
       <button type="button" class="harmony-collapse-toggle" id="addons-collapse-toggle" aria-expanded="true" aria-controls="addons-collapse-panel">
         <span class="harmony-collapse-chevron" aria-hidden="true">▼</span>
@@ -4032,6 +4217,36 @@
        <p class="addons-footnote">These add-ons can be bundled together for a custom quote—combined pricing may differ from the à la carte rates above.</p>
     </div>
   </div>
+
+  <!-- CONTACT — the close, immediately after the prices -->
+  <div class="contact-cta" id="contact">
+    <div class="contact-cta-copy">
+      <div class="contact-cta-title">Ready to start?</div>
+      <p class="contact-cta-sub">Tell me what you are building. Custom quotes available — reach out before committing.</p>
+    </div>
+    <div class="contact-cta-actions">
+      <a href="mailto:harmonyStack@gmail.com">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.8 7.2 8.2 5.6 8.2-5.6"/></svg>
+        Email Harmony Stack
+      </a>
+      <a href="tel:+12017457995">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3.5h2.6L11 7.4 9 8.9a11.5 11.5 0 0 0 5.1 5.1l1.5-2 3.9 1.4V16a2.4 2.4 0 0 1-2.6 2.4A15.4 15.4 0 0 1 4.6 6.1 2.4 2.4 0 0 1 7 3.5Z"/></svg>
+        Call
+      </a>
+    </div>
+  </div>
+
+  <!-- WORKING TOGETHER — post-sale material for signed clients: one chevron over
+       the kickoff checklist, Dropbox handoff, revision guide, and payment terms.
+       Collapsed by default so it does not sit between a prospect and the prices. -->
+  <div class="working-together harmony-collapse" id="working-together" data-harmony-collapse-storage="harmony-working-together-collapsed">
+    <div class="section-label harmony-collapse-heading">
+      <button type="button" class="harmony-collapse-toggle" id="working-together-toggle" aria-expanded="false" aria-controls="working-together-panel">
+        <span class="harmony-collapse-chevron" aria-hidden="true">▼</span>
+        <span class="harmony-collapse-toggle-label">Working together — for signed clients</span>
+      </button>
+    </div>
+    <div class="harmony-collapse-panel" id="working-together-panel">
 
   <!-- KICKOFF CHECKLIST (Part 1 formulate · Part 2 turn in) -->
   <div class="kickoff-checklist-cluster" id="kickoff-checklist">
@@ -4375,6 +4590,9 @@
     </div>
   </div>
 
+    </div><!-- /#working-together-panel -->
+  </div><!-- /#working-together -->
+
   <div class="footer-note harmony-collapse" data-harmony-collapse-storage="harmony-footer-collapsed">
     <div class="section-label harmony-collapse-heading">
       <button type="button" class="harmony-collapse-toggle" id="footer-note-toggle" aria-expanded="true" aria-controls="footer-note-panel">
@@ -4402,7 +4620,22 @@
       var panelId = panel.id;
       if (panelId) toggle.setAttribute("aria-controls", panelId);
 
-      function setCollapsed(collapsed) {
+      /* Sections a first-time visitor should land on already open. Anything
+         absent from this map starts collapsed. */
+      var OPEN_BY_DEFAULT = {
+        "harmony-portfolio-showcase-collapsed": 1,
+        "harmony-payment-collapsed": 1,
+        "harmony-packages-collapsed-v2": 1,
+        "harmony-app-packages-collapsed-v2": 1,
+        "harmony-retainers-collapsed-v2": 1,
+        "harmony-addons-collapsed-v2": 1
+      };
+
+      /* persist=false on the initial apply. Writing then would stamp a "1" for
+         every visitor who merely loaded the page, making the stored value
+         indistinguishable from a deliberate collapse — and freezing the
+         default forever. Only a real click records a preference. */
+      function setCollapsed(collapsed, persist) {
         root.classList.toggle("is-collapsed", collapsed);
         if (collapsed) {
           panel.setAttribute("hidden", "");
@@ -4410,6 +4643,7 @@
           panel.removeAttribute("hidden");
         }
         toggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
+        if (persist === false) return;
         try {
           localStorage.setItem(key, collapsed ? "1" : "0");
         } catch (e) {}
@@ -4422,9 +4656,8 @@
 
       try {
         var _stored = localStorage.getItem(key);
-        var _openByDefault = key === "harmony-payment-collapsed" || key === "harmony-portfolio-showcase-collapsed";
-        if (_stored === "1" || (_stored === null && !_openByDefault)) {
-          setCollapsed(true);
+        if (_stored === "1" || (_stored === null && !OPEN_BY_DEFAULT[key])) {
+          setCollapsed(true, false);
         }
       } catch (e) {}
     })(roots[i], roots[i].getAttribute("data-harmony-collapse-storage"));
