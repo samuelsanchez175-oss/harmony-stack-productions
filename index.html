@@ -107,20 +107,27 @@ a{color:inherit}
 .trust a:focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
 
 .link-preview{
-  position:fixed;z-index:100;width:min(280px,calc(100vw - 28px));
+  position:fixed;z-index:100;width:min(240px,calc(100vw - 28px));
+  max-height:min(78vh,620px);
   background:var(--white);border:1px solid var(--border);border-radius:16px;
   box-shadow:0 22px 50px rgba(26,21,32,.22),0 0 0 1px rgba(155,142,196,.08);
   overflow:hidden;pointer-events:none;opacity:0;visibility:hidden;
   transform:translateY(8px) scale(.97);transition:opacity .16s ease,transform .16s ease,visibility .16s;
+  display:flex;flex-direction:column;
 }
 .link-preview.is-visible{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
-.link-preview-media{position:relative;aspect-ratio:16/11;background:var(--bg2);overflow:hidden;border-bottom:1px solid var(--border)}
+/* Tall phone-ready previews (most portfolio shots are portrait) */
+.link-preview-media{
+  position:relative;flex:1 1 auto;min-height:320px;height:min(56vh,480px);
+  aspect-ratio:9/16;max-height:min(56vh,480px);background:var(--bg2);
+  overflow:hidden;border-bottom:1px solid var(--border);
+}
 .link-preview-media img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
 .link-preview-media::after{
   content:"";position:absolute;inset:auto 0 0 0;height:40%;
   background:linear-gradient(to top,rgba(26,21,32,.18),transparent);pointer-events:none;
 }
-.link-preview-body{padding:12px 14px 14px}
+.link-preview-body{padding:12px 14px 14px;flex:none}
 .link-preview-kicker{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--purple2);margin-bottom:4px}
 .link-preview-title{font-size:15px;font-weight:700;color:var(--dark);letter-spacing:-.015em;line-height:1.25}
 .link-preview-url{font-size:12px;color:var(--muted);margin-top:4px;word-break:break-all}
@@ -1669,7 +1676,7 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
     var r = link.getBoundingClientRect();
     var pad = 12;
     var cw = card.offsetWidth || 280;
-    var ch = card.offsetHeight || 260;
+    var ch = card.offsetHeight || 520;
     var left = r.left + r.width / 2 - cw / 2;
     left = Math.max(pad, Math.min(left, window.innerWidth - cw - pad));
 

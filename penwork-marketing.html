@@ -69,8 +69,8 @@ img{max-width:100%;display:block}
 .hs-proof b{display:block;font-size:clamp(15px,2.4vw,20px);font-weight:700;letter-spacing:-.02em}
 .hs-proof span{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75)}
 .hero-visual{display:flex;justify-content:center;align-items:flex-end;gap:12px}
+/* Screenshots already include Dynamic Island — no CSS notch overlay */
 .phone{position:relative;width:min(220px,42vw);background:#1c1715;border-radius:36px;padding:9px;box-shadow:0 28px 56px rgba(90,24,10,.35)}
-.phone::before{content:"";position:absolute;top:16px;left:50%;transform:translateX(-50%);width:78px;height:18px;background:#1c1715;border-radius:999px;z-index:2}
 .phone img{width:100%;border-radius:28px;aspect-ratio:9/19.5;object-fit:cover;object-position:top;background:#fff}
 .phone--back{width:min(180px,34vw);opacity:.92;transform:rotate(-6deg) translateY(18px)}
 .phone--front{transform:rotate(3deg);z-index:2}
@@ -132,6 +132,82 @@ img{max-width:100%;display:block}
 .sticky-copy b{display:block;font-size:14.5px;margin-bottom:2px}
 .sticky-cta{flex:none;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;font-size:13px;padding:11px 14px;border-radius:12px;white-space:nowrap}
 @media(min-width:900px){.sticky-bar{max-width:420px;left:auto;right:24px;bottom:24px}}
+
+/* Social proof */
+.proof-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:22px 0 8px}
+.proof-pill{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:10px 16px;font-size:13.5px;font-weight:600;color:var(--ink-soft);box-shadow:0 4px 14px rgba(120,38,18,.05)}
+.proof-pill strong{color:var(--ink)}
+.proof-pill .stars{color:#e8a317;letter-spacing:1px;font-size:12px}
+.quotes{display:grid;gap:14px;margin-top:8px}
+@media(min-width:800px){.quotes{grid-template-columns:repeat(3,1fr)}}
+.quote{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px 20px;display:flex;flex-direction:column}
+.quote .stars{color:#e8a317;letter-spacing:1px;font-size:13px;margin-bottom:10px}
+.quote p{font-size:14.5px;color:var(--ink);line-height:1.55;flex:1}
+.quote cite{display:block;margin-top:14px;font-style:normal;font-size:13px;font-weight:700;color:var(--ink)}
+.quote cite span{display:block;font-weight:500;color:var(--ink-soft);font-size:12px;margin-top:2px}
+
+/* How it works */
+.steps{display:grid;gap:14px}
+@media(min-width:800px){.steps{grid-template-columns:repeat(4,1fr)}}
+.step{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px 18px;position:relative}
+.step-num{width:36px;height:36px;border-radius:10px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;margin-bottom:14px}
+.step h3{font-size:16.5px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+.step p{font-size:13.5px;color:var(--ink-soft);line-height:1.5}
+
+/* Annotated screens */
+.anno-grid{display:grid;gap:28px}
+@media(min-width:900px){.anno-grid{grid-template-columns:1fr 1fr;gap:36px;align-items:center}}
+.anno-grid.reverse .anno-copy{order:2}
+@media(min-width:900px){.anno-grid.reverse .anno-visual{order:1}.anno-grid.reverse .anno-copy{order:2}}
+.anno-visual{position:relative;display:flex;justify-content:center}
+.anno-visual .phone{max-width:260px;width:100%}
+.anno-copy h3{font-size:clamp(22px,3vw,28px);font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
+.anno-copy > p{color:var(--ink-soft);font-size:15.5px;margin-bottom:16px;line-height:1.55}
+.callouts{list-style:none;display:flex;flex-direction:column;gap:10px}
+.callouts li{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 14px}
+.callouts .n{flex:none;width:28px;height:28px;border-radius:8px;background:var(--accent-soft);color:var(--accent-deep);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.callouts b{display:block;font-size:14px;color:var(--ink);margin-bottom:2px}
+.callouts span{font-size:13px;color:var(--ink-soft);line-height:1.4}
+
+/* Demo strip / motion stand-in */
+.demo-band{background:linear-gradient(165deg,#2a2320 0%,#3d322e 100%);color:#fff;border-radius:28px;padding:clamp(28px,5vw,44px);display:grid;gap:24px;align-items:center}
+@media(min-width:860px){.demo-band{grid-template-columns:1.1fr .9fr}}
+.demo-band h3{font-size:clamp(22px,3.5vw,30px);font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
+.demo-band p{color:rgba(255,255,255,.82);font-size:15px;line-height:1.55;margin-bottom:16px}
+.demo-flow{display:flex;flex-wrap:wrap;gap:8px}
+.demo-flow span{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);padding:8px 12px;border-radius:999px}
+.demo-phones{display:flex;justify-content:center;gap:10px}
+.demo-phones .phone{width:min(140px,28vw);transform:none}
+.demo-phones .phone:nth-child(2){transform:translateY(12px)}
+.demo-phones .phone:nth-child(3){transform:translateY(4px)}
+
+/* Compare table */
+.compare-wrap{overflow-x:auto;border-radius:20px;border:1px solid var(--border);background:var(--card);box-shadow:0 12px 32px rgba(120,38,18,.06)}
+.compare{width:100%;border-collapse:collapse;min-width:640px;font-size:14px}
+.compare th,.compare td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+.compare thead th{background:var(--paper-2);font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft)}
+.compare thead th.hi{background:var(--accent);color:#fff}
+.compare tbody th{font-weight:600;color:var(--ink);width:22%}
+.compare td{color:var(--ink-soft)}
+.compare td.hi{background:rgba(255,112,89,.06);color:var(--ink);font-weight:600}
+.compare .yes{color:var(--accent-deep);font-weight:700}
+.compare .no{color:#b0a39c}
+.compare-note{margin-top:14px;text-align:center;font-size:13.5px;color:var(--ink-soft)}
+
+/* Ownership trust */
+.own-grid{display:grid;gap:14px}
+@media(min-width:720px){.own-grid{grid-template-columns:repeat(3,1fr)}}
+.own-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px 20px}
+.own-card h3{font-size:16.5px;font-weight:700;margin-bottom:8px}
+.own-card p{font-size:14px;color:var(--ink-soft);line-height:1.5}
+.genre-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:22px}
+.genre-row span{font-size:12.5px;font-weight:600;background:var(--accent-soft);color:var(--accent-deep);border:1px solid #f2cdbf;padding:7px 12px;border-radius:999px}
+
+.section-dark{background:linear-gradient(180deg,#2f2724 0%,#241f1d 100%);color:#fff}
+.section-dark .section-kicker{background:rgba(255,112,89,.2);color:#ffc4b1}
+.section-dark .section-head h2{color:#fff}
+.section-dark .section-head p{color:rgba(255,255,255,.75)}
+
 </style>
 </head>
 <body>
@@ -156,7 +232,7 @@ img{max-width:100%;display:block}
       <span class="hero-eyebrow"><span class="dot" aria-hidden="true"></span> Free · Songwriting · iOS</span>
       <h1>Where songs get <em>written</em>.</h1>
       <p class="hero-sub">A songwriter’s notebook with a producer’s brain.</p>
-      <p class="hero-desc">Capture lyrics the instant they hit, then tag every song with BPM, key, scale, and syllable counts — so ideas stay organized and ready to record. AI line suggestions when you want a push.</p>
+      <p class="hero-desc">Capture lyrics the instant they hit, then tag every song with BPM, key, scale, and syllable counts — so ideas stay organized and ready to record. AI only when you ask. <strong style="color:#fff;font-weight:600">Your lyrics stay yours.</strong></p>
       <ul class="hero-bullets">
         <li>Free on iPhone</li>
         <li>BPM · key · scale</li>
@@ -188,6 +264,75 @@ img{max-width:100%;display:block}
     </div>
   </div>
 </header>
+
+<section class="section" id="proof" style="padding-top:28px;padding-bottom:12px">
+  <div class="wrap">
+    <div class="proof-bar" aria-label="Social proof">
+      <span class="proof-pill"><span class="stars" aria-hidden="true">★★★★★</span> <strong>App Store</strong> · free to start</span>
+      <span class="proof-pill"><strong>No subscription</strong> for the core studio</span>
+      <span class="proof-pill"><strong>BYO-key AI</strong> · your control</span>
+      <span class="proof-pill"><strong>You own</strong> your lyrics</span>
+    </div>
+    <div class="section-head" style="margin-top:36px;margin-bottom:20px">
+      <span class="section-kicker">From writers</span>
+      <h2>Built for the moment the line hits.</h2>
+      <p>Placeholder quotes until real App Store reviews land — structure is ready to swap.</p>
+    </div>
+    <div class="quotes">
+      <blockquote class="quote">
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+        <p>“Finally a notes app that knows what BPM and syllables are. I write on the train and everything’s tagged before I hit the studio.”</p>
+        <cite>Early tester <span>Indie songwriter</span></cite>
+      </blockquote>
+      <blockquote class="quote">
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+        <p>“The AI is there when I’m stuck — but it doesn’t own the song. My key, my lines, my catalog.”</p>
+        <cite>Early tester <span>Rap / R&amp;B writer</span></cite>
+      </blockquote>
+      <blockquote class="quote">
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+        <p>“Free and focused. No $13/month wall just to keep my verses in one place.”</p>
+        <cite>Early tester <span>Worship &amp; pop</span></cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-kicker">How it works</span>
+      <h2>Spark → structure → lines → unstick.</h2>
+      <p>Four steps from the idea in your head to a song you can open tomorrow.</p>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <div class="step-num">1</div>
+        <h3>Capture the spark</h3>
+        <p>New song in one tap. Get the line down before it vanishes — clean editor, no clutter.</p>
+      </article>
+      <article class="step">
+        <div class="step-num">2</div>
+        <h3>Tag the music</h3>
+        <p>BPM, key, scale on every track so your catalog is searchable and session-ready.</p>
+      </article>
+      <article class="step">
+        <div class="step-num">3</div>
+        <h3>Shape the bars</h3>
+        <p>Live syllable counts help the words sit on the beat. Build verses, hooks, and bridges.</p>
+      </article>
+      <article class="step">
+        <div class="step-num">4</div>
+        <h3>Unstick with AI</h3>
+        <p>Optional next-line ideas with direction, style, and tone — only when you ask, with your key.</p>
+      </article>
+    </div>
+    <div class="genre-row" aria-label="For writers across genres">
+      <span>Rap &amp; hip-hop</span><span>Pop</span><span>Country</span><span>R&amp;B</span><span>Worship</span><span>Folk</span><span>Singer-songwriter</span>
+    </div>
+  </div>
+</section>
+
 
 <section class="section" id="features">
   <div class="wrap">
@@ -236,29 +381,168 @@ img{max-width:100%;display:block}
     <div class="section-head">
       <span class="section-kicker">Inside the app</span>
       <h2>Catalog. Editor. AI assist.</h2>
-      <p>The full writing flow — capture, shape, and push through a stuck line.</p>
+      <p>Annotated looks at the three screens you’ll live in — not a feature dump, a writing flow.</p>
     </div>
-    <div class="screens">
-      <figure class="screen-item">
-        <div class="phone"><img src="portfolio-screenshots/penwork-home.png" alt="Penwork catalog" loading="lazy"></div>
-        <p><b>Your catalog</b>Songs tagged with BPM, key, and lyric previews.</p>
-      </figure>
-      <figure class="screen-item">
+
+    <div class="demo-band" style="margin-bottom:48px">
+      <div>
+        <h3>From pocket idea to tagged song.</h3>
+        <p>Open catalog → drop into the editor → unstick with AI when a line stalls. Motion demo can replace this strip later; for now the path is clear.</p>
+        <div class="demo-flow">
+          <span>1 · Catalog</span>
+          <span>→</span>
+          <span>2 · Write</span>
+          <span>→</span>
+          <span>3 · Tag BPM / key</span>
+          <span>→</span>
+          <span>4 · AI assist</span>
+        </div>
+      </div>
+      <div class="demo-phones" aria-hidden="true">
+        <div class="phone"><img src="portfolio-screenshots/penwork-home.png" alt="" loading="lazy"></div>
+        <div class="phone"><img src="portfolio-screenshots/penwork-editor.png" alt="" loading="lazy"></div>
+        <div class="phone"><img src="portfolio-screenshots/penwork-ai-suggest.png" alt="" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="anno-grid" style="margin-bottom:48px">
+      <div class="anno-visual">
+        <div class="phone"><img src="portfolio-screenshots/penwork-home.png" alt="Penwork catalog with song tags" loading="lazy"></div>
+      </div>
+      <div class="anno-copy">
+        <h3>Your whole songbook, tagged.</h3>
+        <p>Every idea in one place — searchable, sortable, ready when the session starts.</p>
+        <ul class="callouts">
+          <li><span class="n">1</span><div><b>Song cards at a glance</b><span>Title, preview lines, and musical tags without opening a mess of notes.</span></div></li>
+          <li><span class="n">2</span><div><b>BPM &amp; key on the track</b><span>Find that mid-tempo tune in D without scrolling forever.</span></div></li>
+          <li><span class="n">3</span><div><b>Instant new song</b><span>One tap when the line hits — write first, organize after.</span></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="anno-grid reverse" style="margin-bottom:48px">
+      <div class="anno-visual">
         <div class="phone"><img src="portfolio-screenshots/penwork-editor.png" alt="Penwork lyric editor" loading="lazy"></div>
-        <p><b>Lyric editor</b>Write verses and hooks without the clutter.</p>
-      </figure>
-      <figure class="screen-item">
-        <div class="phone"><img src="portfolio-screenshots/penwork-ai-suggest.png" alt="AI line suggestions" loading="lazy"></div>
-        <p><b>Suggest next lines</b>Direction, style, emphasis — then generate.</p>
-      </figure>
+      </div>
+      <div class="anno-copy">
+        <h3>Write like it’s just you and the page.</h3>
+        <p>A distraction-free canvas for verses, hooks, and bars — with music-aware tools when you need them.</p>
+        <ul class="callouts">
+          <li><span class="n">1</span><div><b>Clean lyric canvas</b><span>Nothing between you and the next line.</span></div></li>
+          <li><span class="n">2</span><div><b>Syllable awareness</b><span>Keep bars tight so the words sit on the beat.</span></div></li>
+          <li><span class="n">3</span><div><b>History you can trust</b><span>Timestamped ideas from spark to finished track.</span></div></li>
+        </ul>
+      </div>
     </div>
-    <div class="store-badges" style="justify-content:center;margin-top:36px">
+
+    <div class="anno-grid">
+      <div class="anno-visual">
+        <div class="phone"><img src="portfolio-screenshots/penwork-ai-suggest.png" alt="AI line suggestions controls" loading="lazy"></div>
+      </div>
+      <div class="anno-copy">
+        <h3>Stuck? Ask for a push — not a takeover.</h3>
+        <p>Set direction, style, words to emphasize, and tone. Generate next lines only when you want them.</p>
+        <ul class="callouts">
+          <li><span class="n">1</span><div><b>You set the creative dials</b><span>Direction, style, emphasis, topics, tone.</span></div></li>
+          <li><span class="n">2</span><div><b>BYO API key</b><span>Your provider, your billing, your control — not a forced sub.</span></div></li>
+          <li><span class="n">3</span><div><b>You stay the writer</b><span>Suggestions are sparks. The song is still yours.</span></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="store-badges" style="justify-content:center;margin-top:40px">
       <a class="appstore-badge" href="https://apps.apple.com/us/app/penwork-studio/id6757620114" target="_blank" rel="noopener" aria-label="Download on the App Store">
         <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
       </a>
     </div>
   </div>
 </section>
+
+<section class="section" id="compare">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-kicker">Why not just Notes?</span>
+      <h2>Free craft tools — without a $13/month wall.</h2>
+      <p>Typical songwriting apps charge after a trial. Generic notes apps don’t know what a key signature is.</p>
+    </div>
+    <div class="compare-wrap">
+      <table class="compare" aria-label="Penwork compared to notes apps and paid songwriting apps">
+        <thead>
+          <tr>
+            <th scope="col">What you get</th>
+            <th scope="col">Notes / Notion</th>
+            <th scope="col">Paid songwriting apps</th>
+            <th scope="col" class="hi">Penwork Studio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Price for core writing</th>
+            <td>Free clutter</td>
+            <td>Often $3–13/mo after trial</td>
+            <td class="hi"><span class="yes">Free on App Store</span></td>
+          </tr>
+          <tr>
+            <th scope="row">BPM · key · scale tags</th>
+            <td class="no">No</td>
+            <td>Sometimes</td>
+            <td class="hi"><span class="yes">Yes</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Syllable awareness</th>
+            <td class="no">No</td>
+            <td>Often yes</td>
+            <td class="hi"><span class="yes">Yes</span></td>
+          </tr>
+          <tr>
+            <th scope="row">AI help</th>
+            <td class="no">None / separate app</td>
+            <td>Usually behind subscription</td>
+            <td class="hi"><span class="yes">Optional · BYO key</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Your lyrics ownership</th>
+            <td>You own notes</td>
+            <td>Varies by product</td>
+            <td class="hi"><span class="yes">Explicitly yours</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Built as a song catalog</th>
+            <td class="no">Generic folders</td>
+            <td>Yes</td>
+            <td class="hi"><span class="yes">Yes · search &amp; sort</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare-note">Competitors change pricing often — Penwork’s pitch is simple: <strong>write free, tag the music, AI only when you ask</strong>.</p>
+  </div>
+</section>
+
+<section class="section section-dark" id="ownership">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-kicker">Trust</span>
+      <h2>Write the song. Keep the rights.</h2>
+      <p>Craft first. Control first. No “we train on your verses” story.</p>
+    </div>
+    <div class="own-grid">
+      <article class="own-card" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)">
+        <h3 style="color:#fff">You own your lyrics</h3>
+        <p style="color:rgba(255,255,255,.75)">Titles, verses, hooks, notes — your content stays yours. We don’t claim your songs or compositions.</p>
+      </article>
+      <article class="own-card" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)">
+        <h3 style="color:#fff">AI is optional &amp; yours</h3>
+        <p style="color:rgba(255,255,255,.75)">Bring-your-own API key. Requests go from your device to your provider — not through a Harmony Stack middleman.</p>
+      </article>
+      <article class="own-card" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)">
+        <h3 style="color:#fff">Built for the pocket studio</h3>
+        <p style="color:rgba(255,255,255,.75)">iPhone, iOS 16+. Write on the bus, in the booth, at 2am — catalog stays ready for the session.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 
 <section class="section" id="faq">
   <div class="wrap">
