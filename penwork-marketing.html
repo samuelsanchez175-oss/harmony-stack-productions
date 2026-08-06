@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ff7059">
 <title>Penwork Studio — Where songs get written</title>
-<meta name="description" content="Penwork Studio is a free songwriter’s notebook with a producer’s brain. Capture lyrics, tag BPM/key/scale, count syllables, and get AI line suggestions. Download free on the App Store. A Harmony Stack product.">
+<meta name="description" content="Penwork Studio is a free songwriter’s notebook with a producer’s brain. Capture lyrics, tag BPM/key/scale, count syllables, and get AI line suggestions. iPhone, iPad, and Mac. Download free on the App Store. A Harmony Stack product.">
 <meta property="og:title" content="Penwork Studio — Where songs get written">
-<meta property="og:description" content="Free songwriting studio for iPhone. Lyrics, BPM, key, syllables, and AI line suggestions — built by Harmony Stack.">
+<meta property="og:description" content="Free songwriting studio for iPhone, iPad, and Mac. Lyrics, BPM, key, syllables, and AI line suggestions — built by Harmony Stack.">
 <meta property="og:image" content="portfolio-screenshots/penwork-home.png">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -208,6 +208,38 @@ img{max-width:100%;display:block}
 .section-dark .section-head h2{color:#fff}
 .section-dark .section-head p{color:rgba(255,255,255,.75)}
 
+
+/* Platforms + device gallery */
+.platforms{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 auto 28px;max-width:720px}
+.plat{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:9px 14px;font-size:13.5px;font-weight:600;color:var(--ink-soft)}
+.plat strong{color:var(--ink)}
+.plat .tag{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--accent-soft);color:var(--accent-deep);border:1px solid #f2cdbf;padding:2px 7px;border-radius:999px}
+.dg-toggle-wrap{display:flex;justify-content:center;margin:0 auto 28px}
+.dg-toggle{display:inline-flex;gap:4px;padding:5px;background:var(--card);border:1px solid var(--border);border-radius:999px;box-shadow:0 3px 12px rgba(120,38,18,.07);flex-wrap:wrap;justify-content:center}
+.dg-seg{appearance:none;-webkit-appearance:none;border:0;background:transparent;cursor:pointer;font:inherit;font-size:13.5px;font-weight:600;color:var(--ink-soft);padding:9px 16px;border-radius:999px;transition:color .18s,background .18s,box-shadow .18s}
+.dg-seg:hover{color:var(--accent-deep)}
+.dg-seg[aria-pressed="true"]{background:var(--accent);color:#fff;box-shadow:0 4px 12px rgba(230,85,61,.3)}
+.dg-seg[aria-pressed="true"]:hover{color:#fff}
+.dg-group{display:none}
+.dg-group.is-active{display:block;animation:dgfade .4s ease}
+@keyframes dgfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.dg-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(22px,4vw,40px)}
+.dg-item{text-align:center;display:flex;flex-direction:column;align-items:center}
+.dg-cap{margin-top:14px;max-width:230px}
+.dg-cap-t{display:block;font-weight:700;font-size:15px;color:var(--ink);letter-spacing:-.01em;margin-bottom:4px}
+.dg-cap-d{font-size:13px;color:var(--ink-soft);line-height:1.45}
+.dg-group--iphone .dg-item{flex:0 1 210px}
+.dg-group--ipad .dg-item,.dg-group--mac .dg-item{flex:0 1 380px}
+.dg-group--ipad .dg-cap,.dg-group--mac .dg-cap{max-width:380px}
+.dg-phone{position:relative;width:clamp(180px,52vw,210px);background:#1c1715;border-radius:36px;padding:8px;box-shadow:0 22px 46px rgba(90,24,10,.22)}
+.dg-phone img{display:block;width:100%;height:auto;aspect-ratio:9/19.5;object-fit:cover;object-position:top;border-radius:28px;background:#fff}
+.dg-pad{position:relative;width:clamp(260px,78vw,380px);background:#1c1715;border-radius:22px;padding:12px;box-shadow:0 24px 50px rgba(90,24,10,.24)}
+.dg-pad img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:12px;background:#fff}
+.dg-mac{position:relative;width:clamp(280px,86vw,420px);background:#1a1916;border-radius:14px 14px 0 0;padding:10px 10px 0;box-shadow:0 24px 50px rgba(90,24,10,.26)}
+.dg-mac::after{content:"";display:block;height:14px;margin:0 -18px;background:linear-gradient(#2a2824,#1c1b18);border-radius:0 0 6px 6px;box-shadow:0 8px 0 #0e0d0c}
+.dg-mac img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:6px;background:#fff}
+.dg-note{max-width:560px;margin:0 auto 22px;text-align:center;font-size:13.5px;font-weight:600;color:var(--accent-deep);background:var(--accent-soft);border:1px solid #f2cdbf;padding:11px 16px;border-radius:999px}
+
 </style>
 </head>
 <body>
@@ -229,16 +261,16 @@ img{max-width:100%;display:block}
 <header class="hero" id="top">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <span class="hero-eyebrow"><span class="dot" aria-hidden="true"></span> Free · Songwriting · iOS</span>
+      <span class="hero-eyebrow"><span class="dot" aria-hidden="true"></span> Free · Songwriting · iPhone · iPad · Mac</span>
       <h1>Where songs get <em>written</em>.</h1>
       <p class="hero-sub">A songwriter’s notebook with a producer’s brain.</p>
       <p class="hero-desc">Capture lyrics the instant they hit, then tag every song with BPM, key, scale, and syllable counts — so ideas stay organized and ready to record. AI only when you ask. <strong style="color:#fff;font-weight:600">Your lyrics stay yours.</strong></p>
       <ul class="hero-bullets">
-        <li>Free on iPhone</li>
+        <li>iPhone · iPad · Mac</li>
+        <li>Free on App Store</li>
         <li>BPM · key · scale</li>
         <li>Syllable counter</li>
         <li>AI line suggestions</li>
-        <li>Catalog &amp; search</li>
       </ul>
       <div class="store-badges">
         <a class="appstore-badge" href="https://apps.apple.com/us/app/penwork-studio/id6757620114" target="_blank" rel="noopener" aria-label="Download on the App Store">
@@ -246,12 +278,12 @@ img{max-width:100%;display:block}
         </a>
         <a class="hs-cta" href="https://apps.apple.com/us/app/penwork-studio/id6757620114" target="_blank" rel="noopener">Download free</a>
       </div>
-      <span class="hs-cta-note">Free · iOS 16+ · A Harmony Stack product</span>
+      <span class="hs-cta-note">Free · iPhone, iPad &amp; Mac · A Harmony Stack product</span>
       <div class="hs-proof" aria-label="Key facts">
-        <div><b>Free</b><span>On App Store</span></div>
-        <div><b>BPM</b><span>&amp; key tags</span></div>
-        <div><b>AI</b><span>Line ideas</span></div>
-        <div><b>One app</b><span>Full catalog</span></div>
+        <div><b>iPhone</b><span>Live</span></div>
+        <div><b>iPad</b><span>Live</span></div>
+        <div><b>Mac</b><span>Live</span></div>
+        <div><b>Free</b><span>App Store</span></div>
       </div>
     </div>
     <div class="hero-visual" aria-hidden="true">
@@ -458,6 +490,95 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
+
+<section class="section" id="devices">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-kicker">Every screen size</span>
+      <h2>Available on iPhone, iPad &amp; Mac.</h2>
+      <p>Write on the phone in your pocket, spread out on iPad, or sit down at a Mac — same studio, same songs.</p>
+    </div>
+
+    <div class="platforms" aria-label="Platform availability">
+      <span class="plat"><strong>iPhone</strong> <span class="tag">Live</span></span>
+      <span class="plat"><strong>iPad</strong> <span class="tag">Live</span></span>
+      <span class="plat"><strong>Mac</strong> <span class="tag">Live</span></span>
+      <span class="plat"><strong>Free</strong> on the App Store</span>
+    </div>
+
+    <div class="dg-toggle-wrap">
+      <div class="dg-toggle" role="group" aria-label="Preview device">
+        <button type="button" class="dg-seg" data-device="iphone" aria-pressed="true" aria-controls="dg-view-iphone">iPhone</button>
+        <button type="button" class="dg-seg" data-device="ipad" aria-pressed="false" aria-controls="dg-view-ipad">iPad</button>
+        <button type="button" class="dg-seg" data-device="mac" aria-pressed="false" aria-controls="dg-view-mac">Mac</button>
+      </div>
+    </div>
+
+    <div data-device-gallery>
+      <div class="dg-group dg-group--iphone is-active" id="dg-view-iphone" data-view="iphone">
+        <p class="dg-note">Pocket studio — capture lines the second they hit.</p>
+        <div class="dg-grid">
+          <figure class="dg-item">
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/penwork-home.png" alt="Penwork catalog on iPhone"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Catalog on iPhone</span><span class="dg-cap-d">BPM, key, and previews in your pocket.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/penwork-editor.png" alt="Penwork editor on iPhone"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Editor on iPhone</span><span class="dg-cap-d">Write verses and hooks anywhere.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/penwork-ai-suggest.png" alt="AI suggestions on iPhone"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">AI assist on iPhone</span><span class="dg-cap-d">Unstick a line between stops.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="dg-group dg-group--ipad" id="dg-view-ipad" data-view="ipad" hidden>
+        <p class="dg-note">iPad — more room for long sessions, same universal app.</p>
+        <div class="dg-grid">
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/penwork-home.png" alt="Penwork catalog on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Catalog on iPad</span><span class="dg-cap-d">Browse the full songbook with room to breathe.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/penwork-editor.png" alt="Penwork editor on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Editor on iPad</span><span class="dg-cap-d">Stretch out verses and hooks on a bigger canvas.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/penwork-ai-suggest.png" alt="AI suggestions on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">AI assist on iPad</span><span class="dg-cap-d">Direction, style, and tone controls full-size.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="dg-group dg-group--mac" id="dg-view-mac" data-view="mac" hidden>
+        <p class="dg-note">Mac — desk mode for deep writing sessions (universal App Store build).</p>
+        <div class="dg-grid">
+          <figure class="dg-item">
+            <div class="dg-mac"><img loading="lazy" src="portfolio-screenshots/penwork-home.png" alt="Penwork catalog on Mac"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Catalog on Mac</span><span class="dg-cap-d">Scan your whole book before the session.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-mac"><img loading="lazy" src="portfolio-screenshots/penwork-editor.png" alt="Penwork editor on Mac"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Editor on Mac</span><span class="dg-cap-d">Keyboard-first writing when you’re at the desk.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-mac"><img loading="lazy" src="portfolio-screenshots/penwork-ai-suggest.png" alt="AI suggestions on Mac"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">AI assist on Mac</span><span class="dg-cap-d">Generate options, then edit hard on a big screen.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="store-badges" style="justify-content:center;margin-top:40px">
+      <a class="appstore-badge" href="https://apps.apple.com/us/app/penwork-studio/id6757620114" target="_blank" rel="noopener" aria-label="Download on the App Store">
+        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+      </a>
+    </div>
+  </div>
+</section>
+
+
 <section class="section" id="compare">
   <div class="wrap">
     <div class="section-head">
@@ -537,7 +658,7 @@ img{max-width:100%;display:block}
       </article>
       <article class="own-card" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)">
         <h3 style="color:#fff">Built for the pocket studio</h3>
-        <p style="color:rgba(255,255,255,.75)">iPhone, iOS 16+. Write on the bus, in the booth, at 2am — catalog stays ready for the session.</p>
+        <p style="color:rgba(255,255,255,.75)">iPhone, iPad, and Mac. Write on the bus, at the desk, or in the booth — one catalog across your Apple devices.</p>
       </article>
     </div>
   </div>
@@ -553,7 +674,7 @@ img{max-width:100%;display:block}
     <div class="faq">
       <details open>
         <summary>Is Penwork Studio free?</summary>
-        <p>Yes — free on the App Store for iPhone (iOS 16 and later). Download and start writing without a subscription wall for the core studio.</p>
+        <p>Yes — free on the App Store for iPhone, iPad, and Mac. Download and start writing without a subscription wall for the core studio.</p>
       </details>
       <details>
         <summary>What can I track on each song?</summary>
@@ -566,6 +687,10 @@ img{max-width:100%;display:block}
       <details>
         <summary>Who owns my lyrics?</summary>
         <p>You do. Your content stays yours. We don’t claim ownership of your songs or compositions.</p>
+      </details>
+      <details>
+        <summary>What devices is it on?</summary>
+        <p><strong>iPhone, iPad, and Mac</strong> — one free App Store download for the Apple devices you write on. Universal app, same catalog and tools.</p>
       </details>
       <details>
         <summary>Who built Penwork Studio?</summary>
@@ -586,7 +711,7 @@ img{max-width:100%;display:block}
         </a>
         <a class="hs-cta" href="https://apps.apple.com/us/app/penwork-studio/id6757620114" target="_blank" rel="noopener">Get Penwork free</a>
       </div>
-      <p class="cta-fineprint">Free on iPhone · A Harmony Stack product</p>
+      <p class="cta-fineprint">Free on iPhone, iPad &amp; Mac · A Harmony Stack product</p>
     </div>
   </div>
 </section>
@@ -617,7 +742,7 @@ img{max-width:100%;display:block}
 <div class="sticky-bar" id="sticky-bar" role="region" aria-label="Download shortcut">
   <div class="sticky-copy">
     <b>Penwork Studio</b>
-    Free on iPhone · songwriting studio
+    iPhone · iPad · Mac · free
   </div>
   <a class="sticky-cta" href="https://apps.apple.com/us/app/penwork-studio/id6757620114" target="_blank" rel="noopener">Get free</a>
 </div>
@@ -636,5 +761,28 @@ img{max-width:100%;display:block}
   check();
 })();
 </script>
+
+<script>
+(function(){
+  var sec=document.querySelector('[data-device-gallery]');
+  if(!sec)return;
+  var segs=[].slice.call(document.querySelectorAll('.dg-seg'));
+  var groups=[].slice.call(sec.querySelectorAll('.dg-group'));
+  function show(view){
+    groups.forEach(function(g){
+      var on=g.getAttribute('data-view')===view;
+      g.classList.toggle('is-active',on);
+      if(on){g.removeAttribute('hidden');}else{g.setAttribute('hidden','');}
+    });
+    segs.forEach(function(s){
+      s.setAttribute('aria-pressed',String(s.getAttribute('data-device')===view));
+    });
+  }
+  segs.forEach(function(s){
+    s.addEventListener('click',function(){show(s.getAttribute('data-device'));});
+  });
+})();
+</script>
+
 </body>
 </html>
