@@ -30,13 +30,24 @@ a{color:inherit}
 img{max-width:100%;display:block}
 
 /* Minimal conversion nav */
-.app-nav{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px clamp(16px,4vw,40px);background:rgba(255,255,255,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
-.app-nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:15px}
+.app-nav{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px clamp(14px,3.5vw,40px);background:rgba(255,255,255,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.app-nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:15px;flex:none}
 .app-nav-brand img{width:34px;height:34px;border-radius:9px;box-shadow:0 2px 8px rgba(0,0,0,.16)}
-.nav-price{font-size:13px;font-weight:600;color:var(--ink-soft)}
-.nav-price b{color:var(--accent-deep)}
-.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:999px;box-shadow:0 8px 20px rgba(20,98,47,.2);transition:transform .15s,background .15s}
+.app-nav-brand span{white-space:nowrap}
+.nav-right{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap;margin-left:auto}
+.nav-link{display:inline-flex;align-items:center;text-decoration:none;font-weight:600;font-size:13px;color:var(--ink-soft);padding:8px 12px;border-radius:999px;border:1px solid transparent;transition:background .15s,color .15s,border-color .15s;white-space:nowrap}
+.nav-link:hover{background:var(--accent-soft);color:var(--accent-deep)}
+.nav-link--portfolio{border:1px solid var(--border);color:var(--ink);background:var(--card)}
+.nav-link--portfolio:hover{border-color:#c7d6c0;background:var(--accent-soft);color:var(--accent-deep)}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;font-size:13.5px;padding:9px 14px;border-radius:999px;box-shadow:0 8px 20px rgba(20,98,47,.2);transition:transform .15s,background .15s;white-space:nowrap}
 .nav-cta:hover{background:var(--accent-deep);transform:translateY(-1px)}
+@media(max-width:640px){
+  .app-nav{padding:10px 12px;align-items:flex-start}
+  .app-nav-brand span{font-size:13.5px}
+  .nav-right{gap:4px;max-width:min(100%,280px)}
+  .nav-link{font-size:12px;padding:7px 9px}
+  .nav-cta{font-size:12px;padding:8px 11px}
+}
 
 /* Hero */
 .hero{position:relative;overflow:hidden;background:radial-gradient(1100px 520px at 50% -12%,#34a862 0%,#1f8a4c 32%,#14622f 72%);color:#fff;padding:clamp(36px,7vw,72px) 0 clamp(48px,8vw,80px)}
@@ -257,8 +268,12 @@ img{max-width:100%;display:block}
     <img src="portfolio-screenshots/cdl-icon.png" alt="">
     <span>CDL One Stop</span>
   </a>
-  <span class="nav-price"><b>$1</b> one-time</span>
-  <a class="nav-cta" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">Get the app</a>
+  <div class="nav-right">
+    <a class="nav-link nav-link--portfolio" href="index.html">Harmony Stack ↗</a>
+    <a class="nav-link" href="cdl-terms.html">Terms</a>
+    <a class="nav-link" href="cdl-privacy.html">Privacy</a>
+    <a class="nav-cta" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">Get the app</a>
+  </div>
 </nav>
 
 <header class="hero" id="top">
