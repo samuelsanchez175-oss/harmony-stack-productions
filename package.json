@@ -1,0 +1,8 @@
+{
+  "name": "harmony-stack-productions",
+  "private": true,
+  "description": "Harmony Stack static site (Vercel); @vercel/analytics for Web Analytics inject pattern.",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
