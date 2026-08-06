@@ -4,278 +4,530 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#14622f">
-<title>CDL One Stop — Pass your CDL the smart way</title>
-<meta name="description" content="CDL One Stop turns the commercial driver's license exam into a guided, gamified study plan — for all 50 states + DC, Class A, B, and C. Drill every question bank, master the pre-trip inspection, and walk into the test center 100% ready.">
+<title>CDL One Stop — Pass your CDL written test for $1</title>
+<meta name="description" content="Pass your CDL written test for $1 one-time. No ads, no subscription. All 50 states + DC, Class A/B/C, readiness score, pre-trip Parts Map. English y Español.">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--accent:#1f8a4c;--accent-deep:#14622f;--accent-soft:#e7f3ea;--gold:#e3b24a;--ink:#15281c;--ink-soft:#4a5b50;--paper:#f6f4ec;--paper-2:#eef1e8;--card:#ffffff;--border:#dde2d3}
+:root{
+  --accent:#1f8a4c;
+  --accent-deep:#14622f;
+  --accent-soft:#e7f3ea;
+  --gold:#e3b24a;
+  --ink:#15281c;
+  --ink-soft:#4a5b50;
+  --paper:#f6f4ec;
+  --paper-2:#eef1e8;
+  --card:#ffffff;
+  --border:#dde2d3;
+  --danger:#b42318;
+}
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Space Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
 a{color:inherit}
-.app-nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px clamp(16px,4vw,40px);background:rgba(255,255,255,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
-.app-nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);font-weight:700}
-.app-nav-brand img{width:34px;height:34px;border-radius:9px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
-.app-nav-brand span{font-size:15px;letter-spacing:-.01em}
-.app-nav-links{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
-.app-nav-links a,.app-nav-links span{text-decoration:none;color:var(--ink-soft);font-size:13.5px;font-weight:500;padding:8px 14px;border-radius:999px;transition:background .15s,color .15s;white-space:nowrap}
-.app-nav-links a:hover{background:var(--accent-soft);color:var(--accent-deep)}
-.app-nav-links a.is-active{background:var(--accent);color:#fff}
-.app-nav-links a.nav-store{border:1.5px solid var(--accent);color:var(--accent-deep)}
-.app-nav-links a.nav-store:hover{background:var(--accent);color:#fff}.appstore-badge{display:inline-flex;align-items:center;gap:12px;text-decoration:none}
-.appstore-badge img{height:56px;width:auto;display:block;filter:drop-shadow(0 8px 18px rgba(0,0,0,.20))}.app-footer{margin-top:84px;padding:48px clamp(16px,4vw,40px);background:var(--ink);color:rgba(255,255,255,.82);text-align:center}
+img{max-width:100%;display:block}
+
+/* Minimal conversion nav */
+.app-nav{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px clamp(16px,4vw,40px);background:rgba(255,255,255,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.app-nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:15px}
+.app-nav-brand img{width:34px;height:34px;border-radius:9px;box-shadow:0 2px 8px rgba(0,0,0,.16)}
+.nav-price{font-size:13px;font-weight:600;color:var(--ink-soft)}
+.nav-price b{color:var(--accent-deep)}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:999px;box-shadow:0 8px 20px rgba(20,98,47,.2);transition:transform .15s,background .15s}
+.nav-cta:hover{background:var(--accent-deep);transform:translateY(-1px)}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;background:radial-gradient(1100px 520px at 50% -12%,#34a862 0%,#1f8a4c 32%,#14622f 72%);color:#fff;padding:clamp(36px,7vw,72px) 0 clamp(48px,8vw,80px)}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(to bottom,transparent,var(--paper));pointer-events:none}
+.hero-grid{position:relative;z-index:1;display:grid;gap:36px;align-items:center}
+@media(min-width:900px){.hero-grid{grid-template-columns:1.1fr .9fr;gap:48px;text-align:left}}
+.hero-copy{text-align:center}
+@media(min-width:900px){.hero-copy{text-align:left}}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.9);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:7px 14px;border-radius:999px;margin-bottom:18px}
+.hero-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(227,178,74,.28)}
+.hero h1{font-size:clamp(34px,7vw,56px);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:14px}
+.hero h1 em{font-style:normal;color:#ffe08a}
+.hero-sub{font-size:clamp(16px,2.4vw,20px);color:rgba(255,255,255,.92);max-width:540px;margin:0 auto 22px;line-height:1.55}
+@media(min-width:900px){.hero-sub{margin-left:0}}
+.hero-bullets{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:26px}
+@media(min-width:900px){.hero-bullets{justify-content:flex-start}}
+.hero-bullets li{font-size:13px;font-weight:600;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);padding:7px 12px;border-radius:999px;color:rgba(255,255,255,.95)}
+.hero-cta-row{display:flex;flex-direction:column;align-items:center;gap:12px}
+@media(min-width:900px){.hero-cta-row{align-items:flex-start}}
+.appstore-badge img{height:52px;width:auto;filter:drop-shadow(0 10px 22px rgba(0,0,0,.28))}
+.hs-cta{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#fff;color:var(--accent-deep);text-decoration:none;font-weight:700;font-size:16px;letter-spacing:-.01em;padding:14px 26px;border-radius:999px;box-shadow:0 12px 28px rgba(0,0,0,.18);transition:transform .16s ease,box-shadow .16s ease}
+.hs-cta:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(0,0,0,.22)}
+.hs-cta svg{width:18px;height:18px;fill:currentColor}
+.hs-cta-note{font-size:13.5px;color:rgba(255,255,255,.78);font-weight:500}
+.hs-proof{display:grid;grid-template-columns:repeat(4,1fr);max-width:560px;margin:24px auto 0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:18px;overflow:hidden;backdrop-filter:blur(8px)}
+@media(min-width:900px){.hs-proof{margin-left:0}}
+.hs-proof div{padding:14px 8px;text-align:center;border-left:1px solid rgba(255,255,255,.14)}
+.hs-proof div:first-child{border-left:none}
+.hs-proof b{display:block;font-size:clamp(16px,3vw,22px);font-weight:700;letter-spacing:-.02em;line-height:1.15;color:#fff}
+.hs-proof span{font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+
+.hero-visual{display:flex;justify-content:center;align-items:flex-end;gap:14px}
+.phone{position:relative;width:min(220px,42vw);background:#11140f;border-radius:36px;padding:9px;box-shadow:0 28px 56px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.06) inset}
+.phone::before{content:"";position:absolute;top:16px;left:50%;transform:translateX(-50%);width:78px;height:20px;background:#11140f;border-radius:999px;z-index:2}
+.phone img{width:100%;border-radius:28px;aspect-ratio:1284/2778;object-fit:cover;background:#fff}
+.phone--back{width:min(180px,34vw);opacity:.92;transform:rotate(-6deg) translateY(18px)}
+.phone--front{transform:rotate(3deg);z-index:2}
+@media(max-width:640px){.phone--back{display:none}.phone--front{transform:none;width:min(240px,68vw)}}
+
+/* Sections */
+.section{padding:clamp(52px,8vw,88px) 0}
+.section-head{text-align:center;max-width:680px;margin:0 auto clamp(32px,5vw,48px)}
+.section-kicker{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.section-head h2,.section h2.local{font-size:clamp(28px,5vw,42px);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.section-head p{margin-top:14px;color:var(--ink-soft);font-size:clamp(15px,2.2vw,18px)}
+
+/* Price battle */
+.price-sec{background:var(--paper-2)}
+.battle{display:grid;gap:14px;max-width:920px;margin:0 auto}
+@media(min-width:760px){.battle{grid-template-columns:repeat(3,1fr);gap:16px}}
+.battle-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px 20px;text-align:center;position:relative}
+.battle-card.is-winner{border:2px solid var(--accent);box-shadow:0 18px 40px rgba(20,98,47,.14);transform:scale(1.02)}
+.battle-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#3a2c06;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 12px;border-radius:999px;white-space:nowrap}
+.battle-card h3{font-size:16px;font-weight:700;margin-bottom:6px}
+.battle-price{font-size:32px;font-weight:700;letter-spacing:-.03em;margin:10px 0 4px;color:var(--ink)}
+.battle-card.is-winner .battle-price{color:var(--accent-deep)}
+.battle-sub{font-size:13px;color:var(--ink-soft);margin-bottom:16px}
+.battle-list{list-style:none;text-align:left;display:flex;flex-direction:column;gap:8px}
+.battle-list li{font-size:14px;color:var(--ink-soft);padding-left:22px;position:relative;line-height:1.4}
+.battle-list li::before{content:"";position:absolute;left:0;top:7px;width:8px;height:8px;border-radius:50%;background:#c5cebf}
+.battle-card.is-winner .battle-list li::before{background:var(--accent)}
+.price-note{max-width:640px;margin:28px auto 0;text-align:center;font-size:15px;color:var(--ink-soft);line-height:1.55}
+.price-note strong{color:var(--ink)}
+
+/* Outcomes */
+.outcomes{display:grid;gap:16px}
+@media(min-width:720px){.outcomes{grid-template-columns:repeat(3,1fr)}}
+.outcome{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:26px 22px;transition:transform .18s,box-shadow .18s}
+.outcome:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(20,98,47,.1)}
+.outcome-num{width:36px;height:36px;border-radius:10px;background:var(--accent-soft);color:var(--accent-deep);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;margin-bottom:14px}
+.outcome h3{font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+.outcome p{font-size:14.5px;color:var(--ink-soft);line-height:1.6}
+
+/* Readiness */
+.ready-grid{display:grid;gap:28px;align-items:center}
+@media(min-width:820px){.ready-grid{grid-template-columns:1.1fr .9fr;gap:40px}}
+.ready-copy h2{font-size:clamp(28px,5vw,40px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin:10px 0 0}
+.ready-copy p{margin-top:14px;margin-bottom:22px;color:var(--ink-soft);font-size:clamp(15px,2.2vw,17px)}
+.ready-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px;box-shadow:0 14px 30px rgba(20,98,47,.08)}
+.ready-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px}
+.ready-label{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.ready-score{font-size:28px;font-weight:700;color:var(--accent);letter-spacing:-.03em}
+.track{position:relative;height:14px;background:var(--accent-soft);border-radius:999px;overflow:hidden}
+.fill{position:absolute;inset:0 auto 0 0;width:0;background:var(--accent);border-radius:999px;transition:width 1.5s cubic-bezier(.22,.8,.3,1)}
+.passline{position:relative;height:28px}
+.passline::before{content:"";position:absolute;left:80%;top:-18px;bottom:12px;width:2px;background:var(--gold)}
+.passline span{position:absolute;left:80%;bottom:0;transform:translateX(-50%);font-size:12px;font-weight:600;color:var(--ink-soft);white-space:nowrap}
+.ready-shot{border-radius:22px;overflow:hidden;border:1px solid var(--border);background:var(--card);box-shadow:0 16px 34px rgba(20,98,47,.1)}
+.ready-shot img{width:100%;height:auto}
+
+/* Sample quiz */
+.quiz-sec{background:var(--paper-2)}
+.quiz-card{max-width:640px;margin:0 auto;background:var(--card);border:1px solid var(--border);border-radius:22px;padding:clamp(22px,4vw,32px);box-shadow:0 16px 36px rgba(20,40,25,.06)}
+.quiz-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.quiz-q{font-size:clamp(17px,2.8vw,20px);font-weight:600;line-height:1.4;letter-spacing:-.015em;margin-bottom:18px}
+.quiz-opts{display:flex;flex-direction:column;gap:10px}
+.quiz-opt{appearance:none;border:1.5px solid var(--border);background:var(--paper);border-radius:14px;padding:14px 16px;text-align:left;font:inherit;font-size:15px;font-weight:500;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s,transform .12s}
+.quiz-opt:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft);transform:translateY(-1px)}
+.quiz-opt:disabled{cursor:default}
+.quiz-opt.is-correct{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-deep)}
+.quiz-opt.is-wrong{border-color:#e8b4b0;background:#fdf2f1;color:var(--danger)}
+.quiz-feedback{margin-top:16px;padding:14px 16px;border-radius:14px;font-size:14.5px;line-height:1.5;display:none}
+.quiz-feedback.is-show{display:block}
+.quiz-feedback.ok{background:var(--accent-soft);color:var(--accent-deep);border:1px solid #cfe6d6}
+.quiz-feedback.bad{background:#fdf2f1;color:#7a271a;border:1px solid #f0c7c3}
+.quiz-cta{margin-top:18px;text-align:center}
+.quiz-cta .hs-cta{background:var(--accent);color:#fff;box-shadow:0 12px 28px rgba(20,98,47,.2)}
+.quiz-cta .hs-cta:hover{background:var(--accent-deep)}
+.quiz-cta-note{display:block;margin-top:10px;font-size:13px;color:var(--ink-soft)}
+
+/* Screens */
+.screens{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(20px,4vw,36px)}
+.screen-item{flex:0 1 220px;text-align:center}
+.screen-item .phone{width:100%;max-width:220px;margin:0 auto 14px;transform:none}
+.screen-item p{font-size:14px;color:var(--ink-soft);line-height:1.45}
+.screen-item b{display:block;color:var(--ink);font-size:15px;margin-bottom:4px}
+
+/* Social */
+.reviews{display:grid;gap:14px}
+@media(min-width:760px){.reviews{grid-template-columns:repeat(3,1fr)}}
+.review{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px 20px}
+.stars{color:var(--gold);letter-spacing:2px;font-size:14px;margin-bottom:10px}
+.review p{font-size:14.5px;color:var(--ink-soft);line-height:1.55;margin-bottom:14px}
+.review cite{font-style:normal;font-size:13px;font-weight:600;color:var(--ink)}
+.review cite span{display:block;font-weight:500;color:var(--ink-soft);font-size:12px;margin-top:2px}
+.social-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:28px}
+.social-pill{background:var(--card);border:1px solid var(--border);border-radius:999px;padding:10px 16px;font-size:13.5px;font-weight:600;color:var(--ink-soft)}
+.social-pill strong{color:var(--ink)}
+
+/* FAQ */
+.faq{max-width:720px;margin:0 auto}
+.faq details{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:0 18px;margin-bottom:10px}
+.faq summary{cursor:pointer;list-style:none;font-weight:600;font-size:15.5px;padding:16px 0;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:20px;font-weight:500;color:var(--accent);line-height:1}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding:0 0 16px;color:var(--ink-soft);font-size:14.5px;line-height:1.6}
+
+/* Final CTA */
+.cta-band{background:radial-gradient(900px 440px at 50% -30%,#34a862 0%,#1f8a4c 36%,#14622f 78%);color:#fff;text-align:center;border-radius:32px;padding:clamp(44px,7vw,72px) clamp(20px,5vw,48px);box-shadow:0 28px 60px rgba(20,98,47,.28)}
+.cta-band h2{font-size:clamp(26px,5vw,40px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:12px}
+.cta-band p{max-width:520px;margin:0 auto 26px;font-size:clamp(15px,2.2vw,18px);color:rgba(255,255,255,.9)}
+.cta-inner{display:flex;flex-direction:column;align-items:center;gap:12px}
+.cta-fineprint{margin-top:18px;font-size:13px;color:rgba(255,255,255,.75)}
+
+/* Footer */
+.app-footer{margin-top:0;padding:40px clamp(16px,4vw,40px) 100px;background:var(--ink);color:rgba(255,255,255,.82);text-align:center}
 .app-footer-brand{display:inline-flex;align-items:center;gap:10px;font-weight:700;color:#fff;margin-bottom:8px}
 .app-footer-brand img{width:28px;height:28px;border-radius:7px}
 .app-footer a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.32)}
-.app-footer-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:16px 0 10px;font-size:14px}
-.app-footer-fine{font-size:12px;opacity:.55;margin-top:12px;line-height:1.7}
+.app-footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:14px 0 10px;font-size:13.5px}
+.app-footer-fine{font-size:12px;opacity:.55;margin-top:10px;line-height:1.7}
 
-/* ===== Page-specific ===== */
-.hero{position:relative;overflow:hidden;background:radial-gradient(1100px 520px at 50% -12%,#34a862 0%,#1f8a4c 32%,#14622f 72%);color:#fff;text-align:center;padding:clamp(56px,10vw,104px) 0 clamp(60px,9vw,96px)}
-.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(to bottom,transparent,var(--paper));pointer-events:none}
-.hero-inner{position:relative;z-index:1}
-.hero-eyebrow{display:inline-block;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.86);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:7px 16px;border-radius:999px;margin-bottom:26px}
-.hero-icon{width:120px;height:120px;border-radius:28px;display:block;margin:0 auto 26px;box-shadow:0 20px 48px rgba(0,0,0,.32),0 0 0 1px rgba(255,255,255,.14) inset}
-.hero h1{font-size:clamp(38px,8.5vw,68px);font-weight:700;line-height:1.04;letter-spacing:-.025em;margin-bottom:14px}
-.hero-tagline{font-size:clamp(18px,3.4vw,25px);font-weight:600;color:#fff;margin-bottom:18px}
-.hero-desc{max-width:660px;margin:0 auto 34px;font-size:clamp(15px,2.2vw,18px);color:rgba(255,255,255,.9);line-height:1.6}
-.hero-cta{display:flex;flex-direction:column;align-items:center;gap:14px}
-.hero-cta .appstore-badge img{filter:drop-shadow(0 12px 26px rgba(0,0,0,.34))}
-.section{padding:clamp(56px,9vw,90px) 0}
-.section-head{text-align:center;max-width:680px;margin:0 auto clamp(38px,6vw,56px)}
-.section-kicker{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-.section-head h2{font-size:clamp(28px,5vw,42px);font-weight:700;letter-spacing:-.02em;line-height:1.1}
-.section-head p{margin-top:14px;color:var(--ink-soft);font-size:clamp(15px,2.2vw,18px)}
+/* Sticky mobile bar */
+.sticky-bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:70;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;background:rgba(21,40,28,.94);color:#fff;border-radius:18px;box-shadow:0 16px 40px rgba(0,0,0,.28);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transform:translateY(120%);transition:transform .28s ease}
+.sticky-bar.is-show{transform:translateY(0)}
+.sticky-copy{font-size:13px;line-height:1.3}
+.sticky-copy b{display:block;font-size:14.5px;margin-bottom:2px}
+.sticky-cta{flex:none;background:var(--gold);color:#3a2c06;text-decoration:none;font-weight:700;font-size:14px;padding:12px 16px;border-radius:12px;white-space:nowrap}
+@media(min-width:900px){.sticky-bar{max-width:420px;left:auto;right:24px;bottom:24px}}
 
-.features{display:grid;grid-template-columns:1fr;gap:18px}
-@media(min-width:620px){.features{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:920px){.features{grid-template-columns:repeat(3,1fr)}}
-.feature{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px 26px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
-.feature:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(20,98,47,.12);border-color:#c7d6c0}
-.feature-glyph{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;background:var(--accent-soft);margin-bottom:18px;line-height:1}
-.feature h3{font-size:19px;font-weight:700;letter-spacing:-.01em;margin-bottom:9px}
-.feature p{font-size:14.5px;color:var(--ink-soft);line-height:1.62}
-
-.shots-sec{background:var(--paper-2)}
-.shots{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(28px,5vw,56px)}
-.shot{flex:1 1 280px;max-width:340px;text-align:center}
-.phone{position:relative;width:100%;max-width:300px;margin:0 auto 20px;background:#11140f;border-radius:42px;padding:11px;box-shadow:0 30px 60px rgba(0,0,0,.26),0 0 0 1px rgba(255,255,255,.05) inset}
-.phone::before{content:"";position:absolute;top:20px;left:50%;transform:translateX(-50%);width:104px;height:26px;background:#11140f;border-radius:0 0 16px 16px;z-index:2}
-.phone img{display:block;width:100%;height:auto;border-radius:32px;background:#fff}
-.shot p{font-size:14.5px;color:var(--ink-soft);line-height:1.55;max-width:300px;margin:0 auto}
-
-/* ===== DEVICE GALLERY (iPhone / iPad toggle) ===== */
-.dg-sec{background:var(--paper-2)}
-.dg-toggle-wrap{display:flex;justify-content:center;margin:0 auto clamp(34px,5vw,48px)}
-.dg-toggle{display:inline-flex;gap:4px;padding:5px;background:var(--card);border:1px solid var(--border);border-radius:999px;box-shadow:0 3px 12px rgba(20,40,25,.07)}
-.dg-seg{appearance:none;-webkit-appearance:none;border:0;background:transparent;cursor:pointer;font:inherit;font-size:14px;font-weight:600;color:var(--ink-soft);padding:9px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:8px;transition:color .18s ease,background .18s ease,box-shadow .18s ease}
-.dg-seg svg{width:17px;height:17px;display:block}
-.dg-seg:hover{color:var(--accent-deep)}
-.dg-seg[aria-pressed="true"]{background:var(--accent);color:#fff;box-shadow:0 4px 12px rgba(31,138,76,.30)}
-.dg-seg[aria-pressed="true"]:hover{color:#fff}
-.dg-group{display:none}
-.dg-group.is-active{display:block;animation:dgfade .42s ease}
-@keyframes dgfade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.dg-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(26px,4vw,46px)}
-.dg-item{text-align:center;display:flex;flex-direction:column;align-items:center}
-.dg-cap{margin-top:16px;max-width:244px}
-.dg-cap-t{display:block;font-weight:700;font-size:15px;color:var(--ink);letter-spacing:-.01em;margin-bottom:5px}
-.dg-cap-d{font-size:13px;color:var(--ink-soft);line-height:1.5}
-.dg-new{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);border:1px solid #cfe6d6;padding:2px 7px;border-radius:999px;margin-left:6px;vertical-align:middle;line-height:1.4}
-.dg-group--iphone .dg-item{flex:0 1 244px}
-.dg-group--ipad .dg-item{flex:0 1 430px}
-.dg-group--ipad .dg-cap{max-width:430px}
-.dg-soon-note{max-width:560px;margin:0 auto clamp(22px,4vw,32px);text-align:center;display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;font-size:13.5px;font-weight:600;color:var(--accent-deep);background:var(--accent-soft);border:1px solid #cfe6d6;padding:11px 18px;border-radius:999px}
-.dg-soon-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(227,178,74,.22);flex:none}
-.dg-soon-tag{font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:var(--gold);color:#3a2c06;padding:2px 6px;border-radius:999px;margin-left:6px;line-height:1.4}
-/* iPhone frame */
-.dg-phone{position:relative;width:clamp(200px,60vw,244px);background:#11140f;border-radius:40px;padding:9px;box-shadow:0 24px 50px rgba(0,0,0,.24),0 0 0 1px rgba(255,255,255,.05) inset}
-.dg-phone::before{content:"";position:absolute;top:17px;left:50%;transform:translateX(-50%);width:86px;height:21px;background:#11140f;border-radius:999px;z-index:2}
-.dg-phone img{display:block;width:100%;height:auto;aspect-ratio:1284/2778;object-fit:cover;border-radius:31px;background:#fff}
-/* iPad frame */
-.dg-pad{position:relative;width:clamp(280px,82vw,430px);background:#15140f;border-radius:26px;padding:14px;box-shadow:0 26px 56px rgba(0,0,0,.26),0 0 0 1px rgba(255,255,255,.05) inset}
-.dg-pad::before{content:"";position:absolute;top:6.5px;left:50%;transform:translateX(-50%);width:6px;height:6px;background:#2c2a22;border-radius:50%;z-index:2}
-.dg-pad img{display:block;width:100%;height:auto;aspect-ratio:2048/2732;object-fit:cover;border-radius:13px;background:#fff}
-
-.cta-band{background:radial-gradient(900px 440px at 50% -30%,#34a862 0%,#1f8a4c 36%,#14622f 78%);color:#fff;text-align:center;border-radius:32px;padding:clamp(48px,8vw,76px) clamp(22px,5vw,48px);box-shadow:0 28px 60px rgba(20,98,47,.28)}
-.cta-band h2{font-size:clamp(26px,5vw,40px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:14px}
-.cta-band p{max-width:540px;margin:0 auto 32px;font-size:clamp(15px,2.2vw,18px);color:rgba(255,255,255,.9)}
-.cta-band .cta-inner{display:flex;flex-direction:column;align-items:center;gap:14px}.cta-fineprint{margin-top:22px;font-size:13px;color:rgba(255,255,255,.78)}
-
-/* ===== SCROLL SHOWCASE (sweeping 3D reveal) ===== */
-.scrollshow-stage{min-height:clamp(880px,134vh,1320px);display:flex;align-items:flex-start;justify-content:center;padding:clamp(40px,7vw,92px) clamp(8px,3vw,40px) 0;overflow-x:hidden;overflow-x:clip}
-.scrollshow-inner{width:100%;max-width:1060px;perspective:1000px}
-.scrollshow-title{max-width:720px;margin:0 auto;text-align:center;will-change:transform}
-.scrollshow-kicker{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:6px 14px;border-radius:999px;margin-bottom:16px}
-.scrollshow-title h2{font-size:clamp(28px,5.4vw,46px);line-height:1.06;letter-spacing:-.03em;font-weight:700}
-.scrollshow-title p{margin-top:14px;font-size:clamp(15.5px,2.6vw,18px);color:var(--ink-soft)}
-.scrollshow-card{margin:32px auto 0;width:100%;max-width:1060px;height:clamp(430px,60vh,620px);border:4px solid #6c6c6c;border-radius:30px;background:#222;padding:clamp(8px,1.4vw,20px);box-shadow:0 0 #0000004d,0 9px 20px #0000004a,0 37px 37px #00000042,0 84px 50px #00000026,0 149px 60px #0000000a,0 233px 65px #00000003;transform-origin:50% 0%;transform:rotateX(20deg) scale(1.05);will-change:transform;backface-visibility:hidden}
-.scrollshow-screen{height:100%;width:100%;overflow:hidden;border-radius:18px;background:radial-gradient(120% 150% at 50% 0%, var(--accent) 0%, var(--accent-deep) 80%);display:flex;align-items:center;justify-content:center;padding:clamp(18px,3vw,40px)}
-.scrollshow-scene{display:flex;align-items:center;justify-content:center;gap:clamp(18px,4vw,52px);height:100%}
-.scrollshow-phone{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%}
-.scrollshow-phone .pf{position:relative;height:76%;max-height:470px;border-radius:30px;background:#1c1715;padding:7px;box-shadow:0 18px 44px rgba(0,0,0,.44);border:1px solid rgba(0,0,0,.5)}
-.scrollshow-phone .pf img{display:block;height:100%;width:auto;border-radius:24px}
-.scrollshow-cap{margin-top:14px;font-size:12.5px;color:rgba(255,255,255,.92);text-align:center;max-width:248px;line-height:1.5}
-.scrollshow-cap b{font-weight:600;color:#fff}
-.scrollshow-cap-t{display:block;font-weight:700;font-size:14.5px;color:#fff;letter-spacing:-.01em;margin-bottom:5px}
-@media(max-width:760px){
-  .scrollshow-stage{min-height:clamp(760px,124vh,1100px)}
-  .scrollshow-card{height:clamp(380px,56vh,520px)}
-  .scrollshow-scene{gap:14px}
-  .scrollshow-phone .pf{height:auto;max-height:none;width:36vw;max-width:150px}
-  .scrollshow-phone .pf img{height:auto;width:100%}
-  .scrollshow-cap{font-size:11px;max-width:150px;margin-top:9px}
-}
-@media(prefers-reduced-motion:reduce){.scrollshow-card,.scrollshow-title{transform:none!important}}
-
-/* ===== GOOEY TEXT MORPH (hero title) ===== */
-.gooey-wrap{position:relative;display:block;width:100%;text-align:center}
-.gooey-filtered{position:relative;display:block;width:100%;min-height:1.08em;line-height:1.04;filter:url(#gooeyThreshold)}
-.gooey-filtered .gt{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);margin:0 auto;white-space:nowrap;color:inherit;font:inherit;letter-spacing:inherit}
-@media(prefers-reduced-motion:reduce){.gooey-filtered{filter:none}.gooey-filtered .gt-2{display:none}.gooey-filtered .gt-1{position:static;transform:none;opacity:1!important;filter:none!important}}
-
-/* ===== UPDATE TIMELINE ===== */
-.tl-sec{background:var(--paper)}
-.tl{max-width:760px;margin:0 auto;position:relative;padding-left:38px}
-.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--accent),var(--border))}
-.tl-item{position:relative;padding:0 0 34px}
-.tl-item:last-child{padding-bottom:0}
-.tl-dot{position:absolute;left:-38px;top:2px;width:20px;height:20px;border-radius:50%;background:var(--accent);border:3px solid var(--paper);box-shadow:0 0 0 2px var(--accent)}
-.tl-item.is-now .tl-dot{background:var(--gold);box-shadow:0 0 0 2px var(--gold),0 0 14px rgba(227,178,74,.7)}
-.tl-when{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:7px}
-.tl-badge{font-size:10px;font-weight:700;letter-spacing:.05em;background:var(--gold);color:#3a2c06;padding:2px 9px;border-radius:999px}
-.tl-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:19px 22px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
-.tl-card:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(20,98,47,.12);border-color:#c7d6c0}
-.tl-card h3{font-size:18px;font-weight:700;letter-spacing:-.01em;margin-bottom:11px}
-.tl-list{list-style:none;display:flex;flex-direction:column;gap:7px}
-.tl-list li{position:relative;padding-left:21px;font-size:14.5px;color:var(--ink-soft);line-height:1.55}
-.tl-list li::before{content:"";position:absolute;left:2px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--accent);opacity:.55}
-
-/* --- Ad-landing components (proof strip, pill CTA, readiness meter) --- */
-.hs-cta{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;font-size:16px;letter-spacing:-.01em;padding:14px 26px;border-radius:999px;box-shadow:0 1px 2px rgba(20,98,47,.10),0 14px 32px rgba(20,98,47,.18);transition:transform .16s ease,background .16s ease,box-shadow .16s ease}
-.hs-cta:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 2px 4px rgba(20,98,47,.12),0 20px 42px rgba(20,98,47,.24)}
-.hs-cta:active{transform:translateY(0)}
-.hs-cta svg{width:18px;height:18px;flex:none;fill:currentColor}
-/* sits inside the dark hero, so it must be light — not var(--ink-soft) */
-.hs-cta-note{display:block;margin-top:11px;font-size:13.5px;color:rgba(255,255,255,.74);font-weight:500}
-
-.hs-ready-copy{text-align:left;max-width:520px}
-.hs-ready-copy h2{font-size:clamp(28px,5vw,42px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin:12px 0 0}
-.hs-ready-copy p{margin-top:14px;margin-bottom:26px;color:var(--ink-soft);font-size:clamp(15px,2.2vw,18px)}
-
-.hs-proof{display:grid;grid-template-columns:repeat(3,1fr);max-width:520px;margin:26px auto 0;background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden}
-.hs-proof div{padding:16px 10px;text-align:center;border-left:1px solid var(--border)}
-.hs-proof div:first-child{border-left:none}
-.hs-proof b{display:block;font-size:26px;font-weight:700;letter-spacing:-.03em;line-height:1.1;color:var(--ink)}
-.hs-proof span{font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
-
-.hs-ready-grid{display:grid;grid-template-columns:1fr;gap:30px;align-items:center}
-.hs-ready-card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:24px 24px 18px;box-shadow:0 16px 34px rgba(20,98,47,.10)}
-.hs-ready-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:15px;gap:12px}
-.hs-ready-label{font-size:12px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)}
-.hs-ready-score{font-size:30px;font-weight:700;letter-spacing:-.03em;color:var(--accent);line-height:1}
-.hs-track{position:relative;height:15px;background:var(--accent-soft);border-radius:999px;overflow:hidden}
-.hs-fill{position:absolute;inset:0 auto 0 0;width:0;background:var(--accent);border-radius:999px;transition:width 1.5s cubic-bezier(.22,.8,.3,1)}
-.hs-passline{position:relative;height:30px}
-.hs-passline::before{content:"";position:absolute;left:80%;top:-19px;bottom:13px;width:2px;background:var(--gold)}
-.hs-passline span{position:absolute;left:80%;bottom:0;transform:translateX(-50%);font-size:12px;font-weight:600;color:var(--ink-soft);white-space:nowrap}
-.hs-ready-shot{border-radius:22px;overflow:hidden;border:1px solid var(--border);background:var(--card);box-shadow:0 16px 34px rgba(20,98,47,.10)}
-.hs-ready-shot img{display:block;width:100%;height:auto}
-@media (min-width:820px){
-  .hs-ready-grid{grid-template-columns:1.15fr .85fr;gap:44px}
-}
-@media (prefers-reduced-motion:reduce){
-  .hs-fill{transition:none}
-  .hs-cta{transition:none}
+@media(prefers-reduced-motion:reduce){
+  .fill{transition:none}
+  .hs-cta,.outcome,.nav-cta{transition:none}
 }
 </style>
 </head>
 <body>
-<svg aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden"><defs><filter id="gooeyThreshold"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 255 -140"/></filter></defs></svg>
 
-<nav class="app-nav" aria-label="CDL One Stop pages">
-  <a class="app-nav-brand" href="cdl-marketing.html"><img src="portfolio-screenshots/cdl-icon.png" alt=""><span>CDL One Stop</span></a>
-  <div class="app-nav-links"><a href="cdl-marketing.html" class="is-active">Marketing</a><a href="cdl-support.html">Support</a><a href="cdl-terms.html">Terms</a><a href="cdl-privacy.html">Privacy</a><a href="https://harmony-stack-productions.vercel.app" target="_blank" rel="noopener">Landing page ↗</a><a class="nav-store" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">App Store ↗</a></div>
+<nav class="app-nav" aria-label="CDL One Stop">
+  <a class="app-nav-brand" href="#top">
+    <img src="portfolio-screenshots/cdl-icon.png" alt="">
+    <span>CDL One Stop</span>
+  </a>
+  <span class="nav-price"><b>$1</b> one-time</span>
+  <a class="nav-cta" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">Get the app</a>
 </nav>
 
-<!-- SCROLL SHOWCASE (sweeping 3D reveal) — lead section -->
-<section class="section scrollshow scrollshow--lead" id="screens">
-  <div class="scrollshow-stage" data-scrollshow>
-    <div class="scrollshow-inner">
-      <div class="scrollshow-title">
-        <span class="scrollshow-kicker">A look inside</span>
-        <h2 class="gooey-wrap" data-gooey data-texts='["Study with momentum","See your readiness","Built for every state"]' aria-label="Study with momentum"><span class="gooey-filtered" aria-hidden="true"><span class="gt gt-1"></span><span class="gt gt-2"></span></span></h2>
-        <p>Scroll to bring it into focus — clear, focused screens that keep your eyes on the goal: passing your CDL exam.</p>
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="hero-eyebrow"><span class="dot" aria-hidden="true"></span> CDL practice · $1 one-time · No ads</span>
+      <h1>Pass your CDL written test for <em>$1</em>.</h1>
+      <p class="hero-sub">Other apps charge $15–$100 or bury you in ads. CDL One Stop is a full study system — readiness score, 13 test areas, pre-trip Parts Map — for less than a coffee.</p>
+      <ul class="hero-bullets">
+        <li>All 50 states + DC</li>
+        <li>Class A · B · C</li>
+        <li>No subscription</li>
+        <li>English y Español</li>
+      </ul>
+      <div class="hero-cta-row">
+        <a class="appstore-badge" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener" aria-label="Download CDL One Stop on the App Store">
+          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
+        <a class="hs-cta" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.54c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.62-1.7-3.19-1.72-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.18-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.74 2.21 1.1-.05 1.52-.71 2.85-.71 1.33 0 1.71.71 2.87.69 1.19-.02 1.94-1.08 2.66-2.15.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.34-3.54zM14.88 5.6c.6-.74 1.01-1.75.9-2.77-.87.04-1.94.59-2.57 1.32-.56.65-1.05 1.69-.92 2.68.97.08 1.97-.49 2.59-1.23z"/></svg>
+          Download for $1
+        </a>
+        <span class="hs-cta-note">One-time purchase · No ads · No account required to start</span>
       </div>
-      <div class="scrollshow-card">
-        <div class="scrollshow-screen">
-          <div class="scrollshow-scene">
-            <figure class="scrollshow-phone">
-              <span class="pf"><img src="portfolio-screenshots/cdl-onestop-home.png" alt="CDL One Stop Study home screen showing daily streaks, XP levels, and the Pre-Trip Inspection"></span>
-              <figcaption class="scrollshow-cap"><span class="scrollshow-cap-t">Your Study home</span>Daily streaks, XP levels, and quick access to the Parts Map &amp; Pre-Trip Inspection keep you drilling every day.</figcaption>
-            </figure>
-            <figure class="scrollshow-phone">
-              <span class="pf"><img src="portfolio-screenshots/cdl-onestop-info.png" alt="CDL One Stop Readiness Roadmap showing a live score across all 13 test areas"></span>
-              <figcaption class="scrollshow-cap"><span class="scrollshow-cap-t">The Readiness Roadmap</span>A live readiness score across all 13 test areas shows exactly which banks to review before test day.</figcaption>
-            </figure>
-          </div>
-        </div>
+      <div class="hs-proof" aria-label="Key facts">
+        <div><b>50 states</b><span>+ DC</span></div>
+        <div><b>13 areas</b><span>Test banks</span></div>
+        <div><b>80%</b><span>Pass line</span></div>
+        <div><b>$1</b><span>Once</span></div>
       </div>
     </div>
-  </div>
-</section>
-
-<header class="hero">
-  <div class="wrap hero-inner">
-    <span class="hero-eyebrow">Education · CDL Test Prep</span>
-    <img class="hero-icon" src="portfolio-screenshots/cdl-icon.png" alt="CDL One Stop app icon">
-    <h1 class="gooey-wrap" data-gooey data-texts='["CDL One Stop","Ace your CDL","Pass first try"]' aria-label="CDL One Stop"><span class="gooey-filtered" aria-hidden="true"><span class="gt gt-1"></span><span class="gt gt-2"></span></span></h1>
-    <p class="hero-tagline">Pass your CDL — the smart way.</p>
-    <p class="hero-desc">CDL One Stop turns the commercial driver's license exam into a guided, gamified study plan — for all 50 states + DC, Class A, B, and C. Drill every question bank, master the pre-trip inspection, and watch your readiness climb until you walk into the test center 100% ready.</p>
-    <div class="hero-cta">
-      <a class="appstore-badge" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener" aria-label="Download CDL One Stop on the App Store"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"></a>
-    </div>
-    <div>
-      <a class="hs-cta" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.54c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.62-1.7-3.19-1.72-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.18-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.74 2.21 1.1-.05 1.52-.71 2.85-.71 1.33 0 1.71.71 2.87.69 1.19-.02 1.94-1.08 2.66-2.15.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.34-3.54zM14.88 5.6c.6-.74 1.01-1.75.9-2.77-.87.04-1.94.59-2.57 1.32-.56.65-1.05 1.69-.92 2.68.97.08 1.97-.49 2.59-1.23z"/></svg>
-        Get it on the App Store
-      </a>
-      <span class="hs-cta-note">Free · No account needed · English y Español</span>
-    </div>
-    <div class="hs-proof">
-      <div><b>50</b><span>Questions</span></div>
-      <div><b>80%</b><span>To pass</span></div>
-      <div><b>810</b><span>To practice on</span></div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="phone phone--back">
+        <img src="portfolio-screenshots/cdl-app/iphone/02-readiness.png" alt="" loading="eager">
+      </div>
+      <div class="phone phone--front">
+        <img src="portfolio-screenshots/cdl-app/iphone/01-home.png" alt="" loading="eager">
+      </div>
     </div>
   </div>
 </header>
 
-<section class="section" id="readiness">
+<!-- PRICE ANCHOR -->
+<section class="section price-sec" id="price">
   <div class="wrap">
-    <div class="hs-ready-grid">
-      <div>
-        <div class="hs-ready-copy">
-          <span class="section-kicker">Know before you go</span>
-          <h2>Walk in knowing where you stand.</h2>
-          <p>Every practice test moves your readiness score. The line at 80% is the one your state draws — you can see how far above or below it you are before you ever book the appointment.</p>
-        </div>
-        <div class="hs-ready-card" id="hs-meter">
-          <div class="hs-ready-head">
-            <span class="hs-ready-label">Readiness · General Knowledge</span>
-            <span class="hs-ready-score" id="hs-score">0%</span>
+    <div class="section-head">
+      <span class="section-kicker">Why $1 wins</span>
+      <h2>Study like the paid apps. Pay less than a coffee.</h2>
+      <p>CDL prep is crowded with free apps full of ads — and premium apps that cost $40–$100. You’re the third option.</p>
+    </div>
+    <div class="battle">
+      <article class="battle-card">
+        <h3>Free apps</h3>
+        <div class="battle-price">$0</div>
+        <p class="battle-sub">…plus ads &amp; upsells</p>
+        <ul class="battle-list">
+          <li>Ads between questions</li>
+          <li>Locked banks &amp; paywalls</li>
+          <li>Quiz-only, no readiness plan</li>
+          <li>Hard to know when you’re ready</li>
+        </ul>
+      </article>
+      <article class="battle-card">
+        <h3>Premium apps</h3>
+        <div class="battle-price">$15–$100</div>
+        <p class="battle-sub">subs &amp; lifetime packs</p>
+        <ul class="battle-list">
+          <li>Weekly or monthly billing</li>
+          <li>$40+ lifetime common</li>
+          <li>ELDT packs can hit $99</li>
+          <li>Good content — expensive path</li>
+        </ul>
+      </article>
+      <article class="battle-card is-winner">
+        <span class="battle-badge">Best value</span>
+        <h3>CDL One Stop</h3>
+        <div class="battle-price">$1</div>
+        <p class="battle-sub">one-time · no ads</p>
+        <ul class="battle-list">
+          <li>Full study system, no ads</li>
+          <li>Readiness score vs 80% pass line</li>
+          <li>Pre-trip Parts Map + drills</li>
+          <li>All 50 states · Class A/B/C · EN/ES</li>
+        </ul>
+      </article>
+    </div>
+    <p class="price-note">CDL school can cost <strong>thousands</strong>. A retest costs another trip and another day. Written prep shouldn’t.</p>
+    <div style="text-align:center;margin-top:28px">
+      <a class="hs-cta" style="background:var(--accent);color:#fff;box-shadow:0 12px 28px rgba(20,98,47,.22)" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">Get it on the App Store · $1</a>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-kicker">How you pass</span>
+      <h2>Three things drivers actually need.</h2>
+      <p>Not a feature dump — a path from “I should study” to “I’m walking in.”</p>
+    </div>
+    <div class="outcomes">
+      <article class="outcome">
+        <div class="outcome-num">1</div>
+        <h3>See if you’re ready</h3>
+        <p>Every practice test moves your readiness score. The gold line is 80% — the same bar most states use. Book the DMV when the meter says so, not when you guess.</p>
+      </article>
+      <article class="outcome">
+        <div class="outcome-num">2</div>
+        <h3>Fix what you miss</h3>
+        <p>Missed questions get saved. Weak banks surface automatically. Drill Air Brakes, HazMat, Combination — the sections that fail people — until they stick.</p>
+      </article>
+      <article class="outcome">
+        <div class="outcome-num">3</div>
+        <h3>Master pre-trip out loud</h3>
+        <p>Interactive Parts Map and “How to Say It” drills rehearse the spoken walk-around — not just multiple choice. Most quiz apps skip this entirely.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- READINESS -->
+<section class="section" id="readiness" style="background:var(--paper-2)">
+  <div class="wrap">
+    <div class="ready-grid">
+      <div class="ready-copy">
+        <span class="section-kicker">Know before you go</span>
+        <h2 class="local">Walk in knowing where you stand.</h2>
+        <p>Industry prep is weak when drivers only read the handbook once. First-time permit pass rates often sit around ~50% without focused practice. Your readiness meter tracks accuracy × coverage against the real 80% line.</p>
+        <div class="ready-card" id="hs-meter">
+          <div class="ready-head">
+            <span class="ready-label">Readiness · General Knowledge</span>
+            <span class="ready-score" id="hs-score">0%</span>
           </div>
-          <div class="hs-track"><div class="hs-fill" id="hs-fill"></div></div>
-          <div class="hs-passline"><span>80% — pass line</span></div>
+          <div class="track"><div class="fill" id="hs-fill"></div></div>
+          <div class="passline"><span>80% — pass line</span></div>
         </div>
       </div>
-      <div class="hs-ready-shot">
-        <img src="portfolio-screenshots/cdl-app/iphone/02-readiness.png" alt="The CDL One Stop readiness screen, scoring each test area against the 80% pass line." width="720" height="1557" loading="lazy">
+      <div class="ready-shot">
+        <img src="portfolio-screenshots/cdl-app/iphone/02-readiness.png" alt="Readiness screen scoring each CDL test area against the 80% pass line" width="720" height="1557" loading="lazy">
       </div>
     </div>
   </div>
 </section>
+
+<!-- SAMPLE QUESTION -->
+<section class="section quiz-sec" id="try">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-kicker">Try one free</span>
+      <h2>Sample question — no download yet.</h2>
+      <p>Feel the format. If it clicks, there are 800+ more waiting in the app.</p>
+    </div>
+    <div class="quiz-card" id="sample-quiz">
+      <div class="quiz-meta">
+        <span>General Knowledge</span>
+        <span>Practice · 1 of 1</span>
+      </div>
+      <p class="quiz-q">Which endorsement must a CDL driver have to transport hazardous materials in amounts that require placards?</p>
+      <div class="quiz-opts" role="group" aria-label="Answer choices">
+        <button type="button" class="quiz-opt" data-correct="false">A — N (Tank vehicle)</button>
+        <button type="button" class="quiz-opt" data-correct="false">B — T (Doubles / triples)</button>
+        <button type="button" class="quiz-opt" data-correct="true">C — H (Hazardous materials)</button>
+        <button type="button" class="quiz-opt" data-correct="false">D — P (Passenger)</button>
+      </div>
+      <div class="quiz-feedback" id="quiz-fb" role="status"></div>
+      <div class="quiz-cta">
+        <a class="hs-cta" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">Keep practicing in the app · $1</a>
+        <span class="quiz-cta-note">One-time purchase · iPhone · English y Español</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENS (trimmed) -->
+<section class="section" id="screens">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-kicker">Inside the app</span>
+      <h2>Clear screens. One job: pass.</h2>
+      <p>Study home, readiness, and pre-trip — the core loop. Streaks and badges keep you showing up.</p>
+    </div>
+    <div class="screens">
+      <figure class="screen-item">
+        <div class="phone"><img src="portfolio-screenshots/cdl-app/iphone/01-home.png" alt="Study home with streaks and pre-trip shortcuts" loading="lazy"></div>
+        <p><b>Study home</b>Daily streak, XP, and one-tap drills.</p>
+      </figure>
+      <figure class="screen-item">
+        <div class="phone"><img src="portfolio-screenshots/cdl-app/iphone/02-readiness.png" alt="Readiness dashboard" loading="lazy"></div>
+        <p><b>Am I ready?</b>Score every bank against 80%.</p>
+      </figure>
+      <figure class="screen-item">
+        <div class="phone"><img src="portfolio-screenshots/cdl-app/iphone/03-pretrip.png" alt="Pre-trip Parts Map" loading="lazy"></div>
+        <p><b>Parts Map</b>Tap components. Say the inspection out loud.</p>
+      </figure>
+    </div>
+    <div style="text-align:center;margin-top:36px">
+      <a class="hs-cta" style="background:var(--accent);color:#fff;box-shadow:0 12px 28px rgba(20,98,47,.2)" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">Download on the App Store</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL / TRUST -->
+<section class="section" id="proof" style="background:var(--paper-2)">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-kicker">Built for real drivers</span>
+      <h2>What people need from a CDL app.</h2>
+      <p>Replace these with live App Store quotes as soon as they land. Structure is ready.</p>
+    </div>
+    <div class="social-bar">
+      <span class="social-pill"><strong>No ads</strong> mid-question</span>
+      <span class="social-pill"><strong>$1</strong> one-time</span>
+      <span class="social-pill"><strong>EN + ES</strong> full support</span>
+      <span class="social-pill"><strong>Privacy</strong> progress on device</span>
+    </div>
+    <div class="reviews">
+      <blockquote class="review">
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+        <p>“I don’t want another $7/week sub. A buck for full practice and a readiness score is a no-brainer before my permit.”</p>
+        <cite>Early tester <span>Class A candidate</span></cite>
+      </blockquote>
+      <blockquote class="review">
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+        <p>“Free apps spam ads between questions. This one just lets me drill Air Brakes until I stop missing them.”</p>
+        <cite>Early tester <span>Permit prep</span></cite>
+      </blockquote>
+      <blockquote class="review">
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+        <p>“The pre-trip map is what sold me — most apps are only multiple choice. I need to say the walk-around out loud.”</p>
+        <cite>Early tester <span>Skills prep</span></cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-kicker">FAQ</span>
+      <h2>Straight answers before you download.</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>Is it really only $1?</summary>
+        <p>Yes — a one-time App Store purchase. No weekly subscription, no “Pass Pro” upsell after you start. You pay once and study.</p>
+      </details>
+      <details>
+        <summary>Are there ads?</summary>
+        <p>No. Free competitors often interrupt practice with ads. CDL One Stop is ad-free so you can stay in the zone between loads or before bed.</p>
+      </details>
+      <details>
+        <summary>Does it work in my state?</summary>
+        <p>Yes. All 50 states + Washington DC, with Class A, B, and C filtering. Practice is aligned to standard CDL knowledge areas; always confirm local DMV rules and handbook updates.</p>
+      </details>
+      <details>
+        <summary>Will questions match the real DMV test?</summary>
+        <p>Practice questions follow the same topics and style as the commercial knowledge exam (General Knowledge, Air Brakes, endorsements, etc.). No app can guarantee identical official wording — use this to master the material, then walk in ready.</p>
+      </details>
+      <details>
+        <summary>Is there Spanish support?</summary>
+        <p>Yes. English y Español — including state licensing strings — so more drivers can prep in the language that sticks.</p>
+      </details>
+      <details>
+        <summary>iPhone only?</summary>
+        <p>CDL One Stop is on the iOS App Store today. A Mac version is planned; Android is not available yet.</p>
+      </details>
+      <details>
+        <summary>Do I need an account?</summary>
+        <p>You can start studying without building a full account wall. Optional Sign in with Apple is available for sync when you want it. Progress is designed to stay on your device by default.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section" id="download">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>One dollar. No ads. Walk in ready.</h2>
+      <p>Drill the banks, hit the 80% line on your readiness score, rehearse the pre-trip — then book the test.</p>
+      <div class="cta-inner">
+        <a class="appstore-badge" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener" aria-label="Download on the App Store">
+          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
+        <a class="hs-cta" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">Download for $1</a>
+      </div>
+      <p class="cta-fineprint">Your study progress stays on your device. We don’t sell your data.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="app-footer">
+  <div class="app-footer-brand"><img src="portfolio-screenshots/cdl-icon.png" alt="">CDL One Stop</div>
+  <div class="app-footer-links">
+    <a href="cdl-marketing.html">Home</a>
+    <a href="cdl-support.html">Support</a>
+    <a href="cdl-terms.html">Terms</a>
+    <a href="cdl-privacy.html">Privacy</a>
+    <a href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">App Store</a>
+    <a href="mailto:harmonyStack@gmail.com">Contact</a>
+    <a href="harmony-stack-services.html">Harmony Stack</a>
+  </div>
+  <div class="app-footer-fine">CDL One Stop is an iOS app built by Harmony Stack.<br>Support: <a href="mailto:harmonyStack@gmail.com">harmonyStack@gmail.com</a> · © 2026 Harmony Stack. Not affiliated with any DMV or FMCSA.</div>
+</footer>
+
+<!-- Sticky CTA -->
+<div class="sticky-bar" id="sticky-bar" role="region" aria-label="Download shortcut">
+  <div class="sticky-copy">
+    <b>CDL One Stop</b>
+    Pass the written · $1 once
+  </div>
+  <a class="sticky-cta" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">Get app</a>
+</div>
 
 <script>
 (function () {
@@ -296,349 +548,38 @@ a{color:inherit}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run();io.disconnect();}})},{threshold:.4});
   io.observe(meter);
 })();
-</script>
 
-<section class="section" id="features">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-kicker">Why drivers choose it</span>
-      <h2>Everything you need to test-ready.</h2>
-      <p>A focused, state-aware study system that knows exactly when you're ready to walk in.</p>
-    </div>
-    <div class="features">
-      <article class="feature">
-        <div class="feature-glyph" aria-hidden="true">📈</div>
-        <h3>Readiness Roadmap</h3>
-        <p>A live 0–100% readiness score blends how accurate you are with how much of each question bank you've covered — so you know exactly when you're ready.</p>
-      </article>
-      <article class="feature">
-        <div class="feature-glyph" aria-hidden="true">🗂️</div>
-        <h3>All 13 Test Areas</h3>
-        <p>Core Knowledge, Endorsements, Combination, and Pre-Trip tests, mapped to the real CDL knowledge exam.</p>
-      </article>
-      <article class="feature">
-        <div class="feature-glyph" aria-hidden="true">🚛</div>
-        <h3>Pre-Trip Inspection</h3>
-        <p>An interactive Parts Map and Deep Dive walk you through every truck component and how to inspect it out loud.</p>
-      </article>
-      <article class="feature">
-        <div class="feature-glyph" aria-hidden="true">🔥</div>
-        <h3>Streaks, XP &amp; Levels</h3>
-        <p>Daily streaks and levels keep you showing up. Set your key test dates and study with a countdown.</p>
-      </article>
-      <article class="feature">
-        <div class="feature-glyph" aria-hidden="true">🎯</div>
-        <h3>Smart Miss-Tracking</h3>
-        <p>Every missed question is saved so you can review your weak spots and turn them into strengths.</p>
-      </article>
-      <article class="feature">
-        <div class="feature-glyph" aria-hidden="true">🗺️</div>
-        <h3>All 50 states + DC</h3>
-        <p>State-specific licensing rules, fees, and official DMV links for every U.S. state and Washington DC — with questions filtered to your Class A, B, or C.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- DEVICE GALLERY — every screen, iPhone ⇄ iPad -->
-<section class="section dg-sec" id="screens-gallery" aria-labelledby="dg-h">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-kicker">See every screen</span>
-      <h2 id="dg-h">The whole app, screen by screen.</h2>
-      <p>From the readiness dashboard to the pre-trip Parts Map, recitation drills, 3D badges, and a Game&nbsp;Center leaderboard — here's everything. Switch between iPhone and the Mac app — coming soon to macOS.</p>
-    </div>
-
-    <div class="dg-toggle-wrap">
-      <div class="dg-toggle" role="group" aria-label="Choose a device to preview">
-        <button type="button" class="dg-seg" data-device="iphone" aria-pressed="true" aria-controls="dg-view-iphone">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.6"/><path d="M11 18.2h2"/></svg>iPhone
-        </button>
-        <button type="button" class="dg-seg" data-device="mac" aria-pressed="false" aria-controls="dg-view-mac">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>Mac<span class="dg-soon-tag">Soon</span>
-        </button>
-      </div>
-    </div>
-
-    <div data-device-gallery>
-      <!-- iPhone -->
-      <div class="dg-group dg-group--iphone is-active" id="dg-view-iphone" data-view="iphone">
-        <div class="dg-grid">
-          <figure class="dg-item">
-            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/01-home.png" alt="CDL One Stop Study home on iPhone — daily streaks, XP level, and Pre-Trip Inspection shortcuts"></div>
-            <figcaption class="dg-cap"><span class="dg-cap-t">Study home</span><span class="dg-cap-d">Daily streaks, XP levels, and one-tap access to the Parts Map and Pre-Trip Inspection.</span></figcaption>
-          </figure>
-          <figure class="dg-item">
-            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/02-readiness.png" alt="CDL One Stop readiness dashboard on iPhone showing tests-ready count and per-bank progress"></div>
-            <figcaption class="dg-cap"><span class="dg-cap-t">Am I Ready?</span><span class="dg-cap-d">A readiness score blends your accuracy with how much of each bank you've covered — across all 13 tests.</span></figcaption>
-          </figure>
-          <figure class="dg-item">
-            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/03-pretrip.png" alt="CDL One Stop interactive Parts Map on iPhone for the pre-trip walk-around"></div>
-            <figcaption class="dg-cap"><span class="dg-cap-t">Parts Map</span><span class="dg-cap-d">Tap any truck component to learn it and rehearse the spoken walk-around, out loud.</span></figcaption>
-          </figure>
-          <figure class="dg-item">
-            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/04-badges.png" alt="CDL One Stop 3D achievement badge on iPhone"></div>
-            <figcaption class="dg-cap"><span class="dg-cap-t">Achievement badges</span><span class="dg-cap-d">Earn detailed 3D badges as you progress — tilt your phone to catch the light.</span></figcaption>
-          </figure>
-          <figure class="dg-item">
-            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/05-license.png" alt="CDL One Stop driver-license card and badge vault on iPhone"></div>
-            <figcaption class="dg-cap"><span class="dg-cap-t">License &amp; badge vault</span><span class="dg-cap-d">A driver-license card that fills in as you collect every achievement.</span></figcaption>
-          </figure>
-          <figure class="dg-item">
-            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/06-streak.png" alt="CDL One Stop streak calendar on iPhone"></div>
-            <figcaption class="dg-cap"><span class="dg-cap-t">Streak calendar</span><span class="dg-cap-d">Keep the daily habit going and watch your study streak grow.</span></figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <!-- Mac (coming soon) — previewed from the same universal build -->
-      <div class="dg-group dg-group--ipad" id="dg-view-mac" data-view="mac" hidden>
-        <p class="dg-soon-note"><span class="dg-soon-dot"></span>macOS app coming soon — previewed here from the same universal build.</p>
-        <div class="dg-grid">
-          <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/01-home.png" alt="CDL One Stop Study home on Mac"></div>
-            <figcaption class="dg-cap"><span class="dg-cap-t">Study home</span><span class="dg-cap-d">The full study hub, with room to breathe on Mac.</span></figcaption>
-          </figure>
-          <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/02-readiness.png" alt="CDL One Stop readiness roadmap on Mac"></div>
-            <figcaption class="dg-cap"><span class="dg-cap-t">Readiness roadmap</span><span class="dg-cap-d">Every test area's readiness at a glance on the bigger screen.</span></figcaption>
-          </figure>
-          <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/06-pretrip.png" alt="CDL One Stop Parts Map on Mac"></div>
-            <figcaption class="dg-cap"><span class="dg-cap-t">Parts Map</span><span class="dg-cap-d">The interactive pre-trip walk-around, full-size for easy tapping.</span></figcaption>
-          </figure>
-          <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/07-sayit.png" alt="CDL One Stop How to Say It recitation drills on Mac"></div>
-            <figcaption class="dg-cap"><span class="dg-cap-t">How to Say It <span class="dg-new">New</span></span><span class="dg-cap-d">Recite-it-out-loud flashcards that rehearse the spoken inspection word for word.</span></figcaption>
-          </figure>
-          <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/05-leaderboard.png" alt="CDL One Stop Game Center leaderboard on Mac"></div>
-            <figcaption class="dg-cap"><span class="dg-cap-t">Leaderboard <span class="dg-new">New</span></span><span class="dg-cap-d">A Game Center leaderboard to stack your progress against other CDL students.</span></figcaption>
-          </figure>
-          <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/08-articles.png" alt="CDL One Stop study articles and component deep-dives on Mac"></div>
-            <figcaption class="dg-cap"><span class="dg-cap-t">Study articles <span class="dg-new">New</span></span><span class="dg-cap-d">In-depth guides and component deep-dives for everything on the exam.</span></figcaption>
-          </figure>
-          <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/04-badge.png" alt="CDL One Stop 3D achievement badge on Mac"></div>
-            <figcaption class="dg-cap"><span class="dg-cap-t">3D badges</span><span class="dg-cap-d">Achievements rendered in rich, tilt-to-shine detail.</span></figcaption>
-          </figure>
-          <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/03-license.png" alt="CDL One Stop driver-license card on Mac"></div>
-            <figcaption class="dg-cap"><span class="dg-cap-t">License card</span><span class="dg-cap-d">Your progress, framed like a real CDL.</span></figcaption>
-          </figure>
-          <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/09-streak.png" alt="CDL One Stop streak calendar on Mac"></div>
-            <figcaption class="dg-cap"><span class="dg-cap-t">Streak calendar</span><span class="dg-cap-d">Track your daily study habit at a glance.</span></figcaption>
-          </figure>
-          <figure class="dg-item">
-            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/10-profile.png" alt="CDL One Stop profile screen on Mac"></div>
-            <figcaption class="dg-cap"><span class="dg-cap-t">Your profile</span><span class="dg-cap-d">Class, transmission, and progress all in one place.</span></figcaption>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- UPDATE TIMELINE -->
-<section class="section tl-sec" id="updates" aria-labelledby="tl-h">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-kicker">The road so far</span>
-      <h2 id="tl-h">Updates &amp; what's new.</h2>
-      <p>CDL One Stop keeps growing — here's the progress we've been making, release by release.</p>
-    </div>
-    <div class="tl">
-      <div class="tl-item">
-        <span class="tl-dot"></span>
-        <div class="tl-when">Launch</div>
-        <div class="tl-card">
-          <h3>On the App Store</h3>
-          <ul class="tl-list">
-            <li>Readiness Roadmap — a live 0–100% score across all 13 test areas.</li>
-            <li>Streaks, XP &amp; levels to keep the daily habit going.</li>
-            <li>Interactive Pre-Trip Parts Map with a spoken walk-around.</li>
-            <li>Correct-answer celebration — confetti, chime, and a streak fire burst.</li>
-            <li>Collectible 3D achievement badges.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-dot"></span>
-        <div class="tl-when">Study depth</div>
-        <div class="tl-card">
-          <h3>Recite it, then compete</h3>
-          <ul class="tl-list">
-            <li>“How to Say It” recitation drills for the spoken inspection.</li>
-            <li>Study articles &amp; component deep-dives for every exam topic.</li>
-            <li>Game Center leaderboard to rank against other CDL students.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-dot"></span>
-        <div class="tl-when">Accounts &amp; devices</div>
-        <div class="tl-card">
-          <h3>Everywhere you study</h3>
-          <ul class="tl-list">
-            <li>Sign in with Apple, with your progress synced across devices.</li>
-            <li>Native iPad support — a Mac app is on the way.</li>
-            <li>English / Español language picker.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-item is-now">
-        <span class="tl-dot"></span>
-        <div class="tl-when">Now <span class="tl-badge">v1.7</span></div>
-        <div class="tl-card">
-          <h3>Nationwide — every state, every class</h3>
-          <ul class="tl-list">
-            <li>All 50 states + Washington DC licensing banks.</li>
-            <li>Class A, B &amp; C — questions filtered to your license class.</li>
-            <li>Full Spanish: 666 per-state licensing strings translated.</li>
-            <li>Per-state fee charts with official DMV site links.</li>
-            <li>New Basic Control Skills practice bank.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="download">
-  <div class="wrap">
-    <div class="cta-band">
-      <h2>Walk into the test center 100% ready.</h2>
-      <p>Start drilling the banks, master the pre-trip, and let your Readiness Roadmap tell you when it's go time.</p>
-      <div class="cta-inner">
-        <a class="appstore-badge" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener" aria-label="Download CDL One Stop on the App Store"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"></a>
-      </div>
-      <p class="cta-fineprint">Your study progress stays on your device. We don't sell your data.</p>
-    </div>
-  </div>
-</section>
-
-<footer class="app-footer">
-  <div class="app-footer-brand"><img src="portfolio-screenshots/cdl-icon.png" alt="">CDL One Stop</div>
-  <div class="app-footer-links"><a href="cdl-marketing.html">Home</a><a href="cdl-support.html">Support</a><a href="cdl-terms.html">Terms</a><a href="cdl-privacy.html">Privacy</a><a href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">App Store</a><a href="mailto:harmonyStack@gmail.com">Contact</a><a href="harmony-stack-services.html">Harmony Stack</a></div>
-  <div class="app-footer-fine">CDL One Stop is an iOS app built by Harmony Stack.<br>Support: <a href="mailto:harmonyStack@gmail.com">harmonyStack@gmail.com</a> • © 2026 Harmony Stack. All rights reserved.</div>
-</footer>
-
-<script>
 (function(){
-  var stages = [].slice.call(document.querySelectorAll('[data-scrollshow]'));
-  if(!stages.length) return;
-  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  function mobile(){ return window.innerWidth <= 768; }
-  function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
-  function update(){
-    var vh = window.innerHeight || document.documentElement.clientHeight, m = mobile();
-    for(var i=0;i<stages.length;i++){
-      var stageEl = stages[i];
-      var card = stageEl.querySelector('.scrollshow-card');
-      var title = stageEl.querySelector('.scrollshow-title');
-      if(!card) continue;
-      var r = stageEl.getBoundingClientRect();
-      var H = stageEl.offsetHeight || r.height;
-      var p = clamp((-r.top) / Math.max(H - vh, 1), 0, 1);
-      var e = p*p*(3-2*p);
-      var rotate = 20 - 20*e;
-      var sf = m ? 0.7 : 1.05, st = m ? 0.9 : 1;
-      var scale = sf + (st - sf) * e;
-      card.style.transform = 'rotateX(' + rotate.toFixed(2) + 'deg) scale(' + scale.toFixed(3) + ')';
-      if(title){ title.style.transform = 'translateY(' + (-100 * e).toFixed(1) + 'px)'; }
-    }
-  }
-  var ticking = false;
-  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(function(){ update(); ticking = false; }); } }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  window.addEventListener('load', update);
-  update();
-})();
-</script>
-
-<script>
-(function(){
-  function initGooey(wrap){
-    var t1 = wrap.querySelector('.gt-1');
-    var t2 = wrap.querySelector('.gt-2');
-    var texts;
-    try { texts = JSON.parse(wrap.getAttribute('data-texts')); } catch(e){ texts = []; }
-    if(!texts.length || !t1 || !t2) return;
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(reduce){ t1.textContent = texts[0]; t1.style.opacity = '1'; t2.style.display = 'none'; return; }
-
-    var morphTime = 1.0, cooldownTime = 1.6;
-    var textIndex = texts.length - 1;
-    var time = performance.now();
-    var morph = 0, cooldown = cooldownTime;
-
-    t1.textContent = texts[textIndex % texts.length];
-    t2.textContent = texts[(textIndex + 1) % texts.length];
-
-    function setMorph(fraction){
-      t2.style.filter = 'blur(' + Math.min(8 / fraction - 8, 100) + 'px)';
-      t2.style.opacity = Math.pow(fraction, 0.4) * 100 + '%';
-      var f = 1 - fraction;
-      t1.style.filter = 'blur(' + Math.min(8 / f - 8, 100) + 'px)';
-      t1.style.opacity = Math.pow(f, 0.4) * 100 + '%';
-    }
-    function doCooldown(){
-      morph = 0;
-      t2.style.filter = ''; t2.style.opacity = '100%';
-      t1.style.filter = ''; t1.style.opacity = '0%';
-    }
-    function doMorph(){
-      morph -= cooldown; cooldown = 0;
-      var fraction = morph / morphTime;
-      if(fraction > 1){ cooldown = cooldownTime; fraction = 1; }
-      setMorph(fraction);
-    }
-    function animate(now){
-      requestAnimationFrame(animate);
-      var shouldIncrement = cooldown > 0;
-      var dt = (now - time) / 1000;
-      time = now;
-      cooldown -= dt;
-      if(cooldown <= 0){
-        if(shouldIncrement){
-          textIndex++;
-          t1.textContent = texts[textIndex % texts.length];
-          t2.textContent = texts[(textIndex + 1) % texts.length];
-        }
-        doMorph();
-      } else {
-        doCooldown();
-      }
-    }
-    requestAnimationFrame(animate);
-  }
-  var wraps = document.querySelectorAll('[data-gooey]');
-  for(var i = 0; i < wraps.length; i++){ initGooey(wraps[i]); }
-})();
-</script>
-
-<script>
-(function(){
-  var sec = document.querySelector('[data-device-gallery]');
-  if(!sec) return;
-  var segs = [].slice.call(document.querySelectorAll('.dg-seg'));
-  var groups = [].slice.call(sec.querySelectorAll('.dg-group'));
-  function show(view){
-    groups.forEach(function(g){
-      var on = g.getAttribute('data-view') === view;
-      g.classList.toggle('is-active', on);
-      if(on){ g.removeAttribute('hidden'); } else { g.setAttribute('hidden', ''); }
+  var opts=document.querySelectorAll('.quiz-opt');
+  var fb=document.getElementById('quiz-fb');
+  if(!opts.length||!fb)return;
+  opts.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var correct=btn.getAttribute('data-correct')==='true';
+      opts.forEach(function(o){
+        o.disabled=true;
+        if(o.getAttribute('data-correct')==='true')o.classList.add('is-correct');
+      });
+      if(!correct)btn.classList.add('is-wrong');
+      fb.className='quiz-feedback is-show '+(correct?'ok':'bad');
+      fb.textContent=correct
+        ? 'Correct — H is the Hazardous Materials endorsement for placarded loads. 800+ more questions like this in the app.'
+        : 'Not quite. The H endorsement covers hazardous materials requiring placards. Review endorsements in the app until these stick.';
     });
-    segs.forEach(function(s){
-      s.setAttribute('aria-pressed', String(s.getAttribute('data-device') === view));
-    });
-  }
-  segs.forEach(function(s){
-    s.addEventListener('click', function(){ show(s.getAttribute('data-device')); });
   });
+})();
+
+(function(){
+  var bar=document.getElementById('sticky-bar');
+  if(!bar)return;
+  var hero=document.querySelector('.hero');
+  function check(){
+    var y=window.scrollY||document.documentElement.scrollTop;
+    var threshold=hero?hero.offsetHeight*0.55:280;
+    bar.classList.toggle('is-show', y>threshold);
+  }
+  window.addEventListener('scroll',check,{passive:true});
+  check();
 })();
 </script>
 </body>
