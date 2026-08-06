@@ -493,6 +493,66 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
 }
 .proof-line strong{color:var(--dark)}
 
+
+/* Side section scroller */
+.side-jump{
+  position:fixed;right:14px;top:50%;transform:translateY(-50%);
+  z-index:75;display:flex;flex-direction:column;align-items:center;gap:8px;
+  padding:10px 8px;border-radius:999px;
+  background:rgba(255,255,255,.88);border:1px solid var(--border);
+  box-shadow:0 12px 32px rgba(26,21,32,.12);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+.side-jump-btn{
+  width:36px;height:36px;border-radius:50%;border:1.5px solid var(--border);
+  background:var(--white);color:var(--dark);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;padding:0;
+  font-size:16px;line-height:1;font-weight:700;
+  transition:background .15s,border-color .15s,color .15s,transform .12s,opacity .15s;
+}
+.side-jump-btn:hover:not(:disabled){
+  background:linear-gradient(165deg,#f07828,#c43a08);border-color:transparent;color:#fff;
+  transform:scale(1.05);
+}
+.side-jump-btn:disabled{opacity:.28;cursor:not-allowed}
+.side-jump-btn:focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
+.side-jump-dots{display:flex;flex-direction:column;align-items:center;gap:7px;padding:4px 0}
+.side-jump-dot{
+  position:relative;width:9px;height:9px;border-radius:50%;padding:0;border:0;
+  background:var(--border);cursor:pointer;transition:transform .15s,background .15s,box-shadow .15s;
+}
+.side-jump-dot:hover,.side-jump-dot.is-active{
+  background:linear-gradient(165deg,#f07828,#c43a08);
+  transform:scale(1.25);
+  box-shadow:0 0 0 3px rgba(240,120,40,.22);
+}
+.side-jump-dot:focus-visible{outline:2px solid var(--purple2);outline-offset:3px}
+.side-jump-dot .tip{
+  position:absolute;right:calc(100% + 12px);top:50%;transform:translateY(-50%);
+  white-space:nowrap;font-size:11.5px;font-weight:700;letter-spacing:.02em;
+  color:#fff;background:var(--dark);padding:6px 10px;border-radius:8px;
+  opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s,visibility .15s;
+  box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+.side-jump-dot .tip::after{
+  content:"";position:absolute;left:100%;top:50%;transform:translateY(-50%);
+  border:5px solid transparent;border-left-color:var(--dark);
+}
+.side-jump-dot:hover .tip,.side-jump-dot:focus-visible .tip{opacity:1;visibility:visible}
+@media(max-width:900px){
+  .side-jump{right:8px;padding:8px 6px;gap:6px}
+  .side-jump-btn{width:32px;height:32px;font-size:14px}
+  .side-jump-dot{width:8px;height:8px}
+  .side-jump-dot .tip{display:none}
+}
+@media(max-width:520px){
+  .side-jump{right:6px;bottom:88px;top:auto;transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .side-jump-btn,.side-jump-dot{transition:none}
+  html{scroll-behavior:auto}
+}
+
 </style>
 </head>
 <body>
@@ -1554,6 +1614,13 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
   </div>
 </footer>
 
+
+<nav class="side-jump" id="side-jump" aria-label="Jump to page section">
+  <button type="button" class="side-jump-btn" id="side-jump-up" aria-label="Previous section">↑</button>
+  <div class="side-jump-dots" id="side-jump-dots" role="list"></div>
+  <button type="button" class="side-jump-btn" id="side-jump-down" aria-label="Next section">↓</button>
+</nav>
+
 <div class="sticky" id="sticky" role="region" aria-label="Contact shortcuts">
   <a class="s1" href="#contact">Get a quote</a>
   <a class="s2" href="mailto:harmonystack@gmail.com?subject=Project%20inquiry">Email</a>
@@ -1780,6 +1847,116 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
     status.textContent = 'Opening your email app with the inquiry filled in…';
     window.location.href = href;
   });
+})();
+</script>
+
+
+<script>
+(function(){
+  var sections = [
+    { id: 'top', label: 'Top' },
+    { id: 'services', label: 'Services' },
+    { id: 'work', label: 'Work' },
+    { id: 'cases', label: 'Cases' },
+    { id: 'pricing', label: 'Pricing' },
+    { id: 'products', label: 'Products' },
+    { id: 'apps', label: 'Apps' },
+    { id: 'process', label: 'Process' },
+    { id: 'faq', label: 'FAQ' },
+    { id: 'contact', label: 'Contact' }
+  ];
+  var dotsEl = document.getElementById('side-jump-dots');
+  var upBtn = document.getElementById('side-jump-up');
+  var downBtn = document.getElementById('side-jump-down');
+  if (!dotsEl || !upBtn || !downBtn) return;
+
+  // Keep only sections that exist
+  sections = sections.filter(function(s){ return document.getElementById(s.id); });
+  if (!sections.length) return;
+
+  var dots = [];
+  sections.forEach(function(s, i){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'side-jump-dot';
+    b.setAttribute('role', 'listitem');
+    b.setAttribute('aria-label', 'Go to ' + s.label);
+    b.dataset.index = String(i);
+    var tip = document.createElement('span');
+    tip.className = 'tip';
+    tip.textContent = s.label;
+    b.appendChild(tip);
+    b.addEventListener('click', function(){ goTo(i); });
+    dotsEl.appendChild(b);
+    dots.push(b);
+  });
+
+  function activeIndex(){
+    var mid = window.scrollY + window.innerHeight * 0.35;
+    var best = 0, bestD = Infinity;
+    for (var i = 0; i < sections.length; i++) {
+      var el = document.getElementById(sections[i].id);
+      if (!el) continue;
+      var top = el.getBoundingClientRect().top + window.scrollY;
+      var d = Math.abs(top - mid);
+      // Prefer the last section whose top is above mid
+      if (top <= mid + 40) { best = i; bestD = d; }
+      else if (d < bestD && i === 0) { best = 0; bestD = d; }
+    }
+    // refine: closest section top to viewport third
+    best = 0; bestD = Infinity;
+    var target = window.scrollY + window.innerHeight * 0.28;
+    for (var j = 0; j < sections.length; j++) {
+      var e = document.getElementById(sections[j].id);
+      if (!e) continue;
+      var t = e.getBoundingClientRect().top + window.scrollY;
+      var dist = Math.abs(t - target);
+      if (t <= target + 80 && (target - t) < bestD + 200) {
+        // prefer sections already reached
+      }
+      if (dist < bestD) { bestD = dist; best = j; }
+    }
+    // better: last section with top <= target
+    var last = 0;
+    for (var k = 0; k < sections.length; k++) {
+      var el2 = document.getElementById(sections[k].id);
+      if (!el2) continue;
+      var top2 = el2.getBoundingClientRect().top + window.scrollY;
+      if (top2 <= target + 24) last = k;
+    }
+    return last;
+  }
+
+  function sync(){
+    var ai = activeIndex();
+    dots.forEach(function(d, i){
+      d.classList.toggle('is-active', i === ai);
+      d.setAttribute('aria-current', i === ai ? 'true' : 'false');
+    });
+    upBtn.disabled = ai <= 0;
+    downBtn.disabled = ai >= sections.length - 1;
+  }
+
+  function goTo(i){
+    i = Math.max(0, Math.min(sections.length - 1, i));
+    var el = document.getElementById(sections[i].id);
+    if (!el) return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // sync after scroll settles a bit
+    setTimeout(sync, 350);
+  }
+
+  upBtn.addEventListener('click', function(){ goTo(activeIndex() - 1); });
+  downBtn.addEventListener('click', function(){ goTo(activeIndex() + 1); });
+
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){ sync(); ticking = false; });
+  }, { passive: true });
+  window.addEventListener('resize', sync);
+  sync();
 })();
 </script>
 
