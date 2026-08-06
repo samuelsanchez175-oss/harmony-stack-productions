@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#14622f">
 <title>CDL One Stop — Pass your CDL written test for $1</title>
-<meta name="description" content="Pass your CDL written test for $1 one-time. No ads, no subscription. iPhone now, Android starting August. All 50 states + DC, Class A/B/C, readiness score, pre-trip Parts Map. English y Español.">
+<meta name="description" content="Pass your CDL written test for $1 one-time. Available on iPhone, iPad, and Mac — Android very soon. No ads, no subscription. All 50 states + DC, Class A/B/C, readiness score, pre-trip Parts Map. English y Español.">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -159,12 +159,44 @@ img{max-width:100%;display:block}
 .quiz-cta .hs-cta:hover{background:var(--accent-deep)}
 .quiz-cta-note{display:block;margin-top:10px;font-size:13px;color:var(--ink-soft)}
 
-/* Screens */
+/* Screens / device gallery */
 .screens{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(20px,4vw,36px)}
 .screen-item{flex:0 1 220px;text-align:center}
 .screen-item .phone{width:100%;max-width:220px;margin:0 auto 14px;transform:none}
 .screen-item p{font-size:14px;color:var(--ink-soft);line-height:1.45}
 .screen-item b{display:block;color:var(--ink);font-size:15px;margin-bottom:4px}
+.platforms{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 auto 28px;max-width:720px}
+.plat{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:9px 14px;font-size:13.5px;font-weight:600;color:var(--ink-soft)}
+.plat strong{color:var(--ink)}
+.plat .tag{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--gold);color:#3a2c06;padding:2px 7px;border-radius:999px}
+.plat .tag.live{background:var(--accent-soft);color:var(--accent-deep);border:1px solid #cfe6d6}
+.dg-toggle-wrap{display:flex;justify-content:center;margin:0 auto 28px}
+.dg-toggle{display:inline-flex;gap:4px;padding:5px;background:var(--card);border:1px solid var(--border);border-radius:999px;box-shadow:0 3px 12px rgba(20,40,25,.07);flex-wrap:wrap;justify-content:center}
+.dg-seg{appearance:none;-webkit-appearance:none;border:0;background:transparent;cursor:pointer;font:inherit;font-size:13.5px;font-weight:600;color:var(--ink-soft);padding:9px 16px;border-radius:999px;display:inline-flex;align-items:center;gap:7px;transition:color .18s,background .18s,box-shadow .18s}
+.dg-seg:hover{color:var(--accent-deep)}
+.dg-seg[aria-pressed="true"]{background:var(--accent);color:#fff;box-shadow:0 4px 12px rgba(31,138,76,.3)}
+.dg-seg[aria-pressed="true"]:hover{color:#fff}
+.dg-group{display:none}
+.dg-group.is-active{display:block;animation:dgfade .4s ease}
+@keyframes dgfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.dg-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(22px,4vw,40px)}
+.dg-item{text-align:center;display:flex;flex-direction:column;align-items:center}
+.dg-cap{margin-top:14px;max-width:230px}
+.dg-cap-t{display:block;font-weight:700;font-size:15px;color:var(--ink);letter-spacing:-.01em;margin-bottom:4px}
+.dg-cap-d{font-size:13px;color:var(--ink-soft);line-height:1.45}
+.dg-group--iphone .dg-item{flex:0 1 210px}
+.dg-group--tablet .dg-item,.dg-group--mac .dg-item{flex:0 1 380px}
+.dg-group--tablet .dg-cap,.dg-group--mac .dg-cap{max-width:380px}
+.dg-phone{position:relative;width:clamp(180px,52vw,210px);background:#11140f;border-radius:36px;padding:8px;box-shadow:0 22px 46px rgba(0,0,0,.22),0 0 0 1px rgba(255,255,255,.05) inset}
+.dg-phone::before{content:"";position:absolute;top:15px;left:50%;transform:translateX(-50%);width:76px;height:18px;background:#11140f;border-radius:999px;z-index:2}
+.dg-phone img{display:block;width:100%;height:auto;aspect-ratio:1284/2778;object-fit:cover;border-radius:28px;background:#fff}
+.dg-pad{position:relative;width:clamp(260px,78vw,380px);background:#15140f;border-radius:22px;padding:12px;box-shadow:0 24px 50px rgba(0,0,0,.24),0 0 0 1px rgba(255,255,255,.05) inset}
+.dg-pad::before{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:6px;height:6px;background:#2c2a22;border-radius:50%;z-index:2}
+.dg-pad img{display:block;width:100%;height:auto;aspect-ratio:2048/2732;object-fit:cover;border-radius:12px;background:#fff}
+.dg-mac{position:relative;width:clamp(280px,86vw,420px);background:#1a1916;border-radius:14px 14px 0 0;padding:10px 10px 0;box-shadow:0 24px 50px rgba(0,0,0,.26)}
+.dg-mac::after{content:"";display:block;height:14px;margin:0 -18px;background:linear-gradient(#2a2824,#1c1b18);border-radius:0 0 6px 6px;box-shadow:0 8px 0 #0e0d0c}
+.dg-mac img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:6px;background:#fff}
+.dg-note{max-width:560px;margin:0 auto 22px;text-align:center;font-size:13.5px;font-weight:600;color:var(--accent-deep);background:var(--accent-soft);border:1px solid #cfe6d6;padding:11px 16px;border-radius:999px}
 
 /* Social */
 .reviews{display:grid;gap:14px}
@@ -232,15 +264,15 @@ img{max-width:100%;display:block}
 <header class="hero" id="top">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <span class="hero-eyebrow"><span class="dot" aria-hidden="true"></span> $1 one-time · iPhone now · Android starting August</span>
+      <span class="hero-eyebrow"><span class="dot" aria-hidden="true"></span> $1 one-time · iPhone · iPad · Mac · Android very soon</span>
       <h1>Pass your CDL written test for <em>$1</em>.</h1>
-      <p class="hero-sub">Other apps charge $15–$100 or bury you in ads. CDL One Stop is a full study system — readiness score, 13 test areas, pre-trip Parts Map — for less than a coffee.</p>
+      <p class="hero-sub">Other apps charge $15–$100 or bury you in ads. CDL One Stop is a full study system — readiness score, 13 test areas, pre-trip Parts Map — on iPhone, iPad, and Mac. Android is very soon.</p>
       <ul class="hero-bullets">
         <li>All 50 states + DC</li>
         <li>Class A · B · C</li>
-        <li>No subscription</li>
+        <li>iPhone · iPad · Mac</li>
         <li>English y Español</li>
-        <li>Android · starting August</li>
+        <li>Android · very soon</li>
       </ul>
       <div class="hero-cta-row">
         <!-- Store CTAs: replace MOCK_PLAY_URL when the real listing is live -->
@@ -248,27 +280,27 @@ img{max-width:100%;display:block}
           <a class="appstore-badge" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener" aria-label="Download CDL One Stop on the App Store">
             <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
           </a>
-          <a class="play-badge is-mock" href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play listing coming August — mock link while Android is in development" aria-label="Get CDL One Stop on Google Play — coming August (preview link)">
-            <span class="play-soon">August</span>
+          <a class="play-badge is-mock" href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play listing very soon — mock link while Android is in development" aria-label="Get CDL One Stop on Google Play — very soon (preview link)">
+            <span class="play-soon">Soon</span>
             <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
           </a>
         </div>
         <div class="cta-pair">
           <a class="hs-cta" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.54c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.62-1.7-3.19-1.72-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.18-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.74 2.21 1.1-.05 1.52-.71 2.85-.71 1.33 0 1.71.71 2.87.69 1.19-.02 1.94-1.08 2.66-2.15.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.34-3.54zM14.88 5.6c.6-.74 1.01-1.75.9-2.77-.87.04-1.94.59-2.57 1.32-.56.65-1.05 1.69-.92 2.68.97.08 1.97-.49 2.59-1.23z"/></svg>
-            iPhone · $1
+            Apple · $1
           </a>
-          <a class="hs-cta hs-cta--play" href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play coming August — mock link">
-            Android · August
+          <a class="hs-cta hs-cta--play" href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play very soon — mock link">
+            Android · very soon
           </a>
         </div>
-        <span class="hs-cta-note">One-time $1 · No ads · iPhone live now · Android on Play starting August</span>
+        <span class="hs-cta-note">One-time $1 · No ads · iPhone, iPad &amp; Mac live · Android very soon</span>
       </div>
       <div class="hs-proof" aria-label="Key facts">
-        <div><b>50 states</b><span>+ DC</span></div>
-        <div><b>13 areas</b><span>Test banks</span></div>
-        <div><b>80%</b><span>Pass line</span></div>
-        <div><b>$1</b><span>Once</span></div>
+        <div><b>iPhone</b><span>Live</span></div>
+        <div><b>iPad</b><span>Live</span></div>
+        <div><b>Mac</b><span>Live</span></div>
+        <div><b>Android</b><span>Very soon</span></div>
       </div>
     </div>
     <div class="hero-visual" aria-hidden="true">
@@ -322,7 +354,7 @@ img{max-width:100%;display:block}
           <li>Full study system, no ads</li>
           <li>Readiness score vs 80% pass line</li>
           <li>Pre-trip Parts Map + drills</li>
-          <li>All 50 states · Class A/B/C · EN/ES</li>
+          <li>iPhone, iPad &amp; Mac live · Android very soon</li>
         </ul>
       </article>
     </div>
@@ -331,8 +363,8 @@ img{max-width:100%;display:block}
       <a class="appstore-badge" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener" aria-label="Download on the App Store">
         <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
       </a>
-      <a class="play-badge is-mock" href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play listing coming August — mock link" aria-label="Get it on Google Play — coming August">
-        <span class="play-soon">August</span>
+      <a class="play-badge is-mock" href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play listing very soon — mock link" aria-label="Get it on Google Play — very soon">
+        <span class="play-soon">Soon</span>
         <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
       </a>
     </div>
@@ -417,45 +449,133 @@ img{max-width:100%;display:block}
           <a class="appstore-badge" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener" aria-label="Download on the App Store">
             <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
           </a>
-          <a class="play-badge is-mock" href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play listing coming August — mock link" aria-label="Get it on Google Play — coming August">
-            <span class="play-soon">August</span>
+          <a class="play-badge is-mock" href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play listing very soon — mock link" aria-label="Get it on Google Play — very soon">
+            <span class="play-soon">Soon</span>
             <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
           </a>
         </div>
-        <span class="quiz-cta-note">One-time $1 · iPhone live · Android on Play starting August · EN + ES</span>
+        <span class="quiz-cta-note">One-time $1 · iPhone, iPad &amp; Mac · Android very soon · EN + ES</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SCREENS (trimmed) -->
+<!-- SCREENS + DEVICE GALLERY -->
 <section class="section" id="screens">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-kicker">Inside the app</span>
-      <h2>Clear screens. One job: pass.</h2>
-      <p>Study home, readiness, and pre-trip — the core loop. Streaks and badges keep you showing up.</p>
+      <span class="section-kicker">See every screen</span>
+      <h2>Available on iPhone, iPad &amp; Mac.</h2>
+      <p>Study at home on a big screen or drill in the cab on your phone. Android is very soon on Google Play.</p>
     </div>
-    <div class="screens">
-      <figure class="screen-item">
-        <div class="phone"><img src="portfolio-screenshots/cdl-app/iphone/01-home.png" alt="Study home with streaks and pre-trip shortcuts" loading="lazy"></div>
-        <p><b>Study home</b>Daily streak, XP, and one-tap drills.</p>
-      </figure>
-      <figure class="screen-item">
-        <div class="phone"><img src="portfolio-screenshots/cdl-app/iphone/02-readiness.png" alt="Readiness dashboard" loading="lazy"></div>
-        <p><b>Am I ready?</b>Score every bank against 80%.</p>
-      </figure>
-      <figure class="screen-item">
-        <div class="phone"><img src="portfolio-screenshots/cdl-app/iphone/03-pretrip.png" alt="Pre-trip Parts Map" loading="lazy"></div>
-        <p><b>Parts Map</b>Tap components. Say the inspection out loud.</p>
-      </figure>
+
+    <div class="platforms" aria-label="Platform availability">
+      <span class="plat"><strong>iPhone</strong> <span class="tag live">Live</span></span>
+      <span class="plat"><strong>iPad</strong> <span class="tag live">Live</span></span>
+      <span class="plat"><strong>Mac</strong> <span class="tag live">Live</span></span>
+      <span class="plat"><strong>Android</strong> <span class="tag">Very soon</span></span>
     </div>
-    <div class="store-badges store-badges--center store-badges--on-light" style="margin-top:36px">
+
+    <div class="dg-toggle-wrap">
+      <div class="dg-toggle" role="group" aria-label="Preview device">
+        <button type="button" class="dg-seg" data-device="iphone" aria-pressed="true" aria-controls="dg-view-iphone">iPhone</button>
+        <button type="button" class="dg-seg" data-device="ipad" aria-pressed="false" aria-controls="dg-view-ipad">iPad</button>
+        <button type="button" class="dg-seg" data-device="mac" aria-pressed="false" aria-controls="dg-view-mac">Mac</button>
+      </div>
+    </div>
+
+    <div data-device-gallery>
+      <!-- iPhone -->
+      <div class="dg-group dg-group--iphone is-active" id="dg-view-iphone" data-view="iphone">
+        <div class="dg-grid">
+          <figure class="dg-item">
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/01-home.png" alt="Study home on iPhone"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Study home</span><span class="dg-cap-d">Daily streaks, XP, and one-tap pre-trip drills.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/02-readiness.png" alt="Readiness dashboard on iPhone"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Am I ready?</span><span class="dg-cap-d">Score every bank against the 80% pass line.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/03-pretrip.png" alt="Pre-trip Parts Map on iPhone"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Parts Map</span><span class="dg-cap-d">Tap components and rehearse the walk-around out loud.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/04-badges.png" alt="Achievement badges on iPhone"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">3D badges</span><span class="dg-cap-d">Earn collectible medals as you level up.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/05-license.png" alt="License card on iPhone"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">License &amp; vault</span><span class="dg-cap-d">Your progress framed like a real CDL card.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-phone"><img loading="lazy" src="portfolio-screenshots/cdl-app/iphone/06-streak.png" alt="Streak calendar on iPhone"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Streak calendar</span><span class="dg-cap-d">Keep the daily habit going until test day.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- iPad -->
+      <div class="dg-group dg-group--tablet" id="dg-view-ipad" data-view="ipad" hidden>
+        <p class="dg-note">Native iPad layout — room to study readiness, pre-trip, and articles side by side.</p>
+        <div class="dg-grid">
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/01-home.png" alt="Study home on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Study home</span><span class="dg-cap-d">The full study hub with space to breathe.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/02-readiness.png" alt="Readiness roadmap on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Readiness roadmap</span><span class="dg-cap-d">Every test area at a glance on the bigger screen.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/06-pretrip.png" alt="Parts Map on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Parts Map</span><span class="dg-cap-d">Interactive pre-trip walk-around, full size.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/07-sayit.png" alt="How to Say It on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">How to Say It</span><span class="dg-cap-d">Recite-it-out-loud drills for the spoken inspection.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/05-leaderboard.png" alt="Leaderboard on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Leaderboard</span><span class="dg-cap-d">Stack your progress against other CDL students.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-pad"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/08-articles.png" alt="Study articles on iPad"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Study articles</span><span class="dg-cap-d">Deep-dives for every exam topic.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Mac (same universal build / iPad screens in desktop frame) -->
+      <div class="dg-group dg-group--mac" id="dg-view-mac" data-view="mac" hidden>
+        <p class="dg-note">Mac App Store / Apple silicon — study on your desktop with the same universal app.</p>
+        <div class="dg-grid">
+          <figure class="dg-item">
+            <div class="dg-mac"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/01-home.png" alt="Study home on Mac"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Study home on Mac</span><span class="dg-cap-d">Drill banks at a desk before you head out.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-mac"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/02-readiness.png" alt="Readiness on Mac"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Readiness roadmap</span><span class="dg-cap-d">See every weak bank before you book the DMV.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-mac"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/06-pretrip.png" alt="Parts Map on Mac"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Parts Map</span><span class="dg-cap-d">Practice the walk-around full-screen.</span></figcaption>
+          </figure>
+          <figure class="dg-item">
+            <div class="dg-mac"><img loading="lazy" src="portfolio-screenshots/cdl-app/ipad/10-profile.png" alt="Profile on Mac"></div>
+            <figcaption class="dg-cap"><span class="dg-cap-t">Your profile</span><span class="dg-cap-d">Class, transmission, and progress in one place.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="store-badges store-badges--center store-badges--on-light" style="margin-top:40px">
       <a class="appstore-badge" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener" aria-label="Download on the App Store">
         <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
       </a>
-      <a class="play-badge is-mock" href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play listing coming August — mock link" aria-label="Get it on Google Play — coming August">
-        <span class="play-soon">August</span>
+      <a class="play-badge is-mock" href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play listing very soon — mock link" aria-label="Get it on Google Play — very soon">
+        <span class="play-soon">Soon</span>
         <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
       </a>
     </div>
@@ -474,7 +594,8 @@ img{max-width:100%;display:block}
       <span class="social-pill"><strong>No ads</strong> mid-question</span>
       <span class="social-pill"><strong>$1</strong> one-time</span>
       <span class="social-pill"><strong>EN + ES</strong> full support</span>
-      <span class="social-pill"><strong>Android</strong> starting August</span>
+      <span class="social-pill"><strong>iPhone · iPad · Mac</strong> live</span>
+      <span class="social-pill"><strong>Android</strong> very soon</span>
       <span class="social-pill"><strong>Privacy</strong> progress on device</span>
     </div>
     <div class="reviews">
@@ -526,8 +647,12 @@ img{max-width:100%;display:block}
         <p>Yes. English y Español — including state licensing strings — so more drivers can prep in the language that sticks.</p>
       </details>
       <details>
+        <summary>What devices is it on?</summary>
+        <p><strong>iPhone, iPad, and Mac are live now</strong> via the App Store (universal Apple app). <strong>Android is very soon</strong> on Google Play — the Play badge on this page is a preview link until the listing goes live.</p>
+      </details>
+      <details>
         <summary>Is it on Android?</summary>
-        <p>Yes — Android is coming <strong>starting in August</strong> on Google Play. Download on iPhone today from the App Store. The Play Store button on this page is a preview link until the listing goes live — we’ll swap in the real store URL the day Android ships.</p>
+        <p>Very soon. The Android build is in development and will ship on Google Play. Until then, use iPhone, iPad, or Mac for $1 one-time. We’ll replace the mock Play Store URL the day it launches.</p>
       </details>
       <details>
         <summary>Do I need an account?</summary>
@@ -542,20 +667,20 @@ img{max-width:100%;display:block}
   <div class="wrap">
     <div class="cta-band">
       <h2>One dollar. No ads. Walk in ready.</h2>
-      <p>iPhone today. Android starting August. Drill the banks, hit the 80% line, rehearse the pre-trip — then book the test.</p>
+      <p>iPhone, iPad &amp; Mac today. Android very soon. Drill the banks, hit the 80% line, rehearse the pre-trip — then book the test.</p>
       <div class="cta-inner">
         <div class="store-badges store-badges--center">
           <a class="appstore-badge" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener" aria-label="Download on the App Store">
             <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
           </a>
-          <a class="play-badge is-mock" href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play listing coming August — mock link" aria-label="Get it on Google Play — coming August">
-            <span class="play-soon">August</span>
+          <a class="play-badge is-mock" href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play listing very soon — mock link" aria-label="Get it on Google Play — very soon">
+            <span class="play-soon">Soon</span>
             <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
           </a>
         </div>
         <div class="cta-pair">
-          <a class="hs-cta" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">iPhone · $1</a>
-          <a class="hs-cta hs-cta--play" href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play coming August — mock link">Android · August</a>
+          <a class="hs-cta" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">Apple · $1</a>
+          <a class="hs-cta hs-cta--play" href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play very soon — mock link">Android · very soon</a>
         </div>
       </div>
       <p class="cta-fineprint">Your study progress stays on your device. We don’t sell your data. Play Store link is a placeholder until launch.</p>
@@ -571,22 +696,22 @@ img{max-width:100%;display:block}
     <a href="cdl-terms.html">Terms</a>
     <a href="cdl-privacy.html">Privacy</a>
     <a href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">App Store</a>
-    <a href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play coming August — mock link">Google Play</a>
+    <a href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play very soon — mock link">Google Play</a>
     <a href="mailto:harmonyStack@gmail.com">Contact</a>
     <a href="harmony-stack-services.html">Harmony Stack</a>
   </div>
-  <div class="app-footer-fine">CDL One Stop is built by Harmony Stack — on iPhone now, Android starting August.<br>Support: <a href="mailto:harmonyStack@gmail.com">harmonyStack@gmail.com</a> · © 2026 Harmony Stack. Not affiliated with any DMV or FMCSA.</div>
+  <div class="app-footer-fine">CDL One Stop is built by Harmony Stack — iPhone, iPad &amp; Mac live; Android very soon.<br>Support: <a href="mailto:harmonyStack@gmail.com">harmonyStack@gmail.com</a> · © 2026 Harmony Stack. Not affiliated with any DMV or FMCSA.</div>
 </footer>
 
 <!-- Sticky CTA -->
 <div class="sticky-bar" id="sticky-bar" role="region" aria-label="Download shortcut">
   <div class="sticky-copy">
     <b>CDL One Stop</b>
-    $1 once · Play in August
+    iPhone · iPad · Mac · Android soon
   </div>
   <div class="sticky-actions">
-    <a class="sticky-cta" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">iPhone</a>
-    <a class="sticky-cta sticky-cta--play" href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play coming August — mock link">Android</a>
+    <a class="sticky-cta" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">Apple</a>
+    <a class="sticky-cta sticky-cta--play" href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play very soon — mock link">Android</a>
   </div>
 </div>
 
@@ -641,6 +766,26 @@ img{max-width:100%;display:block}
   }
   window.addEventListener('scroll',check,{passive:true});
   check();
+})();
+
+(function(){
+  var sec=document.querySelector('[data-device-gallery]');
+  if(!sec)return;
+  var segs=[].slice.call(document.querySelectorAll('.dg-seg'));
+  var groups=[].slice.call(sec.querySelectorAll('.dg-group'));
+  function show(view){
+    groups.forEach(function(g){
+      var on=g.getAttribute('data-view')===view;
+      g.classList.toggle('is-active',on);
+      if(on){g.removeAttribute('hidden');}else{g.setAttribute('hidden','');}
+    });
+    segs.forEach(function(s){
+      s.setAttribute('aria-pressed',String(s.getAttribute('data-device')===view));
+    });
+  }
+  segs.forEach(function(s){
+    s.addEventListener('click',function(){show(s.getAttribute('data-device'));});
+  });
 })();
 </script>
 </body>
