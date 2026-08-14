@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f8a4c">
+<title>CDL One Stop — Delete your data</title>
+<meta name="description" content="How to delete your CDL One Stop account and personal data. In-app Delete Account plus email request for cloud records. Official user-data deletion URL for Apple and Meta.">
+<link rel="canonical" href="https://harmony-stack-productions.vercel.app/cdl-delete">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#1f8a4c;--accent-deep:#14622f;--accent-soft:#e7f3ea;--gold:#e3b24a;--ink:#15281c;--ink-soft:#4a5b50;--paper:#f6f4ec;--paper-2:#eef1e8;--card:#ffffff;--border:#dde2d3}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+a{color:inherit}
+.app-nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px clamp(16px,4vw,40px);background:rgba(255,255,255,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.app-nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);font-weight:700}
+.app-nav-brand img{width:34px;height:34px;border-radius:9px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.app-nav-brand span{font-size:15px;letter-spacing:-.01em}
+.app-nav-links{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.app-nav-links a{text-decoration:none;color:var(--ink-soft);font-size:13.5px;font-weight:500;padding:8px 14px;border-radius:999px;transition:background .15s,color .15s;white-space:nowrap}
+.app-nav-links a:hover{background:var(--accent-soft);color:var(--accent-deep)}
+.app-nav-links a.is-active{background:var(--accent);color:#fff}
+.app-nav-links a.nav-store{border:1.5px solid var(--accent);color:var(--accent-deep)}
+.app-nav-links a.nav-store:hover{background:var(--accent);color:#fff}
+.app-footer{margin-top:84px;padding:48px clamp(16px,4vw,40px);background:var(--ink);color:rgba(255,255,255,.82);text-align:center}
+.app-footer-brand{display:inline-flex;align-items:center;gap:10px;font-weight:700;color:#fff;margin-bottom:8px}
+.app-footer-brand img{width:28px;height:28px;border-radius:7px}
+.app-footer a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.32)}
+.app-footer-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:16px 0 10px;font-size:14px}
+.app-footer-fine{font-size:12px;opacity:.55;margin-top:12px;line-height:1.7}
+main{padding-top:clamp(34px,6vw,60px)}
+.legal-head{text-align:center;max-width:680px;margin:0 auto;padding-bottom:clamp(26px,4.5vw,40px)}
+.legal-icon{width:78px;height:78px;border-radius:19px;box-shadow:0 12px 30px rgba(20,98,47,.22);display:block;margin:0 auto 20px}
+.legal-eyebrow{display:inline-block;font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:6px 15px;border-radius:999px;margin-bottom:16px}
+.legal-head h1{font-size:clamp(27px,5.2vw,42px);line-height:1.14;letter-spacing:-.02em;font-weight:700}
+.legal-head h1 .accent{color:var(--accent)}
+.legal-head p{margin-top:13px;font-size:clamp(15px,2.2vw,17px);color:var(--ink-soft)}
+.legal-stamp{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:7px 14px;border-radius:999px}
+.legal-stamp .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
+.steps{display:grid;gap:14px;max-width:760px;margin:0 auto}
+.step{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:clamp(18px,3vw,24px);box-shadow:0 12px 32px rgba(20,40,28,.06)}
+.step-num{width:28px;height:28px;border-radius:999px;background:var(--accent-soft);color:var(--accent-deep);display:inline-grid;place-items:center;font-size:13px;font-weight:700;margin-bottom:10px}
+.step h2{font-size:18px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+.step p,.step li{color:var(--ink-soft);font-size:15.5px;line-height:1.65}
+.step p+p,.step ul{margin-top:10px}
+.step ul{padding-left:20px;display:grid;gap:6px}
+.step a{color:var(--accent-deep);font-weight:500;border-bottom:1px solid var(--border)}
+.note{max-width:760px;margin:22px auto 0;background:var(--accent-soft);border:1px solid rgba(31,138,76,.22);border-radius:14px;padding:16px 18px;color:var(--accent-deep);font-size:14.5px;line-height:1.65}
+.closing{margin-top:clamp(34px,5vw,52px);text-align:center;background:linear-gradient(160deg,var(--accent-deep),var(--accent));color:#fff;border-radius:24px;padding:clamp(32px,5vw,52px) clamp(22px,4vw,40px);box-shadow:0 18px 44px rgba(20,98,47,.26)}
+.closing h2{font-size:clamp(21px,3.6vw,28px);font-weight:700;letter-spacing:-.01em;color:#fff}
+.closing p{margin:12px auto 22px;max-width:520px;color:rgba(255,255,255,.9);font-size:15.5px}
+.btn-mail{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:var(--accent-deep);text-decoration:none;font-weight:600;font-size:15.5px;padding:15px 26px;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.btn-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+</style>
+</head>
+<body>
+<nav class="app-nav" aria-label="CDL One Stop pages">
+  <a class="app-nav-brand" href="cdl-marketing.html"><img src="portfolio-screenshots/cdl-icon.png" alt=""><span>CDL One Stop</span></a>
+  <div class="app-nav-links">
+    <a href="cdl-marketing.html">Marketing</a>
+    <a href="cdl-support.html">Support</a>
+    <a href="cdl-terms.html">Terms</a>
+    <a href="cdl-privacy.html">Privacy</a>
+    <a href="cdl-delete.html" class="is-active">Delete data</a>
+    <a class="nav-store" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">App Store ↗</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header class="legal-head">
+    <img class="legal-icon" src="portfolio-screenshots/cdl-icon.png" alt="CDL One Stop app icon">
+    <span class="legal-eyebrow">User data deletion</span>
+    <h1>Delete your <span class="accent">CDL One Stop</span> data</h1>
+    <p>This is the official user-data deletion page for the CDL One Stop app (Apple App Store and Meta / Facebook ads). Use it to wipe study progress on your device and to request deletion of any account we hold.</p>
+    <span class="legal-stamp"><span class="dot"></span>Effective August 14, 2026</span>
+  </header>
+
+  <div class="steps">
+    <article class="step" id="in-app">
+      <div class="step-num">1</div>
+      <h2>Delete everything on your device</h2>
+      <p>Open CDL One Stop → <strong>Profile</strong> → <strong>Account</strong> → <strong>Delete Account</strong>. Type DELETE to confirm.</p>
+      <p>That permanently wipes the User row on this device: test sessions, answers, badges, streaks, key dates, and module progress. There is no undo.</p>
+      <p>You can also delete the app itself. That removes all local CDL One Stop data from the device.</p>
+    </article>
+
+    <article class="step" id="cloud">
+      <div class="step-num">2</div>
+      <h2>Delete a signed-in account (cloud)</h2>
+      <p>If you signed in with <strong>Sign in with Apple</strong>, <strong>Google</strong>, or <strong>email</strong>, we also hold an account identifier and (when you provided it) an email address with our authentication provider.</p>
+      <p>Email <a href="mailto:harmonyStack@gmail.com?subject=CDL%20One%20Stop%20Account%20Deletion">harmonyStack@gmail.com</a> from that same address and ask us to delete your account. Write from the address on the account so we can verify it is you.</p>
+      <ul>
+        <li>We delete the account and associated records.</li>
+        <li>We confirm by email when it is done.</li>
+        <li>We aim to finish within 1–2 business days (sooner when we can).</li>
+      </ul>
+    </article>
+
+    <article class="step" id="other">
+      <div class="step-num">3</div>
+      <h2>Things we do not store ourselves</h2>
+      <ul>
+        <li><strong>App Store purchase</strong> — Apple holds billing. Refunds go through <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>.</li>
+        <li><strong>Game Center</strong> — scores and achievements are Apple’s. Manage them in Game Center / your Apple Account.</li>
+        <li><strong>Calendar events</strong> — delete those events in Calendar, and revoke calendar access in iOS Settings if you want.</li>
+      </ul>
+    </article>
+  </div>
+
+  <p class="note">We do not sell your data. Study progress stays on your device unless you signed in. Full details are in the <a href="cdl-privacy.html">Privacy Policy</a>.</p>
+
+  <section class="closing">
+    <h2>Request account deletion</h2>
+    <p>Send one email from the address on the account. A real person handles it.</p>
+    <div class="btn-row">
+      <a class="btn-mail" href="mailto:harmonyStack@gmail.com?subject=CDL%20One%20Stop%20Account%20Deletion">Email harmonyStack@gmail.com</a>
+    </div>
+  </section>
+</main>
+
+<footer class="app-footer">
+  <div class="app-footer-brand"><img src="portfolio-screenshots/cdl-icon.png" alt="">CDL One Stop</div>
+  <div class="app-footer-links">
+    <a href="cdl-marketing.html">Home</a>
+    <a href="cdl-support.html">Support</a>
+    <a href="cdl-terms.html">Terms</a>
+    <a href="cdl-privacy.html">Privacy</a>
+    <a href="cdl-delete.html">Delete data</a>
+    <a href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">App Store</a>
+    <a href="mailto:harmonyStack@gmail.com">Contact</a>
+  </div>
+  <div class="app-footer-fine">Official user-data deletion URL: https://harmony-stack-productions.vercel.app/cdl-delete<br>Support: <a href="mailto:harmonyStack@gmail.com">harmonyStack@gmail.com</a> · © 2026 Harmony Stack. Not affiliated with any DMV or FMCSA.</div>
+</footer>
+<script src="js/vercel-analytics.js"></script>
+</body>
+</html>
