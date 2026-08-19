@@ -85,13 +85,26 @@ main{padding-top:clamp(34px,6vw,60px)}
     <img class="legal-icon" src="portfolio-screenshots/cdl-icon.png" alt="CDL One Stop app icon">
     <span class="legal-eyebrow">Account &amp; data deletion</span>
     <h1>Request that your account and associated data is deleted</h1>
-    <p>This is the official deletion-request page for CDL One Stop on <strong>Google Play</strong>, the <strong>Apple App Store</strong>, and Meta / Facebook ads. Use the form below, or delete from inside the app, to wipe study progress and any account we hold.</p>
+    <p>This is the official deletion-request page for CDL One Stop on <strong>Google Play</strong>, the <strong>Apple App Store</strong>, and Meta / Facebook ads. We use <strong>Supabase</strong> for app-usage data only — not personal information. Use the form below, or delete from inside the app.</p>
     <span class="legal-stamp"><span class="dot"></span>Effective August 19, 2026</span>
   </header>
 
   <div class="steps">
-    <article class="step" id="in-app">
+    <article class="step" id="supabase">
       <div class="step-num">1</div>
+      <h2>What we store in Supabase — nothing personal</h2>
+      <p>CDL One Stop uses <strong>Supabase</strong> as the cloud database. <strong>We do not collect personal information.</strong> No name, no email from the app, no phone number, no location, and nothing that identifies you.</p>
+      <p>The only data in Supabase is about how the product is used, so we can see what helps drivers study:</p>
+      <ul>
+        <li><strong>How the app is used</strong> — which screens and study flows people open</li>
+        <li><strong>Which tests are popular</strong> — General Knowledge, Air Brakes, endorsements, and so on</li>
+        <li><strong>Retention time</strong> — how long people keep using the app</li>
+      </ul>
+      <p>Your scores, missed questions, streaks, and study progress stay on your device. They are not uploaded as personal records.</p>
+    </article>
+
+    <article class="step" id="in-app">
+      <div class="step-num">2</div>
       <h2>Delete everything on your device</h2>
       <p><strong>Apple (iPhone, iPad, Mac):</strong> Open CDL One Stop → <strong>Profile</strong> → <strong>Account</strong> → <strong>Delete Account</strong>. Type DELETE to confirm.</p>
       <p><strong>Android:</strong> Open CDL One Stop → <strong>Profile</strong> → <strong>Settings</strong> → <strong>Delete Account</strong>. Type DELETE to confirm.</p>
@@ -100,19 +113,14 @@ main{padding-top:clamp(34px,6vw,60px)}
     </article>
 
     <article class="step" id="cloud">
-      <div class="step-num">2</div>
-      <h2>Delete a signed-in account (cloud)</h2>
-      <p>If you signed in with <strong>Sign in with Apple</strong>, <strong>Google</strong>, or <strong>email</strong>, we also hold an account identifier and (when you provided it) an email address with our authentication provider.</p>
-      <p>Email <a href="mailto:harmonyStack@gmail.com?subject=CDL%20One%20Stop%20Account%20Deletion">harmonyStack@gmail.com</a> from that same address and ask us to delete your account. Write from the address on the account so we can verify it is you.</p>
-      <ul>
-        <li>We delete the account and associated records.</li>
-        <li>We confirm by email when it is done.</li>
-        <li>We aim to finish within 1–2 business days (sooner when we can).</li>
-      </ul>
+      <div class="step-num">3</div>
+      <h2>Delete the usage data we hold</h2>
+      <p>A deletion request removes the associated usage records in Supabase — how the app is used, which tests are popular, and retention time. That data is not tied to your name or other personal information.</p>
+      <p>If you optionally signed in, email <a href="mailto:harmonyStack@gmail.com?subject=CDL%20One%20Stop%20Account%20Deletion">harmonyStack@gmail.com</a> and ask us to delete your account and associated data. We confirm when it is done, usually within 1–2 business days.</p>
     </article>
 
     <article class="step" id="other">
-      <div class="step-num">3</div>
+      <div class="step-num">4</div>
       <h2>Things we do not store ourselves</h2>
       <ul>
         <li><strong>App Store / Play Store purchase</strong> — Apple or Google holds billing. Apple refunds: <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>. Play refunds: Google Play → Payments &amp; subscriptions.</li>
@@ -122,7 +130,7 @@ main{padding-top:clamp(34px,6vw,60px)}
     </article>
   </div>
 
-  <p class="note">We do not sell your data. Study progress stays on your device unless you signed in. Full details are in the <a href="cdl-privacy.html">Privacy Policy</a>.</p>
+  <p class="note">We use Supabase. We do not collect personal information — only anonymous usage (how the app is used, popular tests, retention time). Study progress stays on your device. Full details are in the <a href="cdl-privacy.html">Privacy Policy</a>.</p>
 
   <section class="closing" id="request">
     <h2>Request that your account and associated data is deleted</h2>
