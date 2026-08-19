@@ -230,6 +230,28 @@ img{max-width:100%;display:block}
 .faq details[open] summary::after{content:"−"}
 .faq details p{padding:0 0 16px;color:var(--ink-soft);font-size:14.5px;line-height:1.6}
 
+/* Account / data deletion request (Play Console + App Store) */
+.delete-sec{padding-top:0}
+.delete-card{max-width:720px;margin:0 auto;background:var(--card);border:1px solid var(--border);border-radius:22px;padding:clamp(22px,4vw,34px);box-shadow:0 16px 36px rgba(20,40,25,.06)}
+.delete-card .section-kicker{margin-bottom:10px}
+.delete-card h2{font-size:clamp(22px,4vw,30px);font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:12px}
+.delete-card > p{color:var(--ink-soft);font-size:15px;line-height:1.6;margin-bottom:18px}
+.delete-form{display:grid;gap:12px}
+.delete-form label{font-size:13px;font-weight:600;color:var(--ink)}
+.delete-form input[type="email"]{width:100%;padding:13px 14px;border:1.5px solid var(--border);border-radius:12px;font:inherit;font-size:15px;background:var(--paper);color:var(--ink)}
+.delete-form input[type="email"]:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(31,138,76,.16)}
+.delete-confirm{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--ink-soft);line-height:1.45}
+.delete-confirm input{margin-top:3px;width:16px;height:16px;accent-color:var(--accent);flex:none}
+.delete-form button{appearance:none;border:0;cursor:pointer;background:var(--accent);color:#fff;font:inherit;font-weight:700;font-size:15.5px;padding:14px 20px;border-radius:14px;box-shadow:0 10px 22px rgba(20,98,47,.18)}
+.delete-form button:hover{background:var(--accent-deep)}
+.delete-form button:disabled{opacity:.6;cursor:not-allowed}
+.delete-msg{display:none;border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.5}
+.delete-msg.is-show{display:block}
+.delete-msg.ok{background:var(--accent-soft);color:var(--accent-deep);border:1px solid #cfe6d6}
+.delete-msg.err{background:#fdf2f1;color:#7a271a;border:1px solid #f0c7c3}
+.delete-alt{margin-top:16px;font-size:13.5px;color:var(--ink-soft);line-height:1.55}
+.delete-alt a{color:var(--accent-deep);font-weight:600;border-bottom:1px solid var(--border)}
+
 /* Final CTA */
 .cta-band{background:radial-gradient(900px 440px at 50% -30%,#34a862 0%,#1f8a4c 36%,#14622f 78%);color:#fff;text-align:center;border-radius:32px;padding:clamp(44px,7vw,72px) clamp(20px,5vw,48px);box-shadow:0 28px 60px rgba(20,98,47,.28)}
 .cta-band h2{font-size:clamp(26px,5vw,40px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:12px}
@@ -273,6 +295,7 @@ img{max-width:100%;display:block}
     <a class="nav-link nav-link--ads" href="https://harmony-stack-productions.vercel.app/cdl-get" title="Facebook ads page — opens the App Store trigger URL">Facebook ads</a>
     <a class="nav-link" href="cdl-terms.html">Terms</a>
     <a class="nav-link" href="cdl-privacy.html">Privacy</a>
+    <a class="nav-link" href="#delete-account">Delete data</a>
     <a class="nav-cta" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">Get the app</a>
   </div>
 </nav>
@@ -674,6 +697,34 @@ img{max-width:100%;display:block}
         <summary>Do I need an account?</summary>
         <p>You can start studying without building a full account wall. Optional Sign in with Apple is available for sync when you want it. Progress is designed to stay on your device by default.</p>
       </details>
+      <details>
+        <summary>How do I delete my account and data?</summary>
+        <p>Use the <a href="#delete-account">account and data deletion request</a> on this page, or open the full <a href="cdl-delete.html">deletion page</a>. In the app: <strong>Profile → Account → Delete Account</strong> on Apple, or <strong>Profile → Settings → Delete Account</strong> on Android. Email <a href="mailto:harmonyStack@gmail.com?subject=CDL%20One%20Stop%20Account%20Deletion">harmonyStack@gmail.com</a> from the address on the account if you prefer.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- PLAY / APP STORE ACCOUNT DELETION REQUEST -->
+<section class="section delete-sec" id="delete-account">
+  <div class="wrap">
+    <div class="delete-card">
+      <span class="section-kicker">Account &amp; data deletion</span>
+      <h2>Request that your account and associated data is deleted</h2>
+      <p>This is the official request link for CDL One Stop on Google Play, the App Store, and this site. Send the form (or email us from the address on the account). We delete the account and associated records and confirm when it is done — usually within 1–2 business days.</p>
+      <form class="delete-form" id="delete-request-form" novalidate>
+        <div>
+          <label for="delete-email">Account email address</label>
+          <input type="email" id="delete-email" name="email" autocomplete="email" required placeholder="the email on the account">
+        </div>
+        <label class="delete-confirm">
+          <input type="checkbox" id="delete-confirm" name="confirm" required>
+          <span>I request that my CDL One Stop account and associated data is permanently deleted. I understand this cannot be undone.</span>
+        </label>
+        <button type="submit" id="delete-submit">Request account deletion</button>
+        <div class="delete-msg" id="delete-msg" role="status" aria-live="polite"></div>
+      </form>
+      <p class="delete-alt">Prefer in-app? Apple: <strong>Profile → Account → Delete Account</strong>. Android: <strong>Profile → Settings → Delete Account</strong>. Full steps and what we do not store: <a href="cdl-delete.html">Delete your data</a>.</p>
     </div>
   </div>
 </section>
@@ -699,7 +750,7 @@ img{max-width:100%;display:block}
           <a class="hs-cta hs-cta--play" href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play very soon — mock link">Android · very soon</a>
         </div>
       </div>
-      <p class="cta-fineprint">Your study progress stays on your device. We don’t sell your data. Play Store link is a placeholder until launch.</p>
+      <p class="cta-fineprint">Your study progress stays on your device. We don’t sell your data. <a href="#delete-account" style="color:#fff;border-bottom:1px solid rgba(255,255,255,.5)">Request that your account and associated data is deleted</a>. Play Store link is a placeholder until launch.</p>
     </div>
   </div>
 </section>
@@ -718,13 +769,14 @@ img{max-width:100%;display:block}
     <a href="cdl-support.html">Support</a>
     <a href="cdl-terms.html">Terms</a>
     <a href="cdl-privacy.html">Privacy</a>
-    <a href="cdl-delete.html">Delete data</a>
+    <a href="#delete-account">Delete account &amp; data</a>
+    <a href="cdl-delete.html">Deletion steps</a>
     <a href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">App Store</a>
     <a href="https://play.google.com/store/apps/details?id=com.harmonystack.cdlonestop" target="_blank" rel="noopener" data-mock-play title="Google Play very soon — mock link">Google Play</a>
     <a href="mailto:harmonystack@gmail.com">Contact</a>
     <a href="index.html">Harmony Stack</a>
   </div>
-  <div class="app-footer-fine">CDL One Stop is a <strong style="opacity:1">Harmony Stack</strong> product — iPhone, iPad &amp; Mac live; Android very soon.<br>Support: <a href="mailto:harmonystack@gmail.com">harmonystack@gmail.com</a> · © 2026 Harmony Stack. Not affiliated with any DMV or FMCSA.</div>
+  <div class="app-footer-fine">CDL One Stop is a <strong style="opacity:1">Harmony Stack</strong> product — iPhone, iPad &amp; Mac live; Android very soon.<br>Request account &amp; data deletion: <a href="#delete-account">this page</a> or <a href="https://harmony-stack-productions.vercel.app/cdl-delete">harmony-stack-productions.vercel.app/cdl-delete</a><br>Support: <a href="mailto:harmonystack@gmail.com">harmonystack@gmail.com</a> · © 2026 Harmony Stack. Not affiliated with any DMV or FMCSA.</div>
 </footer>
 
 <!-- Sticky CTA -->
@@ -809,6 +861,35 @@ img{max-width:100%;display:block}
   }
   segs.forEach(function(s){
     s.addEventListener('click',function(){show(s.getAttribute('data-device'));});
+  });
+})();
+
+(function(){
+  var form=document.getElementById('delete-request-form');
+  var email=document.getElementById('delete-email');
+  var confirm=document.getElementById('delete-confirm');
+  var btn=document.getElementById('delete-submit');
+  var msg=document.getElementById('delete-msg');
+  if(!form||!email||!confirm||!btn||!msg)return;
+  function show(text,ok){
+    msg.textContent=text;
+    msg.className='delete-msg is-show '+(ok?'ok':'err');
+  }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var value=email.value.trim();
+    var valid=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    if(!valid){show('Enter the email address on the account.',false);return;}
+    if(!confirm.checked){show('Confirm that you want the account and associated data deleted.',false);return;}
+    var subject=encodeURIComponent('CDL One Stop Account Deletion');
+    var body=encodeURIComponent(
+      'Please delete my CDL One Stop account and associated data.\n\n'+
+      'Account email: '+value+'\n\n'+
+      'I request that my account and associated data is permanently deleted.'
+    );
+    window.location.href='mailto:harmonyStack@gmail.com?subject='+subject+'&body='+body;
+    btn.disabled=true;
+    show('Your mail app should open with the request filled in. If it does not, email harmonyStack@gmail.com from '+value+' and ask us to delete the account. We confirm when it is done.',true);
   });
 })();
 </script>
