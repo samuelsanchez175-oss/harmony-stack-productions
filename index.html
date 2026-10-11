@@ -13,13 +13,14 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Harmony Stack — Websites, apps &amp; AI">
 <meta name="twitter:description" content="Custom sites, Shopify, and shipped iOS apps. Clear packages from $75 sessions to full builds.">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:'CashMarketCards';src:url('fonts/CashMarket-BoldRounded.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
 @import url('https://fonts.cdnfonts.com/css/cash-market');
 
 :root{
-  --bg:#f5f0e8;
-  --bg2:#ede8de;
+  --bg:#FDFBF7;
+  --bg2:#F3EEE6;
   --white:#ffffff;
   --purple:#9b8ec4;
   --purple2:#7b6ca8;
@@ -41,10 +42,10 @@
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--bg);color:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased;position:relative}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased;position:relative}
 /* Paper grain — signature texture so the site does not read as a flat vibe-coded cream slab */
 body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:3;opacity:.055;
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:3;opacity:.03;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E");
   mix-blend-mode:multiply
 }
@@ -75,8 +76,8 @@ a{color:inherit}
 .btn-primary:hover{background:var(--purple2)}
 .btn-secondary{background:var(--white);color:var(--dark);border:1.5px solid var(--border)}
 .btn-secondary:hover{border-color:var(--purple);color:var(--purple2)}
-.btn-neon{background:var(--neon);color:var(--dark);box-shadow:0 10px 24px rgba(184,255,0,.25)}
-.btn-neon:hover{filter:brightness(.97)}
+.btn-neon{background:var(--orange2);color:#111;box-shadow:0 10px 24px rgba(196,58,8,.22)}
+.btn-neon:hover{filter:brightness(.95)}
 .btn-row{display:flex;flex-wrap:wrap;gap:10px}
 
 /* Hero */
@@ -84,13 +85,9 @@ a{color:inherit}
 .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:64px;background:linear-gradient(to bottom,transparent,var(--bg));pointer-events:none}
 .hero-grid{position:relative;z-index:1;display:grid;gap:36px;align-items:center}
 @media(min-width:900px){.hero-grid{grid-template-columns:1.15fr .9fr;gap:40px;align-items:center}}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);padding:7px 12px;border-radius:999px;margin-bottom:18px}
-.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--neon);box-shadow:0 0 0 3px rgba(184,255,0,.25)}
 .hero h1{font-family:'Cash Market','Space Grotesk',sans-serif;font-size:clamp(36px,6.5vw,58px);line-height:1.02;letter-spacing:-.03em;font-weight:700;margin-bottom:16px;color:#fff}
 .hero h1 em{font-style:normal;color:var(--neon)}
 .hero-lead{font-size:clamp(16px,2.2vw,19px);color:rgba(255,248,242,.92);max-width:34em;margin-bottom:24px;line-height:1.55}
-.hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0}
-.hero-pills span{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:6px 11px;border-radius:999px}
 .hero-note{margin-top:14px;font-size:13.5px;color:rgba(255,248,242,.8)}
 .hero-visual{
   position:relative;display:flex;justify-content:center;align-items:flex-start;
@@ -200,6 +197,13 @@ a{color:inherit}
 .services{display:grid;gap:14px}
 @media(min-width:720px){.services{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1000px){.services{grid-template-columns:repeat(4,1fr)}}
+/* #services: five cards — 2-up with a full-width 5th on tablet, 3 + 2 on desktop */
+@media(min-width:720px) and (max-width:999px){#services .services .service:nth-child(5){grid-column:1 / -1}}
+@media(min-width:1000px){
+  #services .services{grid-template-columns:repeat(6,1fr)}
+  #services .services .service{grid-column:span 2}
+  #services .services .service:nth-child(n+4){grid-column:span 3}
+}
 .service{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px 20px;box-shadow:0 8px 24px rgba(26,21,32,.04);transition:transform .15s,box-shadow .15s}
 .service:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
 .service-icon{width:42px;height:42px;border-radius:12px;background:linear-gradient(145deg,#efeaf8,var(--bg2));display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px}
@@ -288,7 +292,7 @@ a{color:inherit}
 .sticky{position:fixed;left:12px;right:12px;bottom:12px;z-index:70;display:flex;gap:8px;padding:10px;background:rgba(26,21,32,.94);border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.28);transform:translateY(120%);transition:transform .28s ease}
 .sticky.is-show{transform:translateY(0)}
 .sticky a{flex:1;text-align:center;text-decoration:none;font-weight:700;font-size:13.5px;padding:12px;border-radius:12px}
-.sticky .s1{background:var(--neon);color:var(--dark)}
+.sticky .s1{background:var(--orange2);color:#111}
 .sticky .s2{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2)}
 @media(max-width:899px){
   #contact{padding-bottom:120px}
@@ -356,6 +360,8 @@ a.site-card-external:hover .site-card-url,a.site-card-external:focus-visible .si
 
 .phone-frame{width:100%;max-width:min(220px,50vw);position:relative;padding:10px 8px;border-radius:16px;transition:background .15s}
 .phone-frame:hover{background:rgba(255,255,255,.04)}
+a.phone-frame{display:block;text-decoration:none;color:inherit;cursor:pointer}
+a.phone-frame:focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
 .phone-outer{
   position:relative;width:100%;padding:3px;border-radius:28px;background:#000;border:1px solid #2e2e30;
   box-shadow:0 32px 72px rgba(0,0,0,.72),0 1px 0 rgba(255,255,255,.05),inset 0 0 0 1px rgba(255,255,255,.05);
@@ -379,6 +385,9 @@ a.site-card-external:hover .site-card-url,a.site-card-external:focus-visible .si
 .page-badge{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.1);color:rgba(245,245,247,.9)}
 .page-badge.active{background:var(--purple);color:#fff;border-color:var(--purple)}
 .page-badge.active.page-badge--shop{background:var(--shop);border-color:var(--shop)}
+.page-badge.active.page-badge--home{background:#1d72af;border-color:#1d72af}
+.page-badge.active.page-badge--info{background:#107f5e;border-color:#107f5e}
+.page-badge.active.page-badge--editor{background:#af521d;border-color:#af521d}
 
 
 /* Metrics / social proof */
@@ -387,6 +396,7 @@ a.site-card-external:hover .site-card-url,a.site-card-external:focus-visible .si
 .metric{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 14px;text-align:center}
 .metric b{display:block;font-size:clamp(20px,3vw,26px);font-weight:700;color:var(--dark);letter-spacing:-.03em;line-height:1.1}
 .metric span{display:block;margin-top:6px;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.metrics[aria-label="Studio snapshot"] .metric b,.metrics[aria-label="Studio snapshot"] .metric span{font-family:'CashMarketCards','Space Grotesk','Plus Jakarta Sans',sans-serif}
 
 /* Testimonials */
 .quotes{display:grid;gap:14px}
@@ -606,13 +616,13 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
 .side-jump-dot .tip{
   position:absolute;right:calc(100% + 12px);top:50%;transform:translateY(-50%);
   white-space:nowrap;font-size:11.5px;font-weight:700;letter-spacing:.02em;
-  color:#fff;background:var(--dark);padding:6px 10px;border-radius:8px;
+  color:#000;background:#8771a2;padding:6px 10px;border-radius:8px;
   opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s,visibility .15s;
   box-shadow:0 8px 20px rgba(0,0,0,.2);
 }
 .side-jump-dot .tip::after{
   content:"";position:absolute;left:100%;top:50%;transform:translateY(-50%);
-  border:5px solid transparent;border-left-color:var(--dark);
+  border:5px solid transparent;border-left-color:#8771a2;
 }
 .side-jump-dot:hover .tip,.side-jump-dot:focus-visible .tip{opacity:1;visibility:visible}
 @media(max-width:900px){
@@ -629,42 +639,569 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
   html{scroll-behavior:auto}
 }
 
+/* Editorial pass — high-end visual design, tuned to the locked plan */
+h1,h2,.logo,.footer-brand,.section-head h2,.hero h1,.price-card h3,.inquiry-copy h2,.cta-band h2,.fold-title{
+  font-family:'Cash Market','Plus Jakarta Sans',sans-serif;
+}
+.section{padding:clamp(72px,8vw,104px) 0}
+.hero,.section{scroll-margin-top:78px}
+
+.nav{
+  position:sticky;top:14px;z-index:80;
+  background:transparent;border:0;box-shadow:none;
+  backdrop-filter:none;-webkit-backdrop-filter:none;
+  pointer-events:none;margin:14px 0 0;
+}
+.nav::before{
+  content:"";
+  position:absolute;left:0;right:0;top:-20px;
+  height:calc(100% + 32px);
+  background:linear-gradient(to bottom, var(--bg) 0 70%, transparent);
+  pointer-events:none;z-index:0;
+}
+.nav-pill{
+  position:relative;z-index:1;
+  pointer-events:auto;
+  width:min(1100px,calc(100% - 28px));
+  margin:0 auto;
+  display:flex;align-items:center;gap:6px;
+  padding:6px 6px 6px 16px;
+  border-radius:999px;
+  background:rgba(253,251,247,.94);
+  border:1px solid rgba(26,21,32,.08);
+  box-shadow:0 10px 28px rgba(26,21,32,.06);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+}
+.nav-links{display:flex;align-items:center;gap:2px;flex:1;justify-content:flex-end;flex-wrap:wrap}
+.nav-links a{font-size:13px;padding:8px 9px}
+.nav-pill .nav-cta{
+  background:var(--orange2);color:#111!important;
+  padding:9px 14px!important;border-radius:999px;font-weight:650;
+  box-shadow:none;
+}
+.nav-pill .nav-cta:hover{background:var(--orange2)!important;filter:brightness(.95);color:#111!important}
+.btn-neon,.btn-neon:hover,.sticky .s1,.price-badge,.store-badges-row .soon{color:#111!important}
+.nav-menu{
+  display:none;align-items:center;gap:8px;
+  border:0;background:var(--dark);color:var(--bg);
+  border-radius:999px;padding:8px 12px 8px 14px;
+  font:inherit;font-size:13.5px;font-weight:650;cursor:pointer;
+}
+.nav-menu-icon{position:relative;width:16px;height:12px;display:block}
+.nav-menu-icon span{
+  position:absolute;left:0;right:0;height:1.25px;border-radius:1px;background:currentColor;
+  transition:transform .6s cubic-bezier(0.32,0.72,0,1),top .6s cubic-bezier(0.32,0.72,0,1),bottom .6s cubic-bezier(0.32,0.72,0,1);
+}
+.nav-menu-icon span:first-child{top:2px}
+.nav-menu-icon span:last-child{bottom:2px}
+.nav-menu.is-open .nav-menu-icon span:first-child{top:5.4px;transform:rotate(45deg)}
+.nav-menu.is-open .nav-menu-icon span:last-child{bottom:5.4px;transform:rotate(-45deg)}
+@media(max-width:980px){
+  .nav-links{display:none}
+  .nav-menu{display:inline-flex}
+  .nav-pill{padding:6px 6px 6px 12px;gap:8px}
+  .logo{font-size:16px;white-space:nowrap}
+  .nav-pill .nav-cta{font-size:12.5px;padding:8px 10px!important;white-space:nowrap}
+  .nav-menu{white-space:nowrap;padding:8px 10px}
+}
+@media(min-width:900px) and (max-width:1500px){
+  .sticky{display:none!important}
+}
+.nav-sheet{
+  position:fixed;inset:0;z-index:79;
+  background:rgba(253,251,247,.88);
+  backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+  display:flex;align-items:center;justify-content:center;
+  padding:88px 28px 40px;overflow:auto;
+}
+.nav-sheet[hidden]{display:none}
+.nav-sheet-links{display:flex;flex-direction:column;gap:6px;width:min(520px,100%)}
+.nav-sheet a{
+  font-family:'Cash Market','Plus Jakarta Sans',sans-serif;
+  font-size:clamp(28px,7vw,44px);line-height:1.05;letter-spacing:-.03em;
+  text-decoration:none;color:var(--dark);
+  opacity:0;transform:translateY(18px);
+}
+.nav-sheet.is-open a{
+  opacity:1;transform:none;
+  transition:opacity .45s cubic-bezier(0.32,0.72,0,1),transform .45s cubic-bezier(0.32,0.72,0,1);
+}
+.nav-sheet.is-open a:nth-child(2){transition-delay:.03s}
+.nav-sheet.is-open a:nth-child(3){transition-delay:.06s}
+.nav-sheet.is-open a:nth-child(4){transition-delay:.09s}
+.nav-sheet.is-open a:nth-child(5){transition-delay:.12s}
+.nav-sheet.is-open a:nth-child(6){transition-delay:.15s}
+.nav-sheet.is-open a:nth-child(7){transition-delay:.18s}
+.nav-sheet.is-open a:nth-child(8){transition-delay:.21s}
+.nav-sheet.is-open a:nth-child(9){transition-delay:.24s}
+.nav-sheet.is-open a:nth-child(10){transition-delay:.27s}
+.nav-sheet.is-open a:nth-child(11){transition-delay:.3s}
+.nav-sheet.is-open a:nth-child(12){transition-delay:.33s}
+body.nav-open{overflow:hidden}
+
+.hero{
+  background:transparent;color:var(--dark);
+  padding:clamp(36px,6vw,72px) 0 clamp(28px,5vw,48px);
+}
+.hero::after{display:none}
+.hero h1{color:var(--dark);font-size:clamp(42px,6.4vw,72px)}
+.hero h1 em{color:var(--purple2);font-style:normal}
+.hero-lead{color:var(--body)}
+.hero-note{color:var(--muted)}
+.hero-item{animation-timing-function:cubic-bezier(0.32,0.72,0,1)}
+.hero-shot{background:var(--card);border:1px solid rgba(26,21,32,.08);box-shadow:0 18px 36px rgba(26,21,32,.1)}
+.hero-item-title{color:var(--dark);text-shadow:none}
+.hero-item-url{color:var(--muted)}
+.hero-grid{align-items:center}
+@media(min-width:900px){.hero-grid{grid-template-columns:.95fr 1.05fr;gap:28px}}
+
+.btn{transition:transform .45s cubic-bezier(0.32,0.72,0,1),background .45s cubic-bezier(0.32,0.72,0,1),box-shadow .45s cubic-bezier(0.32,0.72,0,1)}
+.btn:hover{transform:none}
+.btn:active{transform:scale(.98)}
+.btn-neon,.btn-primary{padding:6px 6px 6px 18px;gap:10px}
+.btn-neon::after,.btn-primary::after{
+  content:"";flex:none;width:32px;height:32px;border-radius:999px;
+  background-color:rgba(26,21,32,.08);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a1520' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'><path d='M7 17L17 7M9 7h8v8'/></svg>");
+  background-repeat:no-repeat;background-position:center;background-size:16px;
+  transition:transform .6s cubic-bezier(0.32,0.72,0,1);
+}
+.btn-primary::after{
+  background-color:rgba(255,255,255,.14);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FDFBF7' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'><path d='M7 17L17 7M9 7h8v8'/></svg>");
+}
+.btn-neon:hover::after,.btn-primary:hover::after{transform:translate(1px,-1px) scale(1.05)}
+.inquiry-form .btn{justify-content:space-between}
+
+.service,.addon,.metric,.fit,.step,.quote,.faq details,.app-proof-card{
+  border-color:transparent;
+  box-shadow:0 12px 32px rgba(26,21,32,.05);
+}
+.service-icon{
+  width:40px;height:40px;border-radius:999px;
+  background:transparent;border:1px solid rgba(26,21,32,.1);
+  color:var(--dark);
+}
+.service-icon svg{width:18px;height:18px;display:block}
+.addon{position:relative;padding-top:46px}
+.addon::before{
+  content:"";position:absolute;top:16px;left:16px;width:18px;height:18px;
+  background:currentColor;color:var(--dark);
+  -webkit-mask:var(--ico) center / contain no-repeat;mask:var(--ico) center / contain no-repeat;
+}
+.addon:nth-child(1){--ico:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.25'><path d='M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z'/><path d='M14 3v6h6'/></svg>")}
+.addon:nth-child(2){--ico:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.25'><path d='M4 20l4.5-1.2L19 8.3 15.7 5 5.2 15.5 4 20z'/></svg>")}
+.addon:nth-child(3){--ico:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.25'><circle cx='12' cy='12' r='8'/><path d='M12 8v4l3 2'/></svg>")}
+.addon:nth-child(4){--ico:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.25'><circle cx='12' cy='12' r='9'/><path d='M3 12h18M12 3c2.5 2.8 2.5 15.2 0 18M12 3c-2.5 2.8-2.5 15.2 0 18'/></svg>")}
+.addon:nth-child(5){--ico:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.25'><path d='M5 6h14M5 12h14M5 18h9'/></svg>")}
+.addon:nth-child(6){--ico:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.25'><path d='M4 19V10M10 19V5M16 19v-7M22 19H2'/></svg>")}
+.addon:nth-child(7){--ico:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.25'><circle cx='11' cy='11' r='6'/><path d='M16 16l5 5'/></svg>")}
+.addon:nth-child(8){--ico:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.25'><rect x='4' y='5' width='16' height='14' rx='2'/><path d='M8 15l3-3 2 2 3-4'/></svg>")}
+.addon:nth-child(9){--ico:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.25'><path d='M13 3L6 13h6l-1 8 7-10h-6l1-8z'/></svg>")}
+.price-tier{display:flex;align-items:center;gap:6px}
+.price-tier::before{
+  content:"";width:14px;height:14px;flex:none;
+  background:currentColor;
+  -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.25'><rect x='4' y='4' width='16' height='16' rx='3'/></svg>") center / contain no-repeat;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.25'><rect x='4' y='4' width='16' height='16' rx='3'/></svg>") center / contain no-repeat;
+}
+
+.price-card,.case,.inquiry-form{
+  background-color:var(--card);background-clip:padding-box;
+  border:8px solid rgba(26,21,32,.045)!important;
+  box-shadow:0 0 0 1px rgba(26,21,32,.08),inset 0 1px 1px rgba(255,255,255,.7)!important;
+  border-radius:2rem;
+}
+[data-plan-pick] .price-card{border-width:8px;transition:box-shadow .45s cubic-bezier(0.32,0.72,0,1)}
+[data-plan-pick] .price-card.featured{
+  border-color:rgba(123,108,168,.16)!important;
+  box-shadow:0 0 0 1px var(--purple2),inset 0 1px 1px rgba(255,255,255,.7)!important;
+}
+.case{overflow:hidden}
+.inquiry-form input,.inquiry-form select,.inquiry-form textarea{border-width:1px;border-color:rgba(26,21,32,.1);border-radius:14px}
+
+.band-orange{
+  background:transparent;color:var(--body);
+  box-shadow:none;border-top:1px solid rgba(26,21,32,.08);border-bottom:1px solid rgba(26,21,32,.08);
+  padding:clamp(22px,4vw,32px) 0;
+}
+.band-orange::before{display:none}
+.band-orange p,.band-orange strong{color:var(--dark)}
+.band-orange a{color:var(--purple2);border-bottom:1px solid rgba(123,108,168,.35)}
+.section-warm,.section-warm-soft{background:var(--bg2)}
+.orange-rule{height:1px;background:rgba(26,21,32,.08);opacity:1}
+.cta-band{
+  background:var(--card);color:var(--dark);
+  border:8px solid rgba(26,21,32,.045);
+  box-shadow:0 0 0 1px rgba(26,21,32,.08);
+}
+.cta-band h2{color:var(--dark)}
+.cta-band p{color:var(--muted)}
+.cta-band .btn-secondary{background:transparent;border-color:rgba(26,21,32,.12);color:var(--dark)}
+
+.trust a{
+  background:var(--orange2);color:#111;border-color:transparent;box-shadow:none;
+}
+.trust a:hover,.trust a:focus-visible,.trust a.is-previewing{
+  background:var(--orange3);border-color:transparent;color:#111;
+  box-shadow:0 6px 18px rgba(196,58,8,.22);
+}
+.trust a:focus-visible{outline:2px solid var(--orange2);outline-offset:2px}
+.trust span{
+  background:transparent;color:var(--orange2);border-color:var(--orange2);
+  box-shadow:none;opacity:1;
+}
+.sticky{
+  background:rgba(253,251,247,.9);
+  border:1px solid rgba(26,21,32,.08);
+  box-shadow:0 8px 24px rgba(26,21,32,.08);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  transition:transform .6s cubic-bezier(0.32,0.72,0,1);
+}
+.sticky .s1{background:var(--orange2);color:#111}
+.sticky .s2{background:transparent;color:var(--dark);border:1px solid rgba(26,21,32,.12)}
+@media(max-width:899px){#contact{padding-bottom:148px}}
+
+.js .section.reveal > *{opacity:0;transform:translateY(18px)}
+.js .section.reveal.is-in > *{
+  opacity:1;transform:none;
+  transition:opacity .8s cubic-bezier(0.32,0.72,0,1),transform .8s cubic-bezier(0.32,0.72,0,1);
+}
+@media(prefers-reduced-motion:reduce){
+  .js .section.reveal > *,.js .section.reveal.is-in > *{opacity:1;transform:none;transition:none}
+  .hero-item{animation:none}
+  .nav-sheet a,.nav-sheet.is-open a{opacity:1;transform:none;transition:none}
+}
+
+.fold-head{max-width:640px;margin:0 0 28px}
+.fold-title{font-size:clamp(28px,4.5vw,40px);line-height:1.1;letter-spacing:-.025em;color:var(--dark);font-weight:700}
+.fold-lead{margin-top:12px;color:var(--muted);font-size:16px;max-width:42em}
+.fold-grid{display:grid;gap:14px}
+@media(min-width:800px){.fold-grid.two{grid-template-columns:1fr 1fr}.fold-grid.four{grid-template-columns:1fr 1fr}.fold-grid.host{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.fold-grid.four{grid-template-columns:repeat(4,1fr)}}
+.fold-card{
+  background:var(--card);border-radius:1.6rem;padding:18px 16px;
+  box-shadow:0 12px 32px rgba(26,21,32,.05);
+}
+.fold-card h3{font-size:16px;color:var(--dark);margin:8px 0}
+.fold-kicker{font-size:12px;font-weight:650;letter-spacing:.04em;color:var(--purple2)}
+.fold-card p,.fold-card li{font-size:14px;color:var(--muted);line-height:1.5}
+.fold-card ul{margin:8px 0 0;padding-left:18px}
+.fold-card a{color:var(--purple2)}
+.fold-note{margin-top:12px;font-size:13.5px;color:var(--body)}
+.req{display:inline-block;margin-left:8px;font-size:12px;font-weight:650;color:var(--dark);border:1px solid rgba(26,21,32,.12);border-radius:999px;padding:2px 8px}
+.checklist-grid{display:grid;gap:12px}
+@media(min-width:800px){.checklist-grid{grid-template-columns:1fr 1fr}}
+.checklist-group{background:var(--bg);border-radius:16px;padding:12px 12px 8px}
+.checklist-group-title{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:6px}
+.checklist-item{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;color:var(--body);margin:6px 0}
+.checklist-check{margin-top:3px;accent-color:var(--dark)}
+.fold-warn{
+  margin-top:14px;padding:14px 16px;border-radius:16px;
+  background:rgba(224,122,48,.1);color:var(--body);font-size:14px;
+}
+.dbx-finder-columns{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,1fr);gap:8px;overflow-x:auto;margin:16px 0;padding-bottom:6px}
+.dbx-finder-col{background:var(--card);border-radius:16px;min-height:168px;padding:8px;box-shadow:0 8px 24px rgba(26,21,32,.04)}
+.dbx-finder-row{
+  display:block;width:100%;text-align:left;background:transparent;border:0;border-radius:10px;
+  padding:8px 10px;font:inherit;font-size:13px;color:var(--dark);cursor:pointer;
+}
+.dbx-finder-row.is-selected{background:var(--dark);color:var(--bg)}
+.dbx-finder-row-folder::before{content:"";display:inline-block;width:12px;height:10px;margin-right:6px;border:1.25px solid currentColor;border-radius:2px 2px 1px 1px;vertical-align:-1px}
+.dbx-finder-row-file::before{content:"";display:inline-block;width:10px;height:12px;margin-right:6px;border:1.25px solid currentColor;border-radius:1px;vertical-align:-2px}
+.fold-rules{display:grid;gap:10px}
+@media(min-width:700px){.fold-rules{grid-template-columns:1fr 1fr 1fr}}
+.fold-rule{background:var(--card);border-radius:16px;padding:14px}
+.fold-rule b{display:block;color:var(--dark);font-size:14px;margin-bottom:4px}
+.fold-rule span{font-size:13.5px;color:var(--muted)}
+.rev-step{background:var(--card);border-radius:1.4rem;padding:16px;box-shadow:0 12px 32px rgba(26,21,32,.05)}
+.rev-num{font-family:'Cash Market','Plus Jakarta Sans',sans-serif;font-size:13px;color:var(--purple2)}
+.rev-step h3{font-size:16px;color:var(--dark);margin:8px 0}
+.rev-step p{font-size:14px;color:var(--muted);line-height:1.5}
+.pay-box{display:grid;gap:18px}
+@media(min-width:800px){.pay-box{grid-template-columns:.8fr 1.2fr;align-items:start}}
+.pay-name{font-family:'Cash Market','Plus Jakarta Sans',sans-serif;font-size:36px;color:var(--dark);letter-spacing:-.03em}
+.pay-detail{font-size:16px;color:var(--body);margin:8px 0}
+.pay-detail a{color:inherit;text-decoration:none}
+.pay-terms{display:flex;flex-direction:column;gap:8px}
+.pay-terms div{background:var(--card);border-radius:14px;padding:12px 14px;color:var(--body);font-size:14.5px;box-shadow:0 8px 20px rgba(26,21,32,.04)}
+.hair{width:22px;height:22px;color:var(--dark)}
+
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14110e;--bg2:#1c1814;--white:#241f1b;--card:#241f1b;
+    --dark:#f6f1e8;--body:#e6ddd2;--muted:#b7ab9e;
+    --border:rgba(246,241,232,.14);
+    --purple:#cbbdec;--purple2:#ddcff8;--neon:#d6ff4a;
+    --shadow:0 16px 40px rgba(0,0,0,.35);
+  }
+  body::before{mix-blend-mode:overlay;opacity:.08}
+  .nav-pill{background:rgba(20,17,14,.94);border-color:rgba(246,241,232,.12);box-shadow:0 10px 28px rgba(0,0,0,.28)}
+  .nav-sheet{background:rgba(20,17,14,.88)}
+  .nav-menu{background:var(--dark);color:#14110e}
+  .step-num{background:#f6f1e8;color:#111}
+  .hero-shot{border-color:rgba(246,241,232,.12);box-shadow:0 18px 36px rgba(0,0,0,.35)}
+  .service-icon{border-color:rgba(246,241,232,.16)}
+  .price-card,.case,.inquiry-form,.cta-band{
+    border-color:rgba(246,241,232,.06)!important;
+    box-shadow:0 0 0 1px rgba(246,241,232,.12),inset 0 1px 0 rgba(255,255,255,.05)!important;
+  }
+  .band-orange,.orange-rule{border-color:rgba(246,241,232,.12)}
+  .orange-rule{background:rgba(246,241,232,.12)}
+  .sticky{background:rgba(20,17,14,.9);border-color:rgba(246,241,232,.12);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+  .sticky .s2{color:var(--dark);border-color:rgba(246,241,232,.16)}
+  .trust a{background:var(--orange2);color:#111;border-color:transparent}
+  .trust span{background:transparent;color:var(--orange1);border-color:var(--orange1)}
+  .btn-neon::after{background-color:rgba(20,17,14,.12)}
+  .fold-warn{background:rgba(224,122,48,.16)}
+  .checklist-group{background:rgba(246,241,232,.04)}
+  .side-jump{background:rgba(20,17,14,.88);border-color:rgba(246,241,232,.14);box-shadow:0 12px 32px rgba(0,0,0,.35)}
+  .side-jump-btn{background:var(--card);border-color:rgba(246,241,232,.16);color:var(--dark)}
+  .side-jump-dot .tip{background:var(--dark);color:#000}
+  .side-jump-dot .tip::after{border-left-color:var(--dark)}
+}
+
+/* Services hero — narrative engineering story ahead of the four service cards */
+.svc-story{display:grid;gap:clamp(28px,4vw,48px);align-items:center}
+@media(min-width:960px){.svc-story{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)}}
+.svc-story-copy .kicker{margin-bottom:14px}
+.svc-statement{font-family:'Cash Market','Plus Jakarta Sans',sans-serif;font-size:clamp(34px,5.4vw,54px);line-height:1.02;letter-spacing:-.035em;font-weight:700;color:var(--dark);max-width:13ch}
+.svc-hl{color:var(--orange2)}
+.svc-rule{display:block;width:56px;height:3px;border-radius:999px;background:var(--orange2);margin:22px 0 20px}
+.svc-lead{font-size:clamp(17px,2.2vw,20px);line-height:1.45;font-weight:600;color:var(--dark);max-width:32em}
+.svc-lead strong{font-weight:800}
+.svc-support{margin-top:12px;font-size:14.5px;line-height:1.6;color:var(--muted);max-width:38em}
+.svc-lead .svc-support{display:block;font-weight:400}
+.svc-story-proof{margin:22px 0 0;max-width:none;text-align:left;font-size:13.5px}
+.svc-shot{
+  margin:0;background:var(--card);border-radius:0;overflow:hidden;
+  border:8px solid rgba(26,21,32,.045);background-clip:padding-box;
+  box-shadow:0 0 0 1px rgba(26,21,32,.08),var(--shadow);
+}
+.svc-shot img{display:block;width:100%;height:auto;border-radius:0;background:var(--dark)}
+.svc-shot figcaption{padding:10px 8px 4px;font-size:12.5px;line-height:1.45;color:var(--muted)}
+.svc-shot-open{display:block;width:100%;padding:0;margin:0;border:0;border-radius:0;background:none;cursor:zoom-in;font:inherit;color:inherit}
+.svc-shot-open:focus-visible{outline:2px solid var(--purple2);outline-offset:3px}
+.svc-lightbox{margin:auto;padding:0;border:0;border-radius:0;background:transparent;max-width:95vw;max-height:90vh;overflow:visible}
+.svc-lightbox::backdrop{background:rgba(26,21,32,.84)}
+.svc-lightbox img{display:block;width:auto;height:auto;max-width:95vw;max-height:90vh;object-fit:contain;border-radius:0;background:var(--dark)}
+.svc-lightbox-close{
+  position:absolute;top:8px;right:8px;width:40px;height:40px;padding:0;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(253,251,247,.35);border-radius:0;background:var(--dark);color:var(--bg);
+  font:inherit;font-size:26px;line-height:1;cursor:pointer;
+}
+.svc-lightbox-close:hover{background:var(--orange3);color:#fff}
+.svc-lightbox-close:focus-visible{outline:2px solid var(--neon);outline-offset:2px}
+.svc-lightbox[open]{animation:svc-lb-in .22s cubic-bezier(0.32,0.72,0,1)}
+.svc-lightbox[open]::backdrop{animation:svc-lb-fade .22s ease-out}
+@keyframes svc-lb-in{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+@keyframes svc-lb-fade{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){
+  .svc-lightbox[open],.svc-lightbox[open]::backdrop{animation:none}
+}
+.svc-clusters{display:grid;gap:14px;margin-top:clamp(32px,5vw,56px)}
+@media(min-width:880px){.svc-clusters{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.svc-cluster{background:var(--card);border-radius:1.6rem;padding:22px 20px 12px;box-shadow:0 12px 32px rgba(26,21,32,.05)}
+.svc-cluster-num{font-family:'Cash Market','Plus Jakarta Sans',sans-serif;font-size:13px;color:var(--purple2)}
+.svc-badge{display:inline-block;margin-left:10px;vertical-align:1px;background:var(--neon);color:#1a1520;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.svc-cluster h3{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.2;color:var(--dark);margin:8px 0 4px}
+.svc-cluster-sum{font-size:13.5px;line-height:1.45;color:var(--muted);margin-bottom:10px}
+.svc-items{list-style:none;margin:0;padding:0}
+.svc-items li{padding:11px 0;border-top:1px solid var(--border)}
+.svc-items b{display:block;font-size:14px;font-weight:700;letter-spacing:-.01em;color:var(--dark)}
+.svc-items span{display:block;margin-top:2px;font-size:13px;line-height:1.45;color:var(--muted)}
+.svc-cluster.is-featured{background:var(--dark);box-shadow:var(--shadow)}
+.svc-cluster.is-featured h3,.svc-cluster.is-featured .svc-items b{color:var(--bg)}
+.svc-cluster.is-featured .svc-cluster-sum,.svc-cluster.is-featured .svc-items span{color:var(--bg);opacity:.74}
+.svc-cluster.is-featured .svc-cluster-num{color:var(--orange1)}
+.svc-cluster.is-featured .svc-items li{border-top-color:rgba(253,251,247,.16)}
+.js #services-hero.reveal .svc-shot,.js #services-hero.reveal .svc-cluster{opacity:0;transform:translateY(14px)}
+.js #services-hero.reveal.is-in .svc-shot,.js #services-hero.reveal.is-in .svc-cluster{
+  opacity:1;transform:none;
+  transition:opacity .8s cubic-bezier(0.32,0.72,0,1),transform .8s cubic-bezier(0.32,0.72,0,1);
+}
+.js #services-hero.reveal.is-in .svc-shot{transition-delay:.08s}
+.js #services-hero.reveal.is-in .svc-cluster:nth-child(1){transition-delay:.14s}
+.js #services-hero.reveal.is-in .svc-cluster:nth-child(2){transition-delay:.22s}
+.js #services-hero.reveal.is-in .svc-cluster:nth-child(3){transition-delay:.3s}
+@media(prefers-reduced-motion:reduce){
+  .js #services-hero.reveal .svc-shot,.js #services-hero.reveal .svc-cluster,
+  .js #services-hero.reveal.is-in .svc-shot,.js #services-hero.reveal.is-in .svc-cluster{opacity:1;transform:none;transition:none}
+}
+@media(prefers-color-scheme:dark){
+  .svc-shot{border-color:rgba(246,241,232,.06);box-shadow:0 0 0 1px rgba(246,241,232,.12),var(--shadow)}
+  .svc-cluster{box-shadow:0 0 0 1px rgba(246,241,232,.08)}
+  .svc-cluster.is-featured{background:var(--card);box-shadow:0 0 0 1px var(--orange1),0 16px 40px rgba(0,0,0,.35)}
+  .svc-cluster.is-featured h3,.svc-cluster.is-featured .svc-items b{color:var(--dark)}
+  .svc-cluster.is-featured .svc-cluster-sum,.svc-cluster.is-featured .svc-items span{color:var(--muted);opacity:1}
+  .svc-cluster.is-featured .svc-cluster-num{color:var(--orange1)}
+  .svc-cluster.is-featured .svc-items li{border-top-color:rgba(246,241,232,.14)}
+}
+
+/* Services hero — "More I've shipped" secondary block (lighter than the three main groups) */
+.svc-more{margin-top:clamp(36px,5vw,56px);padding-top:clamp(24px,4vw,36px);border-top:1px solid var(--border)}
+.svc-more-head{max-width:640px;margin-bottom:18px}
+.svc-more-head .kicker{margin-bottom:8px}
+.svc-more-title{font-family:'Cash Market','Plus Jakarta Sans',sans-serif;font-size:clamp(22px,3vw,28px);line-height:1.1;letter-spacing:-.025em;font-weight:700;color:var(--dark)}
+.svc-more-sum{margin-top:8px;font-size:14px;line-height:1.5;color:var(--muted)}
+.svc-more-grid{display:grid;gap:12px}
+@media(min-width:700px){.svc-more-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1000px){.svc-more-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:700px) and (max-width:999px){.svc-more-group:nth-child(3){grid-column:1 / -1}}
+/* Mobile: collapse "More I've shipped" to its first group behind a Show more toggle (JS adds .is-collapsed) */
+.svc-more-toggle{display:block;width:100%;margin-top:12px;padding:12px 16px;border:1px solid var(--border);border-radius:999px;background:var(--card);color:var(--dark);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.svc-more-toggle[hidden]{display:none}
+.svc-more-toggle:focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
+.svc-more.is-collapsed .svc-more-group:nth-child(n+2){display:none}
+.svc-more-group{border:1px solid var(--border);border-radius:1.6rem;padding:18px 18px 8px;background:transparent}
+.svc-more-group h4{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--purple2);margin-bottom:6px}
+.svc-more .svc-items li{padding:9px 0}
+.svc-more .svc-items b{font-size:13.5px}
+.svc-more .svc-items span{font-size:12.5px}
+.js #services-hero.reveal .svc-more-group{opacity:0;transform:translateY(14px)}
+.js #services-hero.reveal.is-in .svc-more-group{
+  opacity:1;transform:none;
+  transition:opacity .8s cubic-bezier(0.32,0.72,0,1),transform .8s cubic-bezier(0.32,0.72,0,1);
+}
+.js #services-hero.reveal.is-in .svc-more-group:nth-child(1){transition-delay:.36s}
+.js #services-hero.reveal.is-in .svc-more-group:nth-child(2){transition-delay:.42s}
+.js #services-hero.reveal.is-in .svc-more-group:nth-child(3){transition-delay:.48s}
+@media(prefers-reduced-motion:reduce){
+  .js #services-hero.reveal .svc-more-group,.js #services-hero.reveal.is-in .svc-more-group{opacity:1;transform:none;transition:none}
+}
+
+/* Burnt-orange dividers — every .band-orange strip carries "band-burnt" */
+.band-orange.band-burnt{background:var(--orange3);border-top:1px solid #8f2a05;border-bottom:1px solid #8f2a05}
+.band-orange.band-burnt p{color:rgba(255,248,242,.96)}
+.band-orange.band-burnt strong{color:#fff}
+.band-orange.band-burnt a{color:#fff;font-weight:700;border-bottom:1px solid rgba(255,255,255,.55)}
+.band-orange.band-burnt a:hover{border-bottom-color:#fff}
+
+/* Mobile pass (≤640px): stack remaining side-by-side areas; desktop unchanged */
+@media(max-width:640px){
+  .btn-row{flex-direction:column;align-items:stretch}
+  .btn-row .btn{width:100%;justify-content:center}
+  .metrics{grid-template-columns:1fr}
+  .footer-grid{flex-direction:column;align-items:flex-start}
+  .dbx-finder-columns{grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:1fr;overflow-x:visible}
+  .portfolio-carousel-track .site-card{width:min(240px,calc(100vw - 148px))}
+  .svc-story,.svc-clusters,.svc-more-grid,#services .services{grid-template-columns:1fr}
+  #services .services .service{grid-column:auto}
+}
+/* App tiers: horizontal swipe carousel (#apps) */
+.price-grid.tier-track{display:flex;gap:14px;grid-template-columns:none;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;position:relative;padding:16px 4px 8px;scroll-padding-inline:4px}
+.price-grid.tier-track::-webkit-scrollbar{display:none}
+.price-grid.tier-track>.price-card{flex:0 0 85%;min-width:0;scroll-snap-align:start}
+@media(min-width:720px){.price-grid.tier-track>.price-card{flex-basis:52%}}
+@media(min-width:1000px){.price-grid.tier-track>.price-card{flex-basis:calc((100% - 28px) / 3)}}
+.tier-controls{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:14px}
+.tier-controls[hidden]{display:none}
+.tier-arrow{width:40px;height:40px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--dark);font-size:18px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.tier-arrow:disabled{opacity:.35;cursor:default}
+.tier-arrow:focus-visible,.tier-dot:focus-visible{outline:2px solid var(--purple2);outline-offset:3px}
+.tier-dots{display:flex;gap:4px}
+.tier-dot{width:24px;height:24px;padding:0;border:0;background:transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.tier-dot::before{content:"";width:8px;height:8px;border-radius:999px;background:var(--border);transition:background .2s,width .2s}
+.tier-dot[aria-current="true"]::before{width:20px;background:var(--purple2)}
+@media(prefers-reduced-motion:reduce){.price-grid.tier-track{scroll-behavior:auto}.tier-dot::before{transition:none}}
+/* Add-ons list inside #apps (moved from #addons) */
+.apps-addons{max-width:900px;margin:40px auto 0;text-align:center;scroll-margin-top:96px}
+.apps-addons-list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:12px 32px;text-align:left}
+@media(min-width:720px){.apps-addons-list{grid-template-columns:repeat(2,1fr)}}
+.apps-addons-list li{position:relative;padding-left:20px;font-size:14px;line-height:1.45;color:var(--body)}
+.apps-addons-list li::before{content:"+";position:absolute;left:2px;top:0;color:var(--purple2);font-weight:700}
+.apps-addons-list strong{color:var(--dark);font-weight:700}
+.apps-addon-price{margin-left:6px;font-weight:700;color:var(--purple2);white-space:nowrap}
+.apps-addon-note{display:block;font-size:13px;color:var(--muted)}
+.apps-addons-note{margin-top:18px;font-size:13.5px;color:var(--muted)}
+/* Consultation walkthrough inside #contact (revealed by Get a quote) */
+.consult-toggle-row{display:flex;justify-content:center;margin-bottom:28px}
+.consult-toggle-row .consult-toggle{width:auto}
+.consult-toggle[hidden]{display:none}
+.consult-walkthrough{margin-bottom:56px;scroll-margin-top:90px}
+.consult-walkthrough[hidden]{display:none}
+.consult-walkthrough-head h2:focus{outline:none}
+.consult-walkthrough-head h2:focus-visible{outline:2px solid var(--purple2);outline-offset:4px}
+.consult-part{padding:40px 0;border-top:1px solid var(--border);scroll-margin-top:90px}
+.consult-part:last-child{padding-bottom:0}
+/* Pricing lanes (tabs) in #pricing */
+.lane-tabs{display:flex;gap:4px;width:max-content;max-width:100%;margin:8px auto 26px;padding:4px;border:1px solid var(--border);border-radius:999px;background:var(--card)}
+.lane-tabs[hidden]{display:none}
+.lane-tab{border:0;background:transparent;padding:10px 18px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.lane-tab[aria-selected="true"]{background:var(--dark);color:var(--bg)}
+.lane-tab:focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
+@media(max-width:420px){.lane-tab{padding:9px 12px;font-size:13px}}
+.lane-panel[hidden]{display:none}
+.lane-panel+.lane-panel{margin-top:44px}
+.lanes-ready .lane-panel+.lane-panel{margin-top:0}
+.lane-title{text-align:center;font-size:20px;font-weight:700;color:var(--dark);margin-bottom:8px}
+.lanes-ready .lane-title{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.lane-intro{text-align:center;max-width:40em;margin:0 auto 6px;font-size:14.5px;line-height:1.55;color:var(--muted)}
+.lane-intro strong{color:var(--dark)}
+.lane-panel{scroll-margin-top:96px}
+@media(prefers-reduced-motion:reduce){.lane-tab{transition:none}}
+/* Scroll-spy: active section in top nav, mobile menu and side-jump (orange) */
+.nav-sheet a.is-active{color:var(--orange3)}
+.side-jump-dot.is-active .tip{background:var(--orange3);color:#fff}
+.side-jump-dot.is-active .tip::after{border-left-color:var(--orange3)}
+@media(prefers-color-scheme:dark){
+  .nav-sheet a.is-active{color:var(--orange1)}
+}
+@media(prefers-reduced-motion:reduce){.nav-links a{transition:none}}
+/* Top nav tiles: flat solid burnt orange; active section (scroll-spy) = inverted cream fill */
+.nav-links a:not(.nav-cta){background:#c43a08;background-image:none;color:#fff;border:0;box-shadow:none;text-shadow:none}
+.nav-links a:not(.nav-cta):hover{background:#a8320a;color:#fff}
+.nav-links a:not(.nav-cta):focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
+.nav-links a.is-active:not(.nav-cta),.nav-links a.is-active:not(.nav-cta):hover{background:#fffaf3;color:#c43a08;box-shadow:inset 0 0 0 1.5px #c43a08}
+.nav-links{gap:6px}
+.nav-links a:not(.nav-cta) .chip-new{background:#fff;color:#c43a08;box-shadow:none}
+.nav-links a.is-active:not(.nav-cta) .chip-new{background:#c43a08;color:#fff}
+@media(prefers-color-scheme:dark){
+  .nav-links a:not(.nav-cta){background:#c43a08;color:#fff}
+  .nav-links a:not(.nav-cta):hover{background:#a8320a;color:#fff}
+  .nav-links a.is-active:not(.nav-cta),.nav-links a.is-active:not(.nav-cta):hover{background:#fffaf3;color:#c43a08}
+}
 </style>
 </head>
 <body>
 
 <nav class="nav" aria-label="Primary">
-  <div class="nav-inner">
+  <div class="nav-pill">
     <a class="logo" href="#top">Harmony <span>Stack</span></a>
     <div class="nav-links">
+      <a href="#services-hero">Engineering</a>
       <a href="#work">Work</a>
-      <a href="#products">Products <span class="chip-new">Live</span></a>
-      <a href="#services">Services</a>
+      <a href="#products">Apps <span class="chip-new">Live</span></a>
       <a href="#pricing">Pricing</a>
-      <a href="#apps">Apps</a>
-      <a href="#addons">Add-ons</a>
       <a href="#faq">FAQ</a>
-      <a class="nav-cta" href="#contact">Get a quote</a>
     </div>
+    <a class="nav-cta" href="#contact">Get a quote</a>
+    <button type="button" class="nav-menu" id="nav-menu" aria-expanded="false" aria-controls="nav-sheet" aria-label="Open menu">
+      <span class="nav-menu-label">Menu</span>
+      <span class="nav-menu-icon" aria-hidden="true"><span></span><span></span></span>
+    </button>
   </div>
 </nav>
+<div class="nav-sheet" id="nav-sheet" hidden>
+  <div class="nav-sheet-links">
+    <a href="#services-hero">Engineering</a>
+    <a href="#work">Work</a>
+    <a href="#products">Apps</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Get a quote</a>
+  </div>
+</div>
 
 <header class="hero" id="top">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow"><span class="dot" aria-hidden="true"></span> Web design · Apps · AI</span>
       <h1>Websites &amp; apps that look sharp and <em>get used</em>.</h1>
       <p class="hero-lead">Sites, Shopify, and App Store products — designed and built by one person you can actually reach. No agency bloat. Clear packages. Real delivery.</p>
       <div class="btn-row">
         <a class="btn btn-neon" href="#contact">Get a quote</a>
         <a class="btn btn-secondary" href="#pricing">See packages</a>
-      </div>
-      <div class="hero-pills">
-        <span>Custom sites</span>
-        <span>Shopify</span>
-        <span>iOS &amp; web apps</span>
-        <span>LLM / AI features</span>
-        <span>Ongoing support</span>
       </div>
       <p class="hero-note">Built by Samuel · Flat rates &amp; monthly care</p>
     </div>
@@ -699,7 +1236,7 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
 
 <div class="wrap">
   <div class="trust" id="past-work" aria-label="Past clients and products">
-    <span style="opacity:.7;border-style:dashed">Past work</span>
+    <span style="border-style:dashed">Past work</span>
     <a href="https://cp-sync-repo.vercel.app" target="_blank" rel="noopener"
       data-preview-img="portfolio-screenshots/caresha-please-home.png"
       data-preview-title="Caresha Please"
@@ -756,19 +1293,115 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
 <section class="section" id="proof" style="padding-top:28px;padding-bottom:12px">
   <div class="wrap">
     <div class="metrics" aria-label="Studio snapshot">
-      <div class="metric"><b>2020–2026</b><span>Client work</span></div>
-      <div class="metric"><b>2</b><span>Apps on App Store</span></div>
-      <div class="metric"><b>5 tiers</b><span>Clear website packages</span></div>
-      <div class="metric"><b>1 person</b><span>You talk to the builder</span></div>
+      <div class="metric"><b>2025</b><span>Client projects</span></div>
+      <div class="metric"><b>2</b><span>App Store releases</span></div>
+      <div class="metric"><b>5 tiers</b><span>Websites that convert</span></div>
+      <div class="metric"><b>1 person</b><span>One dedicated builder</span></div>
     </div>
   </div>
 </section>
 
-<div class="band-orange" role="presentation">
+<div class="band-orange band-burnt" role="presentation">
   <div class="wrap"><p>Custom sites · Shopify · <strong>App Store products</strong> — one builder, clear packages.</p></div>
 </div>
 
-<section class="section" id="services">
+<section class="section section-warm-soft" id="services-hero" aria-labelledby="services-hero-title">
+  <div class="wrap">
+    <div class="svc-story">
+      <div class="svc-story-copy">
+        <span class="kicker">Under the hood</span>
+        <h2 class="svc-statement" id="services-hero-title">Polish on the surface. <span class="svc-hl">Real engineering</span> underneath.</h2>
+        <span class="svc-rule" aria-hidden="true"></span>
+        <p class="svc-lead">Behind every clean interface I build sits a real pipeline. <span class="svc-support">Data pulled in at scale, outside APIs handled without tripping their limits, and judgment calls made with a person in the loop. That same engineering can sit under your product.</span></p>
+        <p class="proof-line svc-story-proof">Picture it on <strong>your</strong> product: a store that keeps inventory in sync, a dashboard your team actually checks, or an AI feature that knows when to ask a human.</p>
+      </div>
+      <figure class="svc-shot">
+        <button type="button" class="svc-shot-open" id="svc-shot-open" aria-label="Expand dashboard screenshot" aria-haspopup="dialog" aria-controls="svc-lightbox">
+          <img src="portfolio-screenshots/penwork-dashboard.png" width="1447" height="1210" loading="lazy" decoding="async" alt="Dark-themed real-time dashboard from the Penwork pipeline: parallel job runs with progress bars, AI and terminal work lanes with live status, and a filterable review queue.">
+        </button>
+        <figcaption>The live progress dashboard I built for the Penwork pipeline: parallel jobs, agent and terminal lanes, and review queues on one screen.</figcaption>
+      </figure>
+      <dialog class="svc-lightbox" id="svc-lightbox" aria-label="Dashboard screenshot, expanded">
+        <button type="button" class="svc-lightbox-close" id="svc-lightbox-close" aria-label="Close expanded screenshot">&times;</button>
+        <img data-src="portfolio-screenshots/penwork-dashboard.png" width="1447" height="1210" alt="Dark-themed real-time dashboard from the Penwork pipeline, shown large: parallel job runs with progress bars, AI and terminal work lanes with live status, and a filterable review queue.">
+      </dialog>
+    </div>
+    <div class="svc-clusters" role="list" aria-label="Engineering capabilities">
+      <article class="svc-cluster" role="listitem">
+        <span class="svc-cluster-num" aria-hidden="true">01</span>
+        <h3>Get the data in</h3>
+        <p class="svc-cluster-sum">Reliable intake from wherever your data lives.</p>
+        <ul class="svc-items">
+          <li><b>Data extraction at scale</b><span>Clean, structured data pulled from pages, files, and feeds, in volume.</span></li>
+          <li><b>API integration that holds up</b><span>Rate limiting and retry backoff, so a busy API never takes you down.</span></li>
+          <li><b>Data modeling</b><span>Your nouns, tag chips, and relationships in a structure that stays simple as it grows.</span></li>
+        </ul>
+      </article>
+      <article class="svc-cluster is-featured" role="listitem">
+        <span class="svc-cluster-num" aria-hidden="true">02</span><span class="svc-badge">The hard part</span>
+        <h3>Make the right calls</h3>
+        <p class="svc-cluster-sum">Judgment you can audit, with people where it counts.</p>
+        <ul class="svc-items">
+          <li><b>Classification &amp; judgment pipelines</b><span>Sort, tag, and score text with rules and AI, with the reasoning attached.</span></li>
+          <li><b>Human-in-the-loop review</b><span>Queues where a person approves, edits, or overrides the calls that matter.</span></li>
+          <li><b>Agent &amp; terminal orchestration</b><span>AI agents and command-line jobs that run in order and recover when something fails.</span></li>
+        </ul>
+      </article>
+      <article class="svc-cluster" role="listitem">
+        <span class="svc-cluster-num" aria-hidden="true">03</span>
+        <h3>See it, run it</h3>
+        <p class="svc-cluster-sum">Live visibility now, and a system that outlasts the build.</p>
+        <ul class="svc-items">
+          <li><b>Real-time monitoring dashboards</b><span>What’s running, what’s stuck, and what just changed, live.</span></li>
+          <li><b>SwiftUI, live-updating</b><span>Native iOS screens that update the moment the data does.</span></li>
+          <li><b>Docs that keep it operable</b><span>Plain-language runbooks so it can be run, fixed, and handed off.</span></li>
+        </ul>
+      </article>
+    </div>
+    <div class="svc-more" role="group" aria-labelledby="svc-more-title">
+      <div class="svc-more-head">
+        <span class="kicker">More I’ve shipped</span>
+        <h3 class="svc-more-title" id="svc-more-title">And beyond the pipeline.</h3>
+        <p class="svc-more-sum">The same craft, pointed at apps, media, and the tools that keep a business running.</p>
+      </div>
+      <div class="svc-more-grid" id="svc-more-grid">
+      <div class="svc-more-group">
+        <h4>Apps &amp; platforms</h4>
+        <ul class="svc-items">
+          <li><b>App Store shipping</b><span>From submission to approval: builds, versions, and replies to App Review.</span></li>
+          <li><b>Localization, right-to-left included</b><span>Apps prepared for new languages, including right-to-left scripts like Arabic and Hebrew.</span></li>
+          <li><b>Sign in with Apple &amp; Google</b><span>Social sign-in wired to a real backend and checked end to end.</span></li>
+          <li><b>CarPlay &amp; in-car video</b><span>CarPlay apps with video playback, AirPlay routing, and driver-safe controls.</span></li>
+          <li><b>Native Mac utilities</b><span>Menu-bar and notch tools I build on and extend to keep an eye on long-running work.</span></li>
+        </ul>
+      </div>
+      <div class="svc-more-group">
+        <h4>Media &amp; creative</h4>
+        <ul class="svc-items">
+          <li><b>In-browser music tools</b><span>Chord, key, and BPM detection, stem splitting, and MIDI export, right in the browser.</span></li>
+          <li><b>Automated promo videos</b><span>Scripted, beat-synced cuts with voiceover, rendered and reviewed before they ship.</span></li>
+          <li><b>Ad platform APIs &amp; creative</b><span>Ad platform APIs connected, plus batches of ad creative sized for each placement.</span></li>
+          <li><b>Data-driven browser games</b><span>Games where art and settings live in data, so a reskin doesn’t mean a rewrite.</span></li>
+        </ul>
+      </div>
+      <div class="svc-more-group">
+        <h4>Tools &amp; ops</h4>
+        <ul class="svc-items">
+          <li><b>Internal tools &amp; CRMs</b><span>Small web apps and CRMs shaped around how your team actually works.</span></li>
+          <li><b>AI search over your documents</b><span>Ask questions and get answers grounded in your own material.</span></li>
+          <li><b>Rhyme &amp; syllable analysis</b><span>Text analyzed by sound as well as meaning: syllables, end rhymes, and near rhymes.</span></li>
+          <li><b>Deployment &amp; keeping it running</b><span>Hosting fixes, background services, and one-click launchers so things stay up.</span></li>
+          <li><b>UX audits</b><span>Interfaces checked against how people actually read and tap, then fixed.</span></li>
+        </ul>
+      </div>
+      </div>
+      <button type="button" class="svc-more-toggle" id="svc-more-toggle" aria-expanded="true" aria-controls="svc-more-grid" hidden>Show less</button>
+    </div>
+  </div>
+</section>
+
+<!-- #services ("What I do" five cards): hidden per Samuel Oct 10 (summarized as the one-liner above the #apps tiles), remove hidden to restore -->
+<section class="section" id="services" hidden>
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">What I do</span>
@@ -779,24 +1412,29 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
     </p>
     <div class="services">
       <article class="service">
-        <div class="service-icon" aria-hidden="true">◇</div>
+        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="2"/><path d="M3.5 9h17"/></svg></div>
         <h3>Custom websites</h3>
         <p>From quick fixes to full builds — custom design, mobile-first, performance-minded. No cookie-cutter templates.</p>
       </article>
       <article class="service">
-        <div class="service-icon" aria-hidden="true">▣</div>
+        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div>
         <h3>Shopify &amp; stores</h3>
         <p>Product pages, checkout, payments, and store UX that make it easy for people to buy.</p>
       </article>
       <article class="service">
-        <div class="service-icon" aria-hidden="true">◎</div>
+        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M10 18h4"/></svg></div>
         <h3>iOS &amp; web apps</h3>
         <p>MVPs to full products — including shipping App Store listings, marketing pages, and support docs.</p>
       </article>
       <article class="service">
-        <div class="service-icon" aria-hidden="true">✦</div>
+        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"/></svg></div>
         <h3>AI where it helps</h3>
         <p>LLM features, smart workflows, and product tooling when AI actually improves the user experience — not as a buzzword.</p>
+      </article>
+      <article class="service">
+        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 0-14.9-3.9M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.9 3.9M20 20v-4h-4"/></svg></div>
+        <h3>Ongoing support</h3>
+        <p>Updates, fixes, and monitoring after launch, so your site or app stays fast, secure, and current.</p>
       </article>
     </div>
   </div>
@@ -804,7 +1442,8 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
 
 
 
-<section class="section section-warm-soft" id="fit">
+<!-- #fit ("Who this is for — and who it isn’t."): hidden per Samuel Oct 10, remove hidden to restore -->
+<section class="section section-warm-soft" id="fit" hidden>
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">Fit</span>
@@ -849,7 +1488,7 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
         <div class="portfolio-carousel-track">
       <!-- luzidproductions.com home -->
       <div class="site-card" data-portfolio-site="luzidproductions.com">
-        <div class="phone-frame" tabindex="0" role="button" data-preview-id="luzid-home" aria-label="Luzid Productions home — playing preview" aria-expanded="false">
+        <a class="phone-frame" href="https://luzidproductions.com" target="_blank" rel="noopener noreferrer" data-preview-id="luzid-home" aria-label="Visit Luzid Productions (luzidproductions.com)">
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
@@ -859,19 +1498,15 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
             </div>
             <div class="phone-home-btn"></div>
           </div>
-        </div>
-        <div class="page-type-badge">
-          <span class="page-badge active">Home</span>
-        </div>
-        <a class="site-card-external" href="https://luzidproductions.com" target="_blank" rel="noopener noreferrer">
-          <span class="site-card-label">Luzid Productions</span>
-          <span class="site-card-url">luzidproductions.com</span>
         </a>
+        <div class="page-type-badge">
+          <span class="page-badge active page-badge--home">Home</span>
+        </div>
       </div>
 
       <!-- girlsgone.digital home -->
       <div class="site-card" data-portfolio-site="girlsgone.digital">
-        <div class="phone-frame" tabindex="0" role="button" data-preview-id="girls-ggd-home" aria-label="Girls Gone Digital home — playing preview" aria-expanded="false">
+        <a class="phone-frame" href="https://girlsgone.digital" target="_blank" rel="noopener noreferrer" data-preview-id="girls-ggd-home" aria-label="Visit Girls Gone Digital (girlsgone.digital)">
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
@@ -881,19 +1516,15 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
             </div>
             <div class="phone-home-btn"></div>
           </div>
-        </div>
-        <div class="page-type-badge">
-          <span class="page-badge active">Home</span>
-        </div>
-        <a class="site-card-external" href="https://girlsgone.digital" target="_blank" rel="noopener noreferrer">
-          <span class="site-card-label">Girls Gone Digital</span>
-          <span class="site-card-url">girlsgone.digital</span>
         </a>
+        <div class="page-type-badge">
+          <span class="page-badge active page-badge--home">Home</span>
+        </div>
       </div>
 
       <!-- girlsgone.digital magazine -->
       <div class="site-card" data-portfolio-site="girlsgone.digital">
-        <div class="phone-frame" tabindex="0" role="button" data-preview-id="girls-ggd-magazine" aria-label="Girls Gone Digital magazine — playing preview" aria-expanded="false">
+        <a class="phone-frame" href="https://girlsgone.digital/pages/magazine.html" target="_blank" rel="noopener noreferrer" data-preview-id="girls-ggd-magazine" aria-label="Visit Girls Gone Digital (girlsgone.digital/magazine)">
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
@@ -903,19 +1534,15 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
             </div>
             <div class="phone-home-btn"></div>
           </div>
-        </div>
+        </a>
         <div class="page-type-badge">
           <span class="page-badge active page-badge--magazine">Magazine</span>
         </div>
-        <a class="site-card-external" href="https://girlsgone.digital/pages/magazine.html" target="_blank" rel="noopener noreferrer">
-          <span class="site-card-label">Girls Gone Digital</span>
-          <span class="site-card-url">girlsgone.digital/magazine</span>
-        </a>
       </div>
 
       <!-- girlsgone.digital shop -->
       <div class="site-card" data-portfolio-site="girlsgone.digital">
-        <div class="phone-frame" tabindex="0" role="button" data-preview-id="girls-ggd-shop" aria-label="Girls Gone Digital shop — playing preview" aria-expanded="false">
+        <a class="phone-frame" href="https://girlsgone.digital/pages/shop.html" target="_blank" rel="noopener noreferrer" data-preview-id="girls-ggd-shop" aria-label="Visit Girls Gone Digital (girlsgone.digital)">
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
@@ -925,19 +1552,15 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
             </div>
             <div class="phone-home-btn"></div>
           </div>
-        </div>
+        </a>
         <div class="page-type-badge">
           <span class="page-badge active page-badge--shop">Shop</span>
         </div>
-        <a class="site-card-external" href="https://girlsgone.digital/pages/shop.html" target="_blank" rel="noopener noreferrer">
-          <span class="site-card-label">Girls Gone Digital</span>
-          <span class="site-card-url">girlsgone.digital</span>
-        </a>
       </div>
 
       <!-- careshaplease.com — visual only, no text credit -->
       <div class="site-card" data-portfolio-site="cp-sync-repo.vercel.app">
-        <div class="phone-frame" tabindex="0" role="button" data-preview-id="caresha-home" aria-label="Caresha Please home — show what’s in this preview" aria-expanded="false" aria-controls="portfolio-preview-popout">
+        <a class="phone-frame" href="https://cp-sync-repo.vercel.app" target="_blank" rel="noopener noreferrer" data-preview-id="caresha-home" aria-label="Visit Caresha Please (cp-sync-repo.vercel.app)">
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
@@ -945,19 +1568,15 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
             </div>
             <div class="phone-home-btn"></div>
           </div>
-        </div>
-        <div class="page-type-badge">
-          <span class="page-badge active">Home</span>
-        </div>
-        <a class="site-card-external" href="https://cp-sync-repo.vercel.app" target="_blank" rel="noopener noreferrer">
-          <span class="site-card-label">Caresha Please</span>
-          <span class="site-card-url">cp-sync-repo.vercel.app</span>
         </a>
+        <div class="page-type-badge">
+          <span class="page-badge active page-badge--home">Home</span>
+        </div>
       </div>
 
       <!-- careshaplease.com shop -->
       <div class="site-card" data-portfolio-site="cp-sync-repo.vercel.app">
-        <div class="phone-frame" tabindex="0" role="button" data-preview-id="caresha-shop" aria-label="Caresha Please shop — show what’s in this preview" aria-expanded="false" aria-controls="portfolio-preview-popout">
+        <a class="phone-frame" href="https://cp-sync-repo.vercel.app" target="_blank" rel="noopener noreferrer" data-preview-id="caresha-shop" aria-label="Visit Caresha Please (cp-sync-repo.vercel.app)">
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
@@ -965,19 +1584,15 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
             </div>
             <div class="phone-home-btn"></div>
           </div>
-        </div>
+        </a>
         <div class="page-type-badge">
           <span class="page-badge active page-badge--shop">Shop</span>
         </div>
-        <a class="site-card-external" href="https://cp-sync-repo.vercel.app" target="_blank" rel="noopener noreferrer">
-          <span class="site-card-label">Caresha Please</span>
-          <span class="site-card-url">cp-sync-repo.vercel.app</span>
-        </a>
       </div>
 
       <!-- Caresha Please — black colorway -->
       <div class="site-card" data-portfolio-site="cp-sync-repo.vercel.app">
-        <div class="phone-frame" tabindex="0" role="button" data-preview-id="caresha-dark-home" aria-label="Caresha Please black colorway home — show what's in this preview" aria-expanded="false" aria-controls="portfolio-preview-popout">
+        <a class="phone-frame" href="https://cp-sync-repo.vercel.app" target="_blank" rel="noopener noreferrer" data-preview-id="caresha-dark-home" aria-label="Visit Caresha Please (cp-sync-repo.vercel.app · black)">
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
@@ -985,18 +1600,14 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
             </div>
             <div class="phone-home-btn"></div>
           </div>
-        </div>
-        <div class="page-type-badge">
-          <span class="page-badge active">Home</span>
-        </div>
-        <a class="site-card-external" href="https://cp-sync-repo.vercel.app" target="_blank" rel="noopener noreferrer">
-          <span class="site-card-label">Caresha Please</span>
-          <span class="site-card-url">cp-sync-repo.vercel.app · black</span>
         </a>
+        <div class="page-type-badge">
+          <span class="page-badge active page-badge--home">Home</span>
+        </div>
       </div>
 
       <div class="site-card" data-portfolio-site="cp-sync-repo.vercel.app">
-        <div class="phone-frame" tabindex="0" role="button" data-preview-id="caresha-dark-products" aria-label="Caresha Please black colorway products — show what's in this preview" aria-expanded="false" aria-controls="portfolio-preview-popout">
+        <a class="phone-frame" href="https://cp-sync-repo.vercel.app" target="_blank" rel="noopener noreferrer" data-preview-id="caresha-dark-products" aria-label="Visit Caresha Please (cp-sync-repo.vercel.app · black)">
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
@@ -1004,19 +1615,15 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
             </div>
             <div class="phone-home-btn"></div>
           </div>
-        </div>
+        </a>
         <div class="page-type-badge">
           <span class="page-badge active page-badge--shop">Shop</span>
         </div>
-        <a class="site-card-external" href="https://cp-sync-repo.vercel.app" target="_blank" rel="noopener noreferrer">
-          <span class="site-card-label">Caresha Please</span>
-          <span class="site-card-url">cp-sync-repo.vercel.app · black</span>
-        </a>
       </div>
 
       <!-- blanksquareproductions.com home -->
       <div class="site-card" data-portfolio-site="blanksquareproductions.com">
-        <div class="phone-frame" tabindex="0" role="button" data-preview-id="blanksquare-home" aria-label="Blank Square — show what’s in this preview" aria-expanded="false" aria-controls="portfolio-preview-popout">
+        <a class="phone-frame" href="https://blanksquareproductions.com" target="_blank" rel="noopener noreferrer" data-preview-id="blanksquare-home" aria-label="Visit Blank Square (blanksquareproductions.com)">
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
@@ -1024,19 +1631,15 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
             </div>
             <div class="phone-home-btn"></div>
           </div>
-        </div>
-        <div class="page-type-badge">
-          <span class="page-badge active">Home</span>
-        </div>
-        <a class="site-card-external" href="https://blanksquareproductions.com" target="_blank" rel="noopener noreferrer">
-          <span class="site-card-label">Blank Square</span>
-          <span class="site-card-url">blanksquareproductions.com</span>
         </a>
+        <div class="page-type-badge">
+          <span class="page-badge active page-badge--home">Home</span>
+        </div>
       </div>
 
       <!-- icestudios.shop home -->
       <div class="site-card" data-portfolio-site="icestudios.shop">
-        <div class="phone-frame" tabindex="0" role="button" data-preview-id="ice-home" aria-label="ICE Studios — show what’s in this preview" aria-expanded="false" aria-controls="portfolio-preview-popout">
+        <a class="phone-frame" href="https://icestudios.shop" target="_blank" rel="noopener noreferrer" data-preview-id="ice-home" aria-label="Visit ICE Studios (icestudios.shop)">
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
@@ -1044,19 +1647,15 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
             </div>
             <div class="phone-home-btn"></div>
           </div>
-        </div>
-        <div class="page-type-badge">
-          <span class="page-badge active">Home</span>
-        </div>
-        <a class="site-card-external" href="https://icestudios.shop" target="_blank" rel="noopener noreferrer">
-          <span class="site-card-label">ICE Studios</span>
-          <span class="site-card-url">icestudios.shop</span>
         </a>
+        <div class="page-type-badge">
+          <span class="page-badge active page-badge--home">Home</span>
+        </div>
       </div>
 
       <!-- CDL One Stop — home -->
       <div class="site-card" data-portfolio-site="cdlonestopnj">
-        <div class="phone-frame" tabindex="0" role="button" data-preview-id="cdl-home" aria-label="CDL One Stop — show what's in this preview" aria-expanded="false" aria-controls="portfolio-preview-popout">
+        <a class="phone-frame" href="https://apps.apple.com/us/app/cdl-test-prep-2027/id6782784591" target="_blank" rel="noopener noreferrer" data-preview-id="cdl-home" aria-label="View CDL One Stop on the App Store">
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
@@ -1064,20 +1663,18 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
             </div>
             <div class="phone-home-btn"></div>
           </div>
-          <a class="phone-app-icon-link" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener noreferrer" aria-label="Download CDL One Stop on the App Store">
+          <span class="phone-app-icon-link" aria-hidden="true">
             <img class="phone-app-icon" src="portfolio-screenshots/cdl-icon.png" alt="" aria-hidden="true" />
-          </a>
-        </div>
+          </span>
+        </a>
         <div class="page-type-badge">
-          <span class="page-badge active">Home</span>
+          <span class="page-badge active page-badge--home">Home</span>
         </div>
-        <div class="site-card-label">CDL One Stop</div>
-        <div class="site-card-url" style="color:var(--muted);">iOS app</div>
       </div>
 
       <!-- CDL One Stop — key dates / info -->
       <div class="site-card" data-portfolio-site="cdlonestopnj">
-        <div class="phone-frame" tabindex="0" role="button" data-preview-id="cdl-info" aria-label="CDL One Stop — key dates screen" aria-expanded="false" aria-controls="portfolio-preview-popout">
+        <a class="phone-frame" href="https://apps.apple.com/us/app/cdl-test-prep-2027/id6782784591" target="_blank" rel="noopener noreferrer" data-preview-id="cdl-info" aria-label="View CDL One Stop on the App Store">
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
@@ -1085,20 +1682,18 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
             </div>
             <div class="phone-home-btn"></div>
           </div>
-          <a class="phone-app-icon-link" href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener noreferrer" aria-label="Download CDL One Stop on the App Store">
+          <span class="phone-app-icon-link" aria-hidden="true">
             <img class="phone-app-icon" src="portfolio-screenshots/cdl-icon.png" alt="" aria-hidden="true" />
-          </a>
-        </div>
+          </span>
+        </a>
         <div class="page-type-badge">
-          <span class="page-badge active">Info</span>
+          <span class="page-badge active page-badge--info">Info</span>
         </div>
-        <div class="site-card-label">CDL One Stop</div>
-        <div class="site-card-url" style="color:var(--muted);">iOS app</div>
       </div>
 
       <!-- Penwork Studios — home (song list) -->
       <div class="site-card" data-portfolio-site="penworkstudios">
-        <div class="phone-frame" tabindex="0" role="button" data-preview-id="penwork-home" aria-label="Penwork Studios — show what's in this preview" aria-expanded="false" aria-controls="portfolio-preview-popout">
+        <a class="phone-frame" href="https://apps.apple.com/us/app/penwork-studio/id6757620114" target="_blank" rel="noopener noreferrer" data-preview-id="penwork-home" aria-label="View Penwork Studio on the App Store">
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
@@ -1106,20 +1701,18 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
             </div>
             <div class="phone-home-btn"></div>
           </div>
-          <a class="phone-app-icon-link" href="https://apps.apple.com/us/app/penwork-studio/id6757620114" target="_blank" rel="noopener noreferrer" aria-label="Download Penwork Studio on the App Store">
+          <span class="phone-app-icon-link" aria-hidden="true">
             <img class="phone-app-icon" src="portfolio-screenshots/penwork-icon.png" alt="" aria-hidden="true" />
-          </a>
-        </div>
+          </span>
+        </a>
         <div class="page-type-badge">
-          <span class="page-badge active">Home</span>
+          <span class="page-badge active page-badge--home">Home</span>
         </div>
-        <div class="site-card-label">Penwork Studios</div>
-        <div class="site-card-url" style="color:var(--muted);">iOS app</div>
       </div>
 
       <!-- Penwork Studios — editor / text view -->
       <div class="site-card" data-portfolio-site="penworkstudios">
-        <div class="phone-frame" tabindex="0" role="button" data-preview-id="penwork-editor" aria-label="Penwork Studios — lyric editor screen" aria-expanded="false" aria-controls="portfolio-preview-popout">
+        <a class="phone-frame" href="https://apps.apple.com/us/app/penwork-studio/id6757620114" target="_blank" rel="noopener noreferrer" data-preview-id="penwork-editor" aria-label="View Penwork Studio on the App Store">
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
@@ -1127,15 +1720,13 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
             </div>
             <div class="phone-home-btn"></div>
           </div>
-          <a class="phone-app-icon-link" href="https://apps.apple.com/us/app/penwork-studio/id6757620114" target="_blank" rel="noopener noreferrer" aria-label="Download Penwork Studio on the App Store">
+          <span class="phone-app-icon-link" aria-hidden="true">
             <img class="phone-app-icon" src="portfolio-screenshots/penwork-icon.png" alt="" aria-hidden="true" />
-          </a>
-        </div>
+          </span>
+        </a>
         <div class="page-type-badge">
-          <span class="page-badge active">Editor</span>
+          <span class="page-badge active page-badge--editor">Editor</span>
         </div>
-        <div class="site-card-label">Penwork Studios</div>
-        <div class="site-card-url" style="color:var(--muted);">iOS app</div>
       </div>
 
         </div>
@@ -1148,7 +1739,7 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
 
 
 
-<div class="band-orange" role="presentation">
+<div class="band-orange band-burnt" role="presentation">
   <div class="wrap"><p>Scroll the phones, then see how projects ship — <strong>problem → build → outcome</strong>.</p></div>
 </div>
 
@@ -1216,109 +1807,7 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
 </section>
 
 
-<div class="band-orange" role="presentation">
-  <div class="wrap"><p>Transparent pricing. <strong>Fixed quote before work starts.</strong> Typical timelines on every tier.</p></div>
-</div>
-
-<section class="section section-warm-soft" id="pricing">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">Website packages</span>
-      <h2>Transparent pricing. Pick a lane, then talk.</h2>
-      <p>Flat rates for one-time work. Ranges depend on scope — you’ll get a fixed quote before anything starts.</p>
-    </div>
-
-    <div data-plan-pick role="radiogroup" aria-label="Website package">
-    <div class="price-grid" style="margin-bottom:28px">
-      <article class="price-card" tabindex="0">
-        <div class="price-tier">Tier 01</div>
-        <h3>Quick Fix</h3>
-        <div class="price-amount">$75–150</div>
-        <div class="price-note">Flat · per session</div>
-        <div class="price-time">⏱ Typical: 1–3 days</div>
-        <p>Small updates to an existing site. Fast turnaround.</p>
-        <ul>
-          <li>Copy, images, links, minor layout</li>
-          <li>1–2 pages per session</li>
-          <li>2 rounds of revisions</li>
-          <li>You send: edit list, screenshots, live URL</li>
-        </ul>
-        <a class="btn btn-secondary" href="mailto:harmonystack@gmail.com?subject=Quick%20Fix%20inquiry">Request this</a>
-      </article>
-      <article class="price-card" tabindex="0">
-        <div class="price-tier">Tier 02</div>
-        <h3>Refresh</h3>
-        <div class="price-amount">$300–600</div>
-        <div class="price-note">Flat · existing site</div>
-        <div class="price-time">⏱ Typical: 3–7 days</div>
-        <p>Visual overhaul without a full rebuild.</p>
-        <ul>
-          <li>Updated fonts, colors &amp; imagery</li>
-          <li>Up to 5 pages redesigned</li>
-          <li>Mobile check</li>
-          <li>2 rounds of revisions</li>
-        </ul>
-        <a class="btn btn-secondary" href="mailto:harmonystack@gmail.com?subject=Refresh%20inquiry">Request this</a>
-      </article>
-    </div>
-
-    <div class="price-grid cols-3">
-      <article class="price-card featured" tabindex="0">
-        <span class="price-badge">Most popular</span>
-        <div class="price-tier">Tier 03</div>
-        <h3>Starter Site</h3>
-        <div class="price-amount">$400–1,200</div>
-        <div class="price-note">Flat · new build</div>
-        <div class="price-time">⏱ Typical: 2–4 weeks</div>
-        <p>Clean, professional site from scratch.</p>
-        <ul>
-          <li>Up to 5 custom pages</li>
-          <li>Custom design (no templates)</li>
-          <li>Mobile responsive + performance</li>
-          <li>Contact form + launch support</li>
-          <li>4 rounds of revisions</li>
-        </ul>
-        <a class="btn btn-primary" href="mailto:harmonystack@gmail.com?subject=Starter%20Site%20inquiry">Start here</a>
-      </article>
-      <article class="price-card" tabindex="0">
-        <div class="price-tier">Tier 04</div>
-        <h3>Pro Build</h3>
-        <div class="price-amount">$2,000–4,500</div>
-        <div class="price-note">Flat · full project</div>
-        <div class="price-time">⏱ Typical: 4–8 weeks</div>
-        <p>Full-scale site with advanced features and animations.</p>
-        <ul>
-          <li>Up to 10 pages</li>
-          <li>Custom UI/UX + animations</li>
-          <li>Blog or portfolio section</li>
-          <li>30 days post-launch support</li>
-          <li>4 rounds of revisions</li>
-        </ul>
-        <a class="btn btn-secondary" href="mailto:harmonystack@gmail.com?subject=Pro%20Build%20inquiry">Request this</a>
-      </article>
-      <article class="price-card" tabindex="0">
-        <div class="price-tier">Tier 05</div>
-        <h3>E-Commerce</h3>
-        <div class="price-amount">$3,500–7,000</div>
-        <div class="price-note">Flat · online store</div>
-        <div class="price-time">⏱ Typical: 6–10+ weeks</div>
-        <p>Full store with products, checkout, and payments.</p>
-        <ul>
-          <li>Up to 20 products</li>
-          <li>Shopify / WooCommerce</li>
-          <li>Store UX + purchase flows</li>
-          <li>45 days post-launch support</li>
-          <li>6 rounds of revisions</li>
-        </ul>
-        <a class="btn btn-secondary" href="mailto:harmonystack@gmail.com?subject=E-Commerce%20inquiry">Request this</a>
-      </article>
-    </div>
-    </div>
-  </div>
-</section>
-
-
-<div class="band-orange" role="presentation">
+<div class="band-orange band-burnt" role="presentation">
   <div class="wrap"><p>Studio products — <strong>proof we ship</strong>, not only client comps.</p></div>
 </div>
 
@@ -1376,29 +1865,122 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
   </div>
 </section>
 
-<section class="section section-warm-soft" id="apps">
+
+<div class="band-orange band-burnt" role="presentation">
+  <div class="wrap"><p>Transparent pricing. <strong>Fixed quote before work starts.</strong> Typical timelines on every tier.</p></div>
+</div>
+
+<!-- #pricing: one consolidated pricing section (Websites / Apps & AI / Monthly care lanes) merged Oct 10 from #pricing, #apps, #retainers.
+     Without JS all three lanes show stacked; with JS they become tabs. Old ids #apps and #retainers live on as the lane panels. -->
+<section class="section section-warm-soft" id="pricing">
   <div class="wrap">
     <div class="section-head">
-      <span class="kicker">App development</span>
-      <h2>iOS, web, and AI-powered products.</h2>
-      <p>From a tight MVP to multi-platform builds with LLM features when they earn their place.</p>
+      <span class="kicker">Pricing</span>
+      <h2>Transparent pricing. Pick a lane, then talk.</h2>
+      <p>Flat rates for one-time work. Ranges depend on scope — you’ll get a fixed quote before anything starts.</p>
     </div>
-    <div class="price-grid cols-3" data-plan-pick role="radiogroup" aria-label="App package">
-      <article class="price-card" tabindex="0">
-        <div class="price-tier">Starter</div>
-        <h3>App MVP</h3>
-        <div class="price-amount">from $1,500</div>
-        <div class="price-note">One-time · single platform</div>
-        <div class="price-time">⏱ Typical: 3–6 weeks</div>
-        <p>One core flow — ideal for validating an idea fast.</p>
+    <p class="proof-line apps-oneliner">Custom websites, Shopify stores, iOS and web apps, and AI where it actually helps — built and supported end to end by <strong>one builder</strong>.</p>
+    <div class="lane-tabs" role="tablist" aria-label="Pricing lanes" hidden>
+      <button type="button" class="lane-tab" role="tab" id="lane-tab-web" aria-controls="pricing-websites" aria-selected="true">Websites</button>
+      <button type="button" class="lane-tab" role="tab" id="lane-tab-apps" aria-controls="apps" aria-selected="false" tabindex="-1">Apps &amp; AI</button>
+      <button type="button" class="lane-tab" role="tab" id="lane-tab-care" aria-controls="retainers" aria-selected="false" tabindex="-1">Monthly care</button>
+    </div>
+    <div class="lane-panel" id="pricing-websites" role="tabpanel" aria-labelledby="lane-tab-web">
+      <h3 class="lane-title">Websites</h3>
+      <div class="tier-carousel" data-tier-carousel>
+      <div class="price-grid cols-3 tier-track" id="web-tier-track" data-plan-pick role="radiogroup" aria-label="Website package">
+      <article class="price-card featured" tabindex="0">
+        <span class="price-badge">Most popular</span>
+        <div class="price-tier">Tier 03</div>
+        <h3>Starter Site</h3>
+        <div class="price-amount">$400–1,200</div>
+        <div class="price-note">Flat · new build</div>
+        <div class="price-time">⏱ Typical: 2–4 weeks</div>
+        <p>Clean, professional site from scratch.</p>
         <ul>
-          <li>Up to 5 screens / views</li>
-          <li>Basic auth &amp; data model</li>
-          <li>App Store or web deploy</li>
+          <li>Up to 5 custom pages</li>
+          <li>Custom design (no templates)</li>
+          <li>Mobile responsive + performance</li>
+          <li>Contact form + launch support</li>
+          <li>4 rounds of revisions</li>
+        </ul>
+        <a class="btn btn-primary" href="mailto:harmonystack@gmail.com?subject=Starter%20Site%20inquiry">Start here</a>
+      </article>
+      <article class="price-card" tabindex="0">
+        <div class="price-tier">Tier 01</div>
+        <h3>Quick Fix</h3>
+        <div class="price-amount">$75–150</div>
+        <div class="price-note">Flat · per session</div>
+        <div class="price-time">⏱ Typical: 1–3 days</div>
+        <p>Small updates to an existing site. Fast turnaround.</p>
+        <ul>
+          <li>Copy, images, links, minor layout</li>
+          <li>1–2 pages per session</li>
+          <li>2 rounds of revisions</li>
+          <li>You send: edit list, screenshots, live URL</li>
+        </ul>
+        <a class="btn btn-secondary" href="mailto:harmonystack@gmail.com?subject=Quick%20Fix%20inquiry">Request this</a>
+      </article>
+      <article class="price-card" tabindex="0">
+        <div class="price-tier">Tier 02</div>
+        <h3>Refresh</h3>
+        <div class="price-amount">$300–600</div>
+        <div class="price-note">Flat · existing site</div>
+        <div class="price-time">⏱ Typical: 3–7 days</div>
+        <p>Visual overhaul without a full rebuild.</p>
+        <ul>
+          <li>Updated fonts, colors &amp; imagery</li>
+          <li>Up to 5 pages redesigned</li>
+          <li>Mobile check</li>
           <li>2 rounds of revisions</li>
         </ul>
-        <a class="btn btn-secondary" href="mailto:harmonystack@gmail.com?subject=App%20MVP%20inquiry">Request this</a>
+        <a class="btn btn-secondary" href="mailto:harmonystack@gmail.com?subject=Refresh%20inquiry">Request this</a>
       </article>
+      <article class="price-card" tabindex="0">
+        <div class="price-tier">Tier 04</div>
+        <h3>Pro Build</h3>
+        <div class="price-amount">$2,000–4,500</div>
+        <div class="price-note">Flat · full project</div>
+        <div class="price-time">⏱ Typical: 4–8 weeks</div>
+        <p>Full-scale site with advanced features and animations.</p>
+        <ul>
+          <li>Up to 10 pages</li>
+          <li>Custom UI/UX + animations</li>
+          <li>Blog or portfolio section</li>
+          <li>30 days post-launch support</li>
+          <li>4 rounds of revisions</li>
+        </ul>
+        <a class="btn btn-secondary" href="mailto:harmonystack@gmail.com?subject=Pro%20Build%20inquiry">Request this</a>
+      </article>
+      <article class="price-card" tabindex="0">
+        <div class="price-tier">Tier 05</div>
+        <h3>E-Commerce</h3>
+        <div class="price-amount">$3,500–7,000</div>
+        <div class="price-note">Flat · online store</div>
+        <div class="price-time">⏱ Typical: 6–10+ weeks</div>
+        <p>Full store with products, checkout, and payments.</p>
+        <ul>
+          <li>Up to 20 products</li>
+          <li>Shopify / WooCommerce</li>
+          <li>Store UX + purchase flows</li>
+          <li>45 days post-launch support</li>
+          <li>6 rounds of revisions</li>
+        </ul>
+        <a class="btn btn-secondary" href="mailto:harmonystack@gmail.com?subject=E-Commerce%20inquiry">Request this</a>
+      </article>
+      </div>
+      <div class="tier-controls" hidden>
+        <button type="button" class="tier-arrow" data-tier-prev aria-controls="web-tier-track" aria-label="Previous package">&#8592;</button>
+        <div class="tier-dots" role="group" aria-label="Choose package slide"></div>
+        <button type="button" class="tier-arrow" data-tier-next aria-controls="web-tier-track" aria-label="Next package">&#8594;</button>
+      </div>
+      </div>
+    </div>
+    <div class="lane-panel" id="apps" role="tabpanel" aria-labelledby="lane-tab-apps">
+      <h3 class="lane-title">Apps &amp; AI</h3>
+      <p class="lane-intro"><strong>iOS, web, and AI-powered products.</strong> From a tight MVP to multi-platform builds with LLM features when they earn their place.</p>
+      <div class="tier-carousel" data-tier-carousel>
+      <div class="price-grid cols-3 tier-track" id="apps-tier-track" data-plan-pick role="radiogroup" aria-label="App package">
       <article class="price-card featured" tabindex="0">
         <span class="price-badge">Popular</span>
         <div class="price-tier">Growth</div>
@@ -1417,6 +1999,21 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
         <a class="btn btn-primary" href="mailto:harmonystack@gmail.com?subject=Full%20App%20Build%20inquiry">Request this</a>
       </article>
       <article class="price-card" tabindex="0">
+        <div class="price-tier">Starter</div>
+        <h3>App MVP</h3>
+        <div class="price-amount">from $1,500</div>
+        <div class="price-note">One-time · single platform</div>
+        <div class="price-time">⏱ Typical: 3–6 weeks</div>
+        <p>One core flow — ideal for validating an idea fast.</p>
+        <ul>
+          <li>Up to 5 screens / views</li>
+          <li>Basic auth &amp; data model</li>
+          <li>App Store or web deploy</li>
+          <li>2 rounds of revisions</li>
+        </ul>
+        <a class="btn btn-secondary" href="mailto:harmonystack@gmail.com?subject=App%20MVP%20inquiry">Request this</a>
+      </article>
+      <article class="price-card" tabindex="0">
         <div class="price-tier">Custom</div>
         <h3>Enterprise</h3>
         <div class="price-amount">Quote</div>
@@ -1431,21 +2028,19 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
         </ul>
         <a class="btn btn-secondary" href="mailto:harmonystack@gmail.com?subject=Enterprise%20app%20inquiry">Talk scope</a>
       </article>
+      </div>
+      <div class="tier-controls" hidden>
+        <button type="button" class="tier-arrow" data-tier-prev aria-controls="apps-tier-track" aria-label="Previous package">&#8592;</button>
+        <div class="tier-dots" role="group" aria-label="Choose package slide"></div>
+        <button type="button" class="tier-arrow" data-tier-next aria-controls="apps-tier-track" aria-label="Next package">&#8594;</button>
+      </div>
+      </div>
     </div>
-  </div>
-</section>
-
-
-<div class="orange-rule" aria-hidden="true"></div>
-
-<section class="section" id="retainers">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">Monthly care</span>
-      <h2>Keep the site healthy after launch.</h2>
-      <p>Month-to-month, 30-day cancellation. Hours scale with plan complexity.</p>
-    </div>
-    <div class="price-grid cols-3" data-plan-pick role="radiogroup" aria-label="Monthly care plan">
+    <div class="lane-panel" id="retainers" role="tabpanel" aria-labelledby="lane-tab-care">
+      <h3 class="lane-title">Monthly care</h3>
+      <p class="lane-intro"><strong>Keep the site healthy after launch.</strong> Month-to-month, 30-day cancellation. Hours scale with plan complexity.</p>
+      <div class="tier-carousel" data-tier-carousel>
+      <div class="price-grid cols-3 tier-track" id="care-tier-track" data-plan-pick role="radiogroup" aria-label="Monthly care plan">
       <article class="price-card" tabindex="0">
         <h3>Basic Care</h3>
         <div class="price-amount">$200/mo</div>
@@ -1483,12 +2078,35 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
         </ul>
         <a class="btn btn-secondary" href="mailto:harmonystack@gmail.com?subject=Partner%20Plan%20retainer">Inquire</a>
       </article>
+      </div>
+      <div class="tier-controls" hidden>
+        <button type="button" class="tier-arrow" data-tier-prev aria-controls="care-tier-track" aria-label="Previous package">&#8592;</button>
+        <div class="tier-dots" role="group" aria-label="Choose package slide"></div>
+        <button type="button" class="tier-arrow" data-tier-next aria-controls="care-tier-track" aria-label="Next package">&#8594;</button>
+      </div>
+      </div>
+    </div>
+    <div class="apps-addons" id="apps-addons">
+      <span class="kicker">Add-ons</span>
+      <ul class="apps-addons-list">
+        <li><strong>Extra page</strong> <span class="apps-addon-price">$50–200 / page</span><span class="apps-addon-note">Beyond your package page count — same design system, no Franken-site.</span></li>
+        <li><strong>Logo design</strong> <span class="apps-addon-price">$100–400</span><span class="apps-addon-note">2–3 directions, revisions, and final files for web and print.</span></li>
+        <li><strong>Speed optimization</strong> <span class="apps-addon-price">$100–300</span><span class="apps-addon-note">Image compression, caching, Core Web Vitals fixes for faster loads.</span></li>
+        <li><strong>Domain + hosting setup</strong> <span class="apps-addon-price">$75–150</span><span class="apps-addon-note">Buy or connect domain, DNS, SSL, and hosting so go-live isn’t guesswork.</span></li>
+        <li><strong>Copywriting</strong> <span class="apps-addon-price">$100–250 / page</span><span class="apps-addon-note">Headlines and body from your notes, outline, or a short call.</span></li>
+        <li><strong>Analytics setup</strong> <span class="apps-addon-price">$75–150</span><span class="apps-addon-note">GA4 or Plausible install plus basic reporting so you can see what works.</span></li>
+        <li><strong>SEO package</strong> <span class="apps-addon-price">$300–800</span><span class="apps-addon-note">Keywords (up to 10 pages), titles/metas, sitemap, Search Console, written audit.</span></li>
+        <li><strong>Social media kit</strong> <span class="apps-addon-price">$200–400</span><span class="apps-addon-note">Banners, story templates, and profile graphics for major platforms.</span></li>
+        <li><strong>Rush delivery</strong> <span class="apps-addon-price">+25–50% fee</span><span class="apps-addon-note">Shorter deadline with priority scheduling — quoted before work starts.</span></li>
+      </ul>
+      <p class="apps-addons-note">Need several together? Say so in your inquiry — combined pricing may beat stacking list rates.</p>
     </div>
   </div>
 </section>
 
 
-<section class="section section-warm" id="addons">
+<!-- #addons ("Add-ons when you need them."): hidden per Samuel Oct 10 (items moved into #apps as #apps-addons), remove hidden to restore -->
+<section class="section section-warm" id="addons" hidden>
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">À la carte</span>
@@ -1511,50 +2129,9 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
 </section>
 
 
-<div class="band-orange" role="presentation">
+<div class="band-orange band-burnt" role="presentation">
   <div class="wrap"><p>How we work: quote → deposit → materials → build → <strong>launch</strong>.</p></div>
 </div>
-
-<section class="section section-warm-soft" id="process">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">How it works</span>
-      <h2>Simple process. No black box.</h2>
-    </div>
-    <p class="proof-line">Same process whether it’s a client site or an App Store product like <strong>CDL One Stop</strong> and <strong>Penwork Studio</strong> — scope, build, revise, ship.
-    </p>
-    <div class="steps process-5">
-      <article class="step">
-        <div class="step-num">1</div>
-        <h3>Quote</h3>
-        <p>Form, email, or call. I’ll map your goal to a package or a fixed custom quote.</p>
-      </article>
-      <article class="step">
-        <div class="step-num">2</div>
-        <h3>Deposit</h3>
-        <p>Lock the start date with a deposit. Terms confirmed in writing first.</p>
-      </article>
-      <article class="step">
-        <div class="step-num">3</div>
-        <h3>You send materials</h3>
-        <p>Brand kit, images, copy notes, and access. Kickoff checklist after we agree on scope.</p>
-      </article>
-      <article class="step">
-        <div class="step-num">4</div>
-        <h3>Build &amp; revise</h3>
-        <p>Design and development with package revision rounds — no black box.</p>
-      </article>
-      <article class="step">
-        <div class="step-num">5</div>
-        <h3>Launch + care</h3>
-        <p>Go live with launch support. Optional monthly retainer after ship.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-
-<div class="orange-rule" aria-hidden="true"></div>
 
 <section class="section" id="faq">
   <div class="wrap">
@@ -1612,12 +2189,172 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
 </section>
 
 
-<div class="band-orange" role="presentation">
+<div class="band-orange band-burnt" role="presentation">
   <div class="wrap"><p>Ready when you are — <a href="#contact">get a quote</a> · <a href="tel:+12017457995">(201) 745-7995</a> · <a href="mailto:harmonystack@gmail.com">harmonystack@gmail.com</a></p></div>
 </div>
 
 <section class="section" id="contact">
   <div class="wrap">
+    <!-- Consultation walkthrough: How it works, payment, revisions, kickoff checklist, Dropbox guide (moved from the main page flow Oct 10).
+         Without JS it stays visible here; with JS it is hidden until a "Get a quote" / #contact link or the toggle is used. -->
+    <div class="consult-toggle-row">
+      <button type="button" class="btn btn-secondary consult-toggle" id="consult-toggle" aria-expanded="true" aria-controls="consult-walkthrough" hidden>How the consultation works</button>
+    </div>
+    <div class="consult-walkthrough" id="consult-walkthrough" role="region" aria-labelledby="consult-walkthrough-title">
+      <div class="section-head consult-walkthrough-head">
+        <span class="kicker">Consultation walkthrough</span>
+        <h2 id="consult-walkthrough-title" tabindex="-1">How the consultation works</h2>
+        <p><a href="#inquiry-form">Skip to the quote form</a></p>
+      </div>
+    <div class="consult-part" id="process">
+    <div class="section-head">
+      <span class="kicker">How it works</span>
+      <h2>Simple process. No black box.</h2>
+    </div>
+    <p class="proof-line">Same process whether it’s a client site or an App Store product like <strong>CDL One Stop</strong> and <strong>Penwork Studio</strong> — scope, build, revise, ship.
+    </p>
+    <div class="steps process-5">
+      <article class="step">
+        <div class="step-num">1</div>
+        <h3>Quote</h3>
+        <p>Form, email, or call. I’ll map your goal to a package or a fixed custom quote.</p>
+      </article>
+      <article class="step">
+        <div class="step-num">2</div>
+        <h3>Deposit</h3>
+        <p>Lock the start date with a deposit. Terms confirmed in writing first.</p>
+      </article>
+      <article class="step">
+        <div class="step-num">3</div>
+        <h3>You send materials</h3>
+        <p>Brand kit, images, copy notes, and access. Kickoff checklist after we agree on scope.</p>
+      </article>
+      <article class="step">
+        <div class="step-num">4</div>
+        <h3>Build &amp; revise</h3>
+        <p>Design and development with package revision rounds — no black box.</p>
+      </article>
+      <article class="step">
+        <div class="step-num">5</div>
+        <h3>Launch + care</h3>
+        <p>Go live with launch support. Optional monthly retainer after ship.</p>
+      </article>
+    </div>
+    </div>
+    <div class="consult-part" id="payment">
+    <div class="fold-head">
+      <h2 class="fold-title">How to Pay</h2>
+    </div>
+    <div class="pay-box">
+      <div>
+        <div class="fold-kicker">Accepted via</div>
+        <div class="pay-name">Zelle</div>
+        <div class="pay-detail">samuelsanchez175@gmail.com<br><a href="tel:+12017457995">201-745-7995</a></div>
+        <p class="fold-lead">Through your bank app or the Zelle app — no fees</p>
+      </div>
+      <div class="pay-terms">
+        <div>Predetermined deposit before work begins</div>
+        <div>Remaining is due on delivery.</div>
+        <div>Retainers billed the 1st of each month</div>
+        <div>Extra revisions at $75–100/hr</div>
+        <div>Signed agreement required before all projects</div>
+      </div>
+    </div>
+    </div>
+    <div class="consult-part" id="revision-guide">
+    <div class="fold-head">
+      <h2 class="fold-title">How Revisions Work</h2>
+      <p class="fold-lead">Read before submitting changes.</p>
+    </div>
+    <div class="fold-grid four">
+      <article class="rev-step"><div class="rev-num">01</div><h3>Take Screenshots</h3><p>Go through the full preview carefully. <strong>Screenshot every area you want changed.</strong> Use Snipping Tool, Command+Shift+4 on Mac, or your phone.</p></article>
+      <article class="rev-step"><div class="rev-num">02</div><h3>Mark Them Up</h3><p><strong>Circle, arrow, or annotate</strong> the exact element on each screenshot. Use Canva, Google Slides, iPhone Markup, or any annotation tool. Vague screenshots cause delays.</p></article>
+      <article class="rev-step"><div class="rev-num">03</div><h3>Write Full Context</h3><p>For each screenshot, write a <strong>clear explanation</strong> of what's wrong and what you want instead. "Make it bigger" is not enough. Reference a site or describe exactly what you mean.</p></article>
+      <article class="rev-step"><div class="rev-num">04</div><h3>Send One Complete List</h3><p><strong>Compile everything into one message.</strong> Do not send revisions one at a time over multiple days. Review the full site, collect all changes, then send them together.</p></article>
+    </div>
+    <p class="fold-warn"><strong>One pass per revision round.</strong> Sending changes in pieces uses up rounds fast. Collect every change you want, review the entire site, then submit everything together in a single list. Rounds cannot be split or carried over — use them wisely.</p>
+    </div>
+    <div class="consult-part" id="kickoff-checklist">
+    <div class="fold-head">
+      <h2 class="fold-title">Kickoff checklist</h2>
+      <p class="fold-lead">Before the project clock starts, send <strong>one delivery</strong>: Part&nbsp;1 (brief below) + Part&nbsp;2 (Dropbox, logins, checklist).</p>
+    </div>
+    <div class="fold-grid two">
+      <article class="fold-card">
+        <div class="fold-kicker">Part 1</div>
+        <h3>Creative direction &amp; requirements</h3>
+        <p>Put this in a doc or email — not Dropbox.</p>
+        <p><strong>What to include:</strong> 2–4 reference sites (what you like or want to avoid); page list / sitemap; draft copy per page or a clear plan (copywriting add-on $100–250/page if you need drafts); form details (where submissions go, fields, booking/CRM). Clearer references usually mean fewer revision rounds.</p>
+        <p><strong>Optional:</strong> Shopify apps, payments/shipping, chat or popups, pixels, platform preference — note what you already pay for.</p>
+      </article>
+      <article class="fold-card">
+        <div class="fold-kicker">Part 2</div>
+        <h3>Assets, access &amp; permissions</h3>
+        <p>Use the cards for brand &amp; images, then the hosting grid and checklist for domain, hosting, and platform access.</p>
+        <p class="fold-note">Cards marked <span class="req">Required</span> must be complete for kickoff. Upload files through Dropbox — see <a href="#dropbox-handoff">Dropbox section</a> — not email. Optional lines can follow without blocking the clock.</p>
+      </article>
+    </div>
+    <div class="fold-grid two" style="margin-top:14px">
+      <article class="fold-card">
+        <h3>Brand Assets <span class="req">Required</span></h3>
+        <ul>
+          <li>Logo file — SVG or PNG, transparent background</li>
+          <li>Brand colors — hex codes</li>
+          <li>Fonts — name or font files</li>
+          <li>Secondary logos, icons, watermarks</li>
+          <li>Brand guidelines doc if exists</li>
+        </ul>
+        <p class="fold-note">Don't have a brand kit? Use <a href="https://www.pomeloai.co" target="_blank" rel="noopener">Pomelio AI</a>, <a href="https://brandmark.io" target="_blank" rel="noopener">Brandmark.io</a>, <a href="https://business.google.com" target="_blank" rel="noopener">Google Business Profile</a>, or <a href="https://aistudio.google.com" target="_blank" rel="noopener">Google AI Studio</a>.</p>
+      </article>
+      <article class="fold-card">
+        <h3>Image Assets <span class="req">Required</span></h3>
+        <ul>
+          <li>All photos — high res (1MB+)</li>
+          <li>Product images — white bg or lifestyle shots</li>
+          <li>Team / headshots with names and titles</li>
+          <li>Video files or YouTube/Vimeo links</li>
+        </ul>
+        <p class="fold-note">Folder layout: <a href="#dropbox-handoff">Dropbox guide</a>.</p>
+      </article>
+    </div>
+    <div class="fold-grid host" style="margin-top:14px">
+      <article class="fold-card"><h3>Domain</h3><ul><li>Domain registrar (GoDaddy, Namecheap, etc.)</li><li>Login or DNS access</li><li>All active and parked domain names</li><li>Domain expiry date + privacy status</li><li>Subdomains in use (shop., blog.)</li><li>Email tied to domain — flag before DNS edits</li></ul></article>
+      <article class="fold-card"><h3>Hosting</h3><ul><li>Hosting provider name</li><li>Account login or server credentials</li><li>Plan type — shared, VPS, managed</li><li>cPanel / FTP / SSH credentials</li><li>SSL active? HTTPS working?</li></ul></article>
+      <article class="fold-card"><h3>DNS &amp; Records</h3><ul><li>Current nameservers</li><li>Existing A records, CNAMEs, MX records</li><li>Third-party services tied to DNS</li><li>Has the domain been migrated before?</li></ul></article>
+      <article class="fold-card"><h3>Platform-Specific</h3><ul><li>Shopify: store URL + staff invite</li><li>WordPress: admin URL + login</li><li>Webflow / Squarespace / Wix: collaborator invite</li><li>Custom: GitHub / GitLab repo access</li></ul></article>
+    </div>
+    <div class="checklist-wrap fold-card" style="margin-top:14px">
+      <h3>Permissions checklist</h3>
+      <p>Tick when each line matches what you shared. Checked lines stay on this browser.</p>
+      <div class="checklist-grid" id="kickoff-permissions-checklist">
+        <div class="checklist-group"><div class="checklist-group-title">Domain Access</div><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-domain-registrar" /><span>Domain registrar login shared</span></label><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-dns-management" /><span>DNS management access granted</span></label><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-domain-names" /><span>All domain names confirmed</span></label><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-email-dns-safe" /><span>Email/DNS change confirmed safe</span></label></div>
+        <div class="checklist-group"><div class="checklist-group-title">Hosting Access</div><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-hosting-login" /><span>Hosting login shared</span></label><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-cpanel" /><span>cPanel / admin accessible</span></label><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-ftp" /><span>FTP / SFTP credentials given</span></label><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-ssl" /><span>SSL certificate confirmed</span></label></div>
+        <div class="checklist-group"><div class="checklist-group-title">Platform Access</div><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-platform-login" /><span>Platform login / invite sent</span></label><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-shopify-staff" /><span>Shopify staff invite sent</span></label><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-wordpress-admin" /><span>WordPress admin granted</span></label><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-github" /><span>GitHub / repo access shared</span></label></div>
+        <div class="checklist-group"><div class="checklist-group-title">Google &amp; Analytics</div><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-ga" /><span>Google Analytics access granted</span></label><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-search-console" /><span>Search Console access granted</span></label><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-gbp" /><span>Google Business Profile access</span></label><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-pixels" /><span>Meta / TikTok pixel IDs provided</span></label></div>
+        <div class="checklist-group"><div class="checklist-group-title">Email &amp; Forms</div><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-form-email" /><span>Form delivery email confirmed</span></label><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-business-email" /><span>Business email account shared</span></label><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-crm" /><span>CRM or form tool access</span></label></div>
+        <div class="checklist-group"><div class="checklist-group-title">Assets Uploaded</div><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-dropbox-shared" /><span>Dropbox folder shared</span></label><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-brand-assets" /><span>Brand assets uploaded</span></label><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-images-by-page" /><span>All images organized by page</span></label><label class="checklist-item"><input type="checkbox" class="checklist-check" data-checklist-key="perm-copy-doc" /><span>Copy doc + reference URLs sent</span></label></div>
+      </div>
+      <p class="fold-note"><strong>Self-Promotion Permission.</strong> Would you allow a small footer banner — <strong>"Want a website like this? Built by Harmony Stack"</strong> — linking to my portfolio? Optional, free, removable any time.</p>
+    </div>
+    <p class="fold-warn"><strong>Clock starts when the full package is in.</strong> Delays past 7 days after deposit may result in a restart fee.</p>
+    </div>
+    <div class="consult-part" id="dropbox-handoff">
+    <div class="fold-head">
+      <h2 class="fold-title">How to Organize Your Dropbox Folder</h2>
+      <p class="fold-lead">All assets submitted via <strong>Dropbox</strong>. Invite <strong>samuelsanchez175@gmail.com</strong> and <strong>harmonyStack@gmail.com</strong> with edit access. Build folders as <strong>page → section → files</strong> (diagram below).</p>
+    </div>
+    <div class="dbx-finder-columns" id="dbx-finder-columns" role="region" aria-label="Interactive Finder-style folder columns"></div>
+    <p class="fold-lead">Like <strong>macOS Finder column view</strong>: each column is one folder level — <strong>click folders below</strong> to drill in; the next column shows what’s inside. Drop files in the matching folder in real Dropbox (e.g. hero images in <strong>hero/</strong>). Swap folder names for your sitemap anytime. Number page folders (01, 02…) to match your sitemap. Name files by what they are, not by camera codes.</p>
+    <div class="fold-rules" style="margin-top:18px">
+      <div class="fold-rule"><b>Name Files Clearly</b><span>hero-banner.jpg not IMG_9042.jpg.</span></div>
+      <div class="fold-rule"><b>One Folder Per Page</b><span>Each page gets its own numbered folder.</span></div>
+      <div class="fold-rule"><b>Subfolders Per Section</b><span>hero/, testimonials/ inside each page folder.</span></div>
+      <div class="fold-rule"><b>Products by Category</b><span>Each product category in its own subfolder.</span></div>
+      <div class="fold-rule"><b>High Res Only</b><span>1MB+ per image. Export originals, not screenshots.</span></div>
+      <div class="fold-rule"><b>Still-Live Assets</b><span>Note the URL in a .txt — no re-export needed.</span></div>
+    </div>
+    </div>
+    </div>
     <div class="inquiry">
       <div class="inquiry-copy">
         <span class="kicker">Contact</span>
@@ -1707,8 +2444,6 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
       <a href="#work">Work</a>
       <a href="#products">Products <span class="chip-new">Live</span></a>
       <a href="#pricing">Pricing</a>
-      <a href="#apps">Apps</a>
-      <a href="#addons">Add-ons</a>
       <a href="#contact">Contact</a>
       <a href="cdl-marketing.html">CDL One Stop</a>
       <a href="penwork-marketing.html">Penwork</a>
@@ -1734,6 +2469,189 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
   <a class="s2" href="mailto:harmonystack@gmail.com?subject=Project%20inquiry">Email</a>
   <a class="s2" href="tel:+12017457995">Call</a>
 </div>
+
+<script>
+(function(){
+  document.documentElement.classList.add("js");
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var nodes = Array.prototype.slice.call(document.querySelectorAll(".section"));
+  if (reduced || !("IntersectionObserver" in window)) {
+    nodes.forEach(function(el){ el.classList.add("is-in"); });
+    return;
+  }
+  var vh = window.innerHeight || 800;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-in");
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.12 });
+  nodes.forEach(function(el){
+    if (el.getBoundingClientRect().top < vh * 0.92) el.classList.add("is-in");
+    else { el.classList.add("reveal"); io.observe(el); }
+  });
+  try {
+    if (location.hash.length > 1) {
+      var hashed = document.querySelector(location.hash);
+      if (hashed) {
+        var host = hashed.closest(".section") || hashed;
+        host.classList.add("is-in");
+        host.classList.remove("reveal");
+        var root = document.documentElement;
+        var prev = root.style.scrollBehavior;
+        root.style.scrollBehavior = "auto";
+        hashed.scrollIntoView({ block: "start" });
+        root.style.scrollBehavior = prev;
+      }
+    }
+  } catch (err) {}
+  document.addEventListener("click", function(e){
+    var a = e.target.closest && e.target.closest("a[href^='#']");
+    if (!a) return;
+    var id = a.getAttribute("href");
+    if (!id || id.length < 2) return;
+    var target = null;
+    try { target = document.querySelector(id); } catch (err2) { return; }
+    if (!target) return;
+    var section = target.closest(".section") || target;
+    section.classList.add("is-in");
+    section.classList.remove("reveal");
+  }, true);
+})();
+</script>
+<script>
+(function(){
+  var btn = document.getElementById("nav-menu");
+  var sheet = document.getElementById("nav-sheet");
+  if (!btn || !sheet) return;
+  var label = btn.querySelector(".nav-menu-label");
+  function setOpen(open){
+    btn.classList.toggle("is-open", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    if (label) label.textContent = open ? "Close" : "Menu";
+    document.body.classList.toggle("nav-open", open);
+    if (open) {
+      sheet.hidden = false;
+      requestAnimationFrame(function(){ sheet.classList.add("is-open"); });
+    } else {
+      sheet.classList.remove("is-open");
+      sheet.hidden = true;
+    }
+  }
+  btn.addEventListener("click", function(){ setOpen(sheet.hidden); });
+  sheet.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(e){
+      var id = a.getAttribute("href");
+      var target = id && document.querySelector(id);
+      setOpen(false);
+      if (!target) return;
+      e.preventDefault();
+      var section = target.closest(".section") || target;
+      section.classList.add("is-in");
+      section.classList.remove("reveal");
+      var root = document.documentElement;
+      var prev = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      target.scrollIntoView({ block: "start" });
+      root.style.scrollBehavior = prev;
+      if (location.hash !== id) history.pushState(null, "", id);
+    });
+  });
+  document.addEventListener("keydown", function(e){
+    if (e.key === "Escape" && !sheet.hidden) setOpen(false);
+  });
+})();
+</script>
+<script>
+(function(){
+  var wrap = document.querySelector(".checklist-wrap");
+  if (!wrap) return;
+  var STORAGE_KEY = "harmony-kickoff-checklist-v1";
+  function readStore(){
+    try { var raw = localStorage.getItem(STORAGE_KEY); if (!raw) return {}; var parsed = JSON.parse(raw); return parsed && typeof parsed === "object" ? parsed : {}; }
+    catch (e) { return {}; }
+  }
+  function writeStore(data){ try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (e) {} }
+  function applySaved(){
+    var data = readStore();
+    wrap.querySelectorAll("[data-checklist-key]").forEach(function(inp){
+      var key = inp.getAttribute("data-checklist-key");
+      if (key) inp.checked = data[key] === true;
+    });
+  }
+  function persist(){
+    var data = {};
+    wrap.querySelectorAll("[data-checklist-key]").forEach(function(inp){
+      var key = inp.getAttribute("data-checklist-key");
+      if (key && inp.checked) data[key] = true;
+    });
+    writeStore(data);
+  }
+  applySaved();
+  wrap.addEventListener("change", function(e){
+    if (e.target && e.target.getAttribute && e.target.getAttribute("data-checklist-key")) persist();
+  });
+})();
+</script>
+<script>
+(function(){
+  var root = document.getElementById("dbx-finder-columns");
+  if (!root) return;
+  var TREE = {
+    __root__: ["my-site-assets", "00-brand"],
+    "my-site-assets": ["01-home", "02-about", "03-shop"],
+    "00-brand": ["logos", "palette.pdf"],
+    "01-home": ["hero", "testimonials"],
+    "02-about": ["team", "timeline"],
+    "03-shop": ["featured", "tea-collection"],
+    hero: ["banner.jpg", "logo.svg"],
+    testimonials: ["headshot-maria.png", "quotes.txt"],
+    team: ["jordan-photo.jpg"],
+    timeline: ["milestones.md"],
+    featured: ["hero-product.jpg"],
+    "tea-collection": ["oolong-01.jpg"],
+    logos: ["wordmark.svg", "icon-mark.png"]
+  };
+  function isFile(name){ return /\.(jpg|jpeg|png|gif|webp|svg|pdf|txt|md)$/i.test(name); }
+  function childrenOf(key){ var list = TREE[key]; return list ? list.slice() : []; }
+  var path = ["my-site-assets", "01-home", "hero", "banner.jpg"];
+  function itemsAtDepth(depth){
+    if (depth === 0) return childrenOf("__root__");
+    var parent = path[depth - 1];
+    if (!parent || isFile(parent)) return [];
+    return childrenOf(parent);
+  }
+  function render(){
+    root.innerHTML = "";
+    for (var d = 0; d < 4; d++) {
+      var items = itemsAtDepth(d);
+      var selected = path[d];
+      var col = document.createElement("div");
+      col.className = "dbx-finder-col";
+      col.setAttribute("role", "group");
+      col.setAttribute("aria-label", d === 0 ? "Top-level folders" : "Inside " + (path[d - 1] || "folder"));
+      items.forEach(function(name){
+        var depth = d;
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "dbx-finder-row " + (isFile(name) ? "dbx-finder-row-file" : "dbx-finder-row-folder");
+        if (selected === name) btn.classList.add("is-selected");
+        btn.textContent = name;
+        btn.setAttribute("aria-label", (isFile(name) ? "File " : "Folder ") + name);
+        btn.addEventListener("click", function(){
+          path = path.slice(0, depth).concat([name]);
+          render();
+        });
+        col.appendChild(btn);
+      });
+      root.appendChild(col);
+    }
+  }
+  render();
+})();
+</script>
 
 <script>
 (function(){
@@ -2051,13 +2969,11 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
 (function(){
   var sections = [
     { id: 'top', label: 'Top' },
-    { id: 'services', label: 'Services' },
+    { id: 'services-hero', label: 'Engineering' },
     { id: 'work', label: 'Work' },
     { id: 'cases', label: 'Cases' },
-    { id: 'pricing', label: 'Pricing' },
     { id: 'products', label: 'Products' },
-    { id: 'apps', label: 'Apps' },
-    { id: 'process', label: 'Process' },
+    { id: 'pricing', label: 'Pricing' },
     { id: 'faq', label: 'FAQ' },
     { id: 'contact', label: 'Contact' }
   ];
@@ -2125,6 +3041,7 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
 
   function sync(){
     var ai = activeIndex();
+    if (window.hsSpyId) { for (var q = 0; q < sections.length; q++) { if (sections[q].id === window.hsSpyId) { ai = q; break; } } }
     dots.forEach(function(d, i){
       d.classList.toggle('is-active', i === ai);
       d.setAttribute('aria-current', i === ai ? 'true' : 'false');
@@ -2137,6 +3054,8 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
     i = Math.max(0, Math.min(sections.length - 1, i));
     var el = document.getElementById(sections[i].id);
     if (!el) return;
+    el.classList.add('is-in');
+    el.classList.remove('reveal');
     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     // sync after scroll settles a bit
     setTimeout(sync, 350);
@@ -2145,6 +3064,7 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
   upBtn.addEventListener('click', function(){ goTo(activeIndex() - 1); });
   downBtn.addEventListener('click', function(){ goTo(activeIndex() + 1); });
 
+  document.addEventListener('hs-spy', sync);
   var ticking = false;
   window.addEventListener('scroll', function(){
     if (ticking) return;
@@ -2156,6 +3076,47 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
 })();
 </script>
 
+<script>
+(function(){
+  var trigger = document.getElementById("svc-shot-open");
+  var dlg = document.getElementById("svc-lightbox");
+  var closeBtn = document.getElementById("svc-lightbox-close");
+  if (!trigger || !dlg || !closeBtn) return;
+  var big = dlg.querySelector("img");
+  if (typeof dlg.showModal !== "function") {
+    trigger.addEventListener("click", function(){ window.open(big.getAttribute("data-src"), "_blank", "noopener"); });
+    return;
+  }
+  trigger.addEventListener("click", function(){
+    if (!big.getAttribute("src")) big.setAttribute("src", big.getAttribute("data-src"));
+    dlg.showModal();
+    closeBtn.focus();
+  });
+  closeBtn.addEventListener("click", function(){ dlg.close(); });
+  dlg.addEventListener("click", function(e){ if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener("close", function(){ trigger.focus(); });
+})();
+</script>
+<script>
+(function(){
+  var box = document.querySelector("#services-hero .svc-more");
+  var btn = document.getElementById("svc-more-toggle");
+  if (!box || !btn || !window.matchMedia) return;
+  var mq = window.matchMedia("(max-width: 639px)");
+  function set(collapsed){
+    box.classList.toggle("is-collapsed", collapsed);
+    btn.setAttribute("aria-expanded", collapsed ? "false" : "true");
+    btn.textContent = collapsed ? "Show more" : "Show less";
+  }
+  function sync(){
+    if (mq.matches) { btn.hidden = false; set(true); }
+    else { btn.hidden = true; set(false); }
+  }
+  btn.addEventListener("click", function(){ set(!box.classList.contains("is-collapsed")); });
+  if (mq.addEventListener) mq.addEventListener("change", sync); else if (mq.addListener) mq.addListener(sync);
+  sync();
+})();
+</script>
 
 <!-- Vercel Web Analytics (static HTML — works when deployed on Vercel) -->
 <script>
@@ -2163,5 +3124,271 @@ h2 .chip-new,h3 .chip-new,.kicker .chip-new{position:relative;top:-2px}
 </script>
 <script src="js/vercel-analytics.js"></script>
 
+<script>
+/* #apps tier carousel: looping swipe track (clones at ends only when tiles overflow) */
+(function(){
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  document.querySelectorAll("[data-tier-carousel]").forEach(function(root){
+    var track = root.querySelector(".tier-track");
+    var cards = Array.prototype.slice.call(track.querySelectorAll(".price-card"));
+    var n = cards.length;
+    var controls = root.querySelector(".tier-controls");
+    var dotsWrap = root.querySelector(".tier-dots");
+    var prev = root.querySelector("[data-tier-prev]");
+    var next = root.querySelector("[data-tier-next]");
+    var active = 0, looping = false, headClone = null, tailClone = null, pads = [], settleTimer = null;
+
+    var dots = cards.map(function(card, i){
+      var d = document.createElement("button");
+      d.type = "button"; d.className = "tier-dot";
+      var h = card.querySelector("h3");
+      d.setAttribute("aria-label", "Show package " + (i + 1) + " of " + n + (h ? ": " + h.textContent.trim() : ""));
+      d.setAttribute("aria-controls", track.id);
+      d.addEventListener("click", function(){ goSlot(i); });
+      dotsWrap.appendChild(d);
+      return d;
+    });
+
+    function makeClone(card){
+      var c = card.cloneNode(true);
+      c.classList.add("tier-clone");
+      c.setAttribute("aria-hidden", "true");
+      c.setAttribute("inert", "");
+      c.setAttribute("tabindex", "-1");
+      c.removeAttribute("role"); c.removeAttribute("aria-checked");
+      c.querySelectorAll("[id]").forEach(function(e){ e.removeAttribute("id"); });
+      c.querySelectorAll("a,button,[tabindex]").forEach(function(e){ e.setAttribute("tabindex", "-1"); });
+      c._real = card;
+      return c;
+    }
+    function syncClone(c){
+      if (!c) return;
+      var src = c._real;
+      c.className = src.className + " tier-clone";
+      if (pads.indexOf(c) > -1) c.style.scrollSnapAlign = "none";
+      var a = src.querySelector(".btn"), b = c.querySelector(".btn");
+      if (a && b) b.className = a.className;
+    }
+    var mo = new MutationObserver(function(){ syncClone(headClone); syncClone(tailClone); pads.forEach(syncClone); });
+    cards.forEach(function(c){ mo.observe(c, { attributes: true, attributeFilter: ["class"], subtree: true }); });
+
+    /* slots: real index i (0..n-1); -1 = head clone (last), n = tail clone (first) */
+    function slotEl(i){ return i === -1 ? headClone : i === n ? tailClone : cards[i]; }
+    function slotLeft(i){ return slotEl(i).offsetLeft - track.firstElementChild.offsetLeft; }
+    function nearestSlot(){
+      var lo = looping ? -1 : 0, hi = looping ? n : n - 1, best = lo, bd = Infinity;
+      for (var i = lo; i <= hi; i++){ var d = Math.abs(slotLeft(i) - track.scrollLeft); if (d < bd){ bd = d; best = i; } }
+      return best;
+    }
+    function jumpTo(i){
+      var sb = track.style.scrollBehavior;
+      track.style.scrollBehavior = "auto";
+      track.scrollLeft = slotLeft(i);
+      track.style.scrollBehavior = sb;
+    }
+    function normalize(){
+      if (!looping) return;
+      var s = nearestSlot();
+      if (s === -1) jumpTo(n - 1);
+      else if (s === n) jumpTo(0);
+    }
+    function goSlot(i){
+      if (!looping){ i = ((i % n) + n) % n; }
+      track.scrollTo({ left: slotLeft(i), behavior: reduce.matches ? "auto" : "smooth" });
+      if (reduce.matches) normalize();
+    }
+    function step(dir){
+      normalize();
+      var s = nearestSlot();
+      if (!looping) { goSlot(s + dir); return; }
+      goSlot(s + dir); /* may land on a clone; settle() wraps to the real tile */
+    }
+    function setActive(i){
+      active = ((i % n) + n) % n;
+      dots.forEach(function(d, j){ d.setAttribute("aria-current", j === active ? "true" : "false"); });
+    }
+    function settle(){ if (!track.clientWidth) return; normalize(); setActive(nearestSlot()); }
+
+    track.addEventListener("scroll", function(){
+      if (!track.clientWidth) return; /* hidden lane: keep the current tile */
+      setActive(nearestSlot());
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(settle, 140);
+    }, { passive: true });
+    if ("onscrollend" in window) track.addEventListener("scrollend", function(){ clearTimeout(settleTimer); settle(); });
+
+    prev.addEventListener("click", function(){ step(-1); });
+    next.addEventListener("click", function(){ step(1); });
+    track.addEventListener("keydown", function(e){
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      e.preventDefault();
+      var dir = e.key === "ArrowRight" ? 1 : -1;
+      var target = ((active + dir) % n + n) % n;
+      step(dir);
+      cards[target].focus({ preventScroll: true });
+    });
+
+    function addClones(){
+      if (looping) return;
+      headClone = makeClone(cards[n - 1]);
+      tailClone = makeClone(cards[0]);
+      track.insertBefore(headClone, cards[0]);
+      track.appendChild(tailClone);
+      /* pad clones (not snap targets) so the tail clone can reach the start edge when several tiles show at once */
+      looping = true;
+      while (pads.length < n && track.scrollWidth - track.clientWidth < slotLeft(n) - 1) {
+        var pc = makeClone(cards[(pads.length + 1) % n]);
+        pc.style.scrollSnapAlign = "none";
+        track.appendChild(pc);
+        pads.push(pc);
+      }
+    }
+    function removeClones(){
+      if (!looping) return;
+      headClone.remove(); tailClone.remove(); pads.forEach(function(c){ c.remove(); });
+      headClone = tailClone = null; pads = []; looping = false;
+    }
+    function fit(){
+      if (!track.clientWidth) return; /* lane panel hidden: refit when its tab opens */
+      var keep = active;
+      removeClones();
+      var overflow = track.scrollWidth > track.clientWidth + 2;
+      controls.hidden = !overflow;
+      if (overflow) addClones();
+      jumpTo(overflow ? keep : 0);
+      setActive(overflow ? keep : 0);
+    }
+    var rt = null;
+    window.addEventListener("resize", function(){ clearTimeout(rt); rt = setTimeout(fit, 120); });
+    root.addEventListener("tier-refit", fit);
+    fit();
+  });
+})();
+</script>
+<script>
+/* Consultation walkthrough: hidden until "Get a quote" (any #contact link) or the toggle is used; visible without JS */
+(function(){
+  var panel = document.getElementById("consult-walkthrough");
+  var toggle = document.getElementById("consult-toggle");
+  var title = document.getElementById("consult-walkthrough-title");
+  if (!panel || !toggle) return;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  function setOpen(open){
+    panel.hidden = !open;
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  function focusTitle(){
+    setTimeout(function(){ if (title) title.focus({ preventScroll: true }); }, reduce.matches ? 0 : 450);
+  }
+  toggle.hidden = false;
+  var h = location.hash.slice(1);
+  var deep = h && panel.querySelector("[id='" + h.replace(/'/g, "") + "']");
+  setOpen(!!deep);
+  if (deep) deep.scrollIntoView({ behavior: "auto" });
+  toggle.addEventListener("click", function(){
+    var open = panel.hidden;
+    setOpen(open);
+    if (open) { panel.scrollIntoView({ behavior: reduce.matches ? "auto" : "smooth", block: "start" }); focusTitle(); }
+  });
+  /* capture phase: open before the existing anchor/nav-sheet handlers scroll to #contact */
+  document.addEventListener("click", function(e){
+    var a = e.target.closest && e.target.closest('a[href="#contact"]');
+    if (!a) return;
+    if (panel.hidden) { setOpen(true); focusTitle(); }
+  }, true);
+})();
+</script>
+<script>
+/* #pricing lanes: tabs (Websites / Apps & AI / Monthly care) with hash deep links; all lanes stay visible without JS */
+(function(){
+  var section = document.getElementById("pricing");
+  var list = section && section.querySelector(".lane-tabs");
+  if (!list) return;
+  var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+  var panels = tabs.map(function(t){ return document.getElementById(t.getAttribute("aria-controls")); });
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var alias = { "apps": 1, "apps-tier-track": 1, "app-development": 1, "retainers": 2, "care": 2, "monthly-care": 2, "care-tier-track": 2, "pricing-websites": 0, "web-tier-track": 0 };
+  function select(i, focus){
+    tabs.forEach(function(t, j){
+      var on = j === i;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      panels[j].hidden = !on;
+    });
+    var c = panels[i].querySelector("[data-tier-carousel]");
+    if (c) { c.dispatchEvent(new Event("tier-refit")); requestAnimationFrame(function(){ c.dispatchEvent(new Event("tier-refit")); }); }
+    if (focus) tabs[i].focus();
+  }
+  section.classList.add("lanes-ready");
+  list.hidden = false;
+  tabs.forEach(function(t, i){
+    t.addEventListener("click", function(){ select(i, false); });
+    t.addEventListener("keydown", function(e){
+      var k = e.key, n = tabs.length, j = null;
+      if (k === "ArrowRight") j = (i + 1) % n;
+      else if (k === "ArrowLeft") j = (i - 1 + n) % n;
+      else if (k === "Home") j = 0;
+      else if (k === "End") j = n - 1;
+      if (j === null) return;
+      e.preventDefault(); select(j, true);
+    });
+  });
+  function fromHash(scroll){
+    var h = location.hash.slice(1);
+    if (!(h in alias)) return false;
+    select(alias[h], false);
+    if (scroll) list.scrollIntoView({ behavior: reduce.matches ? "auto" : "smooth", block: "start" });
+    return true;
+  }
+  select(0, false);
+  if (fromHash(false)) [0, 300, 900].forEach(function(ms){ setTimeout(function(){ if (window.scrollY < 40 || ms === 0) list.scrollIntoView({ behavior: "auto", block: "start" }); }, ms); });
+  window.addEventListener("hashchange", function(){ fromHash(true); });
+  /* late-loading media can shift layout: re-align a lane deep link once the page has loaded */
+  window.addEventListener("load", function(){ var h = location.hash.slice(1); if (h in alias && h !== "pricing-websites") list.scrollIntoView({ behavior: "auto", block: "start" }); });
+  /* in-page links to an old lane id: open the lane, then scroll to the tabs */
+  document.addEventListener("click", function(e){
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var h = a.getAttribute("href").slice(1);
+    if (!(h in alias)) return;
+    e.preventDefault();
+    if (history.replaceState) history.replaceState(null, "", "#" + h);
+    fromHash(true);
+  });
+})();
+</script>
+<script>
+/* Scroll-spy: one active section; highlights matching top-nav / mobile-menu links (aria-current) and drives the side-jump dot */
+(function(){
+  var ids = ["top", "services-hero", "work", "cases", "products", "pricing", "faq", "contact"];
+  var els = ids.map(function(id){ return document.getElementById(id); }).filter(function(el){ return el && !el.hidden; });
+  if (!els.length || !("IntersectionObserver" in window)) return;
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]:not(.nav-cta), .nav-sheet a[href^="#"]'));
+  var visible = {}, current = null;
+  function apply(id){
+    if (id === current) return;
+    current = id;
+    window.hsSpyId = id;
+    links.forEach(function(a){
+      var on = !!id && a.getAttribute("href") === "#" + id;
+      a.classList.toggle("is-active", on);
+      if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+    });
+    document.dispatchEvent(new CustomEvent("hs-spy", { detail: { id: id } }));
+  }
+  function pick(){
+    if (window.scrollY < 40) { apply("top"); return; }
+    var best = null;
+    els.forEach(function(el){ if (visible[el.id]) best = el.id; });
+    if (best) apply(best);
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ visible[e.target.id] = e.isIntersecting; });
+    pick();
+  }, { rootMargin: "-90px 0px -55% 0px", threshold: 0 });
+  els.forEach(function(el){ io.observe(el); });
+  window.addEventListener("scroll", function(){ if (window.scrollY < 40) apply("top"); }, { passive: true });
+})();
+</script>
 </body>
 </html>
