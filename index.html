@@ -289,19 +289,10 @@ a{color:inherit}
 .footer-fine{width:100%;margin-top:20px;font-size:12px;color:var(--muted);opacity:.85}
 
 /* Sticky mobile CTA */
-.sticky{position:fixed;left:12px;right:12px;bottom:12px;z-index:70;display:flex;gap:8px;padding:10px;background:rgba(26,21,32,.94);border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.28);transform:translateY(120%);transition:transform .28s ease}
-.sticky.is-show{transform:translateY(0)}
-.sticky a{flex:1;text-align:center;text-decoration:none;font-weight:700;font-size:13.5px;padding:12px;border-radius:12px}
-.sticky .s1{background:var(--orange2);color:#111}
-.sticky .s2{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2)}
-@media(max-width:899px){
-  #contact{padding-bottom:120px}
-}
-@media(min-width:900px){.sticky{display:none}}
 
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .btn,.service,.work-card,.sticky{transition:none}
+  .btn,.service,.work-card{transition:none}
 }
 
 /* ---- Portfolio phone carousel (restored from original) ---- */
@@ -486,12 +477,6 @@ a.phone-frame:focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
 .form-status.is-show{display:block}
 .form-status.ok{background:rgba(184,255,0,.25);color:var(--dark);border:1px solid rgba(184,255,0,.5)}
 
-/* Desktop sticky */
-.sticky{max-width:520px;margin:0 auto}
-@media(min-width:900px){
-  .sticky{display:flex!important;left:auto;right:24px;bottom:24px;width:auto;max-width:none;padding:10px;gap:8px}
-  .sticky a{flex:none;padding:11px 16px;font-size:13px}
-}
 
 @media(min-width:900px){.process-5{grid-template-columns:repeat(5,1fr)!important;}}
 @media(min-width:600px) and (max-width:899px){.process-5{grid-template-columns:repeat(2,1fr)!important;}}
@@ -685,7 +670,7 @@ h1,h2,.logo,.footer-brand,.section-head h2,.hero h1,.price-card h3,.inquiry-copy
   box-shadow:none;
 }
 .nav-pill .nav-cta:hover{background:var(--orange2)!important;filter:brightness(.95);color:#111!important}
-.btn-neon,.btn-neon:hover,.sticky .s1,.price-badge,.store-badges-row .soon{color:#111!important}
+.btn-neon,.btn-neon:hover,.price-badge,.store-badges-row .soon{color:#111!important}
 .nav-menu{
   display:none;align-items:center;gap:8px;
   border:0;background:var(--dark);color:var(--bg);
@@ -708,9 +693,6 @@ h1,h2,.logo,.footer-brand,.section-head h2,.hero h1,.price-card h3,.inquiry-copy
   .logo{font-size:16px;white-space:nowrap}
   .nav-pill .nav-cta{font-size:12.5px;padding:8px 10px!important;white-space:nowrap}
   .nav-menu{white-space:nowrap;padding:8px 10px}
-}
-@media(min-width:900px) and (max-width:1500px){
-  .sticky{display:none!important}
 }
 .nav-sheet{
   position:fixed;inset:0;z-index:79;
@@ -856,16 +838,6 @@ body.nav-open{overflow:hidden}
   background:transparent;color:var(--orange2);border-color:var(--orange2);
   box-shadow:none;opacity:1;
 }
-.sticky{
-  background:rgba(253,251,247,.9);
-  border:1px solid rgba(26,21,32,.08);
-  box-shadow:0 8px 24px rgba(26,21,32,.08);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  transition:transform .6s cubic-bezier(0.32,0.72,0,1);
-}
-.sticky .s1{background:var(--orange2);color:#111}
-.sticky .s2{background:transparent;color:var(--dark);border:1px solid rgba(26,21,32,.12)}
-@media(max-width:899px){#contact{padding-bottom:148px}}
 
 .js .section.reveal > *{opacity:0;transform:translateY(18px)}
 .js .section.reveal.is-in > *{
@@ -953,8 +925,6 @@ body.nav-open{overflow:hidden}
   }
   .band-orange,.orange-rule{border-color:rgba(246,241,232,.12)}
   .orange-rule{background:rgba(246,241,232,.12)}
-  .sticky{background:rgba(20,17,14,.9);border-color:rgba(246,241,232,.12);box-shadow:0 8px 24px rgba(0,0,0,.35)}
-  .sticky .s2{color:var(--dark);border-color:rgba(246,241,232,.16)}
   .trust a{background:var(--orange2);color:#111;border-color:transparent}
   .trust span{background:transparent;color:var(--orange1);border-color:var(--orange1)}
   .btn-neon::after{background-color:rgba(20,17,14,.12)}
@@ -2576,12 +2546,6 @@ body.nav-open{overflow:hidden}
   <button type="button" class="side-jump-btn" id="side-jump-down" aria-label="Next section">↓</button>
 </nav>
 
-<div class="sticky" id="sticky" role="region" aria-label="Contact shortcuts">
-  <a class="s1" href="#contact">Get a quote</a>
-  <a class="s2" href="mailto:harmonystack@gmail.com?subject=Project%20inquiry">Email</a>
-  <a class="s2" href="tel:+12017457995">Call</a>
-</div>
-
 <script>
 (function(){
   document.documentElement.classList.add("js");
@@ -2765,27 +2729,6 @@ body.nav-open{overflow:hidden}
 })();
 </script>
 
-<script>
-(function(){
-  var bar=document.getElementById('sticky');
-  if(!bar)return;
-  var hero=document.querySelector('.hero');
-  var contact=document.getElementById('contact');
-  function check(){
-    var y=window.scrollY||document.documentElement.scrollTop;
-    var t=hero?hero.offsetHeight*0.6:300;
-    var show=y>t;
-    if(contact){
-      var r=contact.getBoundingClientRect();
-      if(r.top<window.innerHeight-72) show=false;
-    }
-    bar.classList.toggle('is-show', show);
-  }
-  window.addEventListener('scroll',check,{passive:true});
-  window.addEventListener('resize',check);
-  check();
-})();
-</script>
 <script>
 (function () {
   var root = document.getElementById("past-work");
