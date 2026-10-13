@@ -1236,6 +1236,10 @@ body.nav-open{overflow:hidden}
 #contact .inquiry-form.is-open{display:block}
 .form-call-note{display:none;margin:0 0 14px;font-size:14px;color:var(--muted)}
 .inquiry-form[data-mode="call"] .form-call-note{display:block}
+/* Phones/tablets: Get a quote + Menu sit at the right edge of the nav pill */
+@media(max-width:980px){
+  .nav-pill .nav-cta{margin-left:auto}
+}
 /* ---- Mobile layout pass (phones only; desktop unchanged) ---- */
 @media(max-width:899px){
   .hero-grid{gap:22px}
