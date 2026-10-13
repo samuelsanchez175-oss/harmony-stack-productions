@@ -1264,6 +1264,10 @@ body.nav-open{overflow:hidden}
 .metric span{margin-top:10px;font-size:13px;line-height:1.35;letter-spacing:.05em;color:#d9d1c6}
 @media(min-width:720px){.metrics{grid-template-columns:repeat(4,1fr)}}
 @media(min-width:1000px){.metric span{font-size:13.5px}}
+/* Header logo: HS monogram */
+.logo{display:flex;align-items:center;line-height:0}
+.logo svg{display:block;height:36px;width:auto;overflow:visible}
+@media(max-width:980px){.logo svg{height:32px}}
 /* ---- Mobile layout pass (phones only; desktop unchanged) ---- */
 @media(max-width:899px){
   .hero-grid{gap:22px}
@@ -1335,7 +1339,9 @@ body.nav-open{overflow:hidden}
 
 <nav class="nav" aria-label="Primary">
   <div class="nav-pill">
-    <a class="logo" href="#top">Harmony <span>Stack</span></a>
+    <a class="logo" href="#top" aria-label="Harmony Stack, back to top">
+      <svg viewBox="52 84 418 344" role="img" aria-hidden="true" focusable="false"><g fill="none" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"><path d="M86 128V384M222 128V384M86 256H222" stroke="#ffffff"/><path d="M436 172C436 142 408 118 372 118C334 118 308 142 308 176C308 214 338 226 372 256C406 286 436 298 436 336C436 372 410 394 372 394C334 394 308 370 308 340" stroke="#d9ccff"/></g></svg>
+    </a>
     <div class="nav-links">
       <a href="#work">Work</a>
       <a href="#products">Apps <span class="chip-new">Live</span></a>
