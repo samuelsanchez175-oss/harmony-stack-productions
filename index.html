@@ -363,17 +363,17 @@ a.site-card-external:hover .site-card-url,a.site-card-external:focus-visible .si
 .phone-frame:hover{background:rgba(255,255,255,.04)}
 a.phone-frame{display:block;text-decoration:none;color:inherit;cursor:pointer}
 a.phone-frame:focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
+/* Realistic iPhone: transparent frame image (portfolio-screenshots/iphone-frame.webp, 968x2000) laid over the screen; screen inset matches the cutout */
 .phone-outer{
-  position:relative;width:100%;padding:3px;border-radius:28px;background:#000;border:1px solid #2e2e30;
-  box-shadow:0 32px 72px rgba(0,0,0,.72),0 1px 0 rgba(255,255,255,.05),inset 0 0 0 1px rgba(255,255,255,.05);
+  position:relative;width:100%;aspect-ratio:968 / 2000;
+  filter:drop-shadow(0 28px 36px rgba(0,0,0,.6));
 }
-.phone-outer::before{
-  content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);width:32%;max-width:92px;min-width:58px;height:12px;
-  border-radius:999px;border:1px solid #3a3a3d;background:#000;z-index:4;pointer-events:none;
+.phone-outer::after{
+  content:"";position:absolute;inset:0;z-index:5;pointer-events:none;
+  background:url("portfolio-screenshots/iphone-frame.webp") center / 100% 100% no-repeat;
 }
 .phone-notch,.phone-home-btn{display:none}
-.phone-screen{position:relative;width:100%;overflow:hidden;border-radius:22px;background:#000}
-.phone-screen::before{content:"";display:block;padding-top:calc(852 / 393 * 100%)}
+.phone-screen{position:absolute;top:1.6%;bottom:1.6%;left:4.03%;right:3.93%;overflow:hidden;border-radius:17% / 8%;background:#000}
 .phone-screen-shot{position:absolute;left:0;top:0;width:100%;height:100%;z-index:1;object-fit:cover;object-position:top center;display:block;background:#000}
 .page-badge.active.page-badge--magazine{background:#c45c8a;border-color:#c45c8a}
 
