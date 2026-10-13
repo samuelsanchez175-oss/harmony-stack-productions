@@ -1,10 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Harmony Stack">
-  <title>Harmony Stack</title>
-  <rect width="512" height="512" rx="112" fill="#14110e"/>
-  <g transform="translate(256 256) scale(.80) translate(-152.5 -100)">
-    <g transform="skewX(-16)">
-      <g fill="#ffffff"><path d="M0 0H52V76H100L88 124H52V200H0Z"/><path d="M108 0H160V200H108Z"/></g>
-      <g fill="#d9ccff" transform="translate(190 0)"><path d="M0 0H170V52H52V74H170V126H0Z"/><path d="M118 134H170V200H0V148H118Z"/></g>
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Harmony Stack"><title>Harmony Stack</title><rect width="512" height="512" rx="112" fill="#14110e"/><g transform="translate(256 256) scale(1.12) translate(-94.5 -70)"><defs><mask id="bmh" maskUnits="userSpaceOnUse" x="-20" y="-10" width="330" height="170"><rect x="-20" y="-10" width="330" height="170" fill="#fff"/><rect x="52" y="-10" width="16" height="50" fill="#000"/><rect x="52" y="60" width="16" height="40" fill="#000"/></mask><mask id="bms" maskUnits="userSpaceOnUse" x="-20" y="-10" width="330" height="170"><rect x="-20" y="-10" width="330" height="170" fill="#fff"/><rect x="176" y="29" width="120" height="10" fill="#000"/><rect x="120" y="61" width="116" height="10" fill="#000"/></mask></defs><g transform="skewX(-39)"><g fill="#ffffff" mask="url(#bmh)"><rect x="0" y="0" width="120" height="100" rx="8"/><rect x="69" y="90" width="51" height="50" rx="7"/></g><g fill="#d9ccff" mask="url(#bms)"><rect x="138" y="0" width="132" height="100" rx="8"/></g></g></g></svg>

@@ -1,15 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-60 -4 425 208" width="850" height="416" role="img" aria-label="Harmony Stack">
-  <title>Harmony Stack</title>
-  <g transform="skewX(-16)">
-    <!-- H (white): left stem + crossbar, then a sliced right stem -->
-    <g fill="#ffffff">
-      <path d="M0 0H52V76H100L88 124H52V200H0Z"/>
-      <path d="M108 0H160V200H108Z"/>
-    </g>
-    <!-- S (lavender): upper half and lower half, split by a slit -->
-    <g fill="#d9ccff" transform="translate(190 0)">
-      <path d="M0 0H170V52H52V74H170V126H0Z"/>
-      <path d="M118 134H170V200H0V148H118Z"/>
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-84 -3 357 146" role="img" aria-label="Harmony Stack"><title>Harmony Stack</title><defs><mask id="mh" maskUnits="userSpaceOnUse" x="-20" y="-10" width="330" height="170"><rect x="-20" y="-10" width="330" height="170" fill="#fff"/><rect x="52" y="-10" width="16" height="50" fill="#000"/><rect x="52" y="60" width="16" height="40" fill="#000"/></mask><mask id="ms" maskUnits="userSpaceOnUse" x="-20" y="-10" width="330" height="170"><rect x="-20" y="-10" width="330" height="170" fill="#fff"/><rect x="176" y="29" width="120" height="10" fill="#000"/><rect x="120" y="61" width="116" height="10" fill="#000"/></mask></defs><g transform="skewX(-39)"><g fill="#ffffff" mask="url(#mh)"><rect x="0" y="0" width="120" height="100" rx="8"/><rect x="69" y="90" width="51" height="50" rx="7"/></g><g fill="#d9ccff" mask="url(#ms)"><rect x="138" y="0" width="132" height="100" rx="8"/></g></g></svg>
