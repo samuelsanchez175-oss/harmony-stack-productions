@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Harmony Stack">
+  <title>Harmony Stack</title>
+  <rect width="512" height="512" rx="112" fill="#14110e"/>
+  <g fill="none" stroke-width="52" stroke-linecap="round" stroke-linejoin="round" transform="translate(256 256) scale(.78) translate(-256 -256)">
+    <path d="M86 128V384M222 128V384M86 256H222" stroke="#ffffff"/>
+    <path d="M436 172C436 142 408 118 372 118C334 118 308 142 308 176C308 214 338 226 372 256C406 286 436 298 436 336C436 372 410 394 372 394C334 394 308 370 308 340" stroke="#d9ccff"/>
+  </g>
+</svg>
