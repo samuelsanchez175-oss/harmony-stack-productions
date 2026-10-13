@@ -423,7 +423,7 @@ a.phone-frame:focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
 .case{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:grid}
 @media(min-width:560px){.case{grid-template-columns:.9fr 1.1fr}}
 .case-media{min-height:180px;background:var(--bg2)}
-.case-media img{width:100%;height:100%;object-fit:cover;object-position:top;min-height:180px}
+.case-media img,.case-media video{width:100%;height:100%;object-fit:cover;object-position:top;min-height:180px;display:block;background:#111}
 .case-body{padding:20px 18px 22px;display:flex;flex-direction:column;gap:8px}
 .case-tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--purple2)}
 .case-body h3{font-size:18px;font-weight:700;color:var(--dark)}
@@ -1220,6 +1220,70 @@ body.nav-open{overflow:hidden}
   background:url("portfolio-screenshots/iphone-frame.webp") center / 100% 100% no-repeat;
 }
 .hero-shot-label{left:12%;bottom:5%}
+/* Cream primary buttons (dark theme): dark text instead of white so "Email" / "Start here" are readable */
+@media(prefers-color-scheme:dark){
+  .btn-primary{color:#14110e}
+  .btn-primary:hover{color:#fff}
+}
+/* ---- Mobile layout pass (phones only; desktop unchanged) ---- */
+@media(max-width:899px){
+  .hero-grid{gap:22px}
+  .hero-visual{order:-1}   /* phones first, headline under them */
+}
+@media(max-width:640px){
+  /* hero: the two buttons share one row */
+  .hero .btn-row{flex-direction:row;align-items:stretch;gap:8px}
+  .hero .btn-row .btn{flex:1 1 0;width:auto;min-width:0;justify-content:center;white-space:nowrap;font-size:14px;padding-left:12px}
+}
+@media(max-width:720px){
+  /* Case snapshots + What I handle become swipe carousels; the next card peeks in from the edge */
+  .cases,.svc-clusters{
+    display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+    margin-inline:calc(50% - 50vw);padding-inline:calc(50vw - 50%);scroll-padding-inline:calc(50vw - 50%);padding-bottom:8px;
+  }
+  .cases::-webkit-scrollbar,.svc-clusters::-webkit-scrollbar{display:none}
+  .case{flex:0 0 min(66%,270px);scroll-snap-align:start;grid-template-columns:1fr;grid-template-rows:auto 1fr}
+  .case-media{min-height:0}
+  .case-media img,.case-media video{height:auto;min-height:0;aspect-ratio:3 / 4;object-fit:cover;object-position:top center;display:block}
+  .case-body{padding:14px 14px 16px;gap:6px}
+  .case-body p{font-size:13px;line-height:1.45}
+  .case-body h3{font-size:16px}
+  .case-meta{gap:5px}
+  .case-meta span{font-size:10.5px;padding:4px 8px}
+  .svc-cluster{flex:0 0 80%;scroll-snap-align:start}
+  /* What I handle: cards come first on phones (drop the example box and dashboard shot) */
+  #services-hero .svc-story-proof,#services-hero .svc-shot{display:none}
+  #services-hero .svc-story{gap:0}
+  #services-hero .svc-clusters{margin-top:22px}
+
+  /* Products: tighter */
+  #products.section{padding-top:40px;padding-bottom:36px}
+  #products .section-head{margin-bottom:16px}
+  #products .section-head p{font-size:14px}
+  .products-grid{gap:10px}
+  .product-card{padding:14px;gap:10px}
+  .product-card .chip-new--block,.product-by{display:none}
+  .product-card-top{gap:12px}
+  .product-card-top img{width:52px;height:52px;border-radius:13px}
+  .product-card h3{font-size:17px}
+  .product-tagline{font-size:13.5px;margin-top:2px}
+  .product-meta{gap:5px}
+  .product-meta span{font-size:10.5px;padding:4px 8px}
+  .product-actions{padding-top:2px}
+  .product-actions img.store{height:36px}
+  .product-actions a.btn{padding:9px 12px;font-size:13px}
+  .products-bridge{margin-top:14px;font-size:13px}
+
+  /* Contact: the form lives behind "Request a call window", under "Prefer a short call?" */
+  #contact > .wrap{display:flex;flex-direction:column}
+  #contact .consult-toggle-row{order:1}
+  #contact .consult-walkthrough{order:2}
+  #contact .inquiry{display:contents}
+  #contact .inquiry-copy{order:3}
+  #contact .cta-band{order:4}
+  #contact .inquiry-form{order:5;display:none;margin-top:16px}
+  #contact .inquiry-form.is-open{display:block}
+}
 </style>
 </head>
 <body>
@@ -1261,7 +1325,6 @@ body.nav-open{overflow:hidden}
         <a class="btn btn-neon" href="#contact">Get a free quote</a>
         <a class="btn btn-secondary" href="#work">See the work</a>
       </div>
-      <p class="hero-note">Live for Girls Gone Digital, Caresha Please &amp; Luzid Productions · 2 personal shipped apps live on the App Store · Fixed quotes, no surprises</p>
     </div>
     <div class="hero-visual">
       <a class="hero-item" href="https://girlsgone.digital" target="_blank" rel="noopener">
@@ -1727,7 +1790,7 @@ body.nav-open{overflow:hidden}
     </div>
     <div class="cases">
       <article class="case">
-        <div class="case-media"><img src="portfolio-screenshots/girlsgonedigital-home.png" alt="Girls Gone Digital site" loading="lazy"></div>
+        <div class="case-media"><video autoplay muted loop playsinline preload="metadata" poster="portfolio-screenshots/girlsgone-digital-home-poster.png" aria-label="Girls Gone Digital home page reel"><source src="portfolio-screenshots/ggd-home-preview.mp4" type="video/mp4"></video></div>
         <div class="case-body">
           <span class="case-tag">Brand + shop</span>
           <h3>Girls Gone Digital</h3>
@@ -1739,7 +1802,7 @@ body.nav-open{overflow:hidden}
         </div>
       </article>
       <article class="case">
-        <div class="case-media"><img src="portfolio-screenshots/caresha-please-home.png" alt="Caresha Please site" loading="lazy"></div>
+        <div class="case-media"><video autoplay muted loop playsinline preload="metadata" poster="portfolio-screenshots/caresha-shop-poster.png" aria-label="Caresha Please shop page video reel"><source src="portfolio-screenshots/caresha-shop-preview.mp4" type="video/mp4"></video></div>
         <div class="case-body">
           <span class="case-tag">Brand + shop</span>
           <h3>Caresha Please</h3>
@@ -1835,8 +1898,6 @@ body.nav-open{overflow:hidden}
         </div>
       </article>
     </div>
-    <p class="products-bridge"><strong>CDL One Stop</strong> and <strong>Penwork Studio</strong> show the same person can take a product from design all the way to the App Store.
-    </p>
   </div>
 </section>
 
@@ -2924,7 +2985,7 @@ body.nav-open{overflow:hidden}
 
 <script>
 (function () {
-  var vids = Array.prototype.slice.call(document.querySelectorAll(".hero-shot video, video.phone-screen-shot"));
+  var vids = Array.prototype.slice.call(document.querySelectorAll(".hero-shot video, video.phone-screen-shot, .case-media video"));
   if (!vids.length) return;
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduced) {
@@ -3442,6 +3503,27 @@ body.nav-open{overflow:hidden}
     if (ids.indexOf(id) !== -1) setLock(id);
   });
   update();
+})();
+</script>
+<script>
+(function(){
+  var form=document.getElementById('inquiry-form');
+  var btn=document.querySelector('.cta-band a[href^="mailto"]');
+  if(!form||!window.matchMedia) return;
+  var mq=window.matchMedia('(max-width:720px)');
+  function open(scroll){
+    form.classList.add('is-open');
+    if(!scroll) return;
+    form.scrollIntoView({behavior:'smooth',block:'start'});
+    var f=form.querySelector('input');
+    if(f) setTimeout(function(){ try{ f.focus({preventScroll:true}); }catch(e){} },400);
+  }
+  if(btn) btn.addEventListener('click',function(e){ if(mq.matches){ e.preventDefault(); open(true); } });
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href="#inquiry-form"]');
+    if(a&&mq.matches) open(false);
+  });
+  window.addEventListener('hashchange',function(){ if(location.hash==='#inquiry-form'&&mq.matches) open(false); });
 })();
 </script>
 </body>
