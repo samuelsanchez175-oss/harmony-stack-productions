@@ -1232,6 +1232,20 @@ body.nav-open{overflow:hidden}
     radial-gradient(ellipse 50% 40% at 90% 62%,rgba(135,113,162,.11),transparent 70%),
     radial-gradient(ellipse 45% 38% at 6% 82%,rgba(240,120,40,.07),transparent 70%);
 }
+/* Hero phones use the same realistic iPhone frame as the carousel */
+.hero-shot,.hero-item:hover .hero-shot,.hero-item:focus-visible .hero-shot{
+  aspect-ratio:968 / 2000;background:none;border:0;border-radius:0;overflow:visible;box-shadow:none;
+  filter:drop-shadow(0 18px 24px rgba(0,0,0,.5));
+}
+.hero-shot img,.hero-shot video{
+  position:absolute;top:1.6%;left:4.03%;width:92.04%;height:96.8%;
+  aspect-ratio:auto;border-radius:17% / 8%;object-fit:cover;object-position:center top;
+}
+.hero-shot::after{
+  content:"";position:absolute;inset:0;z-index:5;pointer-events:none;
+  background:url("portfolio-screenshots/iphone-frame.webp") center / 100% 100% no-repeat;
+}
+.hero-shot-label{left:12%;bottom:5%}
 </style>
 </head>
 <body>
@@ -1286,7 +1300,7 @@ body.nav-open{overflow:hidden}
       </a>
       <a class="hero-item" href="https://cp-sync-repo.vercel.app" target="_blank" rel="noopener">
         <div class="hero-shot">
-          <img src="portfolio-screenshots/caresha-please-home.png" alt="" loading="eager">
+          <img src="portfolio-screenshots/caresha-please-shop-live.webp" alt="" loading="eager">
           <span class="hero-shot-label">Shop</span>
         </div>
         <span class="hero-item-title">Caresha Please</span>
@@ -1556,7 +1570,7 @@ body.nav-open{overflow:hidden}
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
-              <img class="phone-screen-shot" src="portfolio-screenshots/caresha-please-shop.png" alt="Caresha Please — Get Into Some Tea section and product grid (cp-sync-repo.vercel.app home)" loading="eager" decoding="async" />
+              <img class="phone-screen-shot" src="portfolio-screenshots/caresha-please-shop-live.webp" alt="Caresha Please — Get Into Some Tea section and product grid (cp-sync-repo.vercel.app home)" loading="eager" decoding="async" />
             </div>
             <div class="phone-home-btn"></div>
           </div>
