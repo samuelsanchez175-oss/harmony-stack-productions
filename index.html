@@ -1244,6 +1244,13 @@ body.nav-open{overflow:hidden}
 .nav-pill .nav-cta,.nav-pill .nav-cta:hover{text-decoration:none}
 .nav-menu-icon{display:none}
 .nav-menu{gap:0}
+/* Bigger, easier-to-read logo and What I handle heading */
+.logo{font-size:24px;letter-spacing:-.01em}
+.logo span{color:#d9ccff}
+@media(max-width:980px){.logo{font-size:20px}}
+.svc-statement{font-size:clamp(42px,10.5vw,68px);line-height:1.05;letter-spacing:-.025em;max-width:15ch;margin-inline:auto}
+.svc-rule{width:72px;height:4px}
+@media(prefers-color-scheme:dark){.svc-hl{color:#ff8a3d}}
 /* ---- Mobile layout pass (phones only; desktop unchanged) ---- */
 @media(max-width:899px){
   .hero-grid{gap:22px}
