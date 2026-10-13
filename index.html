@@ -1225,6 +1225,17 @@ body.nav-open{overflow:hidden}
   .btn-primary{color:#14110e}
   .btn-primary:hover{color:#fff}
 }
+/* Contact: the form lives behind "Request a call window", under "Prefer a short call?" (all sizes) */
+#contact > .wrap{display:flex;flex-direction:column}
+#contact .consult-toggle-row{order:1}
+#contact .consult-walkthrough{order:2}
+#contact .inquiry{display:contents}
+#contact .inquiry-copy{order:3}
+#contact .cta-band{order:4}
+#contact .inquiry-form{order:5;display:none;width:100%;max-width:680px;margin:16px auto 0}
+#contact .inquiry-form.is-open{display:block}
+.form-call-note{display:none;margin:0 0 14px;font-size:14px;color:var(--muted)}
+.inquiry-form[data-mode="call"] .form-call-note{display:block}
 /* ---- Mobile layout pass (phones only; desktop unchanged) ---- */
 @media(max-width:899px){
   .hero-grid{gap:22px}
@@ -1273,16 +1284,6 @@ body.nav-open{overflow:hidden}
   .product-actions img.store{height:36px}
   .product-actions a.btn{padding:9px 12px;font-size:13px}
   .products-bridge{margin-top:14px;font-size:13px}
-
-  /* Contact: the form lives behind "Request a call window", under "Prefer a short call?" */
-  #contact > .wrap{display:flex;flex-direction:column}
-  #contact .consult-toggle-row{order:1}
-  #contact .consult-walkthrough{order:2}
-  #contact .inquiry{display:contents}
-  #contact .inquiry-copy{order:3}
-  #contact .cta-band{order:4}
-  #contact .inquiry-form{order:5;display:none;margin-top:16px}
-  #contact .inquiry-form.is-open{display:block}
 }
 /* What I handle: intro is just the heading now, so centre it above the cards */
 @media(min-width:960px){.svc-story{grid-template-columns:1fr}}
@@ -2478,15 +2479,8 @@ body.nav-open{overflow:hidden}
     </div>
     </div>
     <div class="inquiry">
-      <div class="inquiry-copy">
-        <span class="kicker">Contact</span>
-        <h2>Ready to start? Tell me what you’re building.</h2>
-        <p>Free quotes. I’ll reply within one business day.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="mailto:harmonystack@gmail.com?subject=Project%20inquiry">Email</a>
-        </div>
-      </div>
       <form class="inquiry-form" id="inquiry-form" novalidate>
+        <p class="form-call-note">Tell me a bit about your project and when to reach you, and I’ll set up a call.</p>
         <div class="row2">
           <div class="field">
             <label for="f-name">Name</label>
@@ -2534,6 +2528,16 @@ body.nav-open{overflow:hidden}
             <option>Flexible</option>
           </select>
         </div>
+        <div class="row2">
+          <div class="field">
+            <label for="f-phone">Phone (optional)</label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="Best number to reach you">
+          </div>
+          <div class="field">
+            <label for="f-when">Best time to talk (optional)</label>
+            <input id="f-when" name="when" type="text" placeholder="e.g. weekdays after 2pm ET">
+          </div>
+        </div>
         <div class="field">
           <label for="f-msg">Project notes</label>
           <textarea id="f-msg" name="message" placeholder="Links, goals, must-haves, platforms you already use…"></textarea>
@@ -2547,7 +2551,7 @@ body.nav-open{overflow:hidden}
     <div class="cta-band" style="margin-top:40px">
       <h2>Prefer a short call?</h2>
       <div class="btn-row">
-        <a class="btn btn-secondary" href="mailto:harmonystack@gmail.com?subject=Quick%20intro%20call">Request a call window</a>
+        <a class="btn btn-neon" href="mailto:harmonystack@gmail.com?subject=Quick%20intro%20call">Request a call window</a>
       </div>
     </div>
   </div>
@@ -2998,18 +3002,23 @@ body.nav-open{overflow:hidden}
     var budget = document.getElementById('f-budget').value || '';
     var timeline = document.getElementById('f-timeline').value || '';
     var msg = (document.getElementById('f-msg').value || '').trim();
+    var phone = (document.getElementById('f-phone').value || '').trim();
+    var when = (document.getElementById('f-when').value || '').trim();
+    var isCall = form.getAttribute('data-mode') === 'call';
     if(!name || !email || !need){
       status.className = 'form-status is-show ok';
       status.textContent = 'Please add your name, email, and what you need.';
       return;
     }
-    var subject = 'Project inquiry — ' + need + ' — ' + name;
+    var subject = (isCall ? 'Call window request — ' : 'Project inquiry — ') + need + ' — ' + name;
     var body = [
       'Name: ' + name,
       'Email: ' + email,
       'Need: ' + need,
       'Budget: ' + (budget || '—'),
       'Timeline: ' + (timeline || '—'),
+      'Phone: ' + (phone || '—'),
+      'Best time to talk: ' + (when || '—'),
       '',
       'Notes:',
       msg || '—'
@@ -3483,21 +3492,21 @@ body.nav-open{overflow:hidden}
 (function(){
   var form=document.getElementById('inquiry-form');
   var btn=document.querySelector('.cta-band a[href^="mailto"]');
-  if(!form||!window.matchMedia) return;
-  var mq=window.matchMedia('(max-width:720px)');
-  function open(scroll){
+  if(!form) return;
+  function open(scroll, call){
     form.classList.add('is-open');
+    if(call) form.setAttribute('data-mode','call');
     if(!scroll) return;
-    form.scrollIntoView({behavior:'smooth',block:'start'});
+    form.scrollIntoView({behavior:'smooth',block:'center'});
     var f=form.querySelector('input');
-    if(f) setTimeout(function(){ try{ f.focus({preventScroll:true}); }catch(e){} },400);
+    if(f) setTimeout(function(){ try{ f.focus({preventScroll:true}); }catch(e){} },450);
   }
-  if(btn) btn.addEventListener('click',function(e){ if(mq.matches){ e.preventDefault(); open(true); } });
+  if(btn) btn.addEventListener('click',function(e){ e.preventDefault(); open(true,true); });
   document.addEventListener('click',function(e){
     var a=e.target.closest&&e.target.closest('a[href="#inquiry-form"]');
-    if(a&&mq.matches) open(false);
+    if(a) open(false,false);
   });
-  window.addEventListener('hashchange',function(){ if(location.hash==='#inquiry-form'&&mq.matches) open(false); });
+  window.addEventListener('hashchange',function(){ if(location.hash==='#inquiry-form') open(false,false); });
 })();
 </script>
 </body>
