@@ -1289,6 +1289,18 @@ body.nav-open{overflow:hidden}
 @media(min-width:960px){.svc-story{grid-template-columns:1fr}}
 .svc-story-copy{text-align:center;margin-inline:auto}
 .svc-rule{margin-inline:auto}
+/* FAQ: How a project works (first question) holds the process, payment, feedback and checklist */
+.faq-walkthrough{padding:6px 2px 4px}
+.faq-walkthrough .consult-part{padding:26px 0}
+.faq-walkthrough .consult-part:first-child{border-top:0;padding-top:12px}
+.faq-walkthrough .steps.process-5{grid-template-columns:1fr!important;gap:8px}
+.faq-walkthrough .step{display:grid;grid-template-columns:36px 1fr;column-gap:14px;align-items:start;padding:14px 16px}
+.faq-walkthrough .step-num{grid-row:1 / span 2;margin:0}
+.faq-walkthrough .step h3{margin:0 0 4px}
+.faq-walkthrough .step p{margin:0}
+.faq-walkthrough .fold-grid{grid-template-columns:1fr}
+.faq-walkthrough .pay-box{grid-template-columns:1fr}
+.faq-walkthrough h2.fold-title{font-size:clamp(20px,3vw,24px)}
 </style>
 </head>
 <body>
@@ -2268,80 +2280,17 @@ body.nav-open{overflow:hidden}
       <h2>Straight answers before you write.</h2>
     </div>
     <div class="faq">
-      <details open>
-        <summary>Who is Harmony Stack?</summary>
-        <p>A solo design-and-build practice focused on websites, Shopify stores, and apps (including AI-assisted products). You work directly with the person building the work — not a handoff chain.</p>
-      </details>
-      <details>
-        <summary>Do you only do websites?</summary>
-        <p>No. Websites and stores are the core, but shipped work also includes iOS apps (like CDL One Stop and Penwork Studio), web apps, and LLM/AI feature integration.</p>
-      </details>
-      <details>
-        <summary>How do payments work?</summary>
-        <p>Projects are quoted as flat rates within the package ranges above. Typical flow is deposit to start, balance before launch — exact terms are confirmed in writing for your project.</p>
-      </details>
-      <details>
-        <summary>What do I need to provide?</summary>
-        <p>For most builds: brand assets (logo, colors, fonts), images, copy (or a copywriting add-on), and access to domain/hosting or platform accounts. A kickoff checklist is shared after we agree on scope.</p>
-      </details>
-      <details>
-        <summary>Can you take over an existing site?</summary>
-        <p>Yes, including Shopify and WordPress sites. Quick Fix and Refresh are built for existing sites; full rebuilds and new stores are Starter through E-Commerce. Share your platform and URL in the inquiry form.</p>
-      </details>
-      <details>
-        <summary>Where are you based?</summary>
-        <p>U.S.-based and remote. Email harmonystack@gmail.com.</p>
-      </details>
-      <details>
-        <summary>Who owns the site or code after launch?</summary>
-        <p>You do. Deliverables and access are handed over at launch. I don’t hold your domain or codebase hostage.</p>
-      </details>
-      <details>
-        <summary>Do you write content or shoot photography?</summary>
-        <p>Copywriting is available as an add-on. Photography is usually client-supplied; I can recommend structure and help place assets. Product photos for stores should be high-res when possible.</p>
-      </details>
-      <details>
-        <summary>What if I only need a landing page?</summary>
-        <p>That’s a common Starter or smaller custom scope. Say “landing page only” in the form — you’ll get a quote that matches the real work, not a forced 10-page package.</p>
-      </details>
-      <details>
-        <summary>How long until we start?</summary>
-        <p>Depends on the queue. Many projects start within 1–2 weeks of deposit; rush delivery is available as an add-on when the calendar allows.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-
-<div class="band-orange band-burnt" role="presentation">
-  <div class="wrap"><p>Ready when you are — <a href="#contact">get a free quote</a> · <a href="mailto:harmonystack@gmail.com">harmonystack@gmail.com</a></p></div>
-</div>
-
-<section class="section" id="contact">
-  <div class="wrap">
-    <!-- Consultation walkthrough: How it works, payment, revisions, kickoff checklist, Dropbox guide (moved from the main page flow Oct 10).
-         Without JS it stays visible here; with JS it is hidden until a "Get a quote" / #contact link or the toggle is used. -->
-    <div class="consult-toggle-row">
-      <button type="button" class="btn btn-secondary consult-toggle" id="consult-toggle" aria-expanded="true" aria-controls="consult-walkthrough" hidden>How a project works</button>
-    </div>
-    <div class="consult-walkthrough" id="consult-walkthrough" role="region" aria-labelledby="consult-walkthrough-title">
-      <div class="section-head consult-walkthrough-head">
-        <span class="kicker">Process, payment &amp; revisions</span>
-        <h2 id="consult-walkthrough-title" tabindex="-1">How a project works</h2>
-        <p><a href="#inquiry-form">Skip to the quote form</a></p>
-      </div>
+      <details id="how-it-works">
+        <summary>How a project works</summary>
+        <div class="faq-walkthrough" id="consult-walkthrough">
     <div class="consult-part" id="process">
-    <div class="section-head">
-      <span class="kicker">How it works</span>
-      <h2>How a project works.</h2>
-    </div>
     <p class="proof-line">Same process whether it’s a client site or an App Store product like <strong>CDL One Stop</strong> and <strong>Penwork Studio</strong> — scope, build, revise, ship.
     </p>
     <div class="steps process-5">
       <article class="step">
         <div class="step-num">1</div>
         <h3>Tell me your goal</h3>
-        <p>Use the form, email, or call. Tell me what you need.</p>
+        <p>Request a call window or send an email. Tell me what you need.</p>
       </article>
       <article class="step">
         <div class="step-num">2</div>
@@ -2478,6 +2427,60 @@ body.nav-open{overflow:hidden}
     </div>
     </div>
     </div>
+      </details>
+      <details open>
+        <summary>Who is Harmony Stack?</summary>
+        <p>A solo design-and-build practice focused on websites, Shopify stores, and apps (including AI-assisted products). You work directly with the person building the work — not a handoff chain.</p>
+      </details>
+      <details>
+        <summary>Do you only do websites?</summary>
+        <p>No. Websites and stores are the core, but shipped work also includes iOS apps (like CDL One Stop and Penwork Studio), web apps, and LLM/AI feature integration.</p>
+      </details>
+      <details>
+        <summary>How do payments work?</summary>
+        <p>Projects are quoted as flat rates within the package ranges above. Typical flow is deposit to start, balance before launch — exact terms are confirmed in writing for your project.</p>
+      </details>
+      <details>
+        <summary>What do I need to provide?</summary>
+        <p>For most builds: brand assets (logo, colors, fonts), images, copy (or a copywriting add-on), and access to domain/hosting or platform accounts. A kickoff checklist is shared after we agree on scope.</p>
+      </details>
+      <details>
+        <summary>Can you take over an existing site?</summary>
+        <p>Yes, including Shopify and WordPress sites. Quick Fix and Refresh are built for existing sites; full rebuilds and new stores are Starter through E-Commerce. Share your platform and URL in the inquiry form.</p>
+      </details>
+      <details>
+        <summary>Where are you based?</summary>
+        <p>U.S.-based and remote. Email harmonystack@gmail.com.</p>
+      </details>
+      <details>
+        <summary>Who owns the site or code after launch?</summary>
+        <p>You do. Deliverables and access are handed over at launch. I don’t hold your domain or codebase hostage.</p>
+      </details>
+      <details>
+        <summary>Do you write content or shoot photography?</summary>
+        <p>Copywriting is available as an add-on. Photography is usually client-supplied; I can recommend structure and help place assets. Product photos for stores should be high-res when possible.</p>
+      </details>
+      <details>
+        <summary>What if I only need a landing page?</summary>
+        <p>That’s a common Starter or smaller custom scope. Say “landing page only” in the form — you’ll get a quote that matches the real work, not a forced 10-page package.</p>
+      </details>
+      <details>
+        <summary>How long until we start?</summary>
+        <p>Depends on the queue. Many projects start within 1–2 weeks of deposit; rush delivery is available as an add-on when the calendar allows.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<div class="band-orange band-burnt" role="presentation">
+  <div class="wrap"><p>Ready when you are — <a href="#contact">get a free quote</a> · <a href="mailto:harmonystack@gmail.com">harmonystack@gmail.com</a></p></div>
+</div>
+
+<section class="section" id="contact">
+  <div class="wrap">
+    <!-- Consultation walkthrough: How it works, payment, revisions, kickoff checklist, Dropbox guide (moved from the main page flow Oct 10).
+         Without JS it stays visible here; with JS it is hidden until a "Get a quote" / #contact link or the toggle is used. -->
     <div class="inquiry">
       <form class="inquiry-form" id="inquiry-form" novalidate>
         <p class="form-call-note">Tell me a bit about your project and when to reach you, and I’ll set up a call.</p>
