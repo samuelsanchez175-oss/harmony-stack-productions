@@ -1284,6 +1284,10 @@ body.nav-open{overflow:hidden}
   #contact .inquiry-form{order:5;display:none;margin-top:16px}
   #contact .inquiry-form.is-open{display:block}
 }
+/* What I handle: intro is just the heading now, so centre it above the cards */
+@media(min-width:960px){.svc-story{grid-template-columns:1fr}}
+.svc-story-copy{text-align:center;margin-inline:auto}
+.svc-rule{margin-inline:auto}
 </style>
 </head>
 <body>
@@ -1500,9 +1504,7 @@ body.nav-open{overflow:hidden}
 <section class="section" id="work" style="padding:0;background:transparent">
   <div class="portfolio-showcase portfolio-showcase" id="portfolio-showcase">
     <div class="portfolio-stage-head">
-      <span class="kicker">Selected work</span>
       <h2>See what your site could look like.</h2>
-      <p>Real brands, built to sell. Swipe to browse.</p>
     </div>
     <div class="portfolio-carousel" id="portfolio-carousel">
       <button type="button" class="carousel-nav-btn" data-carousel-prev aria-label="Previous project">&#8249;</button>
@@ -1784,9 +1786,7 @@ body.nav-open{overflow:hidden}
 <section class="section section-warm" id="cases">
   <div class="wrap">
     <div class="section-head">
-      <span class="kicker">Case snapshots</span>
       <h2>How these projects came together.</h2>
-      <p>Short stories: the pain point, what I built, and the result.</p>
     </div>
     <div class="cases">
       <article class="case">
@@ -1852,9 +1852,7 @@ body.nav-open{overflow:hidden}
 <section class="section" id="products">
   <div class="wrap">
     <div class="section-head">
-      <span class="kicker">Products <span class="chip-new">Live</span></span>
       <h2>My own apps, live on the App Store.</h2>
-      <p>I build and ship products too, so I know what it takes to launch.</p>
     </div>
     <div class="products-grid">
       <article class="product-card">
@@ -1913,19 +1911,7 @@ body.nav-open{overflow:hidden}
         <span class="kicker">What I handle</span>
         <h2 class="svc-statement" id="services-hero-title">Let me take the <span class="svc-hl">busywork</span> off your plate.</h2>
         <span class="svc-rule" aria-hidden="true"></span>
-        <p class="svc-lead">Product uploads, order updates, follow-ups, reports. <span class="svc-support">I set it up once so it runs without you, and I handle what can’t be automated.</span></p>
-        <p class="proof-line svc-story-proof">Picture it on <strong>your</strong> business: a store that never oversells, a dashboard that shows what’s happening today, or an AI helper that knows when to ask a human.</p>
       </div>
-      <figure class="svc-shot">
-        <button type="button" class="svc-shot-open" id="svc-shot-open" aria-label="Expand dashboard screenshot" aria-haspopup="dialog" aria-controls="svc-lightbox">
-          <img src="portfolio-screenshots/penwork-dashboard.png" width="1447" height="1210" loading="lazy" decoding="async" alt="Dark-themed real-time dashboard from the Penwork pipeline: parallel job runs with progress bars, AI and terminal work lanes with live status, and a filterable review queue.">
-        </button>
-        <figcaption>A live view of every job and what needs approval. Your store can have the same: today’s orders, what’s low, what needs you.</figcaption>
-      </figure>
-      <dialog class="svc-lightbox" id="svc-lightbox" aria-label="Dashboard screenshot, expanded">
-        <button type="button" class="svc-lightbox-close" id="svc-lightbox-close" aria-label="Close expanded screenshot">&times;</button>
-        <img data-src="portfolio-screenshots/penwork-dashboard.png" width="1447" height="1210" alt="Dark-themed real-time dashboard from the Penwork pipeline, shown large: parallel job runs with progress bars, AI and terminal work lanes with live status, and a filterable review queue.">
-      </dialog>
     </div>
     <div class="svc-clusters" role="list" aria-label="Work I can take off your plate">
       <article class="svc-cluster" role="listitem">
@@ -1969,10 +1955,9 @@ body.nav-open{overflow:hidden}
         </ul>
       </article>
     </div>
-    <div class="svc-more" role="group" aria-labelledby="svc-more-title">
+    <div class="svc-more" role="group" aria-label="More of what I’ve built">
       <div class="svc-more-head">
         <span class="kicker">Also in the toolbox</span>
-        <h3 class="svc-more-title" id="svc-more-title">More of what I’ve built.</h3>
         <p class="svc-more-sum">Apps, media, and internal tools, in case your project is a little different.</p>
       </div>
       <div class="svc-more-grid" id="svc-more-grid">
@@ -2008,7 +1993,6 @@ body.nav-open{overflow:hidden}
       </div>
       <button type="button" class="svc-more-toggle" id="svc-more-toggle" aria-expanded="true" aria-controls="svc-more-grid">See everything else</button>
     </div>
-    <p class="proof-line svc-close">What eats your week? <a href="#contact">Tell me, and I’ll tell you if I can take it off your plate.</a></p>
   </div>
 </section>
 
@@ -2021,12 +2005,9 @@ body.nav-open{overflow:hidden}
 <section class="section section-warm-soft" id="pricing">
   <div class="wrap">
     <div class="section-head">
-      <span class="kicker">Pricing</span>
       <h2>Simple packages. No surprises.</h2>
-      <p>Choose a starting point, and I’ll tailor it to your brand. You’ll get a fixed quote before anything starts.</p>
     </div>
     <p class="proof-line apps-oneliner">Custom websites, Shopify stores, iOS and web apps, and AI where it actually helps — built and supported end to end by <strong>one builder</strong>.</p>
-    <p class="pricing-help">Not sure which fits? <a href="#contact">Tell me your goal</a> and I’ll recommend one.</p>
     <div class="lane-tabs" role="tablist" aria-label="Pricing lanes" hidden>
       <button type="button" class="lane-tab" role="tab" id="lane-tab-web" aria-controls="pricing-websites" aria-selected="true">Websites</button>
       <button type="button" class="lane-tab" role="tab" id="lane-tab-apps" aria-controls="apps" aria-selected="false" tabindex="-1">Apps &amp; AI</button>
@@ -2285,7 +2266,6 @@ body.nav-open{overflow:hidden}
 <section class="section" id="faq">
   <div class="wrap">
     <div class="section-head">
-      <span class="kicker">FAQ</span>
       <h2>Straight answers before you write.</h2>
     </div>
     <div class="faq">
@@ -2311,7 +2291,7 @@ body.nav-open{overflow:hidden}
       </details>
       <details>
         <summary>Where are you based?</summary>
-        <p>U.S.-based and remote. Email harmonystack@gmail.com or call (201) 745-7995.</p>
+        <p>U.S.-based and remote. Email harmonystack@gmail.com.</p>
       </details>
       <details>
         <summary>Who owns the site or code after launch?</summary>
@@ -2335,7 +2315,7 @@ body.nav-open{overflow:hidden}
 
 
 <div class="band-orange band-burnt" role="presentation">
-  <div class="wrap"><p>Ready when you are — <a href="#contact">get a free quote</a> · <a href="tel:+12017457995">(201) 745-7995</a> · <a href="mailto:harmonystack@gmail.com">harmonystack@gmail.com</a></p></div>
+  <div class="wrap"><p>Ready when you are — <a href="#contact">get a free quote</a> · <a href="mailto:harmonystack@gmail.com">harmonystack@gmail.com</a></p></div>
 </div>
 
 <section class="section" id="contact">
@@ -2506,7 +2486,6 @@ body.nav-open{overflow:hidden}
         <p>Free quotes. I’ll reply within one business day.</p>
         <div class="btn-row">
           <a class="btn btn-primary" href="mailto:harmonystack@gmail.com?subject=Project%20inquiry">Email</a>
-          <a class="btn btn-secondary" href="tel:+12017457995">Call (201) 745-7995</a>
         </div>
       </div>
       <form class="inquiry-form" id="inquiry-form" novalidate>
@@ -2569,9 +2548,7 @@ body.nav-open{overflow:hidden}
 
     <div class="cta-band" style="margin-top:40px">
       <h2>Prefer a short call?</h2>
-      <p>U.S.-based, remote-friendly. Call and we’ll pick a time.</p>
       <div class="btn-row">
-        <a class="btn btn-neon" href="tel:+12017457995">Call now</a>
         <a class="btn btn-secondary" href="mailto:harmonystack@gmail.com?subject=Quick%20intro%20call">Request a call window</a>
       </div>
     </div>
@@ -2594,7 +2571,6 @@ body.nav-open{overflow:hidden}
       <a href="cdl-privacy.html">Privacy</a>
       <a href="cdl-terms.html">Terms</a>
       <a href="mailto:harmonystack@gmail.com">harmonystack@gmail.com</a>
-      <a href="tel:+12017457995">(201) 745-7995</a>
     </div>
     <p class="footer-fine">© 2026 Harmony Stack. All rights reserved. U.S.-based · Remote-friendly.</p>
   </div>
