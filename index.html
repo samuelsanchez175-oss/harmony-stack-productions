@@ -313,7 +313,11 @@ a{color:inherit}
 }
 #portfolio-showcase.portfolio-showcase::before{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 92% 65% at 50% -18%,rgba(115,115,145,.14) 0%,transparent 52%);
+  background:
+    radial-gradient(ellipse 58% 50% at 50% 50%,rgba(240,120,40,.18) 0%,rgba(240,120,40,.07) 40%,transparent 72%),
+    radial-gradient(ellipse 70% 55% at 14% 62%,rgba(135,113,162,.15) 0%,transparent 64%),
+    radial-gradient(ellipse 70% 55% at 88% 40%,rgba(135,113,162,.13) 0%,transparent 64%),
+    radial-gradient(ellipse 92% 65% at 50% -18%,rgba(115,115,145,.14) 0%,transparent 52%);
 }
 #portfolio-showcase.portfolio-showcase > *{position:relative;z-index:1}
 .portfolio-stage-head{text-align:center;max-width:640px;margin:0 auto 22px;color:rgba(245,245,247,.9)}
@@ -339,6 +343,7 @@ a{color:inherit}
 .portfolio-carousel-viewport:focus-visible{outline:2px solid rgba(186,175,220,.9)}
 .portfolio-carousel-track{display:flex;flex-direction:row;align-items:stretch;gap:16px;padding:4px 8px 14px;width:max-content}
 .portfolio-carousel-track .site-card{flex:0 0 auto;width:min(240px,calc(100vw - 120px));scroll-snap-align:center}
+.site-card-result{margin:10px auto 0;max-width:230px;font-size:12.5px;line-height:1.4;color:var(--muted);text-align:center}
 .portfolio-carousel-dots{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:4px;padding:14px 0 6px}
 .portfolio-carousel-dot{
   width:7px;height:7px;border-radius:50%;border:1px solid rgba(255,255,255,.2);
@@ -362,17 +367,17 @@ a.site-card-external:hover .site-card-url,a.site-card-external:focus-visible .si
 .phone-frame:hover{background:rgba(255,255,255,.04)}
 a.phone-frame{display:block;text-decoration:none;color:inherit;cursor:pointer}
 a.phone-frame:focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
+/* Realistic iPhone: transparent frame image (portfolio-screenshots/iphone-frame.webp, 968x2000) laid over the screen; screen inset matches the cutout */
 .phone-outer{
-  position:relative;width:100%;padding:3px;border-radius:28px;background:#000;border:1px solid #2e2e30;
-  box-shadow:0 32px 72px rgba(0,0,0,.72),0 1px 0 rgba(255,255,255,.05),inset 0 0 0 1px rgba(255,255,255,.05);
+  position:relative;width:100%;aspect-ratio:968 / 2000;
+  filter:drop-shadow(0 28px 36px rgba(0,0,0,.6));
 }
-.phone-outer::before{
-  content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);width:32%;max-width:92px;min-width:58px;height:12px;
-  border-radius:999px;border:1px solid #3a3a3d;background:#000;z-index:4;pointer-events:none;
+.phone-outer::after{
+  content:"";position:absolute;inset:0;z-index:5;pointer-events:none;
+  background:url("portfolio-screenshots/iphone-frame.webp") center / 100% 100% no-repeat;
 }
 .phone-notch,.phone-home-btn{display:none}
-.phone-screen{position:relative;width:100%;overflow:hidden;border-radius:22px;background:#000}
-.phone-screen::before{content:"";display:block;padding-top:calc(852 / 393 * 100%)}
+.phone-screen{position:absolute;top:1.6%;bottom:1.6%;left:4.03%;right:3.93%;overflow:hidden;border-radius:17% / 8%;background:#000}
 .phone-screen-shot{position:absolute;left:0;top:0;width:100%;height:100%;z-index:1;object-fit:cover;object-position:top center;display:block;background:#000}
 .page-badge.active.page-badge--magazine{background:#c45c8a;border-color:#c45c8a}
 
@@ -973,6 +978,8 @@ body.nav-open{overflow:hidden}
 .svc-support{margin-top:12px;font-size:14.5px;line-height:1.6;color:var(--muted);max-width:38em}
 .svc-lead .svc-support{display:block;font-weight:400}
 .svc-story-proof{margin:22px 0 0;max-width:none;text-align:left;font-size:13.5px}
+.svc-close{margin:clamp(28px,4vw,44px) auto 0;max-width:none;text-align:center;font-size:16px;font-weight:600;color:var(--dark)}
+.svc-close a{color:var(--orange1);font-weight:700;text-underline-offset:3px}
 .svc-shot{
   margin:0;background:var(--card);border-radius:0;overflow:hidden;
   border:8px solid rgba(26,21,32,.045);background-clip:padding-box;
@@ -1001,7 +1008,8 @@ body.nav-open{overflow:hidden}
   .svc-lightbox[open],.svc-lightbox[open]::backdrop{animation:none}
 }
 .svc-clusters{display:grid;gap:14px;margin-top:clamp(32px,5vw,56px)}
-@media(min-width:880px){.svc-clusters{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:640px){.svc-clusters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1100px){.svc-clusters{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .svc-cluster{background:var(--card);border-radius:1.6rem;padding:22px 20px 12px;box-shadow:0 12px 32px rgba(26,21,32,.05)}
 .svc-cluster-num{font-family:'Cash Market','Plus Jakarta Sans',sans-serif;font-size:13px;color:var(--purple2)}
 .svc-badge{display:inline-block;margin-left:10px;vertical-align:1px;background:var(--neon);color:#1a1520;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
@@ -1025,6 +1033,7 @@ body.nav-open{overflow:hidden}
 .js #services-hero.reveal.is-in .svc-cluster:nth-child(1){transition-delay:.14s}
 .js #services-hero.reveal.is-in .svc-cluster:nth-child(2){transition-delay:.22s}
 .js #services-hero.reveal.is-in .svc-cluster:nth-child(3){transition-delay:.3s}
+.js #services-hero.reveal.is-in .svc-cluster:nth-child(4){transition-delay:.38s}
 @media(prefers-reduced-motion:reduce){
   .js #services-hero.reveal .svc-shot,.js #services-hero.reveal .svc-cluster,
   .js #services-hero.reveal.is-in .svc-shot,.js #services-hero.reveal.is-in .svc-cluster{opacity:1;transform:none;transition:none}
@@ -1053,7 +1062,7 @@ body.nav-open{overflow:hidden}
 .svc-more-toggle{display:block;width:100%;margin-top:12px;padding:12px 16px;border:1px solid var(--border);border-radius:999px;background:var(--card);color:var(--dark);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
 .svc-more-toggle[hidden]{display:none}
 .svc-more-toggle:focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
-.svc-more.is-collapsed .svc-more-group:nth-child(n+2){display:none}
+.svc-more.is-collapsed .svc-more-grid{display:none}
 .svc-more-group{border:1px solid var(--border);border-radius:1.6rem;padding:18px 18px 8px;background:transparent}
 .svc-more-group h4{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--purple2);margin-bottom:6px}
 .svc-more .svc-items li{padding:9px 0}
@@ -1082,7 +1091,7 @@ body.nav-open{overflow:hidden}
 @media(max-width:640px){
   .btn-row{flex-direction:column;align-items:stretch}
   .btn-row .btn{width:100%;justify-content:center}
-  .metrics{grid-template-columns:1fr}
+  .metrics{grid-template-columns:repeat(2,1fr)}
   .footer-grid{flex-direction:column;align-items:flex-start}
   .dbx-finder-columns{grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:1fr;overflow-x:visible}
   .portfolio-carousel-track .site-card{width:min(240px,calc(100vw - 148px))}
@@ -1107,6 +1116,11 @@ body.nav-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.price-grid.tier-track{scroll-behavior:auto}.tier-dot::before{transition:none}}
 /* Add-ons list inside #apps (moved from #addons) */
 .apps-addons{max-width:900px;margin:40px auto 0;text-align:center;scroll-margin-top:96px}
+.pricing-help{margin:10px auto 0;text-align:center;font-size:14.5px;color:var(--muted)}
+.pricing-help a{color:var(--purple2);font-weight:700}
+.apps-addons-more>summary{cursor:pointer;list-style:none;display:inline-block;padding:10px 18px;border:1px solid var(--border);border-radius:999px;font-size:14px;font-weight:700;color:var(--dark);background:var(--card)}
+.apps-addons-more>summary::-webkit-details-marker{display:none}
+.apps-addons-more>summary:focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
 .apps-addons-list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:12px 32px;text-align:left}
 @media(min-width:720px){.apps-addons-list{grid-template-columns:repeat(2,1fr)}}
 .apps-addons-list li{position:relative;padding-left:20px;font-size:14px;line-height:1.45;color:var(--body)}
@@ -1116,6 +1130,8 @@ body.nav-open{overflow:hidden}
 .apps-addon-note{display:block;font-size:13px;color:var(--muted)}
 .apps-addons-note{margin-top:18px;font-size:13.5px;color:var(--muted)}
 /* Consultation walkthrough inside #contact (revealed by Get a quote) */
+.copy-email{margin-left:6px;padding:4px 12px;border:1px solid var(--border);border-radius:999px;background:var(--card);color:var(--dark);font:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
+.copy-email:focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
 .consult-toggle-row{display:flex;justify-content:center;margin-bottom:28px}
 .consult-toggle-row .consult-toggle{width:auto}
 .consult-toggle[hidden]{display:none}
@@ -1149,19 +1165,91 @@ body.nav-open{overflow:hidden}
   .nav-sheet a.is-active{color:var(--orange1)}
 }
 @media(prefers-reduced-motion:reduce){.nav-links a{transition:none}}
-/* Top nav tiles: flat solid burnt orange; active section (scroll-spy) = inverted cream fill */
-.nav-links a:not(.nav-cta){background:#c43a08;background-image:none;color:#fff;border:0;box-shadow:none;text-shadow:none}
-.nav-links a:not(.nav-cta):hover{background:#a8320a;color:#fff}
-.nav-links a:not(.nav-cta):focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
-.nav-links a.is-active:not(.nav-cta),.nav-links a.is-active:not(.nav-cta):hover{background:#fffaf3;color:#c43a08;box-shadow:inset 0 0 0 1.5px #c43a08}
+/* Black frosted-glass nav pills and side rail; the active section crossfades to orange */
+:root{--metal:linear-gradient(180deg,rgba(255,255,255,.09) 0%,rgba(255,255,255,.02) 100%);--orange-grad:linear-gradient(165deg,#f07828,#c43a08)}
 .nav-links{gap:6px}
-.nav-links a:not(.nav-cta) .chip-new{background:#fff;color:#c43a08;box-shadow:none}
-.nav-links a.is-active:not(.nav-cta) .chip-new{background:#c43a08;color:#fff}
-@media(prefers-color-scheme:dark){
-  .nav-links a:not(.nav-cta){background:#c43a08;color:#fff}
-  .nav-links a:not(.nav-cta):hover{background:#a8320a;color:#fff}
-  .nav-links a.is-active:not(.nav-cta),.nav-links a.is-active:not(.nav-cta):hover{background:#fffaf3;color:#c43a08}
+.nav-links a:not(.nav-cta){
+  position:relative;isolation:isolate;border:0;color:#f1f1f3;
+  background:var(--orange-grad);
+  box-shadow:none;
+  transition:color .3s,box-shadow .4s,transform .15s;
 }
+.nav-links a:not(.nav-cta)::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;
+  background:var(--metal),#0a0a0a;
+  border:1px solid rgba(240,120,40,.42);box-sizing:border-box;
+  transition:opacity .45s ease,background-color .25s ease,border-color .25s ease;
+}
+.nav-links a:not(.nav-cta):hover{background:var(--orange-grad);color:#fff}
+.nav-links a:not(.nav-cta):hover::before{background-color:#1a1a1a;border-color:rgba(240,120,40,.75)}
+.nav-links a:not(.nav-cta):focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
+.nav-links a.is-active:not(.nav-cta),.nav-links a.is-active:not(.nav-cta):hover{color:#fff;background:var(--orange-grad);box-shadow:0 2px 8px rgba(240,120,40,.25)}
+.nav-links a.is-active:not(.nav-cta)::before{opacity:0}
+.nav-links a:not(.nav-cta) .chip-new{background:#f4f4f6;color:#0b0b0e;box-shadow:none}
+.nav-links a.is-active:not(.nav-cta) .chip-new{background:#fff;color:#c43a08}
+/* Get a quote matches the nav pills (same type size, weight, height); mobile keeps its own sizing */
+@media(min-width:981px){
+  .nav-pill .nav-cta{font-size:13px;font-weight:600;padding:8px 14px!important;line-height:inherit}
+}
+/* Side rail */
+.side-jump-btn{
+  background:var(--metal),rgba(255,255,255,.035);color:#f1f1f3;
+  border:1px solid rgba(240,120,40,.42);
+  box-shadow:none;
+}
+.side-jump-btn:hover:not(:disabled){background:var(--orange-grad);border-color:transparent;color:#fff}
+.side-jump-dot,.side-jump-dot:hover,.side-jump-dot.is-active{
+  position:relative;isolation:isolate;
+  background:rgba(255,255,255,.14);
+  box-shadow:inset 0 0 0 1px rgba(240,120,40,.4);
+  transition:transform .3s ease,box-shadow .35s ease;
+}
+.side-jump-dot::before{
+  content:"";position:absolute;inset:0;border-radius:50%;z-index:-1;
+  background:var(--orange-grad);
+  opacity:0;transition:opacity .4s ease;
+}
+.side-jump-dot:hover::before{opacity:.6}
+.side-jump-dot.is-active{transform:scale(1.3);box-shadow:0 0 0 3px rgba(240,120,40,.22)}
+.side-jump-dot.is-active::before{opacity:1}
+.side-jump-dot .tip{background:#15151a;color:#f4f4f6;border:1px solid rgba(255,255,255,.14)}
+.side-jump-dot .tip::after{border-left-color:#15151a}
+@media(prefers-reduced-motion:reduce){
+  .nav-links a:not(.nav-cta)::before,.side-jump-dot,.side-jump-dot::before{transition:none}
+}
+/* Soft backdrops for depth: frosted stage panel behind the phones, ground shadow under each phone, ambient glow behind the other sections */
+#portfolio-carousel.portfolio-carousel{isolation:isolate}
+#portfolio-carousel.portfolio-carousel::before{
+  content:"";position:absolute;inset:0 48px;z-index:-1;pointer-events:none;border-radius:36px;
+  background:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,.012) 100%);
+  border:1px solid rgba(255,255,255,.06);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 30px 70px rgba(0,0,0,.45);
+}
+.phone-frame::after{
+  content:"";position:absolute;left:14%;right:14%;bottom:2px;height:20px;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.6) 0%,transparent 70%);filter:blur(7px);
+}
+#cases,#products,#services-hero,#pricing{position:relative;isolation:isolate}
+#cases::before,#products::before,#services-hero::before,#pricing::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 42% at 50% 0%,rgba(240,120,40,.11),transparent 70%),
+    radial-gradient(ellipse 50% 40% at 90% 62%,rgba(135,113,162,.11),transparent 70%),
+    radial-gradient(ellipse 45% 38% at 6% 82%,rgba(240,120,40,.07),transparent 70%);
+}
+/* Hero phones use the same realistic iPhone frame as the carousel */
+.hero-shot,.hero-item:hover .hero-shot,.hero-item:focus-visible .hero-shot{
+  aspect-ratio:968 / 2000;background:none;border:0;border-radius:0;overflow:visible;box-shadow:none;
+  filter:drop-shadow(0 18px 24px rgba(0,0,0,.5));
+}
+.hero-shot img,.hero-shot video{
+  position:absolute;top:1.6%;left:4.03%;width:92.04%;height:96.8%;
+  aspect-ratio:auto;border-radius:17% / 8%;object-fit:cover;object-position:center top;
+}
+.hero-shot::after{
+  content:"";position:absolute;inset:0;z-index:5;pointer-events:none;
+  background:url("portfolio-screenshots/iphone-frame.webp") center / 100% 100% no-repeat;
+}
+.hero-shot-label{left:12%;bottom:5%}
 </style>
 </head>
 <body>
@@ -1170,9 +1258,9 @@ body.nav-open{overflow:hidden}
   <div class="nav-pill">
     <a class="logo" href="#top">Harmony <span>Stack</span></a>
     <div class="nav-links">
-      <a href="#services-hero">Engineering</a>
       <a href="#work">Work</a>
       <a href="#products">Apps <span class="chip-new">Live</span></a>
+      <a href="#services-hero">What I handle</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
     </div>
@@ -1185,9 +1273,9 @@ body.nav-open{overflow:hidden}
 </nav>
 <div class="nav-sheet" id="nav-sheet" hidden>
   <div class="nav-sheet-links">
-    <a href="#services-hero">Engineering</a>
     <a href="#work">Work</a>
     <a href="#products">Apps</a>
+    <a href="#services-hero">What I handle</a>
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
     <a href="#contact">Get a quote</a>
@@ -1197,18 +1285,18 @@ body.nav-open{overflow:hidden}
 <header class="hero" id="top">
   <div class="wrap hero-grid">
     <div>
-      <h1>Websites &amp; apps that look sharp and <em>get used</em>.</h1>
-      <p class="hero-lead">Sites, Shopify, and App Store products — designed and built by one person you can actually reach. No agency bloat. Clear packages. Real delivery.</p>
+      <h1>Get a website or app that makes your brand <em>easier to buy from</em>.</h1>
+      <p class="hero-lead">I design and build websites, Shopify stores, and iPhone apps for brands that sell. You work directly with me, get a fixed quote before we start, and own everything at launch.</p>
       <div class="btn-row">
-        <a class="btn btn-neon" href="#contact">Get a quote</a>
-        <a class="btn btn-secondary" href="#pricing">See packages</a>
+        <a class="btn btn-neon" href="#contact">Get a free quote</a>
+        <a class="btn btn-secondary" href="#work">See the work</a>
       </div>
-      <p class="hero-note">Built by Samuel · Flat rates &amp; monthly care</p>
+      <p class="hero-note">Live for Girls Gone Digital, Caresha Please &amp; Luzid Productions · 2 personal shipped apps live on the App Store · Fixed quotes, no surprises</p>
     </div>
     <div class="hero-visual">
       <a class="hero-item" href="https://girlsgone.digital" target="_blank" rel="noopener">
         <div class="hero-shot">
-          <img src="portfolio-screenshots/girlsgonedigital-home.png" alt="" loading="eager">
+          <video autoplay muted loop playsinline preload="metadata" poster="portfolio-screenshots/girlsgone-digital-home-poster.png" aria-label="Girls Gone Digital home page reel"><source src="portfolio-screenshots/ggd-home-preview.mp4" type="video/mp4"></video>
           <span class="hero-shot-label">Home</span>
         </div>
         <span class="hero-item-title">Girls Gone Digital</span>
@@ -1216,7 +1304,7 @@ body.nav-open{overflow:hidden}
       </a>
       <a class="hero-item" href="https://cp-sync-repo.vercel.app" target="_blank" rel="noopener">
         <div class="hero-shot">
-          <img src="portfolio-screenshots/caresha-please-home.png" alt="" loading="eager">
+          <video autoplay muted loop playsinline preload="metadata" poster="portfolio-screenshots/caresha-shop-poster.png" aria-label="Caresha Please shop page video reel"><source src="portfolio-screenshots/caresha-shop-preview.mp4" type="video/mp4"></video>
           <span class="hero-shot-label">Shop</span>
         </div>
         <span class="hero-item-title">Caresha Please</span>
@@ -1224,7 +1312,7 @@ body.nav-open{overflow:hidden}
       </a>
       <a class="hero-item" href="https://luzidproductions.com" target="_blank" rel="noopener">
         <div class="hero-shot">
-          <img src="portfolio-screenshots/luzidproductions-home.png" alt="" loading="eager">
+          <video autoplay muted loop playsinline preload="metadata" poster="portfolio-screenshots/luzid-home-poster.png" aria-label="Luzid Productions home page reel"><source src="portfolio-screenshots/luzid-home-preview.mp4" type="video/mp4"></video>
           <span class="hero-shot-label">Home</span>
         </div>
         <span class="hero-item-title">Luzid Productions</span>
@@ -1236,7 +1324,7 @@ body.nav-open{overflow:hidden}
 
 <div class="wrap">
   <div class="trust" id="past-work" aria-label="Past clients and products">
-    <span style="border-style:dashed">Past work</span>
+    <span style="border-style:dashed">Brands I’ve built for</span>
     <a href="https://cp-sync-repo.vercel.app" target="_blank" rel="noopener"
       data-preview-img="portfolio-screenshots/caresha-please-home.png"
       data-preview-title="Caresha Please"
@@ -1246,22 +1334,22 @@ body.nav-open{overflow:hidden}
       data-preview-img="portfolio-screenshots/luzidproductions-home.png"
       data-preview-title="Luzid Productions"
       data-preview-kicker="Studio site"
-      data-preview-url="luzidproductions.com">luzidproductions.com</a>
+      data-preview-url="luzidproductions.com">Luzid Productions</a>
     <a href="https://girlsgone.digital" target="_blank" rel="noopener"
       data-preview-img="portfolio-screenshots/girlsgonedigital-home.png"
       data-preview-title="Girls Gone Digital"
       data-preview-kicker="Brand + shop"
-      data-preview-url="girlsgone.digital">girlsgone.digital</a>
+      data-preview-url="girlsgone.digital">Girls Gone Digital</a>
     <a href="https://icestudios.shop" target="_blank" rel="noopener"
       data-preview-img="portfolio-screenshots/icestudios-shop-home.png"
       data-preview-title="ICE Studios"
       data-preview-kicker="Shopify store"
-      data-preview-url="icestudios.shop">icestudios.shop</a>
+      data-preview-url="icestudios.shop">ICE Studios</a>
     <a href="https://blanksquareproductions.com" target="_blank" rel="noopener"
       data-preview-img="portfolio-screenshots/blanksquareproductions-home.png"
       data-preview-title="Blank Square"
       data-preview-kicker="Studio site"
-      data-preview-url="blanksquareproductions.com">blanksquareproductions.com</a>
+      data-preview-url="blanksquareproductions.com">Blank Square</a>
     <a href="cdl-marketing.html"
       data-preview-img="portfolio-screenshots/cdl-onestop-home.png"
       data-preview-title="CDL One Stop"
@@ -1293,109 +1381,10 @@ body.nav-open{overflow:hidden}
 <section class="section" id="proof" style="padding-top:28px;padding-bottom:12px">
   <div class="wrap">
     <div class="metrics" aria-label="Studio snapshot">
-      <div class="metric"><b>2025</b><span>Client projects</span></div>
-      <div class="metric"><b>2</b><span>App Store releases</span></div>
-      <div class="metric"><b>5 tiers</b><span>Websites that convert</span></div>
-      <div class="metric"><b>1 person</b><span>One dedicated builder</span></div>
-    </div>
-  </div>
-</section>
-
-<div class="band-orange band-burnt" role="presentation">
-  <div class="wrap"><p>Custom sites · Shopify · <strong>App Store products</strong> — one builder, clear packages.</p></div>
-</div>
-
-<section class="section section-warm-soft" id="services-hero" aria-labelledby="services-hero-title">
-  <div class="wrap">
-    <div class="svc-story">
-      <div class="svc-story-copy">
-        <span class="kicker">Under the hood</span>
-        <h2 class="svc-statement" id="services-hero-title">Polish on the surface. <span class="svc-hl">Real engineering</span> underneath.</h2>
-        <span class="svc-rule" aria-hidden="true"></span>
-        <p class="svc-lead">Behind every clean interface I build sits a real pipeline. <span class="svc-support">Data pulled in at scale, outside APIs handled without tripping their limits, and judgment calls made with a person in the loop. That same engineering can sit under your product.</span></p>
-        <p class="proof-line svc-story-proof">Picture it on <strong>your</strong> product: a store that keeps inventory in sync, a dashboard your team actually checks, or an AI feature that knows when to ask a human.</p>
-      </div>
-      <figure class="svc-shot">
-        <button type="button" class="svc-shot-open" id="svc-shot-open" aria-label="Expand dashboard screenshot" aria-haspopup="dialog" aria-controls="svc-lightbox">
-          <img src="portfolio-screenshots/penwork-dashboard.png" width="1447" height="1210" loading="lazy" decoding="async" alt="Dark-themed real-time dashboard from the Penwork pipeline: parallel job runs with progress bars, AI and terminal work lanes with live status, and a filterable review queue.">
-        </button>
-        <figcaption>The live progress dashboard I built for the Penwork pipeline: parallel jobs, agent and terminal lanes, and review queues on one screen.</figcaption>
-      </figure>
-      <dialog class="svc-lightbox" id="svc-lightbox" aria-label="Dashboard screenshot, expanded">
-        <button type="button" class="svc-lightbox-close" id="svc-lightbox-close" aria-label="Close expanded screenshot">&times;</button>
-        <img data-src="portfolio-screenshots/penwork-dashboard.png" width="1447" height="1210" alt="Dark-themed real-time dashboard from the Penwork pipeline, shown large: parallel job runs with progress bars, AI and terminal work lanes with live status, and a filterable review queue.">
-      </dialog>
-    </div>
-    <div class="svc-clusters" role="list" aria-label="Engineering capabilities">
-      <article class="svc-cluster" role="listitem">
-        <span class="svc-cluster-num" aria-hidden="true">01</span>
-        <h3>Get the data in</h3>
-        <p class="svc-cluster-sum">Reliable intake from wherever your data lives.</p>
-        <ul class="svc-items">
-          <li><b>Data extraction at scale</b><span>Clean, structured data pulled from pages, files, and feeds, in volume.</span></li>
-          <li><b>API integration that holds up</b><span>Rate limiting and retry backoff, so a busy API never takes you down.</span></li>
-          <li><b>Data modeling</b><span>Your nouns, tag chips, and relationships in a structure that stays simple as it grows.</span></li>
-        </ul>
-      </article>
-      <article class="svc-cluster is-featured" role="listitem">
-        <span class="svc-cluster-num" aria-hidden="true">02</span><span class="svc-badge">The hard part</span>
-        <h3>Make the right calls</h3>
-        <p class="svc-cluster-sum">Judgment you can audit, with people where it counts.</p>
-        <ul class="svc-items">
-          <li><b>Classification &amp; judgment pipelines</b><span>Sort, tag, and score text with rules and AI, with the reasoning attached.</span></li>
-          <li><b>Human-in-the-loop review</b><span>Queues where a person approves, edits, or overrides the calls that matter.</span></li>
-          <li><b>Agent &amp; terminal orchestration</b><span>AI agents and command-line jobs that run in order and recover when something fails.</span></li>
-        </ul>
-      </article>
-      <article class="svc-cluster" role="listitem">
-        <span class="svc-cluster-num" aria-hidden="true">03</span>
-        <h3>See it, run it</h3>
-        <p class="svc-cluster-sum">Live visibility now, and a system that outlasts the build.</p>
-        <ul class="svc-items">
-          <li><b>Real-time monitoring dashboards</b><span>What’s running, what’s stuck, and what just changed, live.</span></li>
-          <li><b>SwiftUI, live-updating</b><span>Native iOS screens that update the moment the data does.</span></li>
-          <li><b>Docs that keep it operable</b><span>Plain-language runbooks so it can be run, fixed, and handed off.</span></li>
-        </ul>
-      </article>
-    </div>
-    <div class="svc-more" role="group" aria-labelledby="svc-more-title">
-      <div class="svc-more-head">
-        <span class="kicker">More I’ve shipped</span>
-        <h3 class="svc-more-title" id="svc-more-title">And beyond the pipeline.</h3>
-        <p class="svc-more-sum">The same craft, pointed at apps, media, and the tools that keep a business running.</p>
-      </div>
-      <div class="svc-more-grid" id="svc-more-grid">
-      <div class="svc-more-group">
-        <h4>Apps &amp; platforms</h4>
-        <ul class="svc-items">
-          <li><b>App Store shipping</b><span>From submission to approval: builds, versions, and replies to App Review.</span></li>
-          <li><b>Localization, right-to-left included</b><span>Apps prepared for new languages, including right-to-left scripts like Arabic and Hebrew.</span></li>
-          <li><b>Sign in with Apple &amp; Google</b><span>Social sign-in wired to a real backend and checked end to end.</span></li>
-          <li><b>CarPlay &amp; in-car video</b><span>CarPlay apps with video playback, AirPlay routing, and driver-safe controls.</span></li>
-          <li><b>Native Mac utilities</b><span>Menu-bar and notch tools I build on and extend to keep an eye on long-running work.</span></li>
-        </ul>
-      </div>
-      <div class="svc-more-group">
-        <h4>Media &amp; creative</h4>
-        <ul class="svc-items">
-          <li><b>In-browser music tools</b><span>Chord, key, and BPM detection, stem splitting, and MIDI export, right in the browser.</span></li>
-          <li><b>Automated promo videos</b><span>Scripted, beat-synced cuts with voiceover, rendered and reviewed before they ship.</span></li>
-          <li><b>Ad platform APIs &amp; creative</b><span>Ad platform APIs connected, plus batches of ad creative sized for each placement.</span></li>
-          <li><b>Data-driven browser games</b><span>Games where art and settings live in data, so a reskin doesn’t mean a rewrite.</span></li>
-        </ul>
-      </div>
-      <div class="svc-more-group">
-        <h4>Tools &amp; ops</h4>
-        <ul class="svc-items">
-          <li><b>Internal tools &amp; CRMs</b><span>Small web apps and CRMs shaped around how your team actually works.</span></li>
-          <li><b>AI search over your documents</b><span>Ask questions and get answers grounded in your own material.</span></li>
-          <li><b>Rhyme &amp; syllable analysis</b><span>Text analyzed by sound as well as meaning: syllables, end rhymes, and near rhymes.</span></li>
-          <li><b>Deployment &amp; keeping it running</b><span>Hosting fixes, background services, and one-click launchers so things stay up.</span></li>
-          <li><b>UX audits</b><span>Interfaces checked against how people actually read and tap, then fixed.</span></li>
-        </ul>
-      </div>
-      </div>
-      <button type="button" class="svc-more-toggle" id="svc-more-toggle" aria-expanded="true" aria-controls="svc-more-grid" hidden>Show less</button>
+      <div class="metric"><b>10+</b><span>Brand sites live</span></div>
+      <div class="metric"><b>2</b><span>Personal shipped apps live on the App Store</span></div>
+      <div class="metric"><b>Fixed</b><span>Quote before work starts</span></div>
+      <div class="metric"><b>1 builder</b><span>Direct line, no handoffs</span></div>
     </div>
   </div>
 </section>
@@ -1447,8 +1436,8 @@ body.nav-open{overflow:hidden}
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">Fit</span>
-      <h2>Who this is for — and who it isn’t.</h2>
-      <p>Honest filters mean better projects for both of us.</p>
+      <h2>Who I work best with.</h2>
+      <p>A quick check so we both know it’s a good match.</p>
     </div>
     <div class="fit-grid">
       <article class="fit fit-yes">
@@ -1461,12 +1450,12 @@ body.nav-open{overflow:hidden}
         </ul>
       </article>
       <article class="fit fit-no">
-        <h3>Not a fit</h3>
+        <h3>Probably not a match</h3>
         <ul>
-          <li>“$50 logo + unlimited free revisions forever”</li>
-          <li>Projects that need a 12-person agency and weekly status theater</li>
-          <li>No brief, no assets, and “make it pop” as the only direction</li>
-          <li>Anything illegal, scammy, or brand-damaging</li>
+          <li>Very low budgets or unlimited revisions</li>
+          <li>Projects that need a large agency team or formal weekly reporting</li>
+          <li>No brief or assets yet, and no clear direction to start from</li>
+          <li>Anything illegal, misleading, or brand-damaging</li>
         </ul>
       </article>
     </div>
@@ -1479,8 +1468,8 @@ body.nav-open{overflow:hidden}
   <div class="portfolio-showcase portfolio-showcase" id="portfolio-showcase">
     <div class="portfolio-stage-head">
       <span class="kicker">Selected work</span>
-      <h2>Sites &amp; apps — swipe the phones.</h2>
-      <p>Client sites and shipped apps, side by side. Use the arrows or dots to browse.</p>
+      <h2>See what your site could look like.</h2>
+      <p>Real brands, built to sell. Swipe to browse.</p>
     </div>
     <div class="portfolio-carousel" id="portfolio-carousel">
       <button type="button" class="carousel-nav-btn" data-carousel-prev aria-label="Previous project">&#8249;</button>
@@ -1502,6 +1491,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--home">Home</span>
         </div>
+        <p class="site-card-result">Luzid Productions: a home page built around a video reel.</p>
       </div>
 
       <!-- girlsgone.digital home -->
@@ -1520,6 +1510,24 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--home">Home</span>
         </div>
+        <p class="site-card-result">Girls Gone Digital: lookbook-style site with a magazine and merch shop.</p>
+      </div>
+
+      <!-- careshaplease.com shop -->
+      <div class="site-card" data-portfolio-site="cp-sync-repo.vercel.app">
+        <a class="phone-frame" href="https://cp-sync-repo.vercel.app" target="_blank" rel="noopener noreferrer" data-preview-id="caresha-shop" aria-label="Visit Caresha Please (cp-sync-repo.vercel.app)">
+          <div class="phone-outer">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <video class="phone-screen-shot" autoplay muted loop playsinline preload="metadata" poster="portfolio-screenshots/caresha-shop-poster.png" aria-label="Caresha Please shop page video reel"><source src="portfolio-screenshots/caresha-shop-preview.mp4" type="video/mp4"></video>
+            </div>
+            <div class="phone-home-btn"></div>
+          </div>
+        </a>
+        <div class="page-type-badge">
+          <span class="page-badge active page-badge--shop">Shop</span>
+        </div>
+        <p class="site-card-result">Caresha Please: brand site with the shop built in.</p>
       </div>
 
       <!-- girlsgone.digital magazine -->
@@ -1538,6 +1546,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--magazine">Magazine</span>
         </div>
+        <p class="site-card-result">Girls Gone Digital: lookbook-style site with a magazine and merch shop.</p>
       </div>
 
       <!-- girlsgone.digital shop -->
@@ -1556,6 +1565,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--shop">Shop</span>
         </div>
+        <p class="site-card-result">Girls Gone Digital: lookbook-style site with a magazine and merch shop.</p>
       </div>
 
       <!-- careshaplease.com — visual only, no text credit -->
@@ -1572,23 +1582,10 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--home">Home</span>
         </div>
+        <p class="site-card-result">Caresha Please: brand site with the shop built in.</p>
       </div>
 
-      <!-- careshaplease.com shop -->
-      <div class="site-card" data-portfolio-site="cp-sync-repo.vercel.app">
-        <a class="phone-frame" href="https://cp-sync-repo.vercel.app" target="_blank" rel="noopener noreferrer" data-preview-id="caresha-shop" aria-label="Visit Caresha Please (cp-sync-repo.vercel.app)">
-          <div class="phone-outer">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <img class="phone-screen-shot" src="portfolio-screenshots/caresha-please-shop.png" alt="Caresha Please — Get Into Some Tea section and product grid (cp-sync-repo.vercel.app home)" loading="eager" decoding="async" />
-            </div>
-            <div class="phone-home-btn"></div>
-          </div>
-        </a>
-        <div class="page-type-badge">
-          <span class="page-badge active page-badge--shop">Shop</span>
-        </div>
-      </div>
+
 
       <!-- Caresha Please — black colorway -->
       <div class="site-card" data-portfolio-site="cp-sync-repo.vercel.app">
@@ -1604,6 +1601,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--home">Home</span>
         </div>
+        <p class="site-card-result">Caresha Please: brand site with the shop built in.</p>
       </div>
 
       <div class="site-card" data-portfolio-site="cp-sync-repo.vercel.app">
@@ -1619,6 +1617,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--shop">Shop</span>
         </div>
+        <p class="site-card-result">Caresha Please: brand site with the shop built in.</p>
       </div>
 
       <!-- blanksquareproductions.com home -->
@@ -1635,6 +1634,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--home">Home</span>
         </div>
+        <p class="site-card-result">Blank Square Productions: custom brand site.</p>
       </div>
 
       <!-- icestudios.shop home -->
@@ -1651,6 +1651,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--home">Home</span>
         </div>
+        <p class="site-card-result">Ice Studios: an online shop.</p>
       </div>
 
       <!-- CDL One Stop — home -->
@@ -1670,6 +1671,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--home">Home</span>
         </div>
+        <p class="site-card-result">CDL One Stop: iPhone app that helps drivers study for the CDL written test.</p>
       </div>
 
       <!-- CDL One Stop — key dates / info -->
@@ -1689,6 +1691,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--info">Info</span>
         </div>
+        <p class="site-card-result">CDL One Stop: iPhone app that helps drivers study for the CDL written test.</p>
       </div>
 
       <!-- Penwork Studios — home (song list) -->
@@ -1708,6 +1711,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--home">Home</span>
         </div>
+        <p class="site-card-result">Penwork Studio: iPhone app where songwriters draft lyrics.</p>
       </div>
 
       <!-- Penwork Studios — editor / text view -->
@@ -1727,6 +1731,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--editor">Editor</span>
         </div>
+        <p class="site-card-result">Penwork Studio: iPhone app where songwriters draft lyrics.</p>
       </div>
 
         </div>
@@ -1740,15 +1745,15 @@ body.nav-open{overflow:hidden}
 
 
 <div class="band-orange band-burnt" role="presentation">
-  <div class="wrap"><p>Scroll the phones, then see how projects ship — <strong>problem → build → outcome</strong>.</p></div>
+  <div class="wrap"><p>Now the stories behind them: <strong>the pain point, what I built, and the result</strong>.</p></div>
 </div>
 
 <section class="section section-warm" id="cases">
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">Case snapshots</span>
-      <h2>What “done” looks like.</h2>
-      <p>Short stories — problem, build, outcome. Swap in harder metrics when you have them.</p>
+      <h2>How these projects came together.</h2>
+      <p>Short stories: the pain point, what I built, and the result.</p>
     </div>
     <div class="cases">
       <article class="case">
@@ -1756,9 +1761,9 @@ body.nav-open{overflow:hidden}
         <div class="case-body">
           <span class="case-tag">Brand + shop</span>
           <h3>Girls Gone Digital</h3>
-          <p><strong>Problem:</strong> Lifestyle brand needed a site that felt like the lookbook — video, magazine, shop — not a generic theme.<br>
-          <strong>Build:</strong> Custom home reel, magazine page, and merch shop. Mobile-first, video-first.<br>
-          <strong>Outcome:</strong> Live at girlsgone.digital with home, magazine, and shop shipping together.</p>
+          <p><strong>The pain point:</strong> Lifestyle brand needed a site that felt like the lookbook — video, magazine, shop — not a generic theme.<br>
+          <strong>What I built:</strong> Custom home reel, magazine page, and merch shop. Mobile-first, video-first.<br>
+          <strong>The result:</strong> Live at girlsgone.digital. Visitors can watch the reel, read the magazine, and buy merch without leaving the brand’s world.</p>
           <div class="case-meta"><span>Custom design</span><span>Shop-ready</span><span>Video-first</span></div>
           <a href="https://girlsgone.digital" target="_blank" rel="noopener">View live site →</a>
         </div>
@@ -1768,9 +1773,9 @@ body.nav-open{overflow:hidden}
         <div class="case-body">
           <span class="case-tag">Brand + shop</span>
           <h3>Caresha Please</h3>
-          <p><strong>Problem:</strong> High-energy brand needed a site that felt like the product, not a generic theme.<br>
-          <strong>Build:</strong> Custom marketing experience with shop integration and mobile-first layout.<br>
-          <strong>Outcome:</strong> Live brand destination with product discovery front and center.</p>
+          <p><strong>The pain point:</strong> High-energy brand needed a site that felt like the product, not a generic theme.<br>
+          <strong>What I built:</strong> Custom marketing experience with shop integration and mobile-first layout.<br>
+          <strong>The result:</strong> Live brand site where fans land on the brand and go straight to the shop.</p>
           <div class="case-meta"><span>Custom design</span><span>Shop-ready</span><span>Mobile-first</span></div>
           <a href="https://cp-sync-repo.vercel.app" target="_blank" rel="noopener">View live site →</a>
         </div>
@@ -1780,9 +1785,9 @@ body.nav-open{overflow:hidden}
         <div class="case-body">
           <span class="case-tag">iOS product</span>
           <h3>CDL One Stop</h3>
-          <p><strong>Problem:</strong> CDL students need focused practice without $40/mo prep apps full of ads.<br>
-          <strong>Build:</strong> Full iOS study app — readiness scoring, pre-trip tools, 50 states, EN/ES.<br>
-          <strong>Outcome:</strong> Live on the App Store at $1 for a limited time; iPad &amp; Mac supported; Android very soon.</p>
+          <p><strong>The pain point:</strong> CDL students need focused practice without $40/mo prep apps full of ads.<br>
+          <strong>What I built:</strong> Full iOS study app — readiness scoring, pre-trip tools, 50 states, EN/ES.<br>
+          <strong>The result:</strong> Live on the App Store at $1 for a limited time; iPad &amp; Mac supported; Android very soon.</p>
           <div class="case-meta"><span>App Store</span><span>$1 limited time</span><span>AI-ready product craft</span></div>
           <a href="cdl-marketing.html">View app page →</a>
         </div>
@@ -1794,9 +1799,9 @@ body.nav-open{overflow:hidden}
           <span class="chip-new chip-new--block">Product</span>
           <span class="case-tag">iOS product</span>
           <h3>Penwork Studio</h3>
-          <p><strong>Problem:</strong> Songwriters need a focused place to draft lyrics and creative notes — not a messy notes dump.<br>
-          <strong>Build:</strong> Native iOS studio app with editor flows, AI-assisted creative tools, App Store listing, and marketing/support pages.<br>
-          <strong>Outcome:</strong> Live on the App Store — end-to-end product from UI to listing, same studio that builds client work.</p>
+          <p><strong>The pain point:</strong> Songwriters need a focused place to draft lyrics and creative notes — not a messy notes dump.<br>
+          <strong>What I built:</strong> Native iOS studio app with editor flows, AI-assisted creative tools, App Store listing, and marketing/support pages.<br>
+          <strong>The result:</strong> Live on the App Store. One builder handled everything from the design to the listing.</p>
           <div class="case-meta"><span>App Store</span><span>Songwriting</span><span>Full product ship</span></div>
           <a href="penwork-marketing.html">View app page →</a>
           <a href="https://apps.apple.com/us/app/penwork-studio/id6757620114" target="_blank" rel="noopener">App Store →</a>
@@ -1808,15 +1813,15 @@ body.nav-open{overflow:hidden}
 
 
 <div class="band-orange band-burnt" role="presentation">
-  <div class="wrap"><p>Studio products — <strong>proof we ship</strong>, not only client comps.</p></div>
+  <div class="wrap"><p>Beyond commissions, <strong>I ship my own apps</strong> to the App Store.</p></div>
 </div>
 
 <section class="section" id="products">
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">Products <span class="chip-new">Live</span></span>
-      <h2>Also shipping on the App Store.</h2>
-      <p>Client work funds the studio. These apps are proof I design, build, list, and support products end-to-end.</p>
+      <h2>My own apps, live on the App Store.</h2>
+      <p>I build and ship products too, so I know what it takes to launch.</p>
     </div>
     <div class="products-grid">
       <article class="product-card">
@@ -1860,14 +1865,124 @@ body.nav-open{overflow:hidden}
         </div>
       </article>
     </div>
-    <p class="products-bridge">Client work funds the studio. <strong>CDL One Stop</strong> and <strong>Penwork Studio</strong> prove the same person can take a product from design to App Store.
+    <p class="products-bridge"><strong>CDL One Stop</strong> and <strong>Penwork Studio</strong> show the same person can take a product from design all the way to the App Store.
     </p>
   </div>
 </section>
 
 
 <div class="band-orange band-burnt" role="presentation">
-  <div class="wrap"><p>Transparent pricing. <strong>Fixed quote before work starts.</strong> Typical timelines on every tier.</p></div>
+  <div class="wrap"><p>Behind the store: <strong>the work I can take off your plate</strong>.</p></div>
+</div>
+
+<section class="section section-warm-soft" id="services-hero" aria-labelledby="services-hero-title">
+  <div class="wrap">
+    <div class="svc-story">
+      <div class="svc-story-copy">
+        <span class="kicker">What I handle</span>
+        <h2 class="svc-statement" id="services-hero-title">Let me take the <span class="svc-hl">busywork</span> off your plate.</h2>
+        <span class="svc-rule" aria-hidden="true"></span>
+        <p class="svc-lead">Product uploads, order updates, follow-ups, reports. <span class="svc-support">I set it up once so it runs without you, and I handle what can’t be automated.</span></p>
+        <p class="proof-line svc-story-proof">Picture it on <strong>your</strong> business: a store that never oversells, a dashboard that shows what’s happening today, or an AI helper that knows when to ask a human.</p>
+      </div>
+      <figure class="svc-shot">
+        <button type="button" class="svc-shot-open" id="svc-shot-open" aria-label="Expand dashboard screenshot" aria-haspopup="dialog" aria-controls="svc-lightbox">
+          <img src="portfolio-screenshots/penwork-dashboard.png" width="1447" height="1210" loading="lazy" decoding="async" alt="Dark-themed real-time dashboard from the Penwork pipeline: parallel job runs with progress bars, AI and terminal work lanes with live status, and a filterable review queue.">
+        </button>
+        <figcaption>A live view of every job and what needs approval. Your store can have the same: today’s orders, what’s low, what needs you.</figcaption>
+      </figure>
+      <dialog class="svc-lightbox" id="svc-lightbox" aria-label="Dashboard screenshot, expanded">
+        <button type="button" class="svc-lightbox-close" id="svc-lightbox-close" aria-label="Close expanded screenshot">&times;</button>
+        <img data-src="portfolio-screenshots/penwork-dashboard.png" width="1447" height="1210" alt="Dark-themed real-time dashboard from the Penwork pipeline, shown large: parallel job runs with progress bars, AI and terminal work lanes with live status, and a filterable review queue.">
+      </dialog>
+    </div>
+    <div class="svc-clusters" role="list" aria-label="Work I can take off your plate">
+      <article class="svc-cluster" role="listitem">
+        <span class="svc-cluster-num" aria-hidden="true">01</span>
+        <h3>Store &amp; products</h3>
+        <p class="svc-cluster-sum">Your catalog, kept accurate without you.</p>
+        <ul class="svc-items">
+          <li><b>Bulk product updates</b><span>New products, photos, and prices uploaded in batches.</span></li>
+          <li><b>Inventory that stays right</b><span>Stock counts kept accurate across your store and sales channels.</span></li>
+          <li><b>Prices and sales on a schedule</b><span>Discounts and promotions switched on and off automatically.</span></li>
+        </ul>
+      </article>
+      <article class="svc-cluster" role="listitem">
+        <span class="svc-cluster-num" aria-hidden="true">02</span>
+        <h3>Orders &amp; customers</h3>
+        <p class="svc-cluster-sum">Buyers taken care of after the sale.</p>
+        <ul class="svc-items">
+          <li><b>Order and shipping updates</b><span>Customers get automatic messages from checkout to delivery.</span></li>
+          <li><b>Follow-ups that win sales back</b><span>Abandoned-cart and thank-you messages sent for you.</span></li>
+          <li><b>Reviews and first replies</b><span>Review requests and common questions handled, with anything tricky passed to you.</span></li>
+        </ul>
+      </article>
+      <article class="svc-cluster" role="listitem">
+        <span class="svc-cluster-num" aria-hidden="true">03</span>
+        <h3>Marketing &amp; content</h3>
+        <p class="svc-cluster-sum">Campaigns and content, made and scheduled.</p>
+        <ul class="svc-items">
+          <li><b>Ad creative, sized right</b><span>Batches of ads made for every placement.</span></li>
+          <li><b>Email and text campaigns</b><span>Set up, written, and scheduled.</span></li>
+          <li><b>Posts and product copy</b><span>Social posts and product-page descriptions drafted for you.</span></li>
+        </ul>
+      </article>
+      <article class="svc-cluster" role="listitem">
+        <span class="svc-cluster-num" aria-hidden="true">04</span>
+        <h3>Reports &amp; admin</h3>
+        <p class="svc-cluster-sum">Know your numbers without the spreadsheet.</p>
+        <ul class="svc-items">
+          <li><b>A weekly sales snapshot</b><span>Plain-English numbers on what sold and what’s running low.</span></li>
+          <li><b>A dashboard you’ll check</b><span>One screen for today’s orders and what needs you.</span></li>
+          <li><b>Clean handoff to your bookkeeper</b><span>Sales and order data organized for your accountant.</span></li>
+        </ul>
+      </article>
+    </div>
+    <div class="svc-more" role="group" aria-labelledby="svc-more-title">
+      <div class="svc-more-head">
+        <span class="kicker">Also in the toolbox</span>
+        <h3 class="svc-more-title" id="svc-more-title">More of what I’ve built.</h3>
+        <p class="svc-more-sum">Apps, media, and internal tools, in case your project is a little different.</p>
+      </div>
+      <div class="svc-more-grid" id="svc-more-grid">
+      <div class="svc-more-group">
+        <h4>Apps &amp; platforms</h4>
+        <ul class="svc-items">
+          <li><b>App Store shipping</b><span>From submission to approval: builds, versions, and replies to App Review.</span></li>
+          <li><b>Localization, right-to-left included</b><span>Apps prepared for new languages, including right-to-left scripts like Arabic and Hebrew.</span></li>
+          <li><b>Sign in with Apple &amp; Google</b><span>Social sign-in wired to a real backend and checked end to end.</span></li>
+          <li><b>CarPlay &amp; in-car video</b><span>CarPlay apps with video playback, AirPlay routing, and driver-safe controls.</span></li>
+          <li><b>Native Mac utilities</b><span>Menu-bar and notch tools I build on and extend to keep an eye on long-running work.</span></li>
+        </ul>
+      </div>
+      <div class="svc-more-group">
+        <h4>Media &amp; creative</h4>
+        <ul class="svc-items">
+          <li><b>In-browser music tools</b><span>Chord, key, and BPM detection, stem splitting, and MIDI export, right in the browser.</span></li>
+          <li><b>Automated promo videos</b><span>Scripted, beat-synced cuts with voiceover, rendered and reviewed before they ship.</span></li>
+          <li><b>Ad platform APIs &amp; creative</b><span>Ad platform APIs connected, plus batches of ad creative sized for each placement.</span></li>
+          <li><b>Data-driven browser games</b><span>Games where art and settings live in data, so a reskin doesn’t mean a rewrite.</span></li>
+        </ul>
+      </div>
+      <div class="svc-more-group">
+        <h4>Tools &amp; ops</h4>
+        <ul class="svc-items">
+          <li><b>Internal tools &amp; CRMs</b><span>Small web apps and CRMs shaped around how your team actually works.</span></li>
+          <li><b>AI search over your documents</b><span>Ask questions and get answers grounded in your own material.</span></li>
+          <li><b>Rhyme &amp; syllable analysis</b><span>Text analyzed by sound as well as meaning: syllables, end rhymes, and near rhymes.</span></li>
+          <li><b>Deployment &amp; keeping it running</b><span>Hosting fixes, background services, and one-click launchers so things stay up.</span></li>
+          <li><b>UX audits</b><span>Interfaces checked against how people actually read and tap, then fixed.</span></li>
+        </ul>
+      </div>
+      </div>
+      <button type="button" class="svc-more-toggle" id="svc-more-toggle" aria-expanded="true" aria-controls="svc-more-grid">See everything else</button>
+    </div>
+    <p class="proof-line svc-close">What eats your week? <a href="#contact">Tell me, and I’ll tell you if I can take it off your plate.</a></p>
+  </div>
+</section>
+
+<div class="band-orange band-burnt" role="presentation">
+  <div class="wrap"><p><strong>Fixed quote before work starts.</strong> Typical timelines on every package.</p></div>
 </div>
 
 <!-- #pricing: one consolidated pricing section (Websites / Apps & AI / Monthly care lanes) merged Oct 10 from #pricing, #apps, #retainers.
@@ -1876,10 +1991,11 @@ body.nav-open{overflow:hidden}
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">Pricing</span>
-      <h2>Transparent pricing. Pick a lane, then talk.</h2>
-      <p>Flat rates for one-time work. Ranges depend on scope — you’ll get a fixed quote before anything starts.</p>
+      <h2>Simple packages. No surprises.</h2>
+      <p>Choose a starting point, and I’ll tailor it to your brand. You’ll get a fixed quote before anything starts.</p>
     </div>
     <p class="proof-line apps-oneliner">Custom websites, Shopify stores, iOS and web apps, and AI where it actually helps — built and supported end to end by <strong>one builder</strong>.</p>
+    <p class="pricing-help">Not sure which fits? <a href="#contact">Tell me your goal</a> and I’ll recommend one.</p>
     <div class="lane-tabs" role="tablist" aria-label="Pricing lanes" hidden>
       <button type="button" class="lane-tab" role="tab" id="lane-tab-web" aria-controls="pricing-websites" aria-selected="true">Websites</button>
       <button type="button" class="lane-tab" role="tab" id="lane-tab-apps" aria-controls="apps" aria-selected="false" tabindex="-1">Apps &amp; AI</button>
@@ -1891,7 +2007,7 @@ body.nav-open{overflow:hidden}
       <div class="price-grid cols-3 tier-track" id="web-tier-track" data-plan-pick role="radiogroup" aria-label="Website package">
       <article class="price-card featured" tabindex="0">
         <span class="price-badge">Most popular</span>
-        <div class="price-tier">Tier 03</div>
+        <div class="price-tier">Get online with a site you’re proud of</div>
         <h3>Starter Site</h3>
         <div class="price-amount">$400–1,200</div>
         <div class="price-note">Flat · new build</div>
@@ -1907,7 +2023,7 @@ body.nav-open{overflow:hidden}
         <a class="btn btn-primary" href="mailto:harmonystack@gmail.com?subject=Starter%20Site%20inquiry">Start here</a>
       </article>
       <article class="price-card" tabindex="0">
-        <div class="price-tier">Tier 01</div>
+        <div class="price-tier">Fix what’s bugging you, fast</div>
         <h3>Quick Fix</h3>
         <div class="price-amount">$75–150</div>
         <div class="price-note">Flat · per session</div>
@@ -1922,7 +2038,7 @@ body.nav-open{overflow:hidden}
         <a class="btn btn-secondary" href="mailto:harmonystack@gmail.com?subject=Quick%20Fix%20inquiry">Request this</a>
       </article>
       <article class="price-card" tabindex="0">
-        <div class="price-tier">Tier 02</div>
+        <div class="price-tier">Make your site look current again</div>
         <h3>Refresh</h3>
         <div class="price-amount">$300–600</div>
         <div class="price-note">Flat · existing site</div>
@@ -1937,7 +2053,7 @@ body.nav-open{overflow:hidden}
         <a class="btn btn-secondary" href="mailto:harmonystack@gmail.com?subject=Refresh%20inquiry">Request this</a>
       </article>
       <article class="price-card" tabindex="0">
-        <div class="price-tier">Tier 04</div>
+        <div class="price-tier">A site that stands out from competitors</div>
         <h3>Pro Build</h3>
         <div class="price-amount">$2,000–4,500</div>
         <div class="price-note">Flat · full project</div>
@@ -1953,7 +2069,7 @@ body.nav-open{overflow:hidden}
         <a class="btn btn-secondary" href="mailto:harmonystack@gmail.com?subject=Pro%20Build%20inquiry">Request this</a>
       </article>
       <article class="price-card" tabindex="0">
-        <div class="price-tier">Tier 05</div>
+        <div class="price-tier">Start selling online</div>
         <h3>E-Commerce</h3>
         <div class="price-amount">$3,500–7,000</div>
         <div class="price-note">Flat · online store</div>
@@ -2087,7 +2203,8 @@ body.nav-open{overflow:hidden}
       </div>
     </div>
     <div class="apps-addons" id="apps-addons">
-      <span class="kicker">Add-ons</span>
+      <details class="apps-addons-more">
+      <summary>See add-ons: logo, SEO, copywriting &amp; more</summary>
       <ul class="apps-addons-list">
         <li><strong>Extra page</strong> <span class="apps-addon-price">$50–200 / page</span><span class="apps-addon-note">Beyond your package page count — same design system, no Franken-site.</span></li>
         <li><strong>Logo design</strong> <span class="apps-addon-price">$100–400</span><span class="apps-addon-note">2–3 directions, revisions, and final files for web and print.</span></li>
@@ -2100,6 +2217,7 @@ body.nav-open{overflow:hidden}
         <li><strong>Rush delivery</strong> <span class="apps-addon-price">+25–50% fee</span><span class="apps-addon-note">Shorter deadline with priority scheduling — quoted before work starts.</span></li>
       </ul>
       <p class="apps-addons-note">Need several together? Say so in your inquiry — combined pricing may beat stacking list rates.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -2130,7 +2248,7 @@ body.nav-open{overflow:hidden}
 
 
 <div class="band-orange band-burnt" role="presentation">
-  <div class="wrap"><p>How we work: quote → deposit → materials → build → <strong>launch</strong>.</p></div>
+  <div class="wrap"><p>Questions before you reach out? <strong>Most answers are below.</strong></p></div>
 </div>
 
 <section class="section" id="faq">
@@ -2158,15 +2276,11 @@ body.nav-open{overflow:hidden}
       </details>
       <details>
         <summary>Can you take over an existing site?</summary>
-        <p>Yes — Quick Fix and Refresh packages are built for existing sites. Full rebuilds and new stores are Starter through E-Commerce.</p>
+        <p>Yes, including Shopify and WordPress sites. Quick Fix and Refresh are built for existing sites; full rebuilds and new stores are Starter through E-Commerce. Share your platform and URL in the inquiry form.</p>
       </details>
       <details>
         <summary>Where are you based?</summary>
-        <p>U.S.-based, remote-friendly. Reachable at harmonystack@gmail.com or samuelsanchez175@gmail.com, or phone (201) 745-7995.</p>
-      </details>
-      <details>
-        <summary>Do you work with my existing Shopify or WordPress site?</summary>
-        <p>Yes. Quick Fix and Refresh are built for existing sites. Full rebuilds and new stores use Starter through E-Commerce. Share your platform and URL in the inquiry form.</p>
+        <p>U.S.-based and remote. Email harmonystack@gmail.com or call (201) 745-7995.</p>
       </details>
       <details>
         <summary>Who owns the site or code after launch?</summary>
@@ -2190,7 +2304,7 @@ body.nav-open{overflow:hidden}
 
 
 <div class="band-orange band-burnt" role="presentation">
-  <div class="wrap"><p>Ready when you are — <a href="#contact">get a quote</a> · <a href="tel:+12017457995">(201) 745-7995</a> · <a href="mailto:harmonystack@gmail.com">harmonystack@gmail.com</a></p></div>
+  <div class="wrap"><p>Ready when you are — <a href="#contact">get a free quote</a> · <a href="tel:+12017457995">(201) 745-7995</a> · <a href="mailto:harmonystack@gmail.com">harmonystack@gmail.com</a></p></div>
 </div>
 
 <section class="section" id="contact">
@@ -2198,45 +2312,45 @@ body.nav-open{overflow:hidden}
     <!-- Consultation walkthrough: How it works, payment, revisions, kickoff checklist, Dropbox guide (moved from the main page flow Oct 10).
          Without JS it stays visible here; with JS it is hidden until a "Get a quote" / #contact link or the toggle is used. -->
     <div class="consult-toggle-row">
-      <button type="button" class="btn btn-secondary consult-toggle" id="consult-toggle" aria-expanded="true" aria-controls="consult-walkthrough" hidden>How the consultation works</button>
+      <button type="button" class="btn btn-secondary consult-toggle" id="consult-toggle" aria-expanded="true" aria-controls="consult-walkthrough" hidden>How a project works</button>
     </div>
     <div class="consult-walkthrough" id="consult-walkthrough" role="region" aria-labelledby="consult-walkthrough-title">
       <div class="section-head consult-walkthrough-head">
-        <span class="kicker">Consultation walkthrough</span>
-        <h2 id="consult-walkthrough-title" tabindex="-1">How the consultation works</h2>
+        <span class="kicker">Process, payment &amp; revisions</span>
+        <h2 id="consult-walkthrough-title" tabindex="-1">How a project works</h2>
         <p><a href="#inquiry-form">Skip to the quote form</a></p>
       </div>
     <div class="consult-part" id="process">
     <div class="section-head">
       <span class="kicker">How it works</span>
-      <h2>Simple process. No black box.</h2>
+      <h2>How a project works.</h2>
     </div>
     <p class="proof-line">Same process whether it’s a client site or an App Store product like <strong>CDL One Stop</strong> and <strong>Penwork Studio</strong> — scope, build, revise, ship.
     </p>
     <div class="steps process-5">
       <article class="step">
         <div class="step-num">1</div>
-        <h3>Quote</h3>
-        <p>Form, email, or call. I’ll map your goal to a package or a fixed custom quote.</p>
+        <h3>Tell me your goal</h3>
+        <p>Use the form, email, or call. Tell me what you need.</p>
       </article>
       <article class="step">
         <div class="step-num">2</div>
-        <h3>Deposit</h3>
-        <p>Lock the start date with a deposit. Terms confirmed in writing first.</p>
+        <h3>Get a fixed quote</h3>
+        <p>I’ll map your goal to a package or a custom quote. A deposit locks your start date once you agree.</p>
       </article>
       <article class="step">
         <div class="step-num">3</div>
-        <h3>You send materials</h3>
+        <h3>Send your materials</h3>
         <p>Brand kit, images, copy notes, and access. Kickoff checklist after we agree on scope.</p>
       </article>
       <article class="step">
         <div class="step-num">4</div>
-        <h3>Build &amp; revise</h3>
-        <p>Design and development with package revision rounds — no black box.</p>
+        <h3>I build, you review</h3>
+        <p>Design and development, with revision rounds along the way.</p>
       </article>
       <article class="step">
         <div class="step-num">5</div>
-        <h3>Launch + care</h3>
+        <h3>Launch &amp; support</h3>
         <p>Go live with launch support. Optional monthly retainer after ship.</p>
       </article>
     </div>
@@ -2247,10 +2361,9 @@ body.nav-open{overflow:hidden}
     </div>
     <div class="pay-box">
       <div>
-        <div class="fold-kicker">Accepted via</div>
-        <div class="pay-name">Zelle</div>
-        <div class="pay-detail">samuelsanchez175@gmail.com<br><a href="tel:+12017457995">201-745-7995</a></div>
-        <p class="fold-lead">Through your bank app or the Zelle app — no fees</p>
+        <div class="fold-kicker">Payment</div>
+        <div class="pay-name">Two simple parts</div>
+        <p class="fold-lead">A deposit to start, the balance at delivery. Payment details come with your agreement.</p>
       </div>
       <div class="pay-terms">
         <div>Predetermined deposit before work begins</div>
@@ -2263,8 +2376,8 @@ body.nav-open{overflow:hidden}
     </div>
     <div class="consult-part" id="revision-guide">
     <div class="fold-head">
-      <h2 class="fold-title">How Revisions Work</h2>
-      <p class="fold-lead">Read before submitting changes.</p>
+      <h2 class="fold-title">How feedback works.</h2>
+      <p class="fold-lead">Send one list per round. Mark up screenshots and add a line on what you’d like.</p>
     </div>
     <div class="fold-grid four">
       <article class="rev-step"><div class="rev-num">01</div><h3>Take Screenshots</h3><p>Go through the full preview carefully. <strong>Screenshot every area you want changed.</strong> Use Snipping Tool, Command+Shift+4 on Mac, or your phone.</p></article>
@@ -2272,11 +2385,11 @@ body.nav-open{overflow:hidden}
       <article class="rev-step"><div class="rev-num">03</div><h3>Write Full Context</h3><p>For each screenshot, write a <strong>clear explanation</strong> of what's wrong and what you want instead. "Make it bigger" is not enough. Reference a site or describe exactly what you mean.</p></article>
       <article class="rev-step"><div class="rev-num">04</div><h3>Send One Complete List</h3><p><strong>Compile everything into one message.</strong> Do not send revisions one at a time over multiple days. Review the full site, collect all changes, then send them together.</p></article>
     </div>
-    <p class="fold-warn"><strong>One pass per revision round.</strong> Sending changes in pieces uses up rounds fast. Collect every change you want, review the entire site, then submit everything together in a single list. Rounds cannot be split or carried over — use them wisely.</p>
+    <p class="fold-warn"><strong>One pass per revision round.</strong> Sending changes in pieces uses up rounds fast. Collect every change you want, review the entire site, then submit everything together in a single list. Rounds can’t be split or carried over, so a single list per round keeps things moving.</p>
     </div>
     <div class="consult-part" id="kickoff-checklist">
     <div class="fold-head">
-      <h2 class="fold-title">Kickoff checklist</h2>
+      <h2 class="fold-title">What I’ll ask you for</h2>
       <p class="fold-lead">Before the project clock starts, send <strong>one delivery</strong>: Part&nbsp;1 (brief below) + Part&nbsp;2 (Dropbox, logins, checklist).</p>
     </div>
     <div class="fold-grid two">
@@ -2341,7 +2454,7 @@ body.nav-open{overflow:hidden}
     <div class="consult-part" id="dropbox-handoff">
     <div class="fold-head">
       <h2 class="fold-title">How to Organize Your Dropbox Folder</h2>
-      <p class="fold-lead">All assets submitted via <strong>Dropbox</strong>. Invite <strong>samuelsanchez175@gmail.com</strong> and <strong>harmonyStack@gmail.com</strong> with edit access. Build folders as <strong>page → section → files</strong> (diagram below).</p>
+      <p class="fold-lead">All assets submitted via <strong>Dropbox</strong>. Invite <strong>harmonystack@gmail.com</strong> with edit access. Build folders as <strong>page → section → files</strong> (diagram below).</p>
     </div>
     <div class="dbx-finder-columns" id="dbx-finder-columns" role="region" aria-label="Interactive Finder-style folder columns"></div>
     <p class="fold-lead">Like <strong>macOS Finder column view</strong>: each column is one folder level — <strong>click folders below</strong> to drill in; the next column shows what’s inside. Drop files in the matching folder in real Dropbox (e.g. hero images in <strong>hero/</strong>). Swap folder names for your sitemap anytime. Number page folders (01, 02…) to match your sitemap. Name files by what they are, not by camera codes.</p>
@@ -2359,7 +2472,7 @@ body.nav-open{overflow:hidden}
       <div class="inquiry-copy">
         <span class="kicker">Contact</span>
         <h2>Ready to start? Tell me what you’re building.</h2>
-        <p>Custom quotes are free. Use the form, email, or call — we’ll scope it in a few minutes.</p>
+        <p>Free quotes. I’ll reply within one business day.</p>
         <div class="btn-row">
           <a class="btn btn-primary" href="mailto:harmonystack@gmail.com?subject=Project%20inquiry">Email</a>
           <a class="btn btn-secondary" href="tel:+12017457995">Call (201) 745-7995</a>
@@ -2418,7 +2531,7 @@ body.nav-open{overflow:hidden}
           <textarea id="f-msg" name="message" placeholder="Links, goals, must-haves, platforms you already use…"></textarea>
         </div>
         <button class="btn btn-neon" type="submit">Send inquiry</button>
-        <p class="form-note">Opens your mail app with a pre-filled message to harmonystack@gmail.com.</p>
+        <p class="form-note">Opens your email app with the message filled in. No email app? Send it to <strong>harmonystack@gmail.com</strong> <button type="button" class="copy-email" data-copy="harmonystack@gmail.com">Copy email</button></p>
         <div class="form-status ok" id="form-status" role="status"></div>
       </form>
     </div>
@@ -2438,7 +2551,7 @@ body.nav-open{overflow:hidden}
   <div class="wrap footer-grid">
     <div>
       <div class="footer-brand">Harmony <span>Stack</span></div>
-      <p>Web design · iOS &amp; web apps · Shopify · AI integration. Clear packages, professional delivery.</p>
+      <p>Built by Samuel. Websites and apps for brands that sell.</p>
     </div>
     <div class="footer-links">
       <a href="#work">Work</a>
@@ -2450,10 +2563,9 @@ body.nav-open{overflow:hidden}
       <a href="cdl-privacy.html">Privacy</a>
       <a href="cdl-terms.html">Terms</a>
       <a href="mailto:harmonystack@gmail.com">harmonystack@gmail.com</a>
-      <a href="mailto:samuelsanchez175@gmail.com">samuelsanchez175@gmail.com</a>
       <a href="tel:+12017457995">(201) 745-7995</a>
     </div>
-    <p class="footer-fine">© 2026 Harmony Stack. All rights reserved. Built by Samuel · U.S.-based · Remote-friendly.</p>
+    <p class="footer-fine">© 2026 Harmony Stack. All rights reserved. U.S.-based · Remote-friendly.</p>
   </div>
 </footer>
 
@@ -2924,8 +3036,8 @@ body.nav-open{overflow:hidden}
       'Notes:',
       msg || '—'
     ].join('\\n');
-    var bodyFull = body + '\n\n—\nPlease reply-all or CC samuelsanchez175@gmail.com if helpful.';
-    var href = 'mailto:harmonystack@gmail.com?cc=' + encodeURIComponent('samuelsanchez175@gmail.com') + '&subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(bodyFull);
+    var bodyFull = body;
+    var href = 'mailto:harmonystack@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(bodyFull);
     status.className = 'form-status is-show ok';
     status.textContent = 'Opening your email app with the inquiry filled in…';
     window.location.href = href;
@@ -2969,10 +3081,10 @@ body.nav-open{overflow:hidden}
 (function(){
   var sections = [
     { id: 'top', label: 'Top' },
-    { id: 'services-hero', label: 'Engineering' },
     { id: 'work', label: 'Work' },
     { id: 'cases', label: 'Cases' },
     { id: 'products', label: 'Products' },
+    { id: 'services-hero', label: 'What I handle' },
     { id: 'pricing', label: 'Pricing' },
     { id: 'faq', label: 'FAQ' },
     { id: 'contact', label: 'Contact' }
@@ -3004,44 +3116,20 @@ body.nav-open{overflow:hidden}
   });
 
   function activeIndex(){
-    var mid = window.scrollY + window.innerHeight * 0.35;
-    var best = 0, bestD = Infinity;
-    for (var i = 0; i < sections.length; i++) {
-      var el = document.getElementById(sections[i].id);
-      if (!el) continue;
-      var top = el.getBoundingClientRect().top + window.scrollY;
-      var d = Math.abs(top - mid);
-      // Prefer the last section whose top is above mid
-      if (top <= mid + 40) { best = i; bestD = d; }
-      else if (d < bestD && i === 0) { best = 0; bestD = d; }
+    // single source of truth: the scroll-spy below (window.hsSpyId); fallback = last section whose top is above the probe line
+    if (window.hsSpyId) {
+      for (var q = 0; q < sections.length; q++) { if (sections[q].id === window.hsSpyId) return q; }
     }
-    // refine: closest section top to viewport third
-    best = 0; bestD = Infinity;
-    var target = window.scrollY + window.innerHeight * 0.28;
-    for (var j = 0; j < sections.length; j++) {
-      var e = document.getElementById(sections[j].id);
-      if (!e) continue;
-      var t = e.getBoundingClientRect().top + window.scrollY;
-      var dist = Math.abs(t - target);
-      if (t <= target + 80 && (target - t) < bestD + 200) {
-        // prefer sections already reached
-      }
-      if (dist < bestD) { bestD = dist; best = j; }
-    }
-    // better: last section with top <= target
-    var last = 0;
+    var line = window.scrollY + window.innerHeight * 0.35, last = 0;
     for (var k = 0; k < sections.length; k++) {
-      var el2 = document.getElementById(sections[k].id);
-      if (!el2) continue;
-      var top2 = el2.getBoundingClientRect().top + window.scrollY;
-      if (top2 <= target + 24) last = k;
+      var el = document.getElementById(sections[k].id);
+      if (el && el.offsetTop <= line) last = k;
     }
     return last;
   }
 
   function sync(){
     var ai = activeIndex();
-    if (window.hsSpyId) { for (var q = 0; q < sections.length; q++) { if (sections[q].id === window.hsSpyId) { ai = q; break; } } }
     dots.forEach(function(d, i){
       d.classList.toggle('is-active', i === ai);
       d.setAttribute('aria-current', i === ai ? 'true' : 'false');
@@ -3057,8 +3145,7 @@ body.nav-open{overflow:hidden}
     el.classList.add('is-in');
     el.classList.remove('reveal');
     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    // sync after scroll settles a bit
-    setTimeout(sync, 350);
+    if (window.hsSpyLock) window.hsSpyLock(sections[i].id);
   }
 
   upBtn.addEventListener('click', function(){ goTo(activeIndex() - 1); });
@@ -3099,22 +3186,28 @@ body.nav-open{overflow:hidden}
 </script>
 <script>
 (function(){
+  var b = document.querySelector(".copy-email");
+  if (!b) return;
+  b.addEventListener("click", function(){
+    var t = b.getAttribute("data-copy");
+    function done(){ b.textContent = "Copied"; setTimeout(function(){ b.textContent = "Copy email"; }, 2000); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, function(){ window.prompt("Copy this email:", t); });
+    else window.prompt("Copy this email:", t);
+  });
+})();
+</script>
+<script>
+(function(){
   var box = document.querySelector("#services-hero .svc-more");
   var btn = document.getElementById("svc-more-toggle");
-  if (!box || !btn || !window.matchMedia) return;
-  var mq = window.matchMedia("(max-width: 639px)");
+  if (!box || !btn) return;
   function set(collapsed){
     box.classList.toggle("is-collapsed", collapsed);
     btn.setAttribute("aria-expanded", collapsed ? "false" : "true");
-    btn.textContent = collapsed ? "Show more" : "Show less";
-  }
-  function sync(){
-    if (mq.matches) { btn.hidden = false; set(true); }
-    else { btn.hidden = true; set(false); }
+    btn.textContent = collapsed ? "See everything else" : "Show less";
   }
   btn.addEventListener("click", function(){ set(!box.classList.contains("is-collapsed")); });
-  if (mq.addEventListener) mq.addEventListener("change", sync); else if (mq.addListener) mq.addListener(sync);
-  sync();
+  set(true);
 })();
 </script>
 
@@ -3358,13 +3451,15 @@ body.nav-open{overflow:hidden}
 })();
 </script>
 <script>
-/* Scroll-spy: one active section; highlights matching top-nav / mobile-menu links (aria-current) and drives the side-jump dot */
+/* Scroll-spy: ONE source of truth for the active section. Position-based (sorted by real page position, so reordering sections
+   can't break it), updated once per frame, and locked to the target while a click/arrow smooth-scrolls so the highlight
+   doesn't sweep through every section on the way. Drives the top nav, mobile menu and side-jump dots. */
 (function(){
-  var ids = ["top", "services-hero", "work", "cases", "products", "pricing", "faq", "contact"];
+  var ids = ["top", "work", "cases", "products", "services-hero", "pricing", "faq", "contact"];
   var els = ids.map(function(id){ return document.getElementById(id); }).filter(function(el){ return el && !el.hidden; });
-  if (!els.length || !("IntersectionObserver" in window)) return;
+  if (!els.length) return;
   var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]:not(.nav-cta), .nav-sheet a[href^="#"]'));
-  var visible = {}, current = null;
+  var current = null, lock = null, lockTimer = null, ticking = false;
   function apply(id){
     if (id === current) return;
     current = id;
@@ -3376,18 +3471,34 @@ body.nav-open{overflow:hidden}
     });
     document.dispatchEvent(new CustomEvent("hs-spy", { detail: { id: id } }));
   }
-  function pick(){
-    if (window.scrollY < 40) { apply("top"); return; }
-    var best = null;
-    els.forEach(function(el){ if (visible[el.id]) best = el.id; });
-    if (best) apply(best);
+  function probe(){
+    if (window.scrollY < 40) return "top";
+    var doc = document.documentElement;
+    var tops = els.map(function(el){ return { id: el.id, top: el.offsetTop }; }).sort(function(a, b){ return a.top - b.top; });
+    if (window.innerHeight + window.scrollY >= doc.scrollHeight - 4) return tops[tops.length - 1].id;
+    var line = window.scrollY + window.innerHeight * 0.35, best = tops[0].id;
+    for (var i = 0; i < tops.length; i++) { if (tops[i].top <= line) best = tops[i].id; }
+    return best;
   }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ visible[e.target.id] = e.isIntersecting; });
-    pick();
-  }, { rootMargin: "-90px 0px -55% 0px", threshold: 0 });
-  els.forEach(function(el){ io.observe(el); });
-  window.addEventListener("scroll", function(){ if (window.scrollY < 40) apply("top"); }, { passive: true });
+  function update(){ ticking = false; apply(lock || probe()); }
+  function release(){ lock = null; update(); }
+  function setLock(id){
+    lock = id; apply(id);
+    clearTimeout(lockTimer); lockTimer = setTimeout(release, 900);
+  }
+  window.hsSpyLock = setLock;
+  window.addEventListener("scroll", function(){
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    if (lock) { clearTimeout(lockTimer); lockTimer = setTimeout(release, 160); }
+  }, { passive: true });
+  window.addEventListener("resize", function(){ if (!ticking) { ticking = true; requestAnimationFrame(update); } });
+  document.addEventListener("click", function(e){
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var id = a.getAttribute("href").slice(1);
+    if (ids.indexOf(id) !== -1) setLock(id);
+  });
+  update();
 })();
 </script>
 </body>
