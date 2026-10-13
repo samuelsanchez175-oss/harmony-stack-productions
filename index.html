@@ -339,6 +339,7 @@ a{color:inherit}
 .portfolio-carousel-viewport:focus-visible{outline:2px solid rgba(186,175,220,.9)}
 .portfolio-carousel-track{display:flex;flex-direction:row;align-items:stretch;gap:16px;padding:4px 8px 14px;width:max-content}
 .portfolio-carousel-track .site-card{flex:0 0 auto;width:min(240px,calc(100vw - 120px));scroll-snap-align:center}
+.site-card-result{margin:10px auto 0;max-width:230px;font-size:12.5px;line-height:1.4;color:var(--muted);text-align:center}
 .portfolio-carousel-dots{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:4px;padding:14px 0 6px}
 .portfolio-carousel-dot{
   width:7px;height:7px;border-radius:50%;border:1px solid rgba(255,255,255,.2);
@@ -1107,6 +1108,11 @@ body.nav-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.price-grid.tier-track{scroll-behavior:auto}.tier-dot::before{transition:none}}
 /* Add-ons list inside #apps (moved from #addons) */
 .apps-addons{max-width:900px;margin:40px auto 0;text-align:center;scroll-margin-top:96px}
+.pricing-help{margin:10px auto 0;text-align:center;font-size:14.5px;color:var(--muted)}
+.pricing-help a{color:var(--purple2);font-weight:700}
+.apps-addons-more>summary{cursor:pointer;list-style:none;display:inline-block;padding:10px 18px;border:1px solid var(--border);border-radius:999px;font-size:14px;font-weight:700;color:var(--dark);background:var(--card)}
+.apps-addons-more>summary::-webkit-details-marker{display:none}
+.apps-addons-more>summary:focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
 .apps-addons-list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:12px 32px;text-align:left}
 @media(min-width:720px){.apps-addons-list{grid-template-columns:repeat(2,1fr)}}
 .apps-addons-list li{position:relative;padding-left:20px;font-size:14px;line-height:1.45;color:var(--body)}
@@ -1348,8 +1354,8 @@ body.nav-open{overflow:hidden}
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">Fit</span>
-      <h2>Who this is for — and who it isn’t.</h2>
-      <p>Honest filters mean better projects for both of us.</p>
+      <h2>Who I work best with.</h2>
+      <p>A quick check so we both know it’s a good match.</p>
     </div>
     <div class="fit-grid">
       <article class="fit fit-yes">
@@ -1362,12 +1368,12 @@ body.nav-open{overflow:hidden}
         </ul>
       </article>
       <article class="fit fit-no">
-        <h3>Not a fit</h3>
+        <h3>Probably not a match</h3>
         <ul>
-          <li>“$50 logo + unlimited free revisions forever”</li>
-          <li>Projects that need a 12-person agency and weekly status theater</li>
-          <li>No brief, no assets, and “make it pop” as the only direction</li>
-          <li>Anything illegal, scammy, or brand-damaging</li>
+          <li>Very low budgets or unlimited revisions</li>
+          <li>Projects that need a large agency team or formal weekly reporting</li>
+          <li>No brief or assets yet, and no clear direction to start from</li>
+          <li>Anything illegal, misleading, or brand-damaging</li>
         </ul>
       </article>
     </div>
@@ -1403,6 +1409,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--home">Home</span>
         </div>
+        <p class="site-card-result">Luzid Productions: a home page built around a video reel.</p>
       </div>
 
       <!-- girlsgone.digital home -->
@@ -1421,6 +1428,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--home">Home</span>
         </div>
+        <p class="site-card-result">Girls Gone Digital: lookbook-style site with a magazine and merch shop.</p>
       </div>
 
       <!-- girlsgone.digital magazine -->
@@ -1439,6 +1447,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--magazine">Magazine</span>
         </div>
+        <p class="site-card-result">Girls Gone Digital: lookbook-style site with a magazine and merch shop.</p>
       </div>
 
       <!-- girlsgone.digital shop -->
@@ -1457,6 +1466,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--shop">Shop</span>
         </div>
+        <p class="site-card-result">Girls Gone Digital: lookbook-style site with a magazine and merch shop.</p>
       </div>
 
       <!-- careshaplease.com — visual only, no text credit -->
@@ -1473,6 +1483,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--home">Home</span>
         </div>
+        <p class="site-card-result">Caresha Please: brand site with the shop built in.</p>
       </div>
 
       <!-- careshaplease.com shop -->
@@ -1489,6 +1500,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--shop">Shop</span>
         </div>
+        <p class="site-card-result">Caresha Please: brand site with the shop built in.</p>
       </div>
 
       <!-- Caresha Please — black colorway -->
@@ -1505,6 +1517,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--home">Home</span>
         </div>
+        <p class="site-card-result">Caresha Please: brand site with the shop built in.</p>
       </div>
 
       <div class="site-card" data-portfolio-site="cp-sync-repo.vercel.app">
@@ -1520,6 +1533,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--shop">Shop</span>
         </div>
+        <p class="site-card-result">Caresha Please: brand site with the shop built in.</p>
       </div>
 
       <!-- blanksquareproductions.com home -->
@@ -1536,6 +1550,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--home">Home</span>
         </div>
+        <p class="site-card-result">Blank Square Productions: custom brand site.</p>
       </div>
 
       <!-- icestudios.shop home -->
@@ -1552,6 +1567,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--home">Home</span>
         </div>
+        <p class="site-card-result">Ice Studios: an online shop.</p>
       </div>
 
       <!-- CDL One Stop — home -->
@@ -1571,6 +1587,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--home">Home</span>
         </div>
+        <p class="site-card-result">CDL One Stop: iPhone app that helps drivers study for the CDL written test.</p>
       </div>
 
       <!-- CDL One Stop — key dates / info -->
@@ -1590,6 +1607,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--info">Info</span>
         </div>
+        <p class="site-card-result">CDL One Stop: iPhone app that helps drivers study for the CDL written test.</p>
       </div>
 
       <!-- Penwork Studios — home (song list) -->
@@ -1609,6 +1627,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--home">Home</span>
         </div>
+        <p class="site-card-result">Penwork Studio: iPhone app where songwriters draft lyrics.</p>
       </div>
 
       <!-- Penwork Studios — editor / text view -->
@@ -1628,6 +1647,7 @@ body.nav-open{overflow:hidden}
         <div class="page-type-badge">
           <span class="page-badge active page-badge--editor">Editor</span>
         </div>
+        <p class="site-card-result">Penwork Studio: iPhone app where songwriters draft lyrics.</p>
       </div>
 
         </div>
@@ -1659,7 +1679,7 @@ body.nav-open{overflow:hidden}
           <h3>Girls Gone Digital</h3>
           <p><strong>Problem:</strong> Lifestyle brand needed a site that felt like the lookbook — video, magazine, shop — not a generic theme.<br>
           <strong>Build:</strong> Custom home reel, magazine page, and merch shop. Mobile-first, video-first.<br>
-          <strong>Outcome:</strong> Live at girlsgone.digital with home, magazine, and shop shipping together.</p>
+          <strong>Outcome:</strong> Live at girlsgone.digital. Visitors can watch the reel, read the magazine, and buy merch without leaving the brand’s world.</p>
           <div class="case-meta"><span>Custom design</span><span>Shop-ready</span><span>Video-first</span></div>
           <a href="https://girlsgone.digital" target="_blank" rel="noopener">View live site →</a>
         </div>
@@ -1671,7 +1691,7 @@ body.nav-open{overflow:hidden}
           <h3>Caresha Please</h3>
           <p><strong>Problem:</strong> High-energy brand needed a site that felt like the product, not a generic theme.<br>
           <strong>Build:</strong> Custom marketing experience with shop integration and mobile-first layout.<br>
-          <strong>Outcome:</strong> Live brand destination with product discovery front and center.</p>
+          <strong>Outcome:</strong> Live brand site where fans land on the brand and go straight to the shop.</p>
           <div class="case-meta"><span>Custom design</span><span>Shop-ready</span><span>Mobile-first</span></div>
           <a href="https://cp-sync-repo.vercel.app" target="_blank" rel="noopener">View live site →</a>
         </div>
@@ -1697,7 +1717,7 @@ body.nav-open{overflow:hidden}
           <h3>Penwork Studio</h3>
           <p><strong>Problem:</strong> Songwriters need a focused place to draft lyrics and creative notes — not a messy notes dump.<br>
           <strong>Build:</strong> Native iOS studio app with editor flows, AI-assisted creative tools, App Store listing, and marketing/support pages.<br>
-          <strong>Outcome:</strong> Live on the App Store — end-to-end product from UI to listing, same studio that builds client work.</p>
+          <strong>Outcome:</strong> Live on the App Store. One builder handled everything from the design to the listing.</p>
           <div class="case-meta"><span>App Store</span><span>Songwriting</span><span>Full product ship</span></div>
           <a href="penwork-marketing.html">View app page →</a>
           <a href="https://apps.apple.com/us/app/penwork-studio/id6757620114" target="_blank" rel="noopener">App Store →</a>
@@ -1717,7 +1737,7 @@ body.nav-open{overflow:hidden}
     <div class="section-head">
       <span class="kicker">Products <span class="chip-new">Live</span></span>
       <h2>Also shipping on the App Store.</h2>
-      <p>Client work funds the studio. These apps are proof I design, build, list, and support products end-to-end.</p>
+      <p>I ship my own apps to the App Store, so I know the whole process end to end: design, build, listing, and support.</p>
     </div>
     <div class="products-grid">
       <article class="product-card">
@@ -1761,7 +1781,7 @@ body.nav-open{overflow:hidden}
         </div>
       </article>
     </div>
-    <p class="products-bridge">Client work funds the studio. <strong>CDL One Stop</strong> and <strong>Penwork Studio</strong> prove the same person can take a product from design to App Store.
+    <p class="products-bridge"><strong>CDL One Stop</strong> and <strong>Penwork Studio</strong> show the same person can take a product from design all the way to the App Store.
     </p>
   </div>
 </section>
@@ -1880,6 +1900,7 @@ body.nav-open{overflow:hidden}
       <p>Flat rates for one-time work. Ranges depend on scope — you’ll get a fixed quote before anything starts.</p>
     </div>
     <p class="proof-line apps-oneliner">Custom websites, Shopify stores, iOS and web apps, and AI where it actually helps — built and supported end to end by <strong>one builder</strong>.</p>
+    <p class="pricing-help">Not sure which fits? <a href="#contact">Tell me your goal</a> and I’ll recommend one.</p>
     <div class="lane-tabs" role="tablist" aria-label="Pricing lanes" hidden>
       <button type="button" class="lane-tab" role="tab" id="lane-tab-web" aria-controls="pricing-websites" aria-selected="true">Websites</button>
       <button type="button" class="lane-tab" role="tab" id="lane-tab-apps" aria-controls="apps" aria-selected="false" tabindex="-1">Apps &amp; AI</button>
@@ -2087,7 +2108,8 @@ body.nav-open{overflow:hidden}
       </div>
     </div>
     <div class="apps-addons" id="apps-addons">
-      <span class="kicker">Add-ons</span>
+      <details class="apps-addons-more">
+      <summary>See add-ons: logo, SEO, copywriting &amp; more</summary>
       <ul class="apps-addons-list">
         <li><strong>Extra page</strong> <span class="apps-addon-price">$50–200 / page</span><span class="apps-addon-note">Beyond your package page count — same design system, no Franken-site.</span></li>
         <li><strong>Logo design</strong> <span class="apps-addon-price">$100–400</span><span class="apps-addon-note">2–3 directions, revisions, and final files for web and print.</span></li>
@@ -2100,6 +2122,7 @@ body.nav-open{overflow:hidden}
         <li><strong>Rush delivery</strong> <span class="apps-addon-price">+25–50% fee</span><span class="apps-addon-note">Shorter deadline with priority scheduling — quoted before work starts.</span></li>
       </ul>
       <p class="apps-addons-note">Need several together? Say so in your inquiry — combined pricing may beat stacking list rates.</p>
+      </details>
     </div>
   </div>
 </section>
