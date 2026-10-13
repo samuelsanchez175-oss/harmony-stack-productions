@@ -1,9 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Harmony Stack">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-60 -4 425 208" width="850" height="416" role="img" aria-label="Harmony Stack">
   <title>Harmony Stack</title>
-  <g fill="none" stroke-width="58" stroke-linecap="round" stroke-linejoin="round">
-    <!-- H (white) -->
-    <path d="M86 128V384M222 128V384M86 256H222" stroke="#ffffff"/>
-    <!-- S (lavender) -->
-    <path d="M436 172C436 142 408 118 372 118C334 118 308 142 308 176C308 214 338 226 372 256C406 286 436 298 436 336C436 372 410 394 372 394C334 394 308 370 308 340" stroke="#d9ccff"/>
+  <g transform="skewX(-16)">
+    <!-- H (white): left stem + crossbar, then a sliced right stem -->
+    <g fill="#ffffff">
+      <path d="M0 0H52V76H100L88 124H52V200H0Z"/>
+      <path d="M108 0H160V200H108Z"/>
+    </g>
+    <!-- S (lavender): upper half and lower half, split by a slit -->
+    <g fill="#d9ccff" transform="translate(190 0)">
+      <path d="M0 0H170V52H52V74H170V126H0Z"/>
+      <path d="M118 134H170V200H0V148H118Z"/>
+    </g>
   </g>
 </svg>
