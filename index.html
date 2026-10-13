@@ -1053,7 +1053,7 @@ body.nav-open{overflow:hidden}
 .svc-more-toggle{display:block;width:100%;margin-top:12px;padding:12px 16px;border:1px solid var(--border);border-radius:999px;background:var(--card);color:var(--dark);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
 .svc-more-toggle[hidden]{display:none}
 .svc-more-toggle:focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
-.svc-more.is-collapsed .svc-more-group:nth-child(n+2){display:none}
+.svc-more.is-collapsed .svc-more-grid{display:none}
 .svc-more-group{border:1px solid var(--border);border-radius:1.6rem;padding:18px 18px 8px;background:transparent}
 .svc-more-group h4{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--purple2);margin-bottom:6px}
 .svc-more .svc-items li{padding:9px 0}
@@ -1170,9 +1170,9 @@ body.nav-open{overflow:hidden}
   <div class="nav-pill">
     <a class="logo" href="#top">Harmony <span>Stack</span></a>
     <div class="nav-links">
-      <a href="#services-hero">Engineering</a>
       <a href="#work">Work</a>
       <a href="#products">Apps <span class="chip-new">Live</span></a>
+      <a href="#services-hero">Behind the build</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
     </div>
@@ -1185,9 +1185,9 @@ body.nav-open{overflow:hidden}
 </nav>
 <div class="nav-sheet" id="nav-sheet" hidden>
   <div class="nav-sheet-links">
-    <a href="#services-hero">Engineering</a>
     <a href="#work">Work</a>
     <a href="#products">Apps</a>
+    <a href="#services-hero">Behind the build</a>
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
     <a href="#contact">Get a quote</a>
@@ -1197,13 +1197,13 @@ body.nav-open{overflow:hidden}
 <header class="hero" id="top">
   <div class="wrap hero-grid">
     <div>
-      <h1>Websites &amp; apps that look sharp and <em>get used</em>.</h1>
-      <p class="hero-lead">Sites, Shopify, and App Store products — designed and built by one person you can actually reach. No agency bloat. Clear packages. Real delivery.</p>
+      <h1>Websites &amp; apps that turn visitors into <em>customers</em>.</h1>
+      <p class="hero-lead">I design and build websites, Shopify stores, and iPhone apps for brands that sell. You work directly with me, get a fixed quote before we start, and own everything at launch.</p>
       <div class="btn-row">
-        <a class="btn btn-neon" href="#contact">Get a quote</a>
-        <a class="btn btn-secondary" href="#pricing">See packages</a>
+        <a class="btn btn-neon" href="#contact">Get a free quote</a>
+        <a class="btn btn-secondary" href="#work">See the work</a>
       </div>
-      <p class="hero-note">Built by Samuel · Flat rates &amp; monthly care</p>
+      <p class="hero-note">Live for Girls Gone Digital, Caresha Please &amp; Luzid Productions · 2 apps on the App Store · Fixed quotes, no surprises</p>
     </div>
     <div class="hero-visual">
       <a class="hero-item" href="https://girlsgone.digital" target="_blank" rel="noopener">
@@ -1293,109 +1293,10 @@ body.nav-open{overflow:hidden}
 <section class="section" id="proof" style="padding-top:28px;padding-bottom:12px">
   <div class="wrap">
     <div class="metrics" aria-label="Studio snapshot">
-      <div class="metric"><b>2025</b><span>Client projects</span></div>
-      <div class="metric"><b>2</b><span>App Store releases</span></div>
-      <div class="metric"><b>5 tiers</b><span>Websites that convert</span></div>
-      <div class="metric"><b>1 person</b><span>One dedicated builder</span></div>
-    </div>
-  </div>
-</section>
-
-<div class="band-orange band-burnt" role="presentation">
-  <div class="wrap"><p>Custom sites · Shopify · <strong>App Store products</strong> — one builder, clear packages.</p></div>
-</div>
-
-<section class="section section-warm-soft" id="services-hero" aria-labelledby="services-hero-title">
-  <div class="wrap">
-    <div class="svc-story">
-      <div class="svc-story-copy">
-        <span class="kicker">Under the hood</span>
-        <h2 class="svc-statement" id="services-hero-title">Polish on the surface. <span class="svc-hl">Real engineering</span> underneath.</h2>
-        <span class="svc-rule" aria-hidden="true"></span>
-        <p class="svc-lead">Behind every clean interface I build sits a real pipeline. <span class="svc-support">Data pulled in at scale, outside APIs handled without tripping their limits, and judgment calls made with a person in the loop. That same engineering can sit under your product.</span></p>
-        <p class="proof-line svc-story-proof">Picture it on <strong>your</strong> product: a store that keeps inventory in sync, a dashboard your team actually checks, or an AI feature that knows when to ask a human.</p>
-      </div>
-      <figure class="svc-shot">
-        <button type="button" class="svc-shot-open" id="svc-shot-open" aria-label="Expand dashboard screenshot" aria-haspopup="dialog" aria-controls="svc-lightbox">
-          <img src="portfolio-screenshots/penwork-dashboard.png" width="1447" height="1210" loading="lazy" decoding="async" alt="Dark-themed real-time dashboard from the Penwork pipeline: parallel job runs with progress bars, AI and terminal work lanes with live status, and a filterable review queue.">
-        </button>
-        <figcaption>The live progress dashboard I built for the Penwork pipeline: parallel jobs, agent and terminal lanes, and review queues on one screen.</figcaption>
-      </figure>
-      <dialog class="svc-lightbox" id="svc-lightbox" aria-label="Dashboard screenshot, expanded">
-        <button type="button" class="svc-lightbox-close" id="svc-lightbox-close" aria-label="Close expanded screenshot">&times;</button>
-        <img data-src="portfolio-screenshots/penwork-dashboard.png" width="1447" height="1210" alt="Dark-themed real-time dashboard from the Penwork pipeline, shown large: parallel job runs with progress bars, AI and terminal work lanes with live status, and a filterable review queue.">
-      </dialog>
-    </div>
-    <div class="svc-clusters" role="list" aria-label="Engineering capabilities">
-      <article class="svc-cluster" role="listitem">
-        <span class="svc-cluster-num" aria-hidden="true">01</span>
-        <h3>Get the data in</h3>
-        <p class="svc-cluster-sum">Reliable intake from wherever your data lives.</p>
-        <ul class="svc-items">
-          <li><b>Data extraction at scale</b><span>Clean, structured data pulled from pages, files, and feeds, in volume.</span></li>
-          <li><b>API integration that holds up</b><span>Rate limiting and retry backoff, so a busy API never takes you down.</span></li>
-          <li><b>Data modeling</b><span>Your nouns, tag chips, and relationships in a structure that stays simple as it grows.</span></li>
-        </ul>
-      </article>
-      <article class="svc-cluster is-featured" role="listitem">
-        <span class="svc-cluster-num" aria-hidden="true">02</span><span class="svc-badge">The hard part</span>
-        <h3>Make the right calls</h3>
-        <p class="svc-cluster-sum">Judgment you can audit, with people where it counts.</p>
-        <ul class="svc-items">
-          <li><b>Classification &amp; judgment pipelines</b><span>Sort, tag, and score text with rules and AI, with the reasoning attached.</span></li>
-          <li><b>Human-in-the-loop review</b><span>Queues where a person approves, edits, or overrides the calls that matter.</span></li>
-          <li><b>Agent &amp; terminal orchestration</b><span>AI agents and command-line jobs that run in order and recover when something fails.</span></li>
-        </ul>
-      </article>
-      <article class="svc-cluster" role="listitem">
-        <span class="svc-cluster-num" aria-hidden="true">03</span>
-        <h3>See it, run it</h3>
-        <p class="svc-cluster-sum">Live visibility now, and a system that outlasts the build.</p>
-        <ul class="svc-items">
-          <li><b>Real-time monitoring dashboards</b><span>What’s running, what’s stuck, and what just changed, live.</span></li>
-          <li><b>SwiftUI, live-updating</b><span>Native iOS screens that update the moment the data does.</span></li>
-          <li><b>Docs that keep it operable</b><span>Plain-language runbooks so it can be run, fixed, and handed off.</span></li>
-        </ul>
-      </article>
-    </div>
-    <div class="svc-more" role="group" aria-labelledby="svc-more-title">
-      <div class="svc-more-head">
-        <span class="kicker">More I’ve shipped</span>
-        <h3 class="svc-more-title" id="svc-more-title">And beyond the pipeline.</h3>
-        <p class="svc-more-sum">The same craft, pointed at apps, media, and the tools that keep a business running.</p>
-      </div>
-      <div class="svc-more-grid" id="svc-more-grid">
-      <div class="svc-more-group">
-        <h4>Apps &amp; platforms</h4>
-        <ul class="svc-items">
-          <li><b>App Store shipping</b><span>From submission to approval: builds, versions, and replies to App Review.</span></li>
-          <li><b>Localization, right-to-left included</b><span>Apps prepared for new languages, including right-to-left scripts like Arabic and Hebrew.</span></li>
-          <li><b>Sign in with Apple &amp; Google</b><span>Social sign-in wired to a real backend and checked end to end.</span></li>
-          <li><b>CarPlay &amp; in-car video</b><span>CarPlay apps with video playback, AirPlay routing, and driver-safe controls.</span></li>
-          <li><b>Native Mac utilities</b><span>Menu-bar and notch tools I build on and extend to keep an eye on long-running work.</span></li>
-        </ul>
-      </div>
-      <div class="svc-more-group">
-        <h4>Media &amp; creative</h4>
-        <ul class="svc-items">
-          <li><b>In-browser music tools</b><span>Chord, key, and BPM detection, stem splitting, and MIDI export, right in the browser.</span></li>
-          <li><b>Automated promo videos</b><span>Scripted, beat-synced cuts with voiceover, rendered and reviewed before they ship.</span></li>
-          <li><b>Ad platform APIs &amp; creative</b><span>Ad platform APIs connected, plus batches of ad creative sized for each placement.</span></li>
-          <li><b>Data-driven browser games</b><span>Games where art and settings live in data, so a reskin doesn’t mean a rewrite.</span></li>
-        </ul>
-      </div>
-      <div class="svc-more-group">
-        <h4>Tools &amp; ops</h4>
-        <ul class="svc-items">
-          <li><b>Internal tools &amp; CRMs</b><span>Small web apps and CRMs shaped around how your team actually works.</span></li>
-          <li><b>AI search over your documents</b><span>Ask questions and get answers grounded in your own material.</span></li>
-          <li><b>Rhyme &amp; syllable analysis</b><span>Text analyzed by sound as well as meaning: syllables, end rhymes, and near rhymes.</span></li>
-          <li><b>Deployment &amp; keeping it running</b><span>Hosting fixes, background services, and one-click launchers so things stay up.</span></li>
-          <li><b>UX audits</b><span>Interfaces checked against how people actually read and tap, then fixed.</span></li>
-        </ul>
-      </div>
-      </div>
-      <button type="button" class="svc-more-toggle" id="svc-more-toggle" aria-expanded="true" aria-controls="svc-more-grid" hidden>Show less</button>
+      <div class="metric"><b>3+</b><span>Brand sites live</span></div>
+      <div class="metric"><b>2</b><span>Apps live on the App Store</span></div>
+      <div class="metric"><b>Fixed</b><span>Quote before work starts</span></div>
+      <div class="metric"><b>1 builder</b><span>You talk to me, not a handoff chain</span></div>
     </div>
   </div>
 </section>
@@ -1748,7 +1649,7 @@ body.nav-open{overflow:hidden}
     <div class="section-head">
       <span class="kicker">Case snapshots</span>
       <h2>What “done” looks like.</h2>
-      <p>Short stories — problem, build, outcome. Swap in harder metrics when you have them.</p>
+      <p>Short stories — the problem, what I built, and how it turned out.</p>
     </div>
     <div class="cases">
       <article class="case">
@@ -1865,6 +1766,105 @@ body.nav-open{overflow:hidden}
   </div>
 </section>
 
+
+<div class="band-orange band-burnt" role="presentation">
+  <div class="wrap"><p>Custom sites · Shopify · <strong>App Store products</strong> — one builder, clear packages.</p></div>
+</div>
+
+<section class="section section-warm-soft" id="services-hero" aria-labelledby="services-hero-title">
+  <div class="wrap">
+    <div class="svc-story">
+      <div class="svc-story-copy">
+        <span class="kicker">Behind the build</span>
+        <h2 class="svc-statement" id="services-hero-title">A site that looks great and <span class="svc-hl">runs your business</span>.</h2>
+        <span class="svc-rule" aria-hidden="true"></span>
+        <p class="svc-lead">Behind every clean design is the plumbing that keeps your business moving. <span class="svc-support">Orders and inventory that stay in sync, tools your team actually checks, and AI that hands off to a person when it isn’t sure.</span></p>
+        <p class="proof-line svc-story-proof">Picture it on <strong>your</strong> business: a store that never oversells, a dashboard that shows what’s happening today, or an AI helper that knows when to ask a human.</p>
+      </div>
+      <figure class="svc-shot">
+        <button type="button" class="svc-shot-open" id="svc-shot-open" aria-label="Expand dashboard screenshot" aria-haspopup="dialog" aria-controls="svc-lightbox">
+          <img src="portfolio-screenshots/penwork-dashboard.png" width="1447" height="1210" loading="lazy" decoding="async" alt="Dark-themed real-time dashboard from the Penwork pipeline: parallel job runs with progress bars, AI and terminal work lanes with live status, and a filterable review queue.">
+        </button>
+        <figcaption>A live dashboard I built for Penwork Studio: every job, its status, and what needs a human’s review, on one screen.</figcaption>
+      </figure>
+      <dialog class="svc-lightbox" id="svc-lightbox" aria-label="Dashboard screenshot, expanded">
+        <button type="button" class="svc-lightbox-close" id="svc-lightbox-close" aria-label="Close expanded screenshot">&times;</button>
+        <img data-src="portfolio-screenshots/penwork-dashboard.png" width="1447" height="1210" alt="Dark-themed real-time dashboard from the Penwork pipeline, shown large: parallel job runs with progress bars, AI and terminal work lanes with live status, and a filterable review queue.">
+      </dialog>
+    </div>
+    <div class="svc-clusters" role="list" aria-label="Engineering capabilities">
+      <article class="svc-cluster" role="listitem">
+        <span class="svc-cluster-num" aria-hidden="true">01</span>
+        <h3>Connect your tools</h3>
+        <p class="svc-cluster-sum">Your store, ads, and data talking to each other.</p>
+        <ul class="svc-items">
+          <li><b>Pull in what you already have</b><span>Products, orders, and content gathered from spreadsheets, pages, and feeds into one clean place.</span></li>
+          <li><b>Integrations that don’t break</b><span>Payments, shipping, and ad platforms connected so a busy day never takes your site down.</span></li>
+          <li><b>Room to grow</b><span>Everything organized so adding products, pages, or features later stays simple.</span></li>
+        </ul>
+      </article>
+      <article class="svc-cluster is-featured" role="listitem">
+        <span class="svc-cluster-num" aria-hidden="true">02</span><span class="svc-badge">Most requested</span>
+        <h3>Save your team time</h3>
+        <p class="svc-cluster-sum">Automation that handles the busywork, with people in control.</p>
+        <ul class="svc-items">
+          <li><b>Smart sorting</b><span>Reviews, messages, and content tagged and prioritized automatically, with the reasoning shown.</span></li>
+          <li><b>You approve what matters</b><span>Simple queues where you review, edit, or override before anything goes out.</span></li>
+          <li><b>Workflows that run themselves</b><span>Repeat tasks handled in order, and they recover on their own when something fails.</span></li>
+        </ul>
+      </article>
+      <article class="svc-cluster" role="listitem">
+        <span class="svc-cluster-num" aria-hidden="true">03</span>
+        <h3>See it, trust it</h3>
+        <p class="svc-cluster-sum">Know what’s happening, and keep it running after launch.</p>
+        <ul class="svc-items">
+          <li><b>Live dashboards</b><span>What’s working, what’s stuck, and what just changed, as it happens.</span></li>
+          <li><b>Fast, native iPhone apps</b><span>Screens that update the moment your data does.</span></li>
+          <li><b>Handoff you can follow</b><span>Plain-language guides so you or your team can run it without me.</span></li>
+        </ul>
+      </article>
+    </div>
+    <div class="svc-more" role="group" aria-labelledby="svc-more-title">
+      <div class="svc-more-head">
+        <span class="kicker">Also in the toolbox</span>
+        <h3 class="svc-more-title" id="svc-more-title">More of what I’ve built.</h3>
+        <p class="svc-more-sum">Apps, media, and internal tools, in case your project is a little different.</p>
+      </div>
+      <div class="svc-more-grid" id="svc-more-grid">
+      <div class="svc-more-group">
+        <h4>Apps &amp; platforms</h4>
+        <ul class="svc-items">
+          <li><b>App Store shipping</b><span>From submission to approval: builds, versions, and replies to App Review.</span></li>
+          <li><b>Localization, right-to-left included</b><span>Apps prepared for new languages, including right-to-left scripts like Arabic and Hebrew.</span></li>
+          <li><b>Sign in with Apple &amp; Google</b><span>Social sign-in wired to a real backend and checked end to end.</span></li>
+          <li><b>CarPlay &amp; in-car video</b><span>CarPlay apps with video playback, AirPlay routing, and driver-safe controls.</span></li>
+          <li><b>Native Mac utilities</b><span>Menu-bar and notch tools I build on and extend to keep an eye on long-running work.</span></li>
+        </ul>
+      </div>
+      <div class="svc-more-group">
+        <h4>Media &amp; creative</h4>
+        <ul class="svc-items">
+          <li><b>In-browser music tools</b><span>Chord, key, and BPM detection, stem splitting, and MIDI export, right in the browser.</span></li>
+          <li><b>Automated promo videos</b><span>Scripted, beat-synced cuts with voiceover, rendered and reviewed before they ship.</span></li>
+          <li><b>Ad platform APIs &amp; creative</b><span>Ad platform APIs connected, plus batches of ad creative sized for each placement.</span></li>
+          <li><b>Data-driven browser games</b><span>Games where art and settings live in data, so a reskin doesn’t mean a rewrite.</span></li>
+        </ul>
+      </div>
+      <div class="svc-more-group">
+        <h4>Tools &amp; ops</h4>
+        <ul class="svc-items">
+          <li><b>Internal tools &amp; CRMs</b><span>Small web apps and CRMs shaped around how your team actually works.</span></li>
+          <li><b>AI search over your documents</b><span>Ask questions and get answers grounded in your own material.</span></li>
+          <li><b>Rhyme &amp; syllable analysis</b><span>Text analyzed by sound as well as meaning: syllables, end rhymes, and near rhymes.</span></li>
+          <li><b>Deployment &amp; keeping it running</b><span>Hosting fixes, background services, and one-click launchers so things stay up.</span></li>
+          <li><b>UX audits</b><span>Interfaces checked against how people actually read and tap, then fixed.</span></li>
+        </ul>
+      </div>
+      </div>
+      <button type="button" class="svc-more-toggle" id="svc-more-toggle" aria-expanded="true" aria-controls="svc-more-grid">See everything else</button>
+    </div>
+  </div>
+</section>
 
 <div class="band-orange band-burnt" role="presentation">
   <div class="wrap"><p>Transparent pricing. <strong>Fixed quote before work starts.</strong> Typical timelines on every tier.</p></div>
@@ -3101,20 +3101,14 @@ body.nav-open{overflow:hidden}
 (function(){
   var box = document.querySelector("#services-hero .svc-more");
   var btn = document.getElementById("svc-more-toggle");
-  if (!box || !btn || !window.matchMedia) return;
-  var mq = window.matchMedia("(max-width: 639px)");
+  if (!box || !btn) return;
   function set(collapsed){
     box.classList.toggle("is-collapsed", collapsed);
     btn.setAttribute("aria-expanded", collapsed ? "false" : "true");
-    btn.textContent = collapsed ? "Show more" : "Show less";
-  }
-  function sync(){
-    if (mq.matches) { btn.hidden = false; set(true); }
-    else { btn.hidden = true; set(false); }
+    btn.textContent = collapsed ? "See everything else" : "Show less";
   }
   btn.addEventListener("click", function(){ set(!box.classList.contains("is-collapsed")); });
-  if (mq.addEventListener) mq.addEventListener("change", sync); else if (mq.addListener) mq.addListener(sync);
-  sync();
+  set(true);
 })();
 </script>
 
