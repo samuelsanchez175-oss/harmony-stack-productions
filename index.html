@@ -978,6 +978,8 @@ body.nav-open{overflow:hidden}
 .svc-support{margin-top:12px;font-size:14.5px;line-height:1.6;color:var(--muted);max-width:38em}
 .svc-lead .svc-support{display:block;font-weight:400}
 .svc-story-proof{margin:22px 0 0;max-width:none;text-align:left;font-size:13.5px}
+.svc-close{margin:clamp(28px,4vw,44px) auto 0;max-width:none;text-align:center;font-size:16px;font-weight:600;color:var(--dark)}
+.svc-close a{color:var(--orange1);font-weight:700;text-underline-offset:3px}
 .svc-shot{
   margin:0;background:var(--card);border-radius:0;overflow:hidden;
   border:8px solid rgba(26,21,32,.045);background-clip:padding-box;
@@ -1006,7 +1008,8 @@ body.nav-open{overflow:hidden}
   .svc-lightbox[open],.svc-lightbox[open]::backdrop{animation:none}
 }
 .svc-clusters{display:grid;gap:14px;margin-top:clamp(32px,5vw,56px)}
-@media(min-width:880px){.svc-clusters{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:640px){.svc-clusters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1100px){.svc-clusters{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .svc-cluster{background:var(--card);border-radius:1.6rem;padding:22px 20px 12px;box-shadow:0 12px 32px rgba(26,21,32,.05)}
 .svc-cluster-num{font-family:'Cash Market','Plus Jakarta Sans',sans-serif;font-size:13px;color:var(--purple2)}
 .svc-badge{display:inline-block;margin-left:10px;vertical-align:1px;background:var(--neon);color:#1a1520;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
@@ -1030,6 +1033,7 @@ body.nav-open{overflow:hidden}
 .js #services-hero.reveal.is-in .svc-cluster:nth-child(1){transition-delay:.14s}
 .js #services-hero.reveal.is-in .svc-cluster:nth-child(2){transition-delay:.22s}
 .js #services-hero.reveal.is-in .svc-cluster:nth-child(3){transition-delay:.3s}
+.js #services-hero.reveal.is-in .svc-cluster:nth-child(4){transition-delay:.38s}
 @media(prefers-reduced-motion:reduce){
   .js #services-hero.reveal .svc-shot,.js #services-hero.reveal .svc-cluster,
   .js #services-hero.reveal.is-in .svc-shot,.js #services-hero.reveal.is-in .svc-cluster{opacity:1;transform:none;transition:none}
@@ -1868,7 +1872,7 @@ body.nav-open{overflow:hidden}
 
 
 <div class="band-orange band-burnt" role="presentation">
-  <div class="wrap"><p>What’s behind the design: <strong>the tools that keep your business running</strong>.</p></div>
+  <div class="wrap"><p>Behind the store: <strong>the work I can take off your plate</strong>.</p></div>
 </div>
 
 <section class="section section-warm-soft" id="services-hero" aria-labelledby="services-hero-title">
@@ -1876,51 +1880,61 @@ body.nav-open{overflow:hidden}
     <div class="svc-story">
       <div class="svc-story-copy">
         <span class="kicker">Behind the build</span>
-        <h2 class="svc-statement" id="services-hero-title">A site that looks great and <span class="svc-hl">runs your business</span>.</h2>
+        <h2 class="svc-statement" id="services-hero-title">Let me take the <span class="svc-hl">busywork</span> off your plate.</h2>
         <span class="svc-rule" aria-hidden="true"></span>
-        <p class="svc-lead">Behind every clean design is the plumbing that keeps your business moving. <span class="svc-support">Orders and inventory that stay in sync, tools your team actually checks, and AI that hands off to a person when it isn’t sure.</span></p>
+        <p class="svc-lead">Product uploads, order updates, follow-ups, reports. <span class="svc-support">I set it up once so it runs without you, and I handle what can’t be automated.</span></p>
         <p class="proof-line svc-story-proof">Picture it on <strong>your</strong> business: a store that never oversells, a dashboard that shows what’s happening today, or an AI helper that knows when to ask a human.</p>
       </div>
       <figure class="svc-shot">
         <button type="button" class="svc-shot-open" id="svc-shot-open" aria-label="Expand dashboard screenshot" aria-haspopup="dialog" aria-controls="svc-lightbox">
           <img src="portfolio-screenshots/penwork-dashboard.png" width="1447" height="1210" loading="lazy" decoding="async" alt="Dark-themed real-time dashboard from the Penwork pipeline: parallel job runs with progress bars, AI and terminal work lanes with live status, and a filterable review queue.">
         </button>
-        <figcaption>A live dashboard I built for Penwork Studio: every job, its status, and what needs a human’s review, on one screen.</figcaption>
+        <figcaption>A live view of every job and what needs approval. Your store can have the same: today’s orders, what’s low, what needs you.</figcaption>
       </figure>
       <dialog class="svc-lightbox" id="svc-lightbox" aria-label="Dashboard screenshot, expanded">
         <button type="button" class="svc-lightbox-close" id="svc-lightbox-close" aria-label="Close expanded screenshot">&times;</button>
         <img data-src="portfolio-screenshots/penwork-dashboard.png" width="1447" height="1210" alt="Dark-themed real-time dashboard from the Penwork pipeline, shown large: parallel job runs with progress bars, AI and terminal work lanes with live status, and a filterable review queue.">
       </dialog>
     </div>
-    <div class="svc-clusters" role="list" aria-label="Engineering capabilities">
+    <div class="svc-clusters" role="list" aria-label="Work I can take off your plate">
       <article class="svc-cluster" role="listitem">
         <span class="svc-cluster-num" aria-hidden="true">01</span>
-        <h3>Connect your tools</h3>
-        <p class="svc-cluster-sum">Your store, ads, and data talking to each other.</p>
+        <h3>Store &amp; products</h3>
+        <p class="svc-cluster-sum">Your catalog, kept accurate without you.</p>
         <ul class="svc-items">
-          <li><b>Pull in what you already have</b><span>Products, orders, and content gathered from spreadsheets, pages, and feeds into one clean place.</span></li>
-          <li><b>Integrations that don’t break</b><span>Payments, shipping, and ad platforms connected so a busy day never takes your site down.</span></li>
-          <li><b>Room to grow</b><span>Everything organized so adding products, pages, or features later stays simple.</span></li>
+          <li><b>Bulk product updates</b><span>New products, photos, and prices uploaded in batches.</span></li>
+          <li><b>Inventory that stays right</b><span>Stock counts kept accurate across your store and sales channels.</span></li>
+          <li><b>Prices and sales on a schedule</b><span>Discounts and promotions switched on and off automatically.</span></li>
         </ul>
       </article>
-      <article class="svc-cluster is-featured" role="listitem">
-        <span class="svc-cluster-num" aria-hidden="true">02</span><span class="svc-badge">Most requested</span>
-        <h3>Save your team time</h3>
-        <p class="svc-cluster-sum">Automation that handles the busywork, with people in control.</p>
+      <article class="svc-cluster" role="listitem">
+        <span class="svc-cluster-num" aria-hidden="true">02</span>
+        <h3>Orders &amp; customers</h3>
+        <p class="svc-cluster-sum">Buyers taken care of after the sale.</p>
         <ul class="svc-items">
-          <li><b>Smart sorting</b><span>Reviews, messages, and content tagged and prioritized automatically, with the reasoning shown.</span></li>
-          <li><b>You approve what matters</b><span>Simple queues where you review, edit, or override before anything goes out.</span></li>
-          <li><b>Workflows that run themselves</b><span>Repeat tasks handled in order, and they recover on their own when something fails.</span></li>
+          <li><b>Order and shipping updates</b><span>Customers get automatic messages from checkout to delivery.</span></li>
+          <li><b>Follow-ups that win sales back</b><span>Abandoned-cart and thank-you messages sent for you.</span></li>
+          <li><b>Reviews and first replies</b><span>Review requests and common questions handled, with anything tricky passed to you.</span></li>
         </ul>
       </article>
       <article class="svc-cluster" role="listitem">
         <span class="svc-cluster-num" aria-hidden="true">03</span>
-        <h3>See it, trust it</h3>
-        <p class="svc-cluster-sum">Know what’s happening, and keep it running after launch.</p>
+        <h3>Marketing &amp; content</h3>
+        <p class="svc-cluster-sum">Campaigns and content, made and scheduled.</p>
         <ul class="svc-items">
-          <li><b>Live dashboards</b><span>What’s working, what’s stuck, and what just changed, as it happens.</span></li>
-          <li><b>Fast, native iPhone apps</b><span>Screens that update the moment your data does.</span></li>
-          <li><b>Handoff you can follow</b><span>Plain-language guides so you or your team can run it without me.</span></li>
+          <li><b>Ad creative, sized right</b><span>Batches of ads made for every placement.</span></li>
+          <li><b>Email and text campaigns</b><span>Set up, written, and scheduled.</span></li>
+          <li><b>Posts and product copy</b><span>Social posts and product-page descriptions drafted for you.</span></li>
+        </ul>
+      </article>
+      <article class="svc-cluster" role="listitem">
+        <span class="svc-cluster-num" aria-hidden="true">04</span>
+        <h3>Reports &amp; admin</h3>
+        <p class="svc-cluster-sum">Know your numbers without the spreadsheet.</p>
+        <ul class="svc-items">
+          <li><b>A weekly sales snapshot</b><span>Plain-English numbers on what sold and what’s running low.</span></li>
+          <li><b>A dashboard you’ll check</b><span>One screen for today’s orders and what needs you.</span></li>
+          <li><b>Clean handoff to your bookkeeper</b><span>Sales and order data organized for your accountant.</span></li>
         </ul>
       </article>
     </div>
@@ -1963,6 +1977,7 @@ body.nav-open{overflow:hidden}
       </div>
       <button type="button" class="svc-more-toggle" id="svc-more-toggle" aria-expanded="true" aria-controls="svc-more-grid">See everything else</button>
     </div>
+    <p class="proof-line svc-close">What eats your week? <a href="#contact">Tell me, and I’ll tell you if I can take it off your plate.</a></p>
   </div>
 </section>
 
