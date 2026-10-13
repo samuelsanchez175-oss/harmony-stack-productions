@@ -313,7 +313,11 @@ a{color:inherit}
 }
 #portfolio-showcase.portfolio-showcase::before{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 92% 65% at 50% -18%,rgba(115,115,145,.14) 0%,transparent 52%);
+  background:
+    radial-gradient(ellipse 58% 50% at 50% 50%,rgba(240,120,40,.18) 0%,rgba(240,120,40,.07) 40%,transparent 72%),
+    radial-gradient(ellipse 70% 55% at 14% 62%,rgba(135,113,162,.15) 0%,transparent 64%),
+    radial-gradient(ellipse 70% 55% at 88% 40%,rgba(135,113,162,.13) 0%,transparent 64%),
+    radial-gradient(ellipse 92% 65% at 50% -18%,rgba(115,115,145,.14) 0%,transparent 52%);
 }
 #portfolio-showcase.portfolio-showcase > *{position:relative;z-index:1}
 .portfolio-stage-head{text-align:center;max-width:640px;margin:0 auto 22px;color:rgba(245,245,247,.9)}
@@ -1157,18 +1161,71 @@ body.nav-open{overflow:hidden}
   .nav-sheet a.is-active{color:var(--orange1)}
 }
 @media(prefers-reduced-motion:reduce){.nav-links a{transition:none}}
-/* Top nav tiles: flat solid burnt orange; active section (scroll-spy) = inverted cream fill */
-.nav-links a:not(.nav-cta){background:#c43a08;background-image:none;color:#fff;border:0;box-shadow:none;text-shadow:none}
-.nav-links a:not(.nav-cta):hover{background:#a8320a;color:#fff}
-.nav-links a:not(.nav-cta):focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
-.nav-links a.is-active:not(.nav-cta),.nav-links a.is-active:not(.nav-cta):hover{background:#fffaf3;color:#c43a08;box-shadow:inset 0 0 0 1.5px #c43a08}
+/* Liquid-metal black nav pills and side rail; the active section crossfades to orange */
+:root{--metal:linear-gradient(135deg,#050506 0%,#2a2b31 14%,#0b0b0e 30%,#5d5f68 46%,#101013 60%,#35363c 78%,#060607 100%);--orange-grad:linear-gradient(165deg,#f07828,#c43a08)}
 .nav-links{gap:6px}
-.nav-links a:not(.nav-cta) .chip-new{background:#fff;color:#c43a08;box-shadow:none}
-.nav-links a.is-active:not(.nav-cta) .chip-new{background:#c43a08;color:#fff}
-@media(prefers-color-scheme:dark){
-  .nav-links a:not(.nav-cta){background:#c43a08;color:#fff}
-  .nav-links a:not(.nav-cta):hover{background:#a8320a;color:#fff}
-  .nav-links a.is-active:not(.nav-cta),.nav-links a.is-active:not(.nav-cta):hover{background:#fffaf3;color:#c43a08}
+.nav-links a:not(.nav-cta){
+  position:relative;isolation:isolate;border:0;color:#f4f4f6;text-shadow:0 1px 1px rgba(0,0,0,.65);
+  background:var(--orange-grad);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -1px 0 rgba(0,0,0,.55),0 2px 8px rgba(0,0,0,.45);
+  transition:color .3s,box-shadow .4s,transform .15s;
+}
+.nav-links a:not(.nav-cta)::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;
+  background:var(--metal);background-size:240% 240%;background-position:0% 50%;
+  transition:opacity .45s ease,background-position .9s ease;
+}
+.nav-links a:not(.nav-cta):hover{background:var(--orange-grad);color:#fff}
+.nav-links a:not(.nav-cta):hover::before{background-position:100% 50%}
+.nav-links a:not(.nav-cta):focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
+.nav-links a.is-active:not(.nav-cta),.nav-links a.is-active:not(.nav-cta):hover{color:#fff;background:var(--orange-grad);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 4px 14px rgba(240,120,40,.38)}
+.nav-links a.is-active:not(.nav-cta)::before{opacity:0}
+.nav-links a:not(.nav-cta) .chip-new{background:#f4f4f6;color:#0b0b0e;box-shadow:none}
+.nav-links a.is-active:not(.nav-cta) .chip-new{background:#fff;color:#c43a08}
+/* Side rail */
+.side-jump-btn{
+  background:var(--metal);background-size:240% 240%;background-position:0% 50%;color:#f4f4f6;
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -1px 0 rgba(0,0,0,.6),0 2px 8px rgba(0,0,0,.45);
+}
+.side-jump-btn:hover:not(:disabled){background:var(--orange-grad);border-color:transparent;color:#fff}
+.side-jump-dot,.side-jump-dot:hover,.side-jump-dot.is-active{
+  position:relative;isolation:isolate;
+  background:radial-gradient(circle at 32% 28%,#9a9ca6 0%,#2b2c31 38%,#050506 78%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 1px 3px rgba(0,0,0,.6);
+  transition:transform .3s ease,box-shadow .35s ease;
+}
+.side-jump-dot::before{
+  content:"";position:absolute;inset:0;border-radius:50%;z-index:-1;
+  background:radial-gradient(circle at 32% 28%,#ffb070 0%,#f07828 42%,#c43a08 88%);
+  opacity:0;transition:opacity .4s ease;
+}
+.side-jump-dot:hover::before{opacity:.6}
+.side-jump-dot.is-active{transform:scale(1.3);box-shadow:0 0 0 3px rgba(240,120,40,.25),0 1px 3px rgba(0,0,0,.6)}
+.side-jump-dot.is-active::before{opacity:1}
+.side-jump-dot .tip{background:#15151a;color:#f4f4f6;border:1px solid rgba(255,255,255,.14)}
+.side-jump-dot .tip::after{border-left-color:#15151a}
+@media(prefers-reduced-motion:reduce){
+  .nav-links a:not(.nav-cta)::before,.side-jump-dot,.side-jump-dot::before{transition:none}
+}
+/* Soft backdrops for depth: frosted stage panel behind the phones, ground shadow under each phone, ambient glow behind the other sections */
+#portfolio-carousel.portfolio-carousel{isolation:isolate}
+#portfolio-carousel.portfolio-carousel::before{
+  content:"";position:absolute;inset:0 48px;z-index:-1;pointer-events:none;border-radius:36px;
+  background:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,.012) 100%);
+  border:1px solid rgba(255,255,255,.06);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 30px 70px rgba(0,0,0,.45);
+}
+.phone-frame::after{
+  content:"";position:absolute;left:14%;right:14%;bottom:2px;height:20px;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.6) 0%,transparent 70%);filter:blur(7px);
+}
+#cases,#products,#services-hero,#pricing{position:relative;isolation:isolate}
+#cases::before,#products::before,#services-hero::before,#pricing::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 42% at 50% 0%,rgba(240,120,40,.11),transparent 70%),
+    radial-gradient(ellipse 50% 40% at 90% 62%,rgba(135,113,162,.11),transparent 70%),
+    radial-gradient(ellipse 45% 38% at 6% 82%,rgba(240,120,40,.07),transparent 70%);
 }
 </style>
 </head>
@@ -2988,10 +3045,10 @@ body.nav-open{overflow:hidden}
 (function(){
   var sections = [
     { id: 'top', label: 'Top' },
-    { id: 'services-hero', label: 'Engineering' },
     { id: 'work', label: 'Work' },
     { id: 'cases', label: 'Cases' },
     { id: 'products', label: 'Products' },
+    { id: 'services-hero', label: 'Behind the build' },
     { id: 'pricing', label: 'Pricing' },
     { id: 'faq', label: 'FAQ' },
     { id: 'contact', label: 'Contact' }
@@ -3023,44 +3080,20 @@ body.nav-open{overflow:hidden}
   });
 
   function activeIndex(){
-    var mid = window.scrollY + window.innerHeight * 0.35;
-    var best = 0, bestD = Infinity;
-    for (var i = 0; i < sections.length; i++) {
-      var el = document.getElementById(sections[i].id);
-      if (!el) continue;
-      var top = el.getBoundingClientRect().top + window.scrollY;
-      var d = Math.abs(top - mid);
-      // Prefer the last section whose top is above mid
-      if (top <= mid + 40) { best = i; bestD = d; }
-      else if (d < bestD && i === 0) { best = 0; bestD = d; }
+    // single source of truth: the scroll-spy below (window.hsSpyId); fallback = last section whose top is above the probe line
+    if (window.hsSpyId) {
+      for (var q = 0; q < sections.length; q++) { if (sections[q].id === window.hsSpyId) return q; }
     }
-    // refine: closest section top to viewport third
-    best = 0; bestD = Infinity;
-    var target = window.scrollY + window.innerHeight * 0.28;
-    for (var j = 0; j < sections.length; j++) {
-      var e = document.getElementById(sections[j].id);
-      if (!e) continue;
-      var t = e.getBoundingClientRect().top + window.scrollY;
-      var dist = Math.abs(t - target);
-      if (t <= target + 80 && (target - t) < bestD + 200) {
-        // prefer sections already reached
-      }
-      if (dist < bestD) { bestD = dist; best = j; }
-    }
-    // better: last section with top <= target
-    var last = 0;
+    var line = window.scrollY + window.innerHeight * 0.35, last = 0;
     for (var k = 0; k < sections.length; k++) {
-      var el2 = document.getElementById(sections[k].id);
-      if (!el2) continue;
-      var top2 = el2.getBoundingClientRect().top + window.scrollY;
-      if (top2 <= target + 24) last = k;
+      var el = document.getElementById(sections[k].id);
+      if (el && el.offsetTop <= line) last = k;
     }
     return last;
   }
 
   function sync(){
     var ai = activeIndex();
-    if (window.hsSpyId) { for (var q = 0; q < sections.length; q++) { if (sections[q].id === window.hsSpyId) { ai = q; break; } } }
     dots.forEach(function(d, i){
       d.classList.toggle('is-active', i === ai);
       d.setAttribute('aria-current', i === ai ? 'true' : 'false');
@@ -3076,8 +3109,7 @@ body.nav-open{overflow:hidden}
     el.classList.add('is-in');
     el.classList.remove('reveal');
     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    // sync after scroll settles a bit
-    setTimeout(sync, 350);
+    if (window.hsSpyLock) window.hsSpyLock(sections[i].id);
   }
 
   upBtn.addEventListener('click', function(){ goTo(activeIndex() - 1); });
@@ -3383,13 +3415,15 @@ body.nav-open{overflow:hidden}
 })();
 </script>
 <script>
-/* Scroll-spy: one active section; highlights matching top-nav / mobile-menu links (aria-current) and drives the side-jump dot */
+/* Scroll-spy: ONE source of truth for the active section. Position-based (sorted by real page position, so reordering sections
+   can't break it), updated once per frame, and locked to the target while a click/arrow smooth-scrolls so the highlight
+   doesn't sweep through every section on the way. Drives the top nav, mobile menu and side-jump dots. */
 (function(){
-  var ids = ["top", "services-hero", "work", "cases", "products", "pricing", "faq", "contact"];
+  var ids = ["top", "work", "cases", "products", "services-hero", "pricing", "faq", "contact"];
   var els = ids.map(function(id){ return document.getElementById(id); }).filter(function(el){ return el && !el.hidden; });
-  if (!els.length || !("IntersectionObserver" in window)) return;
+  if (!els.length) return;
   var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]:not(.nav-cta), .nav-sheet a[href^="#"]'));
-  var visible = {}, current = null;
+  var current = null, lock = null, lockTimer = null, ticking = false;
   function apply(id){
     if (id === current) return;
     current = id;
@@ -3401,18 +3435,34 @@ body.nav-open{overflow:hidden}
     });
     document.dispatchEvent(new CustomEvent("hs-spy", { detail: { id: id } }));
   }
-  function pick(){
-    if (window.scrollY < 40) { apply("top"); return; }
-    var best = null;
-    els.forEach(function(el){ if (visible[el.id]) best = el.id; });
-    if (best) apply(best);
+  function probe(){
+    if (window.scrollY < 40) return "top";
+    var doc = document.documentElement;
+    var tops = els.map(function(el){ return { id: el.id, top: el.offsetTop }; }).sort(function(a, b){ return a.top - b.top; });
+    if (window.innerHeight + window.scrollY >= doc.scrollHeight - 4) return tops[tops.length - 1].id;
+    var line = window.scrollY + window.innerHeight * 0.35, best = tops[0].id;
+    for (var i = 0; i < tops.length; i++) { if (tops[i].top <= line) best = tops[i].id; }
+    return best;
   }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ visible[e.target.id] = e.isIntersecting; });
-    pick();
-  }, { rootMargin: "-90px 0px -55% 0px", threshold: 0 });
-  els.forEach(function(el){ io.observe(el); });
-  window.addEventListener("scroll", function(){ if (window.scrollY < 40) apply("top"); }, { passive: true });
+  function update(){ ticking = false; apply(lock || probe()); }
+  function release(){ lock = null; update(); }
+  function setLock(id){
+    lock = id; apply(id);
+    clearTimeout(lockTimer); lockTimer = setTimeout(release, 900);
+  }
+  window.hsSpyLock = setLock;
+  window.addEventListener("scroll", function(){
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    if (lock) { clearTimeout(lockTimer); lockTimer = setTimeout(release, 160); }
+  }, { passive: true });
+  window.addEventListener("resize", function(){ if (!ticking) { ticking = true; requestAnimationFrame(update); } });
+  document.addEventListener("click", function(e){
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var id = a.getAttribute("href").slice(1);
+    if (ids.indexOf(id) !== -1) setLock(id);
+  });
+  update();
 })();
 </script>
 </body>
