@@ -289,19 +289,10 @@ a{color:inherit}
 .footer-fine{width:100%;margin-top:20px;font-size:12px;color:var(--muted);opacity:.85}
 
 /* Sticky mobile CTA */
-.sticky{position:fixed;left:12px;right:12px;bottom:12px;z-index:70;display:flex;gap:8px;padding:10px;background:rgba(26,21,32,.94);border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.28);transform:translateY(120%);transition:transform .28s ease}
-.sticky.is-show{transform:translateY(0)}
-.sticky a{flex:1;text-align:center;text-decoration:none;font-weight:700;font-size:13.5px;padding:12px;border-radius:12px}
-.sticky .s1{background:var(--orange2);color:#111}
-.sticky .s2{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2)}
-@media(max-width:899px){
-  #contact{padding-bottom:120px}
-}
-@media(min-width:900px){.sticky{display:none}}
 
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .btn,.service,.work-card,.sticky{transition:none}
+  .btn,.service,.work-card{transition:none}
 }
 
 /* ---- Portfolio phone carousel (restored from original) ---- */
@@ -432,7 +423,7 @@ a.phone-frame:focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
 .case{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:grid}
 @media(min-width:560px){.case{grid-template-columns:.9fr 1.1fr}}
 .case-media{min-height:180px;background:var(--bg2)}
-.case-media img{width:100%;height:100%;object-fit:cover;object-position:top;min-height:180px}
+.case-media img,.case-media video{width:100%;height:100%;object-fit:cover;object-position:top;min-height:180px;display:block;background:#111}
 .case-body{padding:20px 18px 22px;display:flex;flex-direction:column;gap:8px}
 .case-tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--purple2)}
 .case-body h3{font-size:18px;font-weight:700;color:var(--dark)}
@@ -486,12 +477,6 @@ a.phone-frame:focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
 .form-status.is-show{display:block}
 .form-status.ok{background:rgba(184,255,0,.25);color:var(--dark);border:1px solid rgba(184,255,0,.5)}
 
-/* Desktop sticky */
-.sticky{max-width:520px;margin:0 auto}
-@media(min-width:900px){
-  .sticky{display:flex!important;left:auto;right:24px;bottom:24px;width:auto;max-width:none;padding:10px;gap:8px}
-  .sticky a{flex:none;padding:11px 16px;font-size:13px}
-}
 
 @media(min-width:900px){.process-5{grid-template-columns:repeat(5,1fr)!important;}}
 @media(min-width:600px) and (max-width:899px){.process-5{grid-template-columns:repeat(2,1fr)!important;}}
@@ -685,7 +670,7 @@ h1,h2,.logo,.footer-brand,.section-head h2,.hero h1,.price-card h3,.inquiry-copy
   box-shadow:none;
 }
 .nav-pill .nav-cta:hover{background:var(--orange2)!important;filter:brightness(.95);color:#111!important}
-.btn-neon,.btn-neon:hover,.sticky .s1,.price-badge,.store-badges-row .soon{color:#111!important}
+.btn-neon,.btn-neon:hover,.price-badge,.store-badges-row .soon{color:#111!important}
 .nav-menu{
   display:none;align-items:center;gap:8px;
   border:0;background:var(--dark);color:var(--bg);
@@ -708,9 +693,6 @@ h1,h2,.logo,.footer-brand,.section-head h2,.hero h1,.price-card h3,.inquiry-copy
   .logo{font-size:16px;white-space:nowrap}
   .nav-pill .nav-cta{font-size:12.5px;padding:8px 10px!important;white-space:nowrap}
   .nav-menu{white-space:nowrap;padding:8px 10px}
-}
-@media(min-width:900px) and (max-width:1500px){
-  .sticky{display:none!important}
 }
 .nav-sheet{
   position:fixed;inset:0;z-index:79;
@@ -856,16 +838,6 @@ body.nav-open{overflow:hidden}
   background:transparent;color:var(--orange2);border-color:var(--orange2);
   box-shadow:none;opacity:1;
 }
-.sticky{
-  background:rgba(253,251,247,.9);
-  border:1px solid rgba(26,21,32,.08);
-  box-shadow:0 8px 24px rgba(26,21,32,.08);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  transition:transform .6s cubic-bezier(0.32,0.72,0,1);
-}
-.sticky .s1{background:var(--orange2);color:#111}
-.sticky .s2{background:transparent;color:var(--dark);border:1px solid rgba(26,21,32,.12)}
-@media(max-width:899px){#contact{padding-bottom:148px}}
 
 .js .section.reveal > *{opacity:0;transform:translateY(18px)}
 .js .section.reveal.is-in > *{
@@ -953,8 +925,6 @@ body.nav-open{overflow:hidden}
   }
   .band-orange,.orange-rule{border-color:rgba(246,241,232,.12)}
   .orange-rule{background:rgba(246,241,232,.12)}
-  .sticky{background:rgba(20,17,14,.9);border-color:rgba(246,241,232,.12);box-shadow:0 8px 24px rgba(0,0,0,.35)}
-  .sticky .s2{color:var(--dark);border-color:rgba(246,241,232,.16)}
   .trust a{background:var(--orange2);color:#111;border-color:transparent}
   .trust span{background:transparent;color:var(--orange1);border-color:var(--orange1)}
   .btn-neon::after{background-color:rgba(20,17,14,.12)}
@@ -1250,6 +1220,109 @@ body.nav-open{overflow:hidden}
   background:url("portfolio-screenshots/iphone-frame.webp") center / 100% 100% no-repeat;
 }
 .hero-shot-label{left:12%;bottom:5%}
+/* Cream primary buttons (dark theme): dark text instead of white so "Email" / "Start here" are readable */
+@media(prefers-color-scheme:dark){
+  .btn-primary{color:#14110e}
+  .btn-primary:hover{color:#fff}
+}
+/* Contact: the form lives behind "Request a call window", under "Prefer a short call?" (all sizes) */
+#contact > .wrap{display:flex;flex-direction:column}
+#contact .consult-toggle-row{order:1}
+#contact .consult-walkthrough{order:2}
+#contact .inquiry{display:contents}
+#contact .inquiry-copy{order:3}
+#contact .cta-band{order:4}
+#contact .inquiry-form{order:5;display:none;width:100%;max-width:680px;margin:16px auto 0}
+#contact .inquiry-form.is-open{display:block}
+.form-call-note{display:none;margin:0 0 14px;font-size:14px;color:var(--muted)}
+.inquiry-form[data-mode="call"] .form-call-note{display:block}
+/* Phones/tablets: Get a quote + Menu sit at the right edge of the nav pill */
+@media(max-width:980px){
+  .nav-pill .nav-cta{margin-left:auto}
+}
+/* Nav: no underline on Get a quote; Menu is text only (no three-line icon) */
+.nav-pill .nav-cta,.nav-pill .nav-cta:hover{text-decoration:none}
+.nav-menu-icon{display:none}
+.nav-menu{gap:0}
+/* Bigger, easier-to-read logo and What I handle heading */
+.logo{font-size:24px;letter-spacing:-.01em}
+.logo span{color:#d9ccff}
+@media(max-width:980px){.logo{font-size:20px}}
+.svc-statement{font-size:clamp(42px,10.5vw,68px);line-height:1.05;letter-spacing:-.025em;max-width:15ch;margin-inline:auto}
+.svc-rule{width:72px;height:4px}
+@media(prefers-color-scheme:dark){.svc-hl{color:#ff8a3d}}
+/* Stat strip: bigger numbers, larger and brighter labels, four across on desktop */
+.metrics{max-width:1000px;gap:14px}
+.metric{padding:22px 16px;border-radius:18px;display:flex;flex-direction:column;justify-content:flex-start}
+.metric b{font-size:clamp(30px,5.4vw,46px);line-height:1;letter-spacing:-.02em}
+.metric span{margin-top:10px;font-size:13px;line-height:1.35;letter-spacing:.05em;color:#d9d1c6}
+@media(min-width:720px){.metrics{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:1000px){.metric span{font-size:13.5px}}
+/* ---- Mobile layout pass (phones only; desktop unchanged) ---- */
+@media(max-width:899px){
+  .hero-grid{gap:22px}
+  .hero-visual{order:-1}   /* phones first, headline under them */
+}
+@media(max-width:640px){
+  /* hero: the two buttons share one row */
+  .hero .btn-row{flex-direction:row;align-items:stretch;gap:8px}
+  .hero .btn-row .btn{flex:1 1 0;width:auto;min-width:0;justify-content:center;white-space:nowrap;font-size:14px;padding-left:12px}
+}
+@media(max-width:720px){
+  /* Case snapshots + What I handle become swipe carousels; the next card peeks in from the edge */
+  .cases,.svc-clusters{
+    display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+    margin-inline:calc(50% - 50vw);padding-inline:calc(50vw - 50%);scroll-padding-inline:calc(50vw - 50%);padding-bottom:8px;
+  }
+  .cases::-webkit-scrollbar,.svc-clusters::-webkit-scrollbar{display:none}
+  .case{flex:0 0 min(66%,270px);scroll-snap-align:start;grid-template-columns:1fr;grid-template-rows:auto 1fr}
+  .case-media{min-height:0}
+  .case-media img,.case-media video{height:auto;min-height:0;aspect-ratio:3 / 4;object-fit:cover;object-position:top center;display:block}
+  .case-body{padding:14px 14px 16px;gap:6px}
+  .case-body p{font-size:13px;line-height:1.45}
+  .case-body h3{font-size:16px}
+  .case-meta{gap:5px}
+  .case-meta span{font-size:10.5px;padding:4px 8px}
+  .svc-cluster{flex:0 0 80%;scroll-snap-align:start}
+  /* What I handle: cards come first on phones (drop the example box and dashboard shot) */
+  #services-hero .svc-story-proof,#services-hero .svc-shot{display:none}
+  #services-hero .svc-story{gap:0}
+  #services-hero .svc-clusters{margin-top:22px}
+
+  /* Products: tighter */
+  #products.section{padding-top:40px;padding-bottom:36px}
+  #products .section-head{margin-bottom:16px}
+  #products .section-head p{font-size:14px}
+  .products-grid{gap:10px}
+  .product-card{padding:14px;gap:10px}
+  .product-card .chip-new--block,.product-by{display:none}
+  .product-card-top{gap:12px}
+  .product-card-top img{width:52px;height:52px;border-radius:13px}
+  .product-card h3{font-size:17px}
+  .product-tagline{font-size:13.5px;margin-top:2px}
+  .product-meta{gap:5px}
+  .product-meta span{font-size:10.5px;padding:4px 8px}
+  .product-actions{padding-top:2px}
+  .product-actions img.store{height:36px}
+  .product-actions a.btn{padding:9px 12px;font-size:13px}
+  .products-bridge{margin-top:14px;font-size:13px}
+}
+/* What I handle: intro is just the heading now, so centre it above the cards */
+@media(min-width:960px){.svc-story{grid-template-columns:1fr}}
+.svc-story-copy{text-align:center;margin-inline:auto}
+.svc-rule{margin-inline:auto}
+/* FAQ: How a project works (first question) holds the process, payment, feedback and checklist */
+.faq-walkthrough{padding:6px 2px 4px}
+.faq-walkthrough .consult-part{padding:26px 0}
+.faq-walkthrough .consult-part:first-child{border-top:0;padding-top:12px}
+.faq-walkthrough .steps.process-5{grid-template-columns:1fr!important;gap:8px}
+.faq-walkthrough .step{display:grid;grid-template-columns:36px 1fr;column-gap:14px;align-items:start;padding:14px 16px}
+.faq-walkthrough .step-num{grid-row:1 / span 2;margin:0}
+.faq-walkthrough .step h3{margin:0 0 4px}
+.faq-walkthrough .step p{margin:0}
+.faq-walkthrough .fold-grid{grid-template-columns:1fr}
+.faq-walkthrough .pay-box{grid-template-columns:1fr}
+.faq-walkthrough h2.fold-title{font-size:clamp(20px,3vw,24px)}
 </style>
 </head>
 <body>
@@ -1291,7 +1364,6 @@ body.nav-open{overflow:hidden}
         <a class="btn btn-neon" href="#contact">Get a free quote</a>
         <a class="btn btn-secondary" href="#work">See the work</a>
       </div>
-      <p class="hero-note">Live for Girls Gone Digital, Caresha Please &amp; Luzid Productions · 2 personal shipped apps live on the App Store · Fixed quotes, no surprises</p>
     </div>
     <div class="hero-visual">
       <a class="hero-item" href="https://girlsgone.digital" target="_blank" rel="noopener">
@@ -1467,9 +1539,7 @@ body.nav-open{overflow:hidden}
 <section class="section" id="work" style="padding:0;background:transparent">
   <div class="portfolio-showcase portfolio-showcase" id="portfolio-showcase">
     <div class="portfolio-stage-head">
-      <span class="kicker">Selected work</span>
       <h2>See what your site could look like.</h2>
-      <p>Real brands, built to sell. Swipe to browse.</p>
     </div>
     <div class="portfolio-carousel" id="portfolio-carousel">
       <button type="button" class="carousel-nav-btn" data-carousel-prev aria-label="Previous project">&#8249;</button>
@@ -1751,13 +1821,11 @@ body.nav-open{overflow:hidden}
 <section class="section section-warm" id="cases">
   <div class="wrap">
     <div class="section-head">
-      <span class="kicker">Case snapshots</span>
       <h2>How these projects came together.</h2>
-      <p>Short stories: the pain point, what I built, and the result.</p>
     </div>
     <div class="cases">
       <article class="case">
-        <div class="case-media"><img src="portfolio-screenshots/girlsgonedigital-home.png" alt="Girls Gone Digital site" loading="lazy"></div>
+        <div class="case-media"><video autoplay muted loop playsinline preload="metadata" poster="portfolio-screenshots/girlsgone-digital-home-poster.png" aria-label="Girls Gone Digital home page reel"><source src="portfolio-screenshots/ggd-home-preview.mp4" type="video/mp4"></video></div>
         <div class="case-body">
           <span class="case-tag">Brand + shop</span>
           <h3>Girls Gone Digital</h3>
@@ -1769,7 +1837,7 @@ body.nav-open{overflow:hidden}
         </div>
       </article>
       <article class="case">
-        <div class="case-media"><img src="portfolio-screenshots/caresha-please-home.png" alt="Caresha Please site" loading="lazy"></div>
+        <div class="case-media"><video autoplay muted loop playsinline preload="metadata" poster="portfolio-screenshots/caresha-shop-poster.png" aria-label="Caresha Please shop page video reel"><source src="portfolio-screenshots/caresha-shop-preview.mp4" type="video/mp4"></video></div>
         <div class="case-body">
           <span class="case-tag">Brand + shop</span>
           <h3>Caresha Please</h3>
@@ -1819,9 +1887,7 @@ body.nav-open{overflow:hidden}
 <section class="section" id="products">
   <div class="wrap">
     <div class="section-head">
-      <span class="kicker">Products <span class="chip-new">Live</span></span>
       <h2>My own apps, live on the App Store.</h2>
-      <p>I build and ship products too, so I know what it takes to launch.</p>
     </div>
     <div class="products-grid">
       <article class="product-card">
@@ -1865,8 +1931,6 @@ body.nav-open{overflow:hidden}
         </div>
       </article>
     </div>
-    <p class="products-bridge"><strong>CDL One Stop</strong> and <strong>Penwork Studio</strong> show the same person can take a product from design all the way to the App Store.
-    </p>
   </div>
 </section>
 
@@ -1879,22 +1943,9 @@ body.nav-open{overflow:hidden}
   <div class="wrap">
     <div class="svc-story">
       <div class="svc-story-copy">
-        <span class="kicker">What I handle</span>
         <h2 class="svc-statement" id="services-hero-title">Let me take the <span class="svc-hl">busywork</span> off your plate.</h2>
         <span class="svc-rule" aria-hidden="true"></span>
-        <p class="svc-lead">Product uploads, order updates, follow-ups, reports. <span class="svc-support">I set it up once so it runs without you, and I handle what can’t be automated.</span></p>
-        <p class="proof-line svc-story-proof">Picture it on <strong>your</strong> business: a store that never oversells, a dashboard that shows what’s happening today, or an AI helper that knows when to ask a human.</p>
       </div>
-      <figure class="svc-shot">
-        <button type="button" class="svc-shot-open" id="svc-shot-open" aria-label="Expand dashboard screenshot" aria-haspopup="dialog" aria-controls="svc-lightbox">
-          <img src="portfolio-screenshots/penwork-dashboard.png" width="1447" height="1210" loading="lazy" decoding="async" alt="Dark-themed real-time dashboard from the Penwork pipeline: parallel job runs with progress bars, AI and terminal work lanes with live status, and a filterable review queue.">
-        </button>
-        <figcaption>A live view of every job and what needs approval. Your store can have the same: today’s orders, what’s low, what needs you.</figcaption>
-      </figure>
-      <dialog class="svc-lightbox" id="svc-lightbox" aria-label="Dashboard screenshot, expanded">
-        <button type="button" class="svc-lightbox-close" id="svc-lightbox-close" aria-label="Close expanded screenshot">&times;</button>
-        <img data-src="portfolio-screenshots/penwork-dashboard.png" width="1447" height="1210" alt="Dark-themed real-time dashboard from the Penwork pipeline, shown large: parallel job runs with progress bars, AI and terminal work lanes with live status, and a filterable review queue.">
-      </dialog>
     </div>
     <div class="svc-clusters" role="list" aria-label="Work I can take off your plate">
       <article class="svc-cluster" role="listitem">
@@ -1938,10 +1989,9 @@ body.nav-open{overflow:hidden}
         </ul>
       </article>
     </div>
-    <div class="svc-more" role="group" aria-labelledby="svc-more-title">
+    <div class="svc-more" role="group" aria-label="More of what I’ve built">
       <div class="svc-more-head">
         <span class="kicker">Also in the toolbox</span>
-        <h3 class="svc-more-title" id="svc-more-title">More of what I’ve built.</h3>
         <p class="svc-more-sum">Apps, media, and internal tools, in case your project is a little different.</p>
       </div>
       <div class="svc-more-grid" id="svc-more-grid">
@@ -1977,7 +2027,6 @@ body.nav-open{overflow:hidden}
       </div>
       <button type="button" class="svc-more-toggle" id="svc-more-toggle" aria-expanded="true" aria-controls="svc-more-grid">See everything else</button>
     </div>
-    <p class="proof-line svc-close">What eats your week? <a href="#contact">Tell me, and I’ll tell you if I can take it off your plate.</a></p>
   </div>
 </section>
 
@@ -1990,12 +2039,8 @@ body.nav-open{overflow:hidden}
 <section class="section section-warm-soft" id="pricing">
   <div class="wrap">
     <div class="section-head">
-      <span class="kicker">Pricing</span>
       <h2>Simple packages. No surprises.</h2>
-      <p>Choose a starting point, and I’ll tailor it to your brand. You’ll get a fixed quote before anything starts.</p>
     </div>
-    <p class="proof-line apps-oneliner">Custom websites, Shopify stores, iOS and web apps, and AI where it actually helps — built and supported end to end by <strong>one builder</strong>.</p>
-    <p class="pricing-help">Not sure which fits? <a href="#contact">Tell me your goal</a> and I’ll recommend one.</p>
     <div class="lane-tabs" role="tablist" aria-label="Pricing lanes" hidden>
       <button type="button" class="lane-tab" role="tab" id="lane-tab-web" aria-controls="pricing-websites" aria-selected="true">Websites</button>
       <button type="button" class="lane-tab" role="tab" id="lane-tab-apps" aria-controls="apps" aria-selected="false" tabindex="-1">Apps &amp; AI</button>
@@ -2254,84 +2299,20 @@ body.nav-open{overflow:hidden}
 <section class="section" id="faq">
   <div class="wrap">
     <div class="section-head">
-      <span class="kicker">FAQ</span>
       <h2>Straight answers before you write.</h2>
     </div>
     <div class="faq">
-      <details open>
-        <summary>Who is Harmony Stack?</summary>
-        <p>A solo design-and-build practice focused on websites, Shopify stores, and apps (including AI-assisted products). You work directly with the person building the work — not a handoff chain.</p>
-      </details>
-      <details>
-        <summary>Do you only do websites?</summary>
-        <p>No. Websites and stores are the core, but shipped work also includes iOS apps (like CDL One Stop and Penwork Studio), web apps, and LLM/AI feature integration.</p>
-      </details>
-      <details>
-        <summary>How do payments work?</summary>
-        <p>Projects are quoted as flat rates within the package ranges above. Typical flow is deposit to start, balance before launch — exact terms are confirmed in writing for your project.</p>
-      </details>
-      <details>
-        <summary>What do I need to provide?</summary>
-        <p>For most builds: brand assets (logo, colors, fonts), images, copy (or a copywriting add-on), and access to domain/hosting or platform accounts. A kickoff checklist is shared after we agree on scope.</p>
-      </details>
-      <details>
-        <summary>Can you take over an existing site?</summary>
-        <p>Yes, including Shopify and WordPress sites. Quick Fix and Refresh are built for existing sites; full rebuilds and new stores are Starter through E-Commerce. Share your platform and URL in the inquiry form.</p>
-      </details>
-      <details>
-        <summary>Where are you based?</summary>
-        <p>U.S.-based and remote. Email harmonystack@gmail.com or call (201) 745-7995.</p>
-      </details>
-      <details>
-        <summary>Who owns the site or code after launch?</summary>
-        <p>You do. Deliverables and access are handed over at launch. I don’t hold your domain or codebase hostage.</p>
-      </details>
-      <details>
-        <summary>Do you write content or shoot photography?</summary>
-        <p>Copywriting is available as an add-on. Photography is usually client-supplied; I can recommend structure and help place assets. Product photos for stores should be high-res when possible.</p>
-      </details>
-      <details>
-        <summary>What if I only need a landing page?</summary>
-        <p>That’s a common Starter or smaller custom scope. Say “landing page only” in the form — you’ll get a quote that matches the real work, not a forced 10-page package.</p>
-      </details>
-      <details>
-        <summary>How long until we start?</summary>
-        <p>Depends on the queue. Many projects start within 1–2 weeks of deposit; rush delivery is available as an add-on when the calendar allows.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-
-<div class="band-orange band-burnt" role="presentation">
-  <div class="wrap"><p>Ready when you are — <a href="#contact">get a free quote</a> · <a href="tel:+12017457995">(201) 745-7995</a> · <a href="mailto:harmonystack@gmail.com">harmonystack@gmail.com</a></p></div>
-</div>
-
-<section class="section" id="contact">
-  <div class="wrap">
-    <!-- Consultation walkthrough: How it works, payment, revisions, kickoff checklist, Dropbox guide (moved from the main page flow Oct 10).
-         Without JS it stays visible here; with JS it is hidden until a "Get a quote" / #contact link or the toggle is used. -->
-    <div class="consult-toggle-row">
-      <button type="button" class="btn btn-secondary consult-toggle" id="consult-toggle" aria-expanded="true" aria-controls="consult-walkthrough" hidden>How a project works</button>
-    </div>
-    <div class="consult-walkthrough" id="consult-walkthrough" role="region" aria-labelledby="consult-walkthrough-title">
-      <div class="section-head consult-walkthrough-head">
-        <span class="kicker">Process, payment &amp; revisions</span>
-        <h2 id="consult-walkthrough-title" tabindex="-1">How a project works</h2>
-        <p><a href="#inquiry-form">Skip to the quote form</a></p>
-      </div>
+      <details id="how-it-works">
+        <summary>How a project works</summary>
+        <div class="faq-walkthrough" id="consult-walkthrough">
     <div class="consult-part" id="process">
-    <div class="section-head">
-      <span class="kicker">How it works</span>
-      <h2>How a project works.</h2>
-    </div>
     <p class="proof-line">Same process whether it’s a client site or an App Store product like <strong>CDL One Stop</strong> and <strong>Penwork Studio</strong> — scope, build, revise, ship.
     </p>
     <div class="steps process-5">
       <article class="step">
         <div class="step-num">1</div>
         <h3>Tell me your goal</h3>
-        <p>Use the form, email, or call. Tell me what you need.</p>
+        <p>Request a call window or send an email. Tell me what you need.</p>
       </article>
       <article class="step">
         <div class="step-num">2</div>
@@ -2468,17 +2449,63 @@ body.nav-open{overflow:hidden}
     </div>
     </div>
     </div>
+      </details>
+      <details open>
+        <summary>Who is Harmony Stack?</summary>
+        <p>A solo design-and-build practice focused on websites, Shopify stores, and apps (including AI-assisted products). You work directly with the person building the work — not a handoff chain.</p>
+      </details>
+      <details>
+        <summary>Do you only do websites?</summary>
+        <p>No. Websites and stores are the core, but shipped work also includes iOS apps (like CDL One Stop and Penwork Studio), web apps, and LLM/AI feature integration.</p>
+      </details>
+      <details>
+        <summary>How do payments work?</summary>
+        <p>Projects are quoted as flat rates within the package ranges above. Typical flow is deposit to start, balance before launch — exact terms are confirmed in writing for your project.</p>
+      </details>
+      <details>
+        <summary>What do I need to provide?</summary>
+        <p>For most builds: brand assets (logo, colors, fonts), images, copy (or a copywriting add-on), and access to domain/hosting or platform accounts. A kickoff checklist is shared after we agree on scope.</p>
+      </details>
+      <details>
+        <summary>Can you take over an existing site?</summary>
+        <p>Yes, including Shopify and WordPress sites. Quick Fix and Refresh are built for existing sites; full rebuilds and new stores are Starter through E-Commerce. Share your platform and URL in the inquiry form.</p>
+      </details>
+      <details>
+        <summary>Where are you based?</summary>
+        <p>U.S.-based and remote. Email harmonystack@gmail.com.</p>
+      </details>
+      <details>
+        <summary>Who owns the site or code after launch?</summary>
+        <p>You do. Deliverables and access are handed over at launch. I don’t hold your domain or codebase hostage.</p>
+      </details>
+      <details>
+        <summary>Do you write content or shoot photography?</summary>
+        <p>Copywriting is available as an add-on. Photography is usually client-supplied; I can recommend structure and help place assets. Product photos for stores should be high-res when possible.</p>
+      </details>
+      <details>
+        <summary>What if I only need a landing page?</summary>
+        <p>That’s a common Starter or smaller custom scope. Say “landing page only” in the form — you’ll get a quote that matches the real work, not a forced 10-page package.</p>
+      </details>
+      <details>
+        <summary>How long until we start?</summary>
+        <p>Depends on the queue. Many projects start within 1–2 weeks of deposit; rush delivery is available as an add-on when the calendar allows.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<div class="band-orange band-burnt" role="presentation">
+  <div class="wrap"><p>Ready when you are — <a href="#contact">get a free quote</a> · <a href="mailto:harmonystack@gmail.com">harmonystack@gmail.com</a></p></div>
+</div>
+
+<section class="section" id="contact">
+  <div class="wrap">
+    <!-- Consultation walkthrough: How it works, payment, revisions, kickoff checklist, Dropbox guide (moved from the main page flow Oct 10).
+         Without JS it stays visible here; with JS it is hidden until a "Get a quote" / #contact link or the toggle is used. -->
     <div class="inquiry">
-      <div class="inquiry-copy">
-        <span class="kicker">Contact</span>
-        <h2>Ready to start? Tell me what you’re building.</h2>
-        <p>Free quotes. I’ll reply within one business day.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="mailto:harmonystack@gmail.com?subject=Project%20inquiry">Email</a>
-          <a class="btn btn-secondary" href="tel:+12017457995">Call (201) 745-7995</a>
-        </div>
-      </div>
       <form class="inquiry-form" id="inquiry-form" novalidate>
+        <p class="form-call-note">Tell me a bit about your project and when to reach you, and I’ll set up a call.</p>
         <div class="row2">
           <div class="field">
             <label for="f-name">Name</label>
@@ -2526,6 +2553,16 @@ body.nav-open{overflow:hidden}
             <option>Flexible</option>
           </select>
         </div>
+        <div class="row2">
+          <div class="field">
+            <label for="f-phone">Phone (optional)</label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="Best number to reach you">
+          </div>
+          <div class="field">
+            <label for="f-when">Best time to talk (optional)</label>
+            <input id="f-when" name="when" type="text" placeholder="e.g. weekdays after 2pm ET">
+          </div>
+        </div>
         <div class="field">
           <label for="f-msg">Project notes</label>
           <textarea id="f-msg" name="message" placeholder="Links, goals, must-haves, platforms you already use…"></textarea>
@@ -2538,10 +2575,8 @@ body.nav-open{overflow:hidden}
 
     <div class="cta-band" style="margin-top:40px">
       <h2>Prefer a short call?</h2>
-      <p>U.S.-based, remote-friendly. Call and we’ll pick a time.</p>
       <div class="btn-row">
-        <a class="btn btn-neon" href="tel:+12017457995">Call now</a>
-        <a class="btn btn-secondary" href="mailto:harmonystack@gmail.com?subject=Quick%20intro%20call">Request a call window</a>
+        <a class="btn btn-neon" href="mailto:harmonystack@gmail.com?subject=Quick%20intro%20call">Request a call window</a>
       </div>
     </div>
   </div>
@@ -2563,7 +2598,6 @@ body.nav-open{overflow:hidden}
       <a href="cdl-privacy.html">Privacy</a>
       <a href="cdl-terms.html">Terms</a>
       <a href="mailto:harmonystack@gmail.com">harmonystack@gmail.com</a>
-      <a href="tel:+12017457995">(201) 745-7995</a>
     </div>
     <p class="footer-fine">© 2026 Harmony Stack. All rights reserved. U.S.-based · Remote-friendly.</p>
   </div>
@@ -2575,12 +2609,6 @@ body.nav-open{overflow:hidden}
   <div class="side-jump-dots" id="side-jump-dots" role="list"></div>
   <button type="button" class="side-jump-btn" id="side-jump-down" aria-label="Next section">↓</button>
 </nav>
-
-<div class="sticky" id="sticky" role="region" aria-label="Contact shortcuts">
-  <a class="s1" href="#contact">Get a quote</a>
-  <a class="s2" href="mailto:harmonystack@gmail.com?subject=Project%20inquiry">Email</a>
-  <a class="s2" href="tel:+12017457995">Call</a>
-</div>
 
 <script>
 (function(){
@@ -2765,27 +2793,6 @@ body.nav-open{overflow:hidden}
 })();
 </script>
 
-<script>
-(function(){
-  var bar=document.getElementById('sticky');
-  if(!bar)return;
-  var hero=document.querySelector('.hero');
-  var contact=document.getElementById('contact');
-  function check(){
-    var y=window.scrollY||document.documentElement.scrollTop;
-    var t=hero?hero.offsetHeight*0.6:300;
-    var show=y>t;
-    if(contact){
-      var r=contact.getBoundingClientRect();
-      if(r.top<window.innerHeight-72) show=false;
-    }
-    bar.classList.toggle('is-show', show);
-  }
-  window.addEventListener('scroll',check,{passive:true});
-  window.addEventListener('resize',check);
-  check();
-})();
-</script>
 <script>
 (function () {
   var root = document.getElementById("past-work");
@@ -2981,7 +2988,7 @@ body.nav-open{overflow:hidden}
 
 <script>
 (function () {
-  var vids = Array.prototype.slice.call(document.querySelectorAll(".hero-shot video, video.phone-screen-shot"));
+  var vids = Array.prototype.slice.call(document.querySelectorAll(".hero-shot video, video.phone-screen-shot, .case-media video"));
   if (!vids.length) return;
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduced) {
@@ -3020,18 +3027,23 @@ body.nav-open{overflow:hidden}
     var budget = document.getElementById('f-budget').value || '';
     var timeline = document.getElementById('f-timeline').value || '';
     var msg = (document.getElementById('f-msg').value || '').trim();
+    var phone = (document.getElementById('f-phone').value || '').trim();
+    var when = (document.getElementById('f-when').value || '').trim();
+    var isCall = form.getAttribute('data-mode') === 'call';
     if(!name || !email || !need){
       status.className = 'form-status is-show ok';
       status.textContent = 'Please add your name, email, and what you need.';
       return;
     }
-    var subject = 'Project inquiry — ' + need + ' — ' + name;
+    var subject = (isCall ? 'Call window request — ' : 'Project inquiry — ') + need + ' — ' + name;
     var body = [
       'Name: ' + name,
       'Email: ' + email,
       'Need: ' + need,
       'Budget: ' + (budget || '—'),
       'Timeline: ' + (timeline || '—'),
+      'Phone: ' + (phone || '—'),
+      'Best time to talk: ' + (when || '—'),
       '',
       'Notes:',
       msg || '—'
@@ -3499,6 +3511,27 @@ body.nav-open{overflow:hidden}
     if (ids.indexOf(id) !== -1) setLock(id);
   });
   update();
+})();
+</script>
+<script>
+(function(){
+  var form=document.getElementById('inquiry-form');
+  var btn=document.querySelector('.cta-band a[href^="mailto"]');
+  if(!form) return;
+  function open(scroll, call){
+    form.classList.add('is-open');
+    if(call) form.setAttribute('data-mode','call');
+    if(!scroll) return;
+    form.scrollIntoView({behavior:'smooth',block:'center'});
+    var f=form.querySelector('input');
+    if(f) setTimeout(function(){ try{ f.focus({preventScroll:true}); }catch(e){} },450);
+  }
+  if(btn) btn.addEventListener('click',function(e){ e.preventDefault(); open(true,true); });
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href="#inquiry-form"]');
+    if(a) open(false,false);
+  });
+  window.addEventListener('hashchange',function(){ if(location.hash==='#inquiry-form') open(false,false); });
 })();
 </script>
 </body>
