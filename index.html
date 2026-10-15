@@ -1717,7 +1717,9 @@ html.lenis .hero-visual{transform:translate3d(0,var(--lenis-hero,0px),0)}
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
-              <img class="phone-screen-shot" src="portfolio-screenshots/caresha-please-home.png" alt="Caresha Please — preview home (cp-sync-repo.vercel.app)" loading="eager" decoding="async" />
+              <video class="phone-screen-shot" autoplay muted loop playsinline preload="metadata" poster="portfolio-screenshots/caresha-venice-reel-poster.png" aria-label="Caresha Please — Venice Beach reel">
+                <source src="portfolio-screenshots/caresha-venice-reel.mp4" type="video/mp4">
+              </video>
             </div>
             <div class="phone-home-btn"></div>
           </div>
@@ -1736,7 +1738,9 @@ html.lenis .hero-visual{transform:translate3d(0,var(--lenis-hero,0px),0)}
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
-              <img class="phone-screen-shot" src="portfolio-screenshots/careshaplease-home-dark.png" alt="Caresha Please — home, black colorway" loading="lazy" decoding="async" />
+              <video class="phone-screen-shot" autoplay muted loop playsinline preload="metadata" poster="portfolio-screenshots/caresha-houston-reel-poster.png" aria-label="Caresha Please — Houston reel">
+                <source src="portfolio-screenshots/caresha-houston-reel.mp4" type="video/mp4">
+              </video>
             </div>
             <div class="phone-home-btn"></div>
           </div>
@@ -1752,7 +1756,9 @@ html.lenis .hero-visual{transform:translate3d(0,var(--lenis-hero,0px),0)}
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
-              <img class="phone-screen-shot" src="portfolio-screenshots/careshaplease-products-dark.png" alt="Caresha Please — all products, black colorway" loading="lazy" decoding="async" />
+              <video class="phone-screen-shot" autoplay muted loop playsinline preload="metadata" poster="portfolio-screenshots/caresha-dark-products-reel-poster.png" aria-label="Caresha Please — shop reel">
+                <source src="portfolio-screenshots/caresha-dark-products-reel.mp4" type="video/mp4">
+              </video>
             </div>
             <div class="phone-home-btn"></div>
           </div>
@@ -3650,7 +3656,7 @@ html.lenis .hero-visual{transform:translate3d(0,var(--lenis-hero,0px),0)}
 </script>
 <script src="vendor/lenis/lenis.min.js"></script>
 <script>
-/* Local experiment only. Smooths the page scroll and sends in-page jumps through Lenis. */
+/* Lenis still runs in-page jumps and the hero drift. Wheel and trackpad use the browser's own scroll. */
 (function () {
   if (!window.Lenis) return;
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -3661,14 +3667,9 @@ html.lenis .hero-visual{transform:translate3d(0,var(--lenis-hero,0px),0)}
     naiveDimensions: true,
     stopInertiaOnNavigate: true,
     lerp: 0.1,
-    smoothWheel: !reduce.matches
+    smoothWheel: false
   });
   window.harmonyLenis = lenis;
-  if (reduce.addEventListener) {
-    reduce.addEventListener("change", function () {
-      lenis.options.smoothWheel = !reduce.matches;
-    });
-  }
 
   var visual = document.querySelector(".hero-visual");
   lenis.on("scroll", function () {
