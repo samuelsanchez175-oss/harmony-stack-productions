@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Harmony Stack — Websites, apps &amp; AI for brands that sell</title>
+<link rel="icon" href="/favicon.ico?v=2" sizes="any">
+<link rel="icon" href="/favicon-32.png?v=2" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="description" content="Harmony Stack designs and builds custom websites, Shopify stores, and iPhone and web apps for brands that sell. Clear packages from $75 sessions to full e-commerce and app builds, with a fixed quote before work starts.">
 <meta name="author" content="Harmony Stack">
 <meta property="og:type" content="website">
@@ -426,18 +429,45 @@ a.phone-frame:focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
 /* Case studies */
 .cases{display:grid;gap:16px}
 @media(min-width:800px){.cases{grid-template-columns:repeat(2,1fr)}}
-.case{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:grid}
+.case{position:relative;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:grid}
 @media(min-width:560px){.case{grid-template-columns:.9fr 1.1fr}}
 .case-media{min-height:180px;background:var(--bg2)}
 .case-media img,.case-media video{width:100%;height:100%;object-fit:cover;object-position:top;min-height:180px;display:block;background:#111}
-.case-body{padding:20px 18px 22px;display:flex;flex-direction:column;gap:8px}
-.case-tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--purple2)}
+.case-body{padding:46px 18px 22px;display:flex;flex-direction:column;gap:8px}
+.case-tag{
+  position:absolute;top:0;right:0;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  min-width:148px;box-sizing:border-box;
+  font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;line-height:1;
+  color:#fff;background:linear-gradient(90deg,#f07828 0%,#e04e12 58%,#c43a08 100%);
+  padding:9px 16px;border-radius:0 0 0 14px;
+}
 .case-body h3{font-size:18px;font-weight:700;color:var(--dark)}
 .case-body p{font-size:14px;color:var(--muted);line-height:1.5}
 .case-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
 .case-meta span{font-size:12px;font-weight:600;background:var(--bg2);border:1px solid var(--border);padding:5px 10px;border-radius:999px;color:var(--body)}
 .case-body a{margin-top:auto;padding-top:10px;font-size:13.5px;font-weight:600;color:var(--purple2);text-decoration:none}
 .case-body a:hover{text-decoration:underline}
+.case-links{margin-top:auto;display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding-top:10px}
+.case-body .case-links a{margin-top:0;padding-top:0}
+.case-media--phone{
+  display:flex;align-items:center;justify-content:center;
+  padding:22px 8px 8px;background:var(--bg2);
+}
+.case-phone{position:relative;width:min(210px,82%)}
+.case-phone .phone-outer{width:100%}
+.case-phone .phone-app-icon-link{width:58px;height:58px;bottom:2px;right:-2px;border-radius:16px}
+.case-media--phone .phone-screen-shot,
+.case-media--phone .phone-app-icon{
+  width:100%;height:100%;min-height:0;aspect-ratio:auto;object-fit:cover;object-position:top center;
+}
+.case-media--shot{
+  display:flex;align-items:center;justify-content:center;
+  padding:18px 14px;background:var(--bg2);
+}
+.case-media--shot img{
+  width:100%;height:auto;max-height:100%;min-height:0;aspect-ratio:auto;object-fit:contain;background:transparent;
+}
 
 /* Add-ons */
 .addons{display:grid;gap:12px}
@@ -1289,10 +1319,15 @@ body.nav-open{overflow:hidden}
   .case-media{min-height:0}
   .case-media img,.case-media video{height:auto;min-height:0;aspect-ratio:3 / 4;object-fit:cover;object-position:top center;display:block}
   .case-body{padding:14px 14px 16px;gap:6px}
+  .case-tag{min-width:132px;padding:8px 12px;font-size:10px}
   .case-body p{font-size:13px;line-height:1.45}
   .case-body h3{font-size:16px}
   .case-meta{gap:5px}
   .case-meta span{font-size:10.5px;padding:4px 8px}
+  .case-media--phone{padding:16px 10px 8px}
+  .case-phone{width:min(168px,74%)}
+  .case-phone .phone-app-icon-link{width:46px;height:46px}
+  .case-media--shot{padding:12px 10px}
   .svc-cluster{flex:0 0 80%;scroll-snap-align:start}
   /* What I handle: cards come first on phones (drop the example box and dashboard shot) */
   #services-hero .svc-story-proof,#services-hero .svc-shot{display:none}
@@ -1333,7 +1368,32 @@ body.nav-open{overflow:hidden}
 .faq-walkthrough .fold-grid{grid-template-columns:1fr}
 .faq-walkthrough .pay-box{grid-template-columns:1fr}
 .faq-walkthrough h2.fold-title{font-size:clamp(20px,3vw,24px)}
+/* Lenis experiment: CSS smooth-scroll fights the library, so the html.lenis class wins */
+html.lenis{scroll-behavior:auto}
+html.lenis .hero-visual{transform:translate3d(0,var(--lenis-hero,0px),0)}
+.top-stage{position:relative;background:var(--bg);isolation:isolate}
+.top-stage>.hero,.top-stage>.wrap,.top-stage>#proof{position:relative;z-index:1}
+.top-stage canvas{pointer-events:none}
+.nav::before{content:none}
+.nav-pill{
+  background:rgba(253,251,247,.28);
+  border-color:rgba(26,21,32,.1);
+  box-shadow:0 8px 28px rgba(26,21,32,.08);
+  backdrop-filter:blur(22px) saturate(1.35);
+  -webkit-backdrop-filter:blur(22px) saturate(1.35);
+}
+@media(prefers-color-scheme:dark){
+  .nav-pill{
+    background:rgba(20,17,14,.22);
+    border-color:rgba(246,241,232,.18);
+    box-shadow:0 10px 28px rgba(0,0,0,.28);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  html.lenis .hero-visual{transform:none}
+}
 </style>
+<link rel="stylesheet" href="vendor/lenis/lenis.css">
 </head>
 <body>
 
@@ -1367,6 +1427,7 @@ body.nav-open{overflow:hidden}
   </div>
 </div>
 
+<div class="top-stage" id="top-stage">
 <header class="hero" id="top">
   <div class="wrap hero-grid">
     <div>
@@ -1447,6 +1508,18 @@ body.nav-open{overflow:hidden}
   </div>
 </div>
 
+<section class="section" id="proof" style="padding-top:28px;padding-bottom:12px">
+  <div class="wrap">
+    <div class="metrics" aria-label="Studio snapshot">
+      <div class="metric"><b data-count="10" data-count-suffix="+">10+</b><span>Brand sites live</span></div>
+      <div class="metric"><b data-count="2" data-count-suffix="">2</b><span>Personal shipped apps live on the App Store</span></div>
+      <div class="metric"><b>Fixed</b><span>Quote before work starts</span></div>
+      <div class="metric"><b>1 builder</b><span>Direct line, no handoffs</span></div>
+    </div>
+  </div>
+</section>
+</div>
+
 <!-- Floating preview card for Past work links -->
 <div class="link-preview" id="link-preview" role="tooltip" aria-hidden="true" hidden>
   <div class="link-preview-media" id="link-preview-media">
@@ -1460,18 +1533,6 @@ body.nav-open{overflow:hidden}
     <div class="link-preview-hint">Click to open →</div>
   </div>
 </div>
-
-
-<section class="section" id="proof" style="padding-top:28px;padding-bottom:12px">
-  <div class="wrap">
-    <div class="metrics" aria-label="Studio snapshot">
-      <div class="metric"><b>10+</b><span>Brand sites live</span></div>
-      <div class="metric"><b>2</b><span>Personal shipped apps live on the App Store</span></div>
-      <div class="metric"><b>Fixed</b><span>Quote before work starts</span></div>
-      <div class="metric"><b>1 builder</b><span>Direct line, no handoffs</span></div>
-    </div>
-  </div>
-</section>
 
 <!-- #services ("What I do" five cards): hidden per Samuel Oct 10 (summarized as the one-liner above the #apps tiles), remove hidden to restore -->
 <section class="section" id="services" hidden>
@@ -1742,7 +1803,7 @@ body.nav-open{overflow:hidden}
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
-              <img class="phone-screen-shot" src="portfolio-screenshots/cdl-onestop-home.png" alt="CDL One Stop — home / study dashboard" loading="lazy" decoding="async" />
+              <img class="phone-screen-shot" src="portfolio-screenshots/cdl-onestop-home.png" alt="CDL One Stop — written tests home" loading="lazy" decoding="async" />
             </div>
             <div class="phone-home-btn"></div>
           </div>
@@ -1756,13 +1817,15 @@ body.nav-open{overflow:hidden}
         <p class="site-card-result">CDL One Stop: iPhone app that helps drivers study for the CDL written test.</p>
       </div>
 
-      <!-- CDL One Stop — key dates / info -->
+      <!-- CDL One Stop — general knowledge practice exam -->
       <div class="site-card" data-portfolio-site="cdlonestopnj">
         <a class="phone-frame" href="https://apps.apple.com/us/app/cdl-test-prep-2027/id6782784591" target="_blank" rel="noopener noreferrer" data-preview-id="cdl-info" aria-label="View CDL One Stop on the App Store">
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
-              <img class="phone-screen-shot" src="portfolio-screenshots/cdl-onestop-info.png" alt="CDL One Stop — progress &amp; readiness dashboard" loading="lazy" decoding="async" />
+              <video class="phone-screen-shot" autoplay muted loop playsinline preload="metadata" poster="portfolio-screenshots/cdl-onestop-test-poster.png" aria-label="CDL One Stop — General Knowledge practice exam">
+                <source src="portfolio-screenshots/cdl-onestop-test-preview.mp4" type="video/mp4">
+              </video>
             </div>
             <div class="phone-home-btn"></div>
           </div>
@@ -1771,7 +1834,7 @@ body.nav-open{overflow:hidden}
           </span>
         </a>
         <div class="page-type-badge">
-          <span class="page-badge active page-badge--info">Info</span>
+          <span class="page-badge active page-badge--info">Test</span>
         </div>
         <p class="site-card-result">CDL One Stop: iPhone app that helps drivers study for the CDL written test.</p>
       </div>
@@ -1802,7 +1865,7 @@ body.nav-open{overflow:hidden}
           <div class="phone-outer">
             <div class="phone-notch"></div>
             <div class="phone-screen">
-              <img class="phone-screen-shot" src="portfolio-screenshots/penwork-editor.png" alt="Penwork Studios — Street Echo lyric editor" loading="lazy" decoding="async" />
+              <img class="phone-screen-shot" src="portfolio-screenshots/penwork-editor.png" alt="Penwork Studios — If li lyric editor" loading="lazy" decoding="async" />
             </div>
             <div class="phone-home-btn"></div>
           </div>
@@ -1861,30 +1924,69 @@ body.nav-open{overflow:hidden}
         </div>
       </article>
       <article class="case">
-        <div class="case-media"><img src="portfolio-screenshots/cdl-onestop-home.png" alt="CDL One Stop app" loading="lazy"></div>
+        <div class="case-media case-media--phone">
+          <div class="case-phone">
+            <div class="phone-outer">
+              <div class="phone-screen">
+                <img class="phone-screen-shot" src="portfolio-screenshots/cdl-onestop-home.png" alt="CDL One Stop app" loading="lazy">
+              </div>
+            </div>
+            <span class="phone-app-icon-link" aria-hidden="true"><img class="phone-app-icon" src="portfolio-screenshots/cdl-icon.png" alt=""></span>
+          </div>
+        </div>
         <div class="case-body">
           <span class="case-tag">iOS product</span>
           <h3>CDL One Stop</h3>
           <p><strong>The pain point:</strong> CDL students need focused practice without $40/mo prep apps full of ads.<br>
           <strong>What I built:</strong> Full iOS study app — readiness scoring, pre-trip tools, 50 states, EN/ES.<br>
           <strong>The result:</strong> Live on the App Store at $1 for a limited time; iPad &amp; Mac supported; Android very soon.</p>
-          <div class="case-meta"><span>App Store</span><span>$1 limited time</span><span>AI-ready product craft</span></div>
-          <a href="cdl-marketing.html">View app page →</a>
+          <div class="case-meta"><span>Native app</span><span>App Store</span><span>$1 limited time</span></div>
+          <div class="case-links">
+            <a href="cdl-marketing.html">View app page →</a>
+            <a href="https://apps.apple.com/us/app/cdl-one-stop-nj/id6782784591" target="_blank" rel="noopener">App Store →</a>
+          </div>
         </div>
       </article>
 
       <article class="case">
-        <div class="case-media"><img src="portfolio-screenshots/penwork-home.png" alt="Penwork Studio app" loading="lazy"></div>
+        <div class="case-media case-media--phone">
+          <div class="case-phone">
+            <div class="phone-outer">
+              <div class="phone-screen">
+                <img class="phone-screen-shot" src="portfolio-screenshots/penwork-home.png" alt="Penwork Studio app" loading="lazy">
+              </div>
+            </div>
+            <span class="phone-app-icon-link" aria-hidden="true"><img class="phone-app-icon" src="portfolio-screenshots/penwork-icon.png" alt=""></span>
+          </div>
+        </div>
         <div class="case-body">
-          <span class="chip-new chip-new--block">Product</span>
           <span class="case-tag">iOS product</span>
           <h3>Penwork Studio</h3>
           <p><strong>The pain point:</strong> Songwriters need a focused place to draft lyrics and creative notes — not a messy notes dump.<br>
           <strong>What I built:</strong> Native iOS studio app with editor flows, AI-assisted creative tools, App Store listing, and marketing/support pages.<br>
           <strong>The result:</strong> Live on the App Store. One builder handled everything from the design to the listing.</p>
-          <div class="case-meta"><span>App Store</span><span>Songwriting</span><span>Full product ship</span></div>
-          <a href="penwork-marketing.html">View app page →</a>
-          <a href="https://apps.apple.com/us/app/penwork-studio/id6757620114" target="_blank" rel="noopener">App Store →</a>
+          <div class="case-meta"><span>Native app</span><span>App Store</span><span>Songwriting</span></div>
+          <div class="case-links">
+            <a href="penwork-marketing.html">View app page →</a>
+            <a href="https://apps.apple.com/us/app/penwork-studio/id6757620114" target="_blank" rel="noopener">App Store →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-media case-media--shot">
+          <img src="portfolio-screenshots/coucou-notch.png" alt="Coucou desk, usage on top and terminals below" loading="lazy">
+        </div>
+        <div class="case-body">
+          <span class="case-tag">Mac app</span>
+          <h3>Coucou</h3>
+          <p><strong>The pain point:</strong> Terminals, music, and the calendar are all moving, and none of that shows on the menu bar.<br>
+          <strong>What I built:</strong> A Mac notch that opens into a small desk — usage, what’s playing, the next event, and the terminal sessions — then collapses back into the notch.<br>
+          <strong>The result:</strong> Running on this Mac. One click opens it, and it tucks away when you move on.</p>
+          <div class="case-meta"><span>Native app</span><span>Menu bar</span><span>On this Mac</span></div>
+          <div class="case-links">
+            <a href="https://github.com/samuelsanchez175-oss/coucou" target="_blank" rel="noopener">Download on GitHub →</a>
+          </div>
         </div>
       </article>
     </div>
@@ -3544,6 +3646,173 @@ body.nav-open{overflow:hidden}
     if(a) open(false,false);
   });
   window.addEventListener('hashchange',function(){ if(location.hash==='#inquiry-form') open(false,false); });
+})();
+</script>
+<script src="vendor/lenis/lenis.min.js"></script>
+<script>
+/* Local experiment only. Smooths the page scroll and sends in-page jumps through Lenis. */
+(function () {
+  if (!window.Lenis) return;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var lenis = new Lenis({
+    autoRaf: true,
+    anchors: true,
+    allowNestedScroll: true,
+    naiveDimensions: true,
+    stopInertiaOnNavigate: true,
+    lerp: 0.1,
+    smoothWheel: !reduce.matches
+  });
+  window.harmonyLenis = lenis;
+  if (reduce.addEventListener) {
+    reduce.addEventListener("change", function () {
+      lenis.options.smoothWheel = !reduce.matches;
+    });
+  }
+
+  var visual = document.querySelector(".hero-visual");
+  lenis.on("scroll", function () {
+    if (!visual) return;
+    if (reduce.matches) {
+      visual.style.setProperty("--lenis-hero", "0px");
+      return;
+    }
+    var y = Math.min(Math.max(lenis.scroll, 0), 420);
+    visual.style.setProperty("--lenis-hero", (-y * 0.12).toFixed(2) + "px");
+  });
+
+  new MutationObserver(function () {
+    if (document.body.classList.contains("nav-open")) lenis.stop();
+    else if (lenis.isStopped) lenis.start();
+  }).observe(document.body, { attributes: true, attributeFilter: ["class"] });
+
+  document.addEventListener("click", function (e) {
+    if (e.defaultPrevented || e.button !== 0) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target && e.target.closest && e.target.closest("a[href^='#']");
+    if (!a || (a.target && a.target !== "_self")) return;
+    var href = a.getAttribute("href");
+    if (!href || href.length < 2) return;
+    var id = decodeURIComponent(href.slice(1));
+    if (!document.getElementById(id)) return;
+    e.preventDefault();
+    if (location.hash !== href) history.pushState(null, "", href);
+  }, true);
+
+  var nativeScrollIntoView = Element.prototype.scrollIntoView;
+  var nested = ".portfolio-carousel-viewport, .tier-track, .dbx-finder-columns, .cases, .svc-clusters, #nav-sheet";
+  Element.prototype.scrollIntoView = function (arg) {
+    var opts = arg && typeof arg === "object" ? arg : {};
+    var inside = this.closest && this.closest(nested);
+    if (opts.behavior === "auto" || reduce.matches || inside) {
+      return nativeScrollIntoView.apply(this, arguments);
+    }
+    if (lenis.isStopped) lenis.start();
+    var margin = parseFloat(getComputedStyle(this).scrollMarginTop) || 0;
+    var offset = 0;
+    if (opts.block === "center") {
+      offset = margin - (window.innerHeight - this.getBoundingClientRect().height) / 2;
+    }
+    lenis.scrollTo(this, { offset: offset, duration: 1.05 });
+  };
+})();
+</script>
+<script src="vendor/vanta/three.min.js"></script>
+<script src="vendor/vanta/vanta.fog.min.js"></script>
+<script>
+/* Fog behind the hero, brand row, and stats. Colors are the page background, orange, and lavender. */
+(function () {
+  if (!window.VANTA || !window.VANTA.FOG) return;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var dark = window.matchMedia("(prefers-color-scheme: dark)");
+  var el = document.getElementById("top-stage");
+  if (!el) return;
+  function layUnderNav() {
+    var nav = document.querySelector("nav.nav");
+    if (!nav) return;
+    var space = Math.ceil(nav.getBoundingClientRect().bottom + window.scrollY);
+    el.style.marginTop = (-space) + "px";
+    el.style.paddingTop = space + "px";
+  }
+  layUnderNav();
+  window.addEventListener("resize", layUnderNav);
+  if (reduce.matches) return;
+  function colors() {
+    if (dark.matches) {
+      return { baseColor: 0x14110e, lowlightColor: 0x241911, midtoneColor: 0x6b3218, highlightColor: 0x4a4060 };
+    }
+    return { baseColor: 0xfdfbf7, lowlightColor: 0xf3ebe3, midtoneColor: 0xf0c2a8, highlightColor: 0xd9d0ea };
+  }
+  var effect = window.VANTA.FOG(Object.assign({
+    el: el,
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200,
+    minWidth: 200,
+    backgroundAlpha: 1,
+    blurFactor: 0.71,
+    scale: 2,
+    scaleMobile: 4,
+    speed: 3.1,
+    zoom: 1
+  }, colors()));
+  if (dark.addEventListener) {
+    dark.addEventListener("change", function () { effect.setOptions(colors()); });
+  }
+  window.addEventListener("resize", function () { if (effect.resize) effect.resize(); });
+})();
+</script>
+<script src="vendor/gsap/gsap.min.js"></script>
+<script src="vendor/gsap/TextPlugin.min.js"></script>
+<script>
+/* Count the two studio numbers once, when that strip scrolls into view. */
+(function () {
+  if (!window.gsap || !window.TextPlugin) return;
+  gsap.registerPlugin(TextPlugin);
+  var mm = gsap.matchMedia();
+  mm.add("(prefers-reduced-motion: no-preference)", function () {
+    var nodes = Array.prototype.slice.call(document.querySelectorAll("#proof [data-count]"));
+    if (!nodes.length) return;
+    var originals = nodes.map(function (el) { return [el, el.textContent]; });
+    var started = false;
+    function run() {
+      if (started) return;
+      started = true;
+      nodes.forEach(function (el) {
+        var end = parseInt(el.getAttribute("data-count"), 10);
+        var suffix = el.getAttribute("data-count-suffix") || "";
+        if (!isFinite(end)) return;
+        var state = { n: 0 };
+        gsap.set(el, { text: "0" + suffix });
+        gsap.to(state, {
+          n: end,
+          duration: end > 5 ? 1.35 : 0.85,
+          ease: "power2.out",
+          snap: { n: 1 },
+          onUpdate: function () {
+            gsap.set(el, { text: String(state.n) + suffix });
+          },
+          onComplete: function () {
+            gsap.set(el, { text: String(end) + suffix });
+          }
+        });
+      });
+    }
+    var proof = document.getElementById("proof");
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        run();
+        io.disconnect();
+      });
+    }, { threshold: 0.5 });
+    if (proof) io.observe(proof);
+    return function () {
+      io.disconnect();
+      originals.forEach(function (pair) { pair[0].textContent = pair[1]; });
+    };
+  });
 })();
 </script>
 </body>
